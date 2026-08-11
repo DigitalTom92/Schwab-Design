@@ -32,7 +32,7 @@
     ========================= */
 
     nav {
-        height: 64px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -53,17 +53,9 @@
     }
 
     .logo {
-        font-size: 21px;
-        font-weight: 650;
-        letter-spacing: -0.6px;
-    }
-
-    .logo .schwab {
-        color: #8a7200;
-    }
-
-    .logo .design {
-        color: #1d1d1f;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
     }
 
     nav a {
@@ -97,41 +89,32 @@
         width: 100%;
         max-width: 1100px;
 
-        will-change: transform, opacity;
+        will-change: transform, opacity, filter;
     }
 
     .eyebrow {
-        font-size: 22px;
-        font-weight: 600;
+        font-size: 18px;
         color: #777;
 
-        margin-bottom: 24px;
+        margin-bottom: 20px;
 
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
 
         will-change: transform, opacity;
-    }
-
-    .eyebrow .schwab {
-        color: #8a7200;
-    }
-
-    .eyebrow .design {
-        color: #777;
     }
 
     h1 {
-        font-size: clamp(65px, 10vw, 145px);
+        font-size: clamp(60px, 10vw, 140px);
 
-        line-height: 0.94;
+        line-height: 0.95;
 
-        letter-spacing: -7px;
+        letter-spacing: -6px;
 
         font-weight: 700;
 
-        margin-bottom: 38px;
+        margin-bottom: 35px;
 
-        will-change: transform, opacity;
+        will-change: transform, opacity, filter;
     }
 
     .hero p {
@@ -214,17 +197,8 @@
             font-size: 13px;
         }
 
-        .logo {
-            font-size: 18px;
-        }
-
-        .eyebrow {
-            font-size: 19px;
-        }
-
         h1 {
             letter-spacing: -3px;
-            font-size: clamp(55px, 14vw, 90px);
         }
 
         .hero p {
@@ -267,15 +241,12 @@
 <body>
 
 ```
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- NAVIGATION -->
 
 <nav>
 
     <div class="logo">
-        <span class="schwab">Schwab</span>
-        <span class="design"> Design</span>
+        Schwab Design
     </div>
 
     <div>
@@ -286,9 +257,7 @@
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <main>
 
@@ -297,8 +266,7 @@
         <div class="hero-content" id="heroContent">
 
             <div class="eyebrow" id="eyebrow">
-                <span class="schwab">Schwab</span>
-                <span class="design"> Design</span>
+                Schwab Design
             </div>
 
             <h1 id="heroTitle">
@@ -316,9 +284,7 @@
     </section>
 
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
+    <!-- ABOUT -->
 
     <section id="about" class="dark">
 
@@ -337,9 +303,7 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
+    <!-- CONTACT -->
 
     <section id="contact">
 
@@ -357,10 +321,6 @@
 
 </main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
     © 2026 Schwab Design
@@ -381,17 +341,13 @@
 
     let ticking = false;
 
-
     function updateHero() {
 
         const scrollY = window.scrollY;
-
         const heroHeight = hero.offsetHeight;
-
 
         /*
          * Scroll-Fortschritt
-         *
          * 0 = ganz oben
          * 1 = Hero verlassen
          */
@@ -402,13 +358,14 @@
 
 
         /*
-         * GROSSER SCHRIFTZUG
+         * DER GROSSE SCHRIFTZUG
          *
-         * Der Schriftzug wird beim Scrollen
-         * deutlich größer.
+         * Wird deutlich größer und bewegt sich
+         * leicht nach oben.
          *
-         * Kein Blur:
-         * Die Schrift bleibt gestochen scharf.
+         * Wichtig:
+         * Kein Blur und keine Filter.
+         * Dadurch bleibt die Schrift gestochen scharf.
          */
 
         const scale = 1 + progress * 1.25;
@@ -417,8 +374,8 @@
 
 
         /*
-         * Gesamter Hero bewegt sich
-         * leicht nach oben.
+         * Der komplette Hero bewegt sich
+         * etwas nach oben.
          */
 
         const contentMove = progress * -45;
@@ -432,37 +389,28 @@
         let titleOpacity = 1;
 
         if (progress > 0.55) {
-
-            titleOpacity =
-                1 - ((progress - 0.55) / 0.45);
-
+            titleOpacity = 1 - ((progress - 0.55) / 0.45);
         }
 
         titleOpacity = Math.max(0, titleOpacity);
 
 
         /*
-         * SCHWAB DESIGN
-         *
-         * Verschwindet etwas früher.
+         * Kleiner Untertitel verschwindet früher.
          */
 
-        let eyebrowOpacity =
-            1 - progress * 2.2;
+        let eyebrowOpacity = 1 - progress * 2.2;
 
-        eyebrowOpacity =
-            Math.max(0, eyebrowOpacity);
+        eyebrowOpacity = Math.max(0, eyebrowOpacity);
 
 
         /*
-         * BESCHREIBUNG
+         * Beschreibung verschwindet ebenfalls früher.
          */
 
-        let textOpacity =
-            1 - progress * 2;
+        let textOpacity = 1 - progress * 2;
 
-        textOpacity =
-            Math.max(0, textOpacity);
+        textOpacity = Math.max(0, textOpacity);
 
 
         /*
@@ -478,22 +426,19 @@
          */
 
         heroTitle.style.transform =
-            `translate3d(0, ${titleMove}px, 0)
-             scale(${scale})`;
+            `translate3d(0, ${titleMove}px, 0) scale(${scale})`;
 
-        heroTitle.style.opacity =
-            titleOpacity;
+        heroTitle.style.opacity = titleOpacity;
 
 
         /*
-         * SCHWAB DESIGN
+         * KLEINER SCHRIFTZUG
          */
 
         eyebrow.style.transform =
             `translate3d(0, ${progress * -70}px, 0)`;
 
-        eyebrow.style.opacity =
-            eyebrowOpacity;
+        eyebrow.style.opacity = eyebrowOpacity;
 
 
         /*
@@ -503,8 +448,7 @@
         heroText.style.transform =
             `translate3d(0, ${progress * -40}px, 0)`;
 
-        heroText.style.opacity =
-            textOpacity;
+        heroText.style.opacity = textOpacity;
 
 
         ticking = false;
@@ -512,17 +456,16 @@
 
 
     /*
-     * requestAnimationFrame sorgt für
-     * besonders flüssige Scroll-Animationen.
+     * requestAnimationFrame sorgt dafür,
+     * dass die Animation möglichst flüssig
+     * mit dem Browser-Rendering läuft.
      */
 
     function requestUpdate() {
 
         if (!ticking) {
 
-            window.requestAnimationFrame(
-                updateHero
-            );
+            window.requestAnimationFrame(updateHero);
 
             ticking = true;
         }
@@ -545,6 +488,7 @@
     updateHero();
 
 </script>
+
 ```
 
 </body>
