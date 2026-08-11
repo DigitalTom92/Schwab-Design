@@ -4,1486 +4,1909 @@
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Schwab Design</title>
+<title>FORMA.</title>
 
 
-    <style>
+<style>
 
-        /* =========================
-           GRUNDLAGEN
-        ========================= */
+    /* =====================================================
+       GRUNDLAGEN
+    ===================================================== */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
 
-        html {
-            scroll-behavior: auto;
-            overflow: hidden;
-        }
+    html {
 
+        scroll-behavior: auto;
 
-        body {
+        overflow: hidden;
+    }
 
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
 
-            color: #1d1d1f;
+    body {
 
-            background: #fff;
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Helvetica Neue",
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
 
-            overflow: hidden;
-        }
+        color: #1d1d1f;
 
+        background: #fff;
 
-        :root {
+        overflow: hidden;
 
-            --schwab-blue: #0066CC;
+        -webkit-font-smoothing: antialiased;
 
-            --dark-text: #1d1d1f;
-        }
+        text-rendering: geometricPrecision;
+    }
 
 
+    :root {
 
-        /* =========================
-           NAVIGATION
-           APPLE STYLE GLOSSY
-        ========================= */
+        --forma-red: #D72638;
 
-        nav {
+        --dark-text: #1d1d1f;
 
-            height: 60px;
+        --soft-gray: #666;
+    }
 
-            display: flex;
 
-            align-items: center;
 
-            justify-content: space-between;
+    /* =====================================================
+       NAVIGATION
+       APPLE STYLE GLOSSY
+    ===================================================== */
 
-            padding: 0 6%;
+    nav {
 
-            position: fixed;
+        height: 60px;
 
-            top: 0;
+        display: flex;
 
-            left: 0;
+        align-items: center;
 
-            right: 0;
+        justify-content: space-between;
 
+        padding: 0 6%;
 
-            /*
-             * Durchgezogene transparente
-             * Glasfläche
-             */
+        position: fixed;
 
-            background:
+        top: 0;
 
-                linear-gradient(
-                    180deg,
-                    rgba(255,255,255,0.94) 0%,
-                    rgba(255,255,255,0.82) 35%,
-                    rgba(248,248,250,0.74) 100%
-                );
+        left: 0;
 
+        right: 0;
 
-            /*
-             * Apple-artiger Glass-Blur
-             */
 
-            backdrop-filter:
+        background:
 
-                blur(24px)
-                saturate(180%);
+            linear-gradient(
+                180deg,
+                rgba(255,255,255,0.94) 0%,
+                rgba(255,255,255,0.82) 35%,
+                rgba(248,248,250,0.74) 100%
+            );
 
-            -webkit-backdrop-filter:
 
-                blur(24px)
-                saturate(180%);
+        backdrop-filter:
 
+            blur(24px)
+            saturate(180%);
 
-            /*
-             * Sehr feine untere Kante
-             */
+        -webkit-backdrop-filter:
 
-            border-bottom:
+            blur(24px)
+            saturate(180%);
 
-                1px solid
-                rgba(0,0,0,0.08);
 
+        border-bottom:
 
-            /*
-             * Dezenter Schatten
-             */
+            1px solid
+            rgba(0,0,0,0.08);
 
-            box-shadow:
 
-                0 8px 30px
-                rgba(0,0,0,0.06),
+        box-shadow:
 
-                0 2px 8px
-                rgba(0,0,0,0.035),
+            0 8px 30px
+            rgba(0,0,0,0.06),
 
-                inset 0 1px 0
-                rgba(255,255,255,0.95);
+            0 2px 8px
+            rgba(0,0,0,0.035),
 
+            inset 0 1px 0
+            rgba(255,255,255,0.95);
 
-            /*
-             * Wichtig:
-             * Glossy-Effekt bleibt innerhalb
-             * der gesamten Leiste
-             */
 
-            overflow: hidden;
+        overflow: hidden;
 
-            z-index: 100;
-        }
+        z-index: 100;
+    }
 
 
 
-        /* =========================
-           GLOSSY LICHTREFLEX
-        ========================= */
+    /* =====================================================
+       GLOSSY LICHTREFLEX
+    ===================================================== */
 
-        nav::before {
+    nav::before {
 
-            content: "";
+        content: "";
 
-            position: absolute;
+        position: absolute;
 
-            top: 0;
+        top: 0;
 
-            left: 0;
+        left: 0;
 
-            right: 0;
+        right: 0;
 
-            height: 42%;
+        height: 42%;
 
 
-            background:
+        background:
 
-                linear-gradient(
-                    180deg,
-                    rgba(255,255,255,0.72),
-                    rgba(255,255,255,0)
-                );
+            linear-gradient(
+                180deg,
+                rgba(255,255,255,0.72),
+                rgba(255,255,255,0)
+            );
 
 
-            pointer-events: none;
+        pointer-events: none;
 
-            z-index: 0;
-        }
+        z-index: 0;
+    }
 
 
 
-        /* =========================
-           LOGO
-        ========================= */
+    /* =====================================================
+       FORMA LOGO
+       NAVIGATION
+    ===================================================== */
 
-        .logo {
+    .logo {
 
-            position: relative;
+        position: relative;
 
-            z-index: 1;
+        z-index: 2;
 
+        display: flex;
 
-            font-size: 21px;
+        align-items: center;
 
-            font-weight: 600;
+        text-decoration: none;
 
-            letter-spacing: -0.6px;
+        cursor: pointer;
 
-            text-decoration: none;
+        transition:
 
-            color:
-                var(--dark-text);
+            opacity 0.2s ease,
 
-            cursor: pointer;
+            transform 0.2s ease;
+    }
 
 
-            transition:
+    .logo:hover {
 
-                opacity 0.2s ease,
+        opacity: 0.72;
 
-                transform 0.2s ease;
-        }
+        transform:
+            translateY(-1px);
+    }
 
 
-        .logo:hover {
 
-            opacity: 0.75;
+    /* =====================================================
+       FORMA WORTMARKE
+    ===================================================== */
 
-            transform:
-                scale(0.98);
-        }
+    .forma-logo {
 
+        display: flex;
 
-        .logo .schwab {
+        align-items: center;
 
-            color:
-                var(--schwab-blue);
-        }
+        color:
+            var(--dark-text);
 
+        font-family:
 
-        .logo .design {
+            "Helvetica Neue",
+            "Arial Narrow",
+            Arial,
+            sans-serif;
 
-            color:
-                var(--dark-text);
-        }
+        font-size: 21px;
 
+        font-weight: 500;
 
+        letter-spacing: 2.8px;
 
-        /* =========================
-           NAVIGATION LINKS
-        ========================= */
+        line-height: 1;
 
-        nav .nav-links {
+        white-space: nowrap;
 
-            position: relative;
+        transform:
+            scaleX(0.96);
 
-            z-index: 1;
+        transform-origin:
+            left center;
+    }
 
-            display: flex;
 
-            align-items: center;
-        }
+    .forma-letter {
 
+        display: inline-block;
 
-        nav .nav-links a {
+        font-weight: 500;
+    }
 
-            color:
-                rgba(29,29,31,0.82);
 
-            text-decoration: none;
 
-            font-size: 14px;
+    /* =====================================================
+       O IM FORMA LOGO
+       ROT / ARCHITEKTONISCH
+    ===================================================== */
 
-            font-weight: 500;
+    .forma-o {
 
-            margin-left: 30px;
+        position: relative;
 
-            padding:
-                8px 10px;
+        display: inline-flex;
 
-            border-radius: 10px;
+        align-items: center;
 
-            cursor: pointer;
+        justify-content: center;
 
+        width: 16px;
 
-            transition:
+        height: 20px;
 
-                color 0.25s ease,
+        margin:
 
-                background 0.25s ease,
+            0 1px;
 
-                transform 0.2s ease;
-        }
+        flex-shrink: 0;
+    }
 
 
-        /*
-         * Dezenter Apple-ähnlicher
-         * Hover-Effekt
-         */
+    /*
+     * Rote O-Kontur
+     */
 
-        nav .nav-links a:hover {
+    .forma-o::before {
 
-            color:
-                #000;
+        content: "";
 
-            background:
-                rgba(255,255,255,0.55);
+        position: absolute;
 
-            box-shadow:
+        width: 13px;
 
-                inset 0 1px 0
-                rgba(255,255,255,0.8);
+        height: 17px;
 
-            transform:
-                translateY(-1px);
-        }
+        border:
 
+            1.8px solid
+            var(--forma-red);
 
-        /*
-         * Klick-Effekt
-         */
+        border-radius: 50%;
 
-        nav .nav-links a:active {
+        transform:
+            scaleX(0.78);
+    }
 
-            transform:
-                scale(0.96);
-        }
 
+    /*
+     * Diagonaler Schnitt
+     */
 
+    .forma-o::after {
 
-        /* =========================
-           FULL PAGE CONTAINER
-        ========================= */
+        content: "";
 
-        .page-container {
+        position: absolute;
 
-            width: 100vw;
+        width: 18px;
 
-            height: 100vh;
+        height: 1.5px;
 
-            height: 100dvh;
+        background:
+            var(--forma-red);
 
-            overflow: hidden;
+        border-radius: 2px;
 
-            position: relative;
-        }
+        transform:
+            rotate(-52deg);
+    }
 
 
 
-        /* =========================
-           EINZELNE SEITE
-        ========================= */
+    /* =====================================================
+       PUNKT
+    ===================================================== */
 
-        .page {
+    .forma-dot {
 
-            width: 100vw;
+        display: inline-block;
 
-            height: 100vh;
+        width: 3px;
 
-            height: 100dvh;
+        height: 3px;
 
-            min-height: 100vh;
+        margin-left: 3px;
 
-            min-height: 100dvh;
+        margin-top: 13px;
 
-            position: absolute;
+        border-radius: 50%;
 
-            top: 0;
+        background:
+            var(--dark-text);
+    }
 
-            left: 0;
 
-            display: flex;
 
-            align-items: center;
+    /* =====================================================
+       NAVIGATION LINKS
+    ===================================================== */
 
-            justify-content: center;
+    nav .nav-links {
 
-            overflow: hidden;
+        position: relative;
 
-            opacity: 0;
+        z-index: 2;
 
-            pointer-events: none;
+        display: flex;
 
-            transform:
-                translate3d(0, 100%, 0);
+        align-items: center;
+    }
 
 
-            transition:
+    nav .nav-links a {
 
-                transform 0.9s
-                cubic-bezier(
-                    0.77,
-                    0,
-                    0.175,
-                    1
-                ),
+        color:
+            rgba(29,29,31,0.82);
 
-                opacity 0.6s ease;
-        }
+        text-decoration: none;
 
+        font-size: 14px;
 
+        font-weight: 500;
 
-        /* =========================
-           AKTUELLE SEITE
-        ========================= */
+        margin-left: 30px;
 
-        .page.active {
+        padding:
+            8px 10px;
 
-            opacity: 1;
+        border-radius: 10px;
 
-            pointer-events: auto;
+        cursor: pointer;
 
-            transform:
-                translate3d(0, 0, 0);
 
-            z-index: 2;
-        }
+        transition:
 
+            color 0.25s ease,
 
+            background 0.25s ease,
 
-        /* =========================
-           VORHERIGE SEITE
-        ========================= */
+            transform 0.2s ease;
+    }
 
-        .page.previous {
 
-            opacity: 0;
+    nav .nav-links a:hover {
 
-            transform:
-                translate3d(0, -100%, 0);
+        color:
+            #000;
 
-            z-index: 1;
-        }
+        background:
+            rgba(255,255,255,0.55);
 
+        box-shadow:
 
+            inset 0 1px 0
+            rgba(255,255,255,0.8);
 
-        /* =========================
-           NÄCHSTE SEITE
-        ========================= */
+        transform:
+            translateY(-1px);
+    }
 
-        .page.next {
 
-            opacity: 0;
+    nav .nav-links a:active {
 
-            transform:
-                translate3d(0, 100%, 0);
+        transform:
+            scale(0.96);
+    }
 
-            z-index: 1;
-        }
 
 
+    /* =====================================================
+       FULL PAGE CONTAINER
+    ===================================================== */
 
-        /* =========================
-           STARTSEITE
-        ========================= */
+    .page-container {
 
-        .hero {
+        width: 100vw;
 
-            background: #fff;
+        height: 100vh;
 
-            text-align: center;
+        height: 100dvh;
 
-            padding:
-                80px 6% 50px;
-        }
+        overflow: hidden;
 
+        position: relative;
+    }
 
-        .hero-content {
 
-            width: 100%;
 
-            max-width: 1200px;
+    /* =====================================================
+       EINZELNE SEITE
+    ===================================================== */
 
-            will-change:
-                transform,
-                opacity;
+    .page {
+
+        width: 100vw;
+
+        height: 100vh;
+
+        height: 100dvh;
+
+        min-height: 100vh;
+
+        min-height: 100dvh;
+
+        position: absolute;
+
+        top: 0;
+
+        left: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        overflow: hidden;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transform:
+            translate3d(0,100%,0);
+
+
+        transition:
+
+            transform 0.9s
+            cubic-bezier(
+                0.77,
+                0,
+                0.175,
+                1
+            ),
+
+            opacity 0.6s ease;
+    }
+
+
+
+    /* =====================================================
+       AKTUELLE SEITE
+    ===================================================== */
+
+    .page.active {
+
+        opacity: 1;
+
+        pointer-events: auto;
+
+        transform:
+            translate3d(0,0,0);
+
+        z-index: 2;
+    }
+
+
+
+    /* =====================================================
+       VORHERIGE SEITE
+    ===================================================== */
+
+    .page.previous {
+
+        opacity: 0;
+
+        transform:
+            translate3d(0,-100%,0);
+
+        z-index: 1;
+    }
+
+
+
+    /* =====================================================
+       NÄCHSTE SEITE
+    ===================================================== */
+
+    .page.next {
+
+        opacity: 0;
+
+        transform:
+            translate3d(0,100%,0);
+
+        z-index: 1;
+    }
+
+
+
+    /* =====================================================
+       STARTSEITE
+    ===================================================== */
+
+    .hero {
+
+        background:
+            #fff;
+
+        text-align:
+            center;
+
+        padding:
+            80px 6% 50px;
+    }
+
+
+    .hero-content {
+
+        width: 100%;
+
+        max-width: 1200px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+
+    /* =====================================================
+       FORMA AUF DER STARTSEITE
+       FILIGRAN / ARCHITEKTUR
+    ===================================================== */
+
+    .eyebrow {
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin-bottom: 32px;
+
+        opacity: 0;
+
+        transform:
+            translate3d(0,30px,0);
+
+        transition:
+
+            opacity 0.8s ease 0.25s,
+
+            transform 0.8s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            )
+            0.25s;
+    }
+
+
+    .page.active .eyebrow {
+
+        opacity: 1;
+
+        transform:
+            translate3d(0,0,0);
+    }
+
+
+    /*
+     * Große filigrane FORMA Wortmarke
+     */
+
+    .eyebrow .forma-logo {
+
+        font-size:
+            clamp(
+                28px,
+                3vw,
+                44px
+            );
+
+        font-weight:
+            300;
+
+        letter-spacing:
+            clamp(
+                4px,
+                0.7vw,
+                9px
+            );
+
+        transform:
+            scaleX(0.97);
+    }
+
+
+    .eyebrow .forma-letter {
+
+        font-weight:
+            300;
+    }
+
+
+
+    /* =====================================================
+       O AUF STARTSEITE
+    ===================================================== */
+
+    .eyebrow .forma-o {
+
+        width:
+            clamp(
+                22px,
+                2.4vw,
+                34px
+            );
+
+        height:
+            clamp(
+                29px,
+                3vw,
+                41px
+            );
+
+        margin:
+            0 3px;
+    }
+
+
+    .eyebrow .forma-o::before {
+
+        width:
+            clamp(
+                18px,
+                1.9vw,
+                28px
+            );
+
+        height:
+            clamp(
+                25px,
+                2.5vw,
+                35px
+            );
+
+        border-width:
+            1.7px;
+    }
+
+
+    .eyebrow .forma-o::after {
+
+        width:
+            clamp(
+                25px,
+                2.5vw,
+                37px
+            );
+
+        height:
+            1.5px;
+    }
+
+
+    .eyebrow .forma-dot {
+
+        width:
+            4px;
+
+        height:
+            4px;
+
+        margin-top:
+            22px;
+
+        margin-left:
+            4px;
+    }
+
+
+
+    /* =====================================================
+       HERO TITLE
+    ===================================================== */
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                70px,
+                10vw,
+                150px
+            );
+
+        line-height:
+            0.92;
+
+        letter-spacing:
+            -7px;
+
+        font-weight:
+            700;
+
+        margin-bottom:
+            38px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+
+    /* =====================================================
+       HERO TEXT
+    ===================================================== */
+
+    .hero-text {
+
+        font-size:
+            clamp(
+                19px,
+                2vw,
+                25px
+            );
+
+        color:
+            #666;
+
+        max-width:
+            700px;
+
+        margin:
+            auto;
+
+        line-height:
+            1.4;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+
+    /* =====================================================
+       ÜBER UNS
+    ===================================================== */
+
+    .about {
+
+        background:
+            #000;
+
+        color:
+            #fff;
+
+        justify-content:
+            flex-start;
+
+        padding:
+            10vw 8%;
+    }
+
+
+    .about-content {
+
+        width:
+            100%;
+
+        max-width:
+            1300px;
+    }
+
+
+    .about-title {
+
+        font-size:
+            clamp(
+                65px,
+                9vw,
+                140px
+            );
+
+        line-height:
+            0.92;
+
+        letter-spacing:
+            -6px;
+
+        font-weight:
+            700;
+
+        margin-bottom:
+            45px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .about-text {
+
+        max-width:
+            700px;
+
+        font-size:
+            clamp(
+                18px,
+                2vw,
+                25px
+            );
+
+        line-height:
+            1.45;
+
+        color:
+            #aaa;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+
+    /* =====================================================
+       KONTAKT
+    ===================================================== */
+
+    .contact {
+
+        background:
+            #fff;
+
+        justify-content:
+            flex-start;
+
+        padding:
+            10vw 8%;
+    }
+
+
+    .contact-content {
+
+        width:
+            100%;
+
+        max-width:
+            1300px;
+    }
+
+
+    .contact-title {
+
+        font-size:
+            clamp(
+                65px,
+                9vw,
+                140px
+            );
+
+        line-height:
+            0.92;
+
+        letter-spacing:
+            -6px;
+
+        font-weight:
+            700;
+
+        margin-bottom:
+            45px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .contact-text {
+
+        max-width:
+            700px;
+
+        font-size:
+            clamp(
+                18px,
+                2vw,
+                25px
+            );
+
+        line-height:
+            1.45;
+
+        color:
+            #666;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+
+    /* =====================================================
+       SEITEN-ANIMATIONEN
+    ===================================================== */
+
+    .page-content {
+
+        transform:
+            translate3d(0,60px,0)
+            scale(0.92);
+
+        opacity:
+            0;
+
+
+        transition:
+
+            transform 1s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            ),
+
+            opacity 0.7s ease;
+    }
+
+
+    .page.active .page-content {
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+        opacity:
+            1;
+    }
+
+
+
+    /* =====================================================
+       GROSSE ÜBERSCHRIFTEN
+    ===================================================== */
+
+    .page-title {
+
+        transform:
+            scale(0.92);
+
+        opacity:
+            0;
+
+
+        transition:
+
+            transform 1.2s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            ),
+
+            opacity 0.8s ease;
+    }
+
+
+    .page.active .page-title {
+
+        transform:
+            scale(1);
+
+        opacity:
+            1;
+    }
+
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 700px) {
+
+
+        .forma-logo {
+
+            font-size:
+                19px;
+
+            letter-spacing:
+                2.4px;
         }
 
 
         .eyebrow {
 
-    font-size:
-        clamp(
-            24px,
-            2vw,
-            32px
-        );
-
-    font-weight: 600;
-
-    margin-bottom: 28px;
-
-    letter-spacing: -0.4px;
-
-    opacity: 0;
-
-    transform:
-        translate3d(0, 30px, 0);
-
-    transition:
-        opacity 0.8s ease 0.25s,
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        )
-        0.25s;
-}
-
-
-        .page.active .eyebrow {
-
-            opacity: 1;
-
-            transform:
-                translate3d(0, 0, 0);
+            margin-bottom:
+                25px;
         }
 
 
-        .eyebrow .schwab {
+        .eyebrow .forma-logo {
 
-            color:
-                var(--schwab-blue);
+            font-size:
+                27px;
+
+            letter-spacing:
+                4px;
         }
 
 
-        .eyebrow .design {
+        .eyebrow .forma-o {
 
-            color: #777;
+            width:
+                21px;
+
+            height:
+                28px;
         }
 
 
+        .eyebrow .forma-o::before {
 
-        /* =========================
-           HERO TITLE
-        ========================= */
+            width:
+                17px;
+
+            height:
+                24px;
+        }
+
+
+        .eyebrow .forma-o::after {
+
+            width:
+                25px;
+        }
+
+
+        .eyebrow .forma-dot {
+
+            margin-top:
+                18px;
+        }
+
+
+        nav .nav-links a {
+
+            margin-left:
+                15px;
+
+            padding:
+                7px 8px;
+
+            font-size:
+                13px;
+        }
+
+
+        .hero {
+
+            padding:
+                70px 25px 40px;
+        }
+
 
         .hero-title {
 
-            font-size:
-                clamp(
-                    70px,
-                    10vw,
-                    150px
-                );
-
-            line-height: 0.92;
-
-            letter-spacing: -7px;
-
-            font-weight: 700;
-
-            margin-bottom: 38px;
-
-            will-change:
-                transform,
-                opacity;
+            letter-spacing:
+                -4px;
         }
 
 
-
-        /* =========================
-           HERO TEXT
-        ========================= */
-
-        .hero-text {
-
-            font-size:
-                clamp(
-                    19px,
-                    2vw,
-                    25px
-                );
-
-            color: #666;
-
-            max-width: 700px;
-
-            margin: auto;
-
-            line-height: 1.4;
-
-            will-change:
-                transform,
-                opacity;
-        }
-
-
-
-        /* =========================
-           ÜBER UNS
-        ========================= */
-
-        .about {
-
-            background: #000;
-
-            color: #fff;
-
-            justify-content: flex-start;
-
-            padding:
-                10vw 8%;
-        }
-
-
-        .about-content {
-
-            width: 100%;
-
-            max-width: 1300px;
-        }
-
-
-        .about-title {
-
-            font-size:
-                clamp(
-                    65px,
-                    9vw,
-                    140px
-                );
-
-            line-height: 0.92;
-
-            letter-spacing: -6px;
-
-            font-weight: 700;
-
-            margin-bottom: 45px;
-
-            will-change:
-                transform,
-                opacity;
-        }
-
-
-        .about-text {
-
-            max-width: 700px;
-
-            font-size:
-                clamp(
-                    18px,
-                    2vw,
-                    25px
-                );
-
-            line-height: 1.45;
-
-            color: #aaa;
-
-            will-change:
-                transform,
-                opacity;
-        }
-
-
-
-        /* =========================
-           KONTAKT
-        ========================= */
-
+        .about,
         .contact {
 
-            background: #fff;
-
-            justify-content: flex-start;
-
             padding:
-                10vw 8%;
+                80px 25px;
         }
 
 
-        .contact-content {
-
-            width: 100%;
-
-            max-width: 1300px;
-        }
-
-
+        .about-title,
         .contact-title {
 
-            font-size:
-                clamp(
-                    65px,
-                    9vw,
-                    140px
-                );
-
-            line-height: 0.92;
-
-            letter-spacing: -6px;
-
-            font-weight: 700;
-
-            margin-bottom: 45px;
-
-            will-change:
-                transform,
-                opacity;
+            letter-spacing:
+                -4px;
         }
 
 
+        .about-text,
         .contact-text {
 
-            max-width: 700px;
-
-            font-size:
-                clamp(
-                    18px,
-                    2vw,
-                    25px
-                );
-
-            line-height: 1.45;
-
-            color: #666;
-
-            will-change:
-                transform,
-                opacity;
+            max-width:
+                100%;
         }
-
-
-
-        /* =========================
-           SEITEN-ANIMATIONEN
-        ========================= */
-
-        .page-content {
-
-            transform:
-                translate3d(0, 60px, 0)
-                scale(0.92);
-
-            opacity: 0;
-
-
-            transition:
-
-                transform 1s
-                cubic-bezier(
-                    0.22,
-                    1,
-                    0.36,
-                    1
-                ),
-
-                opacity 0.7s ease;
-        }
-
-
-        .page.active .page-content {
-
-            transform:
-                translate3d(0, 0, 0)
-                scale(1);
-
-            opacity: 1;
-        }
-
-
-
-        /* =========================
-           GROSSE ÜBERSCHRIFTEN
-        ========================= */
-
-        .page-title {
-
-            transform:
-                scale(0.92);
-
-            opacity: 0;
-
-
-            transition:
-
-                transform 1.2s
-                cubic-bezier(
-                    0.22,
-                    1,
-                    0.36,
-                    1
-                ),
-
-                opacity 0.8s ease;
-        }
-
-
-        .page.active .page-title {
-
-            transform:
-                scale(1);
-
-            opacity: 1;
-        }
-
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-    .eyebrow {
-
-        font-size: 23px;
-
-        margin-bottom: 24px;
 
     }
 
-            nav .nav-links a {
-
-                margin-left: 15px;
-
-                padding:
-                    7px 8px;
-
-                font-size: 13px;
-            }
 
 
-            .logo {
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
 
-                font-size: 19px;
-            }
+    @media (prefers-reduced-motion: reduce) {
 
+        .page {
 
-            .hero {
-
-                padding:
-                    70px 25px 40px;
-            }
-
-
-            .hero-title {
-
-                letter-spacing: -4px;
-            }
-
-
-            .about,
-            .contact {
-
-                padding:
-                    80px 25px;
-            }
-
-
-            .about-title,
-            .contact-title {
-
-                letter-spacing: -4px;
-            }
-
-
-            .about-text,
-            .contact-text {
-
-                max-width: 100%;
-            }
-
+            transition:
+                none;
         }
 
 
+        .page-content,
+        .page-title,
+        .eyebrow {
 
-        /* =========================
-           REDUCED MOTION
-        ========================= */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .page {
-
-                transition:
-                    none;
-            }
-
-
-            .page-content,
-            .page-title,
-            .eyebrow {
-
-                transition:
-                    none;
-            }
-
+            transition:
+                none;
         }
 
-    </style>
+    }
+
+</style>
+```
 
 </head>
 
-
 <body>
 
+```
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
+<nav>
 
-    <nav>
 
-        <a
-            href="#"
-            class="logo"
-            id="homeButton"
+    <a
+        href="#"
+        class="logo"
+        id="homeButton"
+    >
+
+
+        <span
+            class="forma-logo"
         >
 
-            <span class="schwab">
-                Schwab
+            <span
+                class="forma-letter"
+            >
+                F
             </span>
 
-            <span class="design">
-                Design
+
+            <span
+                class="forma-o"
+            ></span>
+
+
+            <span
+                class="forma-letter"
+            >
+                R
             </span>
 
+
+            <span
+                class="forma-letter"
+            >
+                M
+            </span>
+
+
+            <span
+                class="forma-letter"
+            >
+                A
+            </span>
+
+
+            <span
+                class="forma-dot"
+            ></span>
+
+        </span>
+
+
+    </a>
+
+
+
+    <div
+        class="nav-links"
+    >
+
+
+        <a
+            href="#about"
+            data-page="1"
+        >
+            Über uns
         </a>
 
 
-        <div class="nav-links">
+        <a
+            href="#contact"
+            data-page="2"
+        >
+            Kontakt
+        </a>
 
-            <a
-                href="#about"
-                data-page="1"
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- =====================================================
+     SEITEN
+===================================================== -->
+
+<main
+    class="page-container"
+>
+
+
+    <!-- =================================================
+         STARTSEITE
+    ================================================= -->
+
+    <section
+        class="page hero active"
+        data-index="0"
+    >
+
+
+        <div
+            class="hero-content page-content"
+        >
+
+
+            <!-- FILIGRANE FORMA WORTMARKE -->
+
+            <div
+                class="eyebrow"
             >
-                Über uns
-            </a>
 
 
-            <a
-                href="#contact"
-                data-page="2"
+                <span
+                    class="forma-logo"
+                >
+
+
+                    <span
+                        class="forma-letter"
+                    >
+                        F
+                    </span>
+
+
+                    <span
+                        class="forma-o"
+                    ></span>
+
+
+                    <span
+                        class="forma-letter"
+                    >
+                        R
+                    </span>
+
+
+                    <span
+                        class="forma-letter"
+                    >
+                        M
+                    </span>
+
+
+                    <span
+                        class="forma-letter"
+                    >
+                        A
+                    </span>
+
+
+                    <span
+                        class="forma-dot"
+                    ></span>
+
+
+                </span>
+
+
+            </div>
+
+
+
+            <!-- HERO TITEL -->
+
+            <h1
+                class="hero-title page-title"
             >
-                Kontakt
-            </a>
+
+                Einfach.<br>
+
+                Stark.<br>
+
+                Anders.
+
+            </h1>
+
+
+
+            <!-- HERO TEXT -->
+
+            <p
+                class="hero-text"
+            >
+
+                Klare Ideen. Starkes Design.
+                Anders gedacht. Besser gestaltet.
+
+            </p>
+
 
         </div>
 
-    </nav>
+
+    </section>
 
 
 
-    <!-- =========================
-         SEITEN
-    ========================= -->
+    <!-- =================================================
+         ÜBER UNS
+    ================================================= -->
 
-    <main class="page-container">
+    <section
+        class="page about"
+        data-index="1"
+    >
 
 
-        <!-- =====================
-             STARTSEITE
-        ===================== -->
-
-        <section
-            class="page hero active"
-            data-index="0"
+        <div
+            class="about-content page-content"
         >
 
-            <div
-                class="hero-content page-content"
+
+            <h2
+                class="about-title page-title"
             >
 
-                <div class="eyebrow">
+                Weniger.<br>
 
-                    <span class="schwab">
-                        Schwab
-                    </span>
+                Aber besser.
 
-                    <span class="design">
-                        Design
-                    </span>
-
-                </div>
+            </h2>
 
 
-                <h1
-                    class="hero-title page-title"
-                >
+            <p
+                class="about-text"
+            >
 
-                    Einfach.<br>
-                    Stark.
-                    Anders.
+                FORMA. steht für
+                minimalistisches, modernes
+                und durchdachtes Design.
 
-                </h1>
+                Wir reduzieren auf das Wesentliche
+                und schaffen Lösungen mit Charakter.
+
+            </p>
 
 
-                <p
-                    class="hero-text"
-                >
+        </div>
 
-                    Klare Ideen. Starkes Design.
-                    Anders gedacht. Besser gestaltet.
 
-                </p>
-
-            </div>
-
-        </section>
+    </section>
 
 
 
-        <!-- =====================
-             ÜBER UNS
-        ===================== -->
+    <!-- =================================================
+         KONTAKT
+    ================================================= -->
 
-        <section
-            class="page about"
-            data-index="1"
+    <section
+        class="page contact"
+        data-index="2"
+    >
+
+
+        <div
+            class="contact-content page-content"
         >
 
-            <div
-                class="about-content page-content"
+
+            <h2
+                class="contact-title page-title"
             >
 
-                <h2
-                    class="about-title page-title"
-                >
+                Lass uns<br>
 
-                    Weniger.<br>
-                    Aber besser.
+                etwas gestalten.
 
-                </h2>
+            </h2>
 
 
-                <p
-                    class="about-text"
-                >
-
-                    Schwab Design steht für
-                    minimalistisches, modernes
-                    und durchdachtes Design.
-
-                    Wir reduzieren auf das Wesentliche
-                    und schaffen Lösungen mit Charakter.
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================
-             KONTAKT
-        ===================== -->
-
-        <section
-            class="page contact"
-            data-index="2"
-        >
-
-            <div
-                class="contact-content page-content"
+            <p
+                class="contact-text"
             >
 
-                <h2
-                    class="contact-title page-title"
-                >
+                Du hast eine Idee?
+                Wir machen daraus ein Design.
 
-                    Lass uns<br>
-                    etwas gestalten.
-
-                </h2>
+            </p>
 
 
-                <p
-                    class="contact-text"
-                >
-
-                    Du hast eine Idee?
-                    Wir machen daraus ein Design.
-
-                </p>
-
-            </div>
-
-        </section>
+        </div>
 
 
-    </main>
+    </section>
+
+
+</main>
 
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
-    <script>
-
-
-        const pages =
-            document.querySelectorAll(".page");
+<script>
 
 
-        const homeButton =
-            document.querySelector("#homeButton");
+    const pages =
+        document.querySelectorAll(
+            ".page"
+        );
 
 
-        const navLinks =
-            document.querySelectorAll(
-                ".nav-links a"
-            );
+    const homeButton =
+        document.querySelector(
+            "#homeButton"
+        );
 
 
-        let currentPage = 0;
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
 
 
-        let isAnimating = false;
+    let currentPage = 0;
+
+    let isAnimating = false;
+
+    let touchStartY = 0;
+
+    let touchEndY = 0;
 
 
-        let touchStartY = 0;
+
+    /* =================================================
+       SEITE WECHSELN
+    ================================================= */
+
+    function goToPage(index) {
 
 
-        let touchEndY = 0;
+        if (
+
+            index < 0 ||
+
+            index >= pages.length ||
+
+            index === currentPage ||
+
+            isAnimating
+
+        ) {
+
+            return;
+        }
+
+
+        isAnimating = true;
+
+
+        pages.forEach(
+            (page, i) => {
+
+
+                page.classList.remove(
+                    "active",
+                    "previous",
+                    "next"
+                );
+
+
+                if (i === index) {
+
+                    page.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                else if (i < index) {
+
+                    page.classList.add(
+                        "previous"
+                    );
+
+                }
+
+
+                else {
+
+                    page.classList.add(
+                        "next"
+                    );
+
+                }
+
+            }
+        );
+
+
+        currentPage = index;
+
+
+        setTimeout(
+            () => {
+
+                isAnimating = false;
+
+            },
+            950
+        );
+
+    }
 
 
 
-        /* =========================
-           SEITE WECHSELN
-        ========================= */
+    /* =================================================
+       MAUSRAD
+    ================================================= */
 
-        function goToPage(index) {
+    window.addEventListener(
+
+        "wheel",
+
+        event => {
+
+
+            if (isAnimating) {
+
+                return;
+            }
 
 
             if (
-
-                index < 0 ||
-
-                index >= pages.length ||
-
-                index === currentPage ||
-
-                isAnimating
-
+                Math.abs(
+                    event.deltaY
+                ) < 25
             ) {
 
                 return;
             }
 
 
-            isAnimating = true;
-
-
-            pages.forEach(
-                (page, i) => {
-
-
-                    page.classList.remove(
-                        "active",
-                        "previous",
-                        "next"
-                    );
-
-
-                    if (i === index) {
-
-                        page.classList.add(
-                            "active"
-                        );
-
-                    }
-
-
-                    else if (i < index) {
-
-                        page.classList.add(
-                            "previous"
-                        );
-
-                    }
-
-
-                    else {
-
-                        page.classList.add(
-                            "next"
-                        );
-
-                    }
-
-                }
-            );
-
-
-            currentPage = index;
-
-
-            setTimeout(
-                () => {
-
-                    isAnimating = false;
-
-                },
-                950
-            );
-
-        }
-
-
-
-        /* =========================
-           MAUSRAD
-        ========================= */
-
-        window.addEventListener(
-
-            "wheel",
-
-            event => {
-
-
-                if (isAnimating) {
-
-                    return;
-                }
-
-
-                if (
-                    Math.abs(event.deltaY) < 25
-                ) {
-
-                    return;
-                }
-
-
-                if (event.deltaY > 0) {
-
-
-                    goToPage(
-                        currentPage + 1
-                    );
-
-                }
-
-
-                else {
-
-
-                    goToPage(
-                        currentPage - 1
-                    );
-
-                }
-
-            },
-
-            {
-                passive: true
-            }
-
-        );
-
-
-
-        /* =========================
-           TOUCH / WISCHEN
-        ========================= */
-
-        window.addEventListener(
-
-            "touchstart",
-
-            event => {
-
-                touchStartY =
-                    event.changedTouches[0].screenY;
-
-            },
-
-            {
-                passive: true
-            }
-
-        );
-
-
-        window.addEventListener(
-
-            "touchend",
-
-            event => {
-
-
-                touchEndY =
-                    event.changedTouches[0].screenY;
-
-
-                const difference =
-                    touchStartY - touchEndY;
-
-
-                if (
-                    Math.abs(difference) < 50
-                ) {
-
-                    return;
-                }
-
-
-                if (difference > 0) {
-
-
-                    goToPage(
-                        currentPage + 1
-                    );
-
-                }
-
-
-                else {
-
-
-                    goToPage(
-                        currentPage - 1
-                    );
-
-                }
-
-            },
-
-            {
-                passive: true
-            }
-
-        );
-
-
-
-        /* =========================
-           TASTATUR
-        ========================= */
-
-        window.addEventListener(
-
-            "keydown",
-
-            event => {
-
-
-                if (
-                    event.key === "ArrowDown"
-                ) {
-
-                    goToPage(
-                        currentPage + 1
-                    );
-
-                }
-
-
-                if (
-                    event.key === "ArrowUp"
-                ) {
-
-                    goToPage(
-                        currentPage - 1
-                    );
-
-                }
-
-
-                if (
-                    event.key === " "
-                ) {
-
-
-                    event.preventDefault();
-
-
-                    goToPage(
-                        currentPage + 1
-                    );
-
-                }
-
-            }
-
-        );
-
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        navLinks.forEach(
-
-            link => {
-
-
-                link.addEventListener(
-
-                    "click",
-
-                    event => {
-
-
-                        event.preventDefault();
-
-
-                        const page =
-                            Number(
-                                link.dataset.page
-                            );
-
-
-                        goToPage(page);
-
-                    }
-
+            if (
+                event.deltaY > 0
+            ) {
+
+                goToPage(
+                    currentPage + 1
                 );
 
             }
 
-        );
+
+            else {
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+        },
+
+        {
+            passive: true
+        }
+
+    );
 
 
 
-        /* =========================
-           LOGO
-        ========================= */
+    /* =================================================
+       TOUCH / WISCHEN
+    ================================================= */
 
-        homeButton.addEventListener(
+    window.addEventListener(
 
-            "click",
+        "touchstart",
 
-            event => {
+        event => {
+
+            touchStartY =
+                event
+                    .changedTouches[0]
+                    .screenY;
+
+        },
+
+        {
+            passive: true
+        }
+
+    );
+
+
+    window.addEventListener(
+
+        "touchend",
+
+        event => {
+
+
+            touchEndY =
+                event
+                    .changedTouches[0]
+                    .screenY;
+
+
+            const difference =
+                touchStartY -
+                touchEndY;
+
+
+            if (
+                Math.abs(
+                    difference
+                ) < 50
+            ) {
+
+                return;
+            }
+
+
+            if (
+                difference > 0
+            ) {
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+
+            else {
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+        },
+
+        {
+            passive: true
+        }
+
+    );
+
+
+
+    /* =================================================
+       TASTATUR
+    ================================================= */
+
+    window.addEventListener(
+
+        "keydown",
+
+        event => {
+
+
+            if (
+                event.key ===
+                "ArrowDown"
+            ) {
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+
+            if (
+                event.key ===
+                "ArrowUp"
+            ) {
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+
+            if (
+                event.key ===
+                " "
+            ) {
 
 
                 event.preventDefault();
 
 
-                goToPage(0);
+                goToPage(
+                    currentPage + 1
+                );
 
             }
 
-        );
+        }
+
+    );
 
 
 
-        /* =========================
-           URL / HASH
-        ========================= */
+    /* =================================================
+       NAVIGATION
+    ================================================= */
 
-        window.addEventListener(
+    navLinks.forEach(
 
-            "load",
-
-            () => {
+        link => {
 
 
-                if (
-                    window.location.hash ===
-                    "#about"
-                ) {
+            link.addEventListener(
 
-                    goToPage(1);
+                "click",
+
+                event => {
+
+
+                    event.preventDefault();
+
+
+                    const page =
+                        Number(
+                            link.dataset.page
+                        );
+
+
+                    goToPage(page);
 
                 }
 
+            );
 
-                if (
-                    window.location.hash ===
-                    "#contact"
-                ) {
+        }
 
-                    goToPage(2);
+    );
 
-                }
+
+
+    /* =================================================
+       LOGO
+    ================================================= */
+
+    homeButton.addEventListener(
+
+        "click",
+
+        event => {
+
+
+            event.preventDefault();
+
+
+            goToPage(0);
+
+        }
+
+    );
+
+
+
+    /* =================================================
+       URL / HASH
+    ================================================= */
+
+    window.addEventListener(
+
+        "load",
+
+        () => {
+
+
+            if (
+                window.location.hash ===
+                "#about"
+            ) {
+
+                goToPage(1);
 
             }
 
-        );
 
-    </script>
+            if (
+                window.location.hash ===
+                "#contact"
+            ) {
 
+                goToPage(2);
+
+            }
+
+        }
+
+    );
+
+</script>
+```
 
 </body>
 
