@@ -134,25 +134,16 @@
 
 
         /* =========================
-           LOGO
-           FORMA.
+           FORMA LOGO
+           MINIMAL / ARCHITEKTUR
         ========================= */
 
         .logo {
             position: relative;
             z-index: 1;
 
-            font-size: 21px;
-
-            font-weight: 700;
-
-            letter-spacing: 1.2px;
-
-            text-decoration: none;
-
-            color: var(--schwab-blue);
-
-            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
 
             font-family:
                 "Helvetica Neue",
@@ -160,48 +151,143 @@
                 Arial,
                 sans-serif;
 
+            font-size: 21px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.8px;
+
+            line-height: 1;
+
+            text-decoration: none;
+
+            color: var(--schwab-blue);
+
+            cursor: pointer;
+
             transition:
-                opacity 0.2s ease,
-                transform 0.2s ease;
+                opacity 0.25s ease,
+                transform 0.25s ease;
         }
+
 
         .logo:hover {
             opacity: 0.75;
 
             transform:
-                scale(0.98);
-        }
-
-
-        /* =========================
-           FORMA SCHRIFT
-        ========================= */
-
-        .forma {
-            color: var(--schwab-blue);
-
-            font-weight: 700;
-
-            letter-spacing: 1.5px;
+                translateY(-1px);
         }
 
 
         /*
-         * Das O wird bewusst
-         * schwarz hervorgehoben
+         * Grundform des Logos
          */
 
-        .forma .forma-o {
-            color: #1d1d1f;
+        .forma {
+            display: inline-flex;
+
+            align-items: center;
+
+            color:
+                var(--schwab-blue);
+
+            font-weight: 700;
+
+            letter-spacing: 1.8px;
+
+            line-height: 1;
+        }
+
+
+        /*
+         * Das O wird als eigenes
+         * grafisches Element aufgebaut.
+         *
+         * Dadurch entsteht kein normales
+         * Sonderzeichen, sondern ein
+         * kontrolliertes Logo-Element.
+         */
+
+        .forma-o {
+            position: relative;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 14px;
+            height: 18px;
+
+            margin-left: 1px;
+            margin-right: 1px;
+
+            color:
+                #1d1d1f;
 
             font-weight: 800;
 
-            letter-spacing: 0.5px;
-
-            display: inline-block;
+            line-height: 1;
 
             transform:
-                scaleX(0.92);
+                translateY(-0.5px);
+        }
+
+
+        /*
+         * Schwarzes O
+         */
+
+        .forma-o::before {
+            content: "";
+
+            position: absolute;
+
+            width: 11px;
+            height: 15px;
+
+            border:
+                2px solid
+                #1d1d1f;
+
+            border-radius: 50%;
+
+            transform:
+                scaleX(0.82);
+        }
+
+
+        /*
+         * Diagonaler Schnitt
+         * durch das O
+         */
+
+        .forma-o::after {
+            content: "";
+
+            position: absolute;
+
+            width: 17px;
+            height: 1.5px;
+
+            background:
+                #1d1d1f;
+
+            transform:
+                rotate(-55deg);
+
+            border-radius: 2px;
+        }
+
+
+        /*
+         * Der echte Buchstabe O wird
+         * unsichtbar gemacht, damit nur
+         * das grafische Zeichen sichtbar ist.
+         */
+
+        .forma-o-text {
+            opacity: 0;
         }
 
 
@@ -218,6 +304,7 @@
 
             align-items: center;
         }
+
 
         nav .nav-links a {
             color:
@@ -244,8 +331,10 @@
                 transform 0.2s ease;
         }
 
+
         nav .nav-links a:hover {
-            color: #000;
+            color:
+                #000;
 
             background:
                 rgba(255,255,255,0.55);
@@ -257,6 +346,7 @@
             transform:
                 translateY(-1px);
         }
+
 
         nav .nav-links a:active {
             transform:
@@ -382,6 +472,7 @@
                 80px 6% 50px;
         }
 
+
         .hero-content {
             width: 100%;
 
@@ -409,7 +500,7 @@
 
             margin-bottom: 28px;
 
-            letter-spacing: 1.4px;
+            letter-spacing: 1.8px;
 
             opacity: 0;
 
@@ -435,11 +526,42 @@
                 sans-serif;
         }
 
+
         .page.active .eyebrow {
             opacity: 1;
 
             transform:
                 translate3d(0, 0, 0);
+        }
+
+
+        /*
+         * Größere Version des FORMA Logos
+         */
+
+        .eyebrow .forma {
+            letter-spacing: 2.2px;
+        }
+
+
+        .eyebrow .forma-o {
+            width: 18px;
+            height: 24px;
+        }
+
+
+        .eyebrow .forma-o::before {
+            width: 14px;
+            height: 20px;
+
+            border-width: 2.2px;
+        }
+
+
+        .eyebrow .forma-o::after {
+            width: 21px;
+
+            height: 1.8px;
         }
 
 
@@ -510,11 +632,13 @@
                 10vw 8%;
         }
 
+
         .about-content {
             width: 100%;
 
             max-width: 1300px;
         }
+
 
         .about-title {
             font-size:
@@ -536,6 +660,7 @@
                 transform,
                 opacity;
         }
+
 
         .about-text {
             max-width: 700px;
@@ -570,11 +695,13 @@
                 10vw 8%;
         }
 
+
         .contact-content {
             width: 100%;
 
             max-width: 1300px;
         }
+
 
         .contact-title {
             font-size:
@@ -596,6 +723,7 @@
                 transform,
                 opacity;
         }
+
 
         .contact-text {
             max-width: 700px;
@@ -640,6 +768,7 @@
                 opacity 0.7s ease;
         }
 
+
         .page.active .page-content {
             transform:
                 translate3d(0, 0, 0)
@@ -671,6 +800,7 @@
                 opacity 0.8s ease;
         }
 
+
         .page.active .page-title {
             transform:
                 scale(1);
@@ -691,6 +821,7 @@
                 margin-bottom: 24px;
             }
 
+
             nav .nav-links a {
                 margin-left: 15px;
 
@@ -700,20 +831,41 @@
                 font-size: 13px;
             }
 
+
             .logo {
                 font-size: 19px;
 
-                letter-spacing: 1px;
+                letter-spacing: 1.5px;
             }
+
+
+            .logo .forma-o {
+                width: 13px;
+                height: 17px;
+            }
+
+
+            .logo .forma-o::before {
+                width: 10px;
+                height: 14px;
+            }
+
+
+            .logo .forma-o::after {
+                width: 16px;
+            }
+
 
             .hero {
                 padding:
                     70px 25px 40px;
             }
 
+
             .hero-title {
                 letter-spacing: -4px;
             }
+
 
             .about,
             .contact {
@@ -721,10 +873,12 @@
                     80px 25px;
             }
 
+
             .about-title,
             .contact-title {
                 letter-spacing: -4px;
             }
+
 
             .about-text,
             .contact-text {
@@ -743,6 +897,7 @@
             .page {
                 transition: none;
             }
+
 
             .page-content,
             .page-title,
@@ -773,7 +928,15 @@
         >
 
             <span class="forma">
-                F<span class="forma-o">O</span>RMA.
+
+                F
+
+                <span class="forma-o">
+                    <span class="forma-o-text">O</span>
+                </span>
+
+                RMA.
+
             </span>
 
         </a>
@@ -787,6 +950,7 @@
             >
                 Über uns
             </a>
+
 
             <a
                 href="#contact"
@@ -824,7 +988,15 @@
                 <div class="eyebrow">
 
                     <span class="forma">
-                        F<span class="forma-o">O</span>RMA.
+
+                        F
+
+                        <span class="forma-o">
+                            <span class="forma-o-text">O</span>
+                        </span>
+
+                        RMA.
+
                     </span>
 
                 </div>
@@ -968,6 +1140,7 @@
         let touchEndY = 0;
 
 
+
         /* =========================
            SEITE WECHSELN
         ========================= */
@@ -1040,6 +1213,7 @@
         }
 
 
+
         /* =========================
            MAUSRAD
         ========================= */
@@ -1083,6 +1257,7 @@
                 passive: true
             }
         );
+
 
 
         /* =========================
@@ -1149,6 +1324,7 @@
         );
 
 
+
         /* =========================
            TASTATUR
         ========================= */
@@ -1197,6 +1373,7 @@
         );
 
 
+
         /* =========================
            NAVIGATION
         ========================= */
@@ -1231,6 +1408,7 @@
         );
 
 
+
         /* =========================
            LOGO
         ========================= */
@@ -1249,6 +1427,7 @@
             }
 
         );
+
 
 
         /* =========================
