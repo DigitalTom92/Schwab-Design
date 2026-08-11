@@ -1,241 +1,478 @@
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Schwab Design</title>
+```
+<title>Schwab Design</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         Roboto, Helvetica, Arial, sans-serif;
-            color: #1d1d1f;
-            background: #fff;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                     Roboto, Helvetica, Arial, sans-serif;
+        color: #1d1d1f;
+        background: #fff;
+        overflow-x: hidden;
+    }
 
-        /* Navigation */
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        background: rgba(255,255,255,0.82);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        z-index: 100;
+
+        transition: background 0.4s ease;
+    }
+
+    .logo {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+    }
+
+    nav a {
+        color: #1d1d1f;
+        text-decoration: none;
+        font-size: 14px;
+        margin-left: 30px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        height: 100vh;
+        min-height: 700px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        padding: 100px 20px 60px;
+
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 1100px;
+
+        will-change: transform, opacity, filter;
+    }
+
+    .eyebrow {
+        font-size: 18px;
+        color: #777;
+
+        margin-bottom: 20px;
+
+        letter-spacing: 1px;
+
+        will-change: transform, opacity;
+    }
+
+    h1 {
+        font-size: clamp(60px, 10vw, 140px);
+
+        line-height: 0.95;
+
+        letter-spacing: -6px;
+
+        font-weight: 700;
+
+        margin-bottom: 35px;
+
+        will-change: transform, opacity, filter;
+    }
+
+    .hero p {
+        font-size: 24px;
+
+        color: #666;
+
+        max-width: 650px;
+
+        margin: auto;
+
+        line-height: 1.4;
+
+        will-change: transform, opacity;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+        padding: 140px 8%;
+    }
+
+    .dark {
+        background: #000;
+        color: white;
+    }
+
+    .dark p {
+        color: #aaa;
+    }
+
+    .section-title {
+        font-size: clamp(45px, 7vw, 90px);
+
+        letter-spacing: -4px;
+
+        line-height: 1;
+
+        margin-bottom: 30px;
+    }
+
+    .section-text {
+        max-width: 650px;
+
+        font-size: 22px;
+
+        line-height: 1.5;
+
+        color: #666;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        padding: 50px 8%;
+
+        background: #f5f5f7;
+
+        color: #777;
+
+        font-size: 14px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
 
         nav {
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 6%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
+            padding: 0 20px;
         }
 
         nav a {
-            color: #1d1d1f;
-            text-decoration: none;
-            font-size: 14px;
-            margin-left: 30px;
-        }
-
-        /* Hero */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px 60px;
-        }
-
-        .hero-content {
-            max-width: 1000px;
-        }
-
-        .eyebrow {
-            font-size: 18px;
-            color: #777;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            margin-left: 15px;
+            font-size: 13px;
         }
 
         h1 {
-            font-size: clamp(60px, 10vw, 140px);
-            line-height: 0.95;
-            letter-spacing: -6px;
-            font-weight: 700;
-            margin-bottom: 35px;
+            letter-spacing: -3px;
         }
 
         .hero p {
-            font-size: 24px;
-            color: #666;
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.4;
+            font-size: 20px;
         }
-
-        /* Sections */
 
         section {
-            padding: 140px 8%;
-        }
-
-        .dark {
-            background: #000;
-            color: white;
-        }
-
-        .dark p {
-            color: #aaa;
+            padding: 100px 25px;
         }
 
         .section-title {
-            font-size: clamp(45px, 7vw, 90px);
-            letter-spacing: -4px;
-            line-height: 1;
-            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+    }
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        html {
+            scroll-behavior: auto;
         }
 
-        .section-text {
-            max-width: 650px;
-            font-size: 22px;
-            line-height: 1.5;
-            color: #666;
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
         }
+    }
 
-        /* Footer */
+</style>
+```
 
-        footer {
-            padding: 50px 8%;
-            background: #f5f5f7;
-            color: #777;
-            font-size: 14px;
-        }
-
-        /* Mobile */
-
-        @media (max-width: 700px) {
-
-            nav {
-                padding: 0 20px;
-            }
-
-            nav a {
-                margin-left: 15px;
-                font-size: 13px;
-            }
-
-            h1 {
-                letter-spacing: -3px;
-            }
-
-            .hero p {
-                font-size: 20px;
-            }
-
-            section {
-                padding: 100px 25px;
-            }
-
-            .section-title {
-                letter-spacing: -2px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">Schwab Design</div>
+```
+<!-- NAVIGATION -->
 
-        <div>
-            <a href="#about">Über uns</a>
-            <a href="#contact">Kontakt</a>
-        </div>
-    </nav>
+<nav>
+
+    <div class="logo">
+        Schwab Design
+    </div>
+
+    <div>
+        <a href="#about">Über uns</a>
+        <a href="#contact">Kontakt</a>
+    </div>
+
+</nav>
 
 
-    <main>
+<!-- HERO -->
 
-        <section class="hero">
+<main>
 
-            <div class="hero-content">
+    <section class="hero">
 
-                <div class="eyebrow">
-                    Schwab Design
-                </div>
+        <div class="hero-content" id="heroContent">
 
-                <h1>
-                    Design.<br>
-                    Einfach.
-                </h1>
-
-                <p>
-                    Klare Ideen. Starkes Design.
-                    Lösungen, die einfach funktionieren.
-                </p>
-
+            <div class="eyebrow" id="eyebrow">
+                Schwab Design
             </div>
 
-        </section>
+            <h1 id="heroTitle">
+                Design.<br>
+                Einfach.
+            </h1>
 
-
-        <section id="about" class="dark">
-
-            <h2 class="section-title">
-                Weniger.<br>
-                Aber besser.
-            </h2>
-
-            <p class="section-text">
-                Schwab Design steht für minimalistisches,
-                modernes und durchdachtes Design.
-                Wir reduzieren auf das Wesentliche und
-                schaffen Lösungen mit Charakter.
+            <p id="heroText">
+                Klare Ideen. Starkes Design.
+                Lösungen, die einfach funktionieren.
             </p>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <section id="contact">
+    <!-- ABOUT -->
 
-            <h2 class="section-title">
-                Lass uns<br>
-                etwas gestalten.
-            </h2>
+    <section id="about" class="dark">
 
-            <p class="section-text">
-                Du hast eine Idee?
-                Wir machen daraus ein Design.
-            </p>
+        <h2 class="section-title">
+            Weniger.<br>
+            Aber besser.
+        </h2>
 
-        </section>
+        <p class="section-text">
+            Schwab Design steht für minimalistisches,
+            modernes und durchdachtes Design.
+            Wir reduzieren auf das Wesentliche und
+            schaffen Lösungen mit Charakter.
+        </p>
 
-    </main>
+    </section>
 
 
-    <footer>
-        © 2026 Schwab Design
-    </footer>
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2 class="section-title">
+            Lass uns<br>
+            etwas gestalten.
+        </h2>
+
+        <p class="section-text">
+            Du hast eine Idee?
+            Wir machen daraus ein Design.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+    © 2026 Schwab Design
+</footer>
+
+
+<!-- =========================
+     SCROLL ANIMATION
+========================= -->
+
+<script>
+
+    const hero = document.querySelector(".hero");
+    const heroContent = document.querySelector("#heroContent");
+    const heroTitle = document.querySelector("#heroTitle");
+    const heroText = document.querySelector("#heroText");
+    const eyebrow = document.querySelector("#eyebrow");
+
+    let ticking = false;
+
+
+    function updateHero() {
+
+        const scrollY = window.scrollY;
+
+        const heroHeight = hero.offsetHeight;
+
+        /*
+         * Fortschritt der Animation.
+         *
+         * 0 = ganz oben
+         * 1 = Hero komplett verlassen
+         */
+
+        let progress = scrollY / heroHeight;
+
+        progress = Math.max(0, Math.min(progress, 1));
+
+
+        /*
+         * HERO
+         *
+         * Der gesamte Inhalt bewegt sich
+         * leicht nach oben.
+         */
+
+        const moveUp = progress * 90;
+
+
+        /*
+         * HAUPTÜBERSCHRIFT
+         *
+         * Die Überschrift kommt dem Betrachter
+         * entgegen und wird größer.
+         */
+
+        const scale = 1 + progress * 0.65;
+
+
+        /*
+         * Transparenz
+         *
+         * Ab ungefähr 25 % Scrollweg beginnt
+         * die Seite langsam zu verschwinden.
+         */
+
+        let opacity = 1 - progress * 1.35;
+
+        opacity = Math.max(0, opacity);
+
+
+        /*
+         * Leichter Blur beim Auflösen
+         */
+
+        const blur = progress * 8;
+
+
+        /*
+         * HERO CONTENT
+         */
+
+        heroContent.style.transform =
+            `translate3d(0, ${-moveUp}px, 0)`;
+
+        heroContent.style.opacity = opacity;
+
+        heroContent.style.filter =
+            `blur(${blur}px)`;
+
+
+        /*
+         * TITEL
+         */
+
+        heroTitle.style.transform =
+            `scale(${scale})`;
+
+
+        /*
+         * KLEINER TEXT
+         *
+         * Bewegt sich etwas langsamer,
+         * damit ein leichter Tiefeneffekt entsteht.
+         */
+
+        eyebrow.style.transform =
+            `translate3d(0, ${progress * -45}px, 0)`;
+
+        eyebrow.style.opacity =
+            Math.max(0, 1 - progress * 1.8);
+
+
+        heroText.style.transform =
+            `translate3d(0, ${progress * -25}px, 0)`;
+
+        heroText.style.opacity =
+            Math.max(0, 1 - progress * 1.5);
+
+
+        ticking = false;
+    }
+
+
+    function requestUpdate() {
+
+        if (!ticking) {
+
+            window.requestAnimationFrame(updateHero);
+
+            ticking = true;
+        }
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        requestUpdate,
+        { passive: true }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        requestUpdate
+    );
+
+
+    updateHero();
+
+</script>
+```
 
 </body>
 </html>
