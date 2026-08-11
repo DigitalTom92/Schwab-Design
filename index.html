@@ -185,7 +185,7 @@
 
         z-index: 2;
 
-        display: flex;
+        display: inline-flex;
 
         align-items: center;
 
@@ -212,10 +212,12 @@
 
 
     /* =====================================================
-       FORMA WORTMARKE
+       LOGO CONTAINER
     ===================================================== */
 
     .forma-logo {
+
+        position: relative;
 
         display: inline-flex;
 
@@ -240,8 +242,45 @@
         line-height: 1;
 
         white-space: nowrap;
+
+        padding-top: 5px;
     }
 
+
+
+    /* =====================================================
+       FEINE DURCHGEHENDE LINIE
+       F → ÜBER O → R → M → A
+    ===================================================== */
+
+    .forma-logo::before {
+
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+
+        right: 0;
+
+        top: 0;
+
+        height: 1.5px;
+
+        background:
+            var(--dark-text);
+
+        transform-origin:
+            left center;
+
+        opacity: 0.95;
+    }
+
+
+
+    /* =====================================================
+       BUCHSTABEN
+    ===================================================== */
 
     .forma-letter {
 
@@ -528,7 +567,6 @@
 
     /* =====================================================
        FORMA AUF DER STARTSEITE
-       FILIGRANE TYPOGRAFIE
     ===================================================== */
 
     .eyebrow {
@@ -578,7 +616,7 @@
 
 
     /* =====================================================
-       GROSSES FORMA AUF STARTSEITE
+       GROSSE FILIGRANE FORMA WORTMARKE
     ===================================================== */
 
     .eyebrow .forma-logo {
@@ -602,6 +640,27 @@
 
         line-height:
             1;
+
+        padding-top:
+            9px;
+    }
+
+
+
+    /* =====================================================
+       LINIE DER STARTSEITE
+    ===================================================== */
+
+    .eyebrow .forma-logo::before {
+
+        height:
+            1.5px;
+
+        background:
+            var(--dark-text);
+
+        opacity:
+            0.9;
     }
 
 
@@ -976,6 +1035,9 @@
 
             letter-spacing:
                 4px;
+
+            padding-top:
+                7px;
         }
 
 
