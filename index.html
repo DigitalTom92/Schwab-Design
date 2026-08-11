@@ -7,610 +7,1158 @@
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
 >
 
 <title>FORMA.</title>
 
-
 <style>
 
-    /* =====================================================
-       GRUNDLAGEN
-    ===================================================== */
+/* =====================================================
+   GRUNDLAGEN
+===================================================== */
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 
-    html {
-        scroll-behavior: auto;
-        overflow: hidden;
-    }
+html {
+    scroll-behavior: auto;
+    overflow: hidden;
+}
 
 
-    body {
+body {
 
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "Helvetica Neue",
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
-        color: #1d1d1f;
+    color: #1d1d1f;
 
-        background: #fff;
+    background: #fff;
 
-        overflow: hidden;
+    overflow: hidden;
 
-        -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
 
-        text-rendering: geometricPrecision;
-    }
+    text-rendering: geometricPrecision;
+}
 
 
-    :root {
+:root {
 
-        --forma-red: #D72638;
+    --forma-red: #D72638;
 
-        --dark-text: #1d1d1f;
+    --dark-text: #1d1d1f;
 
-        --soft-gray: #666;
-    }
+    --soft-gray: #666;
 
+    --dark-section: #181818;
+}
 
 
-    /* =====================================================
-       NAVIGATION
-       APPLE STYLE GLOSSY
-    ===================================================== */
 
-    nav {
+/* =====================================================
+   NAVIGATION
+   APPLE STYLE GLOSSY
+===================================================== */
 
-        height: 60px;
+nav {
 
-        display: flex;
+    height: 60px;
 
-        align-items: center;
+    display: flex;
 
-        justify-content: space-between;
+    align-items: center;
 
-        padding: 0 6%;
+    justify-content: space-between;
 
-        position: fixed;
+    padding: 0 6%;
 
-        top: 0;
+    position: fixed;
 
-        left: 0;
+    top: 0;
 
-        right: 0;
+    left: 0;
 
-        background:
+    right: 0;
 
-            linear-gradient(
-                180deg,
-                rgba(255,255,255,0.94) 0%,
-                rgba(255,255,255,0.82) 35%,
-                rgba(248,248,250,0.74) 100%
-            );
+    background:
 
-        backdrop-filter:
-            blur(24px)
-            saturate(180%);
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.94) 0%,
+            rgba(255,255,255,0.82) 35%,
+            rgba(248,248,250,0.74) 100%
+        );
 
-        -webkit-backdrop-filter:
-            blur(24px)
-            saturate(180%);
+    backdrop-filter:
+        blur(24px)
+        saturate(180%);
 
-        border-bottom:
-            1px solid
-            rgba(0,0,0,0.08);
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(180%);
 
-        box-shadow:
+    border-bottom:
+        1px solid
+        rgba(0,0,0,0.08);
 
-            0 8px 30px
-            rgba(0,0,0,0.06),
+    box-shadow:
 
-            0 2px 8px
-            rgba(0,0,0,0.035),
+        0 8px 30px
+        rgba(0,0,0,0.06),
 
-            inset 0 1px 0
-            rgba(255,255,255,0.95);
+        0 2px 8px
+        rgba(0,0,0,0.035),
 
-        overflow: hidden;
+        inset 0 1px 0
+        rgba(255,255,255,0.95);
 
-        z-index: 100;
-    }
+    overflow: hidden;
 
+    z-index: 100;
+}
 
 
-    /* =====================================================
-       GLOSSY LICHTREFLEX
-    ===================================================== */
 
-    nav::before {
+nav::before {
 
-        content: "";
+    content: "";
 
-        position: absolute;
+    position: absolute;
 
-        top: 0;
+    top: 0;
 
-        left: 0;
+    left: 0;
 
-        right: 0;
+    right: 0;
 
-        height: 42%;
+    height: 42%;
 
-        background:
+    background:
 
-            linear-gradient(
-                180deg,
-                rgba(255,255,255,0.72),
-                rgba(255,255,255,0)
-            );
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.72),
+            rgba(255,255,255,0)
+        );
 
-        pointer-events: none;
+    pointer-events: none;
 
-        z-index: 0;
-    }
+    z-index: 0;
+}
 
 
 
-    /* =====================================================
-       FORMA LOGO NAVIGATION
-    ===================================================== */
+/* =====================================================
+   FORMA LOGO
+===================================================== */
 
-    .logo {
+.logo {
 
-        position: relative;
+    position: relative;
 
-        z-index: 2;
+    z-index: 2;
 
-        display: flex;
+    display: flex;
 
-        align-items: center;
+    align-items: center;
 
-        text-decoration: none;
+    text-decoration: none;
 
-        cursor: pointer;
+    cursor: pointer;
 
-        transition:
+    transition:
 
-            opacity 0.2s ease,
+        opacity 0.2s ease,
 
-            transform 0.2s ease;
-    }
+        transform 0.2s ease;
+}
 
 
-    .logo:hover {
+.logo:hover {
 
-        opacity: 0.72;
+    opacity: 0.72;
 
-        transform:
-            translateY(-1px);
-    }
+    transform:
+        translateY(-1px);
+}
+
+
+.forma-logo {
+
+    display: inline-flex;
+
+    align-items: baseline;
+
+    color:
+        var(--dark-text);
+
+    font-family:
+
+        "Helvetica Neue",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
+
+    font-size: 21px;
+
+    font-weight: 500;
+
+    letter-spacing: 2.8px;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+.forma-letter {
+
+    display: inline-block;
+
+    color:
+        var(--dark-text);
+
+    font-weight: 500;
+}
+
+
+.forma-o {
+
+    display: inline-block;
+
+    color:
+        var(--forma-red);
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    transform-origin:
+        center center;
+}
+
+
+.forma-dot {
+
+    display: inline-block;
+
+    width: 3px;
+
+    height: 3px;
+
+    margin-left: 2px;
+
+    margin-bottom: 1px;
+
+    border-radius: 50%;
+
+    background:
+        var(--forma-red);
+}
+
+
+
+/* =====================================================
+   NAVIGATION LINKS
+===================================================== */
+
+nav .nav-links {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+nav .nav-links a {
+
+    color:
+        rgba(29,29,31,0.82);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    margin-left: 30px;
+
+    padding:
+        8px 10px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+
+        color 0.25s ease,
+
+        background 0.25s ease,
+
+        transform 0.2s ease;
+}
+
+
+nav .nav-links a:hover {
+
+    color:
+        #000;
+
+    background:
+        rgba(255,255,255,0.55);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,0.8);
+
+    transform:
+        translateY(-1px);
+}
+
+
+nav .nav-links a:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+
+/* =====================================================
+   FULL PAGE CONTAINER
+===================================================== */
+
+.page-container {
+
+    width: 100vw;
+
+    height: 100vh;
+
+    height: 100dvh;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+
+/* =====================================================
+   EINZELNE SEITE
+===================================================== */
+
+.page {
+
+    width: 100vw;
+
+    height: 100vh;
+
+    height: 100dvh;
+
+    min-height: 100vh;
+
+    min-height: 100dvh;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translate3d(0,100%,0);
+
+    transition:
+
+        transform 0.9s
+        cubic-bezier(
+            0.77,
+            0,
+            0.175,
+            1
+        ),
+
+        opacity 0.6s ease;
+}
+
+
+.page.active {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translate3d(0,0,0);
+
+    z-index: 2;
+}
+
+
+.page.previous {
+
+    opacity: 0;
+
+    transform:
+        translate3d(0,-100%,0);
+
+    z-index: 1;
+}
+
+
+.page.next {
+
+    opacity: 0;
+
+    transform:
+        translate3d(0,100%,0);
+
+    z-index: 1;
+}
+
+
+
+/* =====================================================
+   STARTSEITE
+===================================================== */
+
+.hero {
+
+    background:
+        #fff;
+
+    text-align:
+        center;
+
+    padding:
+        80px 6% 50px;
+
+    position: absolute;
+}
+
+
+
+/* =====================================================
+   DUNKLE HÄLFTE DER STARTSEITE
+   LEICHT GESCHWUNGEN
+===================================================== */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 0;
+
+    left: -5%;
+
+    width: 110%;
+
+    height: 56%;
+
+    bottom: -5%;
+
+    background:
+        var(--dark-section);
+
+    /*
+       Die Oberkante wird leicht geschwungen.
+       Dadurch entsteht keine harte horizontale Trennung.
+    */
+
+    clip-path:
+        ellipse(
+            72% 100%
+            at 50% 100%
+        );
+
+    pointer-events: none;
+}
+
+
+
+/* =====================================================
+   LEICHTE ZUSÄTZLICHE GRAU-NUANCE
+===================================================== */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 0;
+
+    left: -5%;
+
+    width: 110%;
+
+    height: 55%;
+
+    bottom: 0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.025),
+            rgba(0,0,0,0.08)
+        );
+
+    clip-path:
+        ellipse(
+            72% 100%
+            at 50% 100%
+        );
+
+    pointer-events: none;
+}
+
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content {
+
+    width:
+        100%;
+
+    max-width:
+        1200px;
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   FORMA AUF STARTSEITE
+===================================================== */
+
+.eyebrow {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        38px;
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,35px,0)
+        scale(0.94);
+
+    transition:
+
+        opacity 0.85s ease 0.25s,
+
+        transform 1.05s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        0.25s;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.page.active .eyebrow {
+
+    opacity:
+        1;
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+}
+
+
+
+/* =====================================================
+   GROSSES FORMA
+===================================================== */
+
+.eyebrow .forma-logo {
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            72px
+        );
+
+    font-weight:
+        300;
+
+    letter-spacing:
+        clamp(
+            5px,
+            0.9vw,
+            13px
+        );
+
+    line-height:
+        1;
+}
+
+
+.eyebrow .forma-letter {
+
+    font-weight:
+        300;
+
+    color:
+        #1d1d1f;
+}
+
+
+.eyebrow .forma-o {
+
+    font-size:
+        1.08em;
+
+    font-weight:
+        300;
+
+    color:
+        var(--forma-red);
+
+    transform-origin:
+        center center;
+
+    transition:
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        filter 0.8s ease;
+}
+
+
+
+/* =====================================================
+   PUNKT
+===================================================== */
+
+.eyebrow .forma-dot {
+
+    width:
+        5px;
+
+    height:
+        5px;
+
+    margin-left:
+        4px;
+
+    margin-bottom:
+        3px;
+
+    background:
+        var(--forma-red);
+}
+
+
+
+/* =====================================================
+   HERO TITLE
+===================================================== */
+
+.hero-title {
+
+    font-size:
+        clamp(
+            70px,
+            10vw,
+            150px
+        );
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -7px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        38px;
+
+    color:
+        #1d1d1f;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
+
+.hero-text {
+
+    font-size:
+        clamp(
+            19px,
+            2vw,
+            25px
+        );
+
+    max-width:
+        700px;
+
+    margin:
+        auto;
+
+    line-height:
+        1.4;
+
+    color:
+        #fff;
+
+    will-change:
+        transform,
+        opacity;
+
+    position:
+        relative;
+
+    z-index:
+        6;
+}
+
+
+
+/* =====================================================
+   HERO TEXT AUF DUNKLEM BEREICH
+===================================================== */
+
+.hero-text::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    left: -20px;
+
+    right: -20px;
+
+    top: -30px;
+
+    bottom: -30px;
+
+    pointer-events: none;
+}
+
+
+
+/* =====================================================
+   STARTSEITE INHALT VERTIKAL AUSRICHTEN
+===================================================== */
+
+.hero-content {
+
+    transform:
+        translateY(-2vh);
+}
+
+
+
+/* =====================================================
+   FORMA BEIM VERLASSEN
+===================================================== */
+
+.page.leaving .eyebrow {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.page.leaving .eyebrow .forma-o {
+
+    transform:
+        scale(1.20);
+
+    filter:
+        saturate(1.2);
+}
+
+
+.page.active .eyebrow .forma-o {
+
+    transform:
+        scale(1);
+}
+
+
+
+/* =====================================================
+   ÜBER UNS
+===================================================== */
+
+.about {
+
+    background:
+        #000;
+
+    color:
+        #fff;
+
+    justify-content:
+        flex-start;
+
+    padding:
+        10vw 8%;
+}
+
+
+.about-content {
+
+    width:
+        100%;
+
+    max-width:
+        1300px;
+}
+
+
+.about-title {
+
+    font-size:
+        clamp(
+            65px,
+            9vw,
+            140px
+        );
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -6px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        45px;
+
+    color:
+        #fff;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.about-text {
+
+    max-width:
+        700px;
+
+    font-size:
+        clamp(
+            18px,
+            2vw,
+            25px
+        );
+
+    line-height:
+        1.45;
+
+    color:
+        #aaa;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   KONTAKT
+===================================================== */
+
+.contact {
+
+    background:
+        #fff;
+
+    justify-content:
+        flex-start;
+
+    padding:
+        10vw 8%;
+}
+
+
+.contact-content {
+
+    width:
+        100%;
+
+    max-width:
+        1300px;
+}
+
+
+.contact-title {
+
+    font-size:
+        clamp(
+            65px,
+            9vw,
+            140px
+        );
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -6px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        45px;
+
+    color:
+        #1d1d1f;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.contact-text {
+
+    max-width:
+        700px;
+
+    font-size:
+        clamp(
+            18px,
+            2vw,
+            25px
+        );
+
+    line-height:
+        1.45;
+
+    color:
+        #666;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   SEITEN-INHALT
+===================================================== */
+
+.page-content {
+
+    transform:
+        translate3d(0,60px,0)
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+
+        transform 1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.7s ease;
+}
+
+
+.page.active .page-content {
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    opacity:
+        1;
+}
+
+
+
+/* =====================================================
+   GROSSE ÜBERSCHRIFTEN
+===================================================== */
+
+.page-title {
+
+    transform:
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+
+        transform 1.2s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.8s ease;
+}
+
+
+.page.active .page-title {
+
+    transform:
+        scale(1);
+
+    opacity:
+        1;
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
 
 
     .forma-logo {
 
-        display: inline-flex;
+        font-size:
+            19px;
 
-        align-items: baseline;
-
-        color:
-            var(--dark-text);
-
-        font-family:
-
-            "Helvetica Neue",
-            "Arial Narrow",
-            Arial,
-            sans-serif;
-
-        font-size: 21px;
-
-        font-weight: 500;
-
-        letter-spacing: 2.8px;
-
-        line-height: 1;
-
-        white-space: nowrap;
+        letter-spacing:
+            2.4px;
     }
 
-
-    .forma-letter {
-
-        display: inline-block;
-
-        color:
-            var(--dark-text);
-
-        font-weight: 500;
-    }
-
-
-    /* =====================================================
-       O ROT
-       GLEICHE STRICHSTÄRKE WIE DIE ANDEREN BUCHSTABEN
-    ===================================================== */
-
-    .forma-o {
-
-        display: inline-block;
-
-        color:
-            var(--forma-red);
-
-        font-weight: 500;
-
-        line-height: 1;
-
-        transform-origin:
-            center center;
-    }
-
-
-    /* =====================================================
-       PUNKT ROT
-    ===================================================== */
-
-    .forma-dot {
-
-        display: inline-block;
-
-        width: 3px;
-
-        height: 3px;
-
-        margin-left: 2px;
-
-        margin-bottom: 1px;
-
-        border-radius: 50%;
-
-        background:
-            var(--forma-red);
-    }
-
-
-
-    /* =====================================================
-       NAVIGATION LINKS
-    ===================================================== */
-
-    nav .nav-links {
-
-        position: relative;
-
-        z-index: 2;
-
-        display: flex;
-
-        align-items: center;
-    }
-
-
-    nav .nav-links a {
-
-        color:
-            rgba(29,29,31,0.82);
-
-        text-decoration: none;
-
-        font-size: 14px;
-
-        font-weight: 500;
-
-        margin-left: 30px;
-
-        padding:
-            8px 10px;
-
-        border-radius: 10px;
-
-        cursor: pointer;
-
-        transition:
-
-            color 0.25s ease,
-
-            background 0.25s ease,
-
-            transform 0.2s ease;
-    }
-
-
-    nav .nav-links a:hover {
-
-        color:
-            #000;
-
-        background:
-            rgba(255,255,255,0.55);
-
-        box-shadow:
-
-            inset 0 1px 0
-            rgba(255,255,255,0.8);
-
-        transform:
-            translateY(-1px);
-    }
-
-
-    nav .nav-links a:active {
-
-        transform:
-            scale(0.96);
-    }
-
-
-
-    /* =====================================================
-       FULL PAGE CONTAINER
-    ===================================================== */
-
-    .page-container {
-
-        width: 100vw;
-
-        height: 100vh;
-
-        height: 100dvh;
-
-        overflow: hidden;
-
-        position: relative;
-    }
-
-
-
-    /* =====================================================
-       EINZELNE SEITE
-    ===================================================== */
-
-    .page {
-
-        width: 100vw;
-
-        height: 100vh;
-
-        height: 100dvh;
-
-        min-height: 100vh;
-
-        min-height: 100dvh;
-
-        position: absolute;
-
-        top: 0;
-
-        left: 0;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        overflow: hidden;
-
-        opacity: 0;
-
-        pointer-events: none;
-
-        transform:
-            translate3d(0,100%,0);
-
-        transition:
-
-            transform 0.9s
-            cubic-bezier(
-                0.77,
-                0,
-                0.175,
-                1
-            ),
-
-            opacity 0.6s ease;
-    }
-
-
-
-    /* =====================================================
-       AKTUELLE SEITE
-    ===================================================== */
-
-    .page.active {
-
-        opacity: 1;
-
-        pointer-events: auto;
-
-        transform:
-            translate3d(0,0,0);
-
-        z-index: 2;
-    }
-
-
-
-    /* =====================================================
-       VORHERIGE SEITE
-    ===================================================== */
-
-    .page.previous {
-
-        opacity: 0;
-
-        transform:
-            translate3d(0,-100%,0);
-
-        z-index: 1;
-    }
-
-
-
-    /* =====================================================
-       NÄCHSTE SEITE
-    ===================================================== */
-
-    .page.next {
-
-        opacity: 0;
-
-        transform:
-            translate3d(0,100%,0);
-
-        z-index: 1;
-    }
-
-
-
-    /* =====================================================
-       STARTSEITE
-    ===================================================== */
-
-    .hero {
-
-        background:
-            #fff;
-
-        text-align:
-            center;
-
-        padding:
-            80px 6% 50px;
-    }
-
-
-    .hero-content {
-
-        width:
-            100%;
-
-        max-width:
-            1200px;
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-
-    /* =====================================================
-       FORMA AUF STARTSEITE
-       GROSS + PRÄSENT
-    ===================================================== */
 
     .eyebrow {
 
-        display:
-            flex;
-
-        justify-content:
-            center;
-
-        align-items:
-            center;
-
         margin-bottom:
-            38px;
-
-        opacity:
-            0;
-
-        transform:
-            translate3d(0,35px,0)
-            scale(0.94);
-
-        transition:
-
-            opacity 0.85s ease 0.25s,
-
-            transform 1.05s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            )
-            0.25s;
-
-        will-change:
-            transform,
-            opacity;
+            28px;
     }
 
-
-
-    /* =====================================================
-       FORMA ERSCHEINT
-    ===================================================== */
-
-    .page.active .eyebrow {
-
-        opacity:
-            1;
-
-        transform:
-            translate3d(0,0,0)
-            scale(1);
-    }
-
-
-
-    /* =====================================================
-       GROSSES FORMA
-    ===================================================== */
 
     .eyebrow .forma-logo {
 
         font-size:
-            clamp(
-                42px,
-                5vw,
-                72px
-            );
-
-        font-weight:
-            300;
+            34px;
 
         letter-spacing:
-            clamp(
-                5px,
-                0.9vw,
-                13px
-            );
-
-        line-height:
-            1;
+            5px;
     }
 
-
-    .eyebrow .forma-letter {
-
-        font-weight:
-            300;
-    }
-
-
-
-    /* =====================================================
-       ROTES O
-       GLEICHE FILIGRANE STÄRKE WIE F/R/M/A
-    ===================================================== */
 
     .eyebrow .forma-o {
 
@@ -619,564 +1167,215 @@
 
         font-weight:
             300;
-
-        color:
-            var(--forma-red);
-
-        transform-origin:
-            center center;
-
-        transition:
-
-            transform 0.8s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            ),
-
-            filter 0.8s ease;
     }
 
 
+    nav .nav-links a {
 
-    /* =====================================================
-       FORMA BEIM VERLASSEN DER STARTSEITE
-    ===================================================== */
+        margin-left:
+            15px;
 
-    .page.leaving .eyebrow {
+        padding:
+            7px 8px;
 
-        opacity:
-            0;
+        font-size:
+            13px;
+    }
 
-        transform:
-            translate3d(0,-42px,0)
-            scale(1.16);
 
-        transition:
+    .hero {
 
-            opacity 0.46s
-            cubic-bezier(
-                0.4,
-                0,
-                1,
-                1
-            ),
+        padding:
+            70px 25px 40px;
+    }
 
-            transform 0.8s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
+
+    /* ---------------------------------------------
+       MOBILE DUNKLE HÄLFTE
+    --------------------------------------------- */
+
+    .hero::after {
+
+        height:
+            54%;
+
+        bottom:
+            -3%;
+
+        clip-path:
+            ellipse(
+                82% 100%
+                at 50% 100%
             );
     }
 
 
-
-    /* =====================================================
-       O BEIM SCROLLEN
-       ETWAS STÄRKERER ZOOM
-    ===================================================== */
-
-    .page.leaving .eyebrow .forma-o {
-
-        transform:
-            scale(1.20);
-
-        filter:
-            saturate(1.2);
-    }
-
-
-
-    /* =====================================================
-       O BEIM EINTRETEN
-    ===================================================== */
-
-    .page.active .eyebrow .forma-o {
-
-        transform:
-            scale(1);
-    }
-
-
-
-    /* =====================================================
-       PUNKT
-    ===================================================== */
-
-    .eyebrow .forma-dot {
-
-        width:
-            5px;
+    .hero::before {
 
         height:
-            5px;
+            53%;
 
-        margin-left:
-            4px;
-
-        margin-bottom:
-            3px;
-
-        background:
-            var(--forma-red);
+        clip-path:
+            ellipse(
+                82% 100%
+                at 50% 100%
+            );
     }
 
 
+    .hero-content {
 
-    /* =====================================================
-       HERO TITLE
-    ===================================================== */
+        transform:
+            translateY(-3vh);
+    }
+
 
     .hero-title {
 
         font-size:
             clamp(
-                70px,
-                10vw,
-                150px
+                58px,
+                16vw,
+                95px
             );
 
-        line-height:
-            0.92;
-
         letter-spacing:
-            -7px;
-
-        font-weight:
-            700;
+            -4px;
 
         margin-bottom:
-            38px;
-
-        will-change:
-            transform,
-            opacity;
+            28px;
     }
 
-
-
-    /* =====================================================
-       HERO TEXT
-    ===================================================== */
 
     .hero-text {
 
         font-size:
-            clamp(
-                19px,
-                2vw,
-                25px
-            );
-
-        color:
-            #666;
+            18px;
 
         max-width:
-            700px;
-
-        margin:
-            auto;
+            330px;
 
         line-height:
-            1.4;
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-
-    /* =====================================================
-       ÜBER UNS
-    ===================================================== */
-
-    .about {
-
-        background:
-            #000;
-
-        color:
-            #fff;
-
-        justify-content:
-            flex-start;
+            1.35;
 
         padding:
-            10vw 8%;
+            0 10px;
     }
 
 
-    .about-content {
-
-        width:
-            100%;
-
-        max-width:
-            1300px;
-    }
-
-
-    .about-title {
-
-        font-size:
-            clamp(
-                65px,
-                9vw,
-                140px
-            );
-
-        line-height:
-            0.92;
-
-        letter-spacing:
-            -6px;
-
-        font-weight:
-            700;
-
-        margin-bottom:
-            45px;
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-    .about-text {
-
-        max-width:
-            700px;
-
-        font-size:
-            clamp(
-                18px,
-                2vw,
-                25px
-            );
-
-        line-height:
-            1.45;
-
-        color:
-            #aaa;
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-
-    /* =====================================================
-       KONTAKT
-    ===================================================== */
-
+    .about,
     .contact {
 
-        background:
-            #fff;
-
-        justify-content:
-            flex-start;
-
         padding:
-            10vw 8%;
+            80px 25px;
     }
 
 
-    .contact-content {
-
-        width:
-            100%;
-
-        max-width:
-            1300px;
-    }
-
-
+    .about-title,
     .contact-title {
 
-        font-size:
-            clamp(
-                65px,
-                9vw,
-                140px
-            );
-
-        line-height:
-            0.92;
-
         letter-spacing:
-            -6px;
-
-        font-weight:
-            700;
-
-        margin-bottom:
-            45px;
-
-        will-change:
-            transform,
-            opacity;
+            -4px;
     }
 
 
+    .about-text,
     .contact-text {
 
         max-width:
-            700px;
+            100%;
+    }
+
+
+
+    /* ---------------------------------------------
+       MOBILE STARTSEITEN-ANIMATION
+    --------------------------------------------- */
+
+    .page.leaving .eyebrow {
+
+        transform:
+            translate3d(0,-28px,0)
+            scale(1.12);
+    }
+
+
+    .page.leaving .eyebrow .forma-o {
+
+        transform:
+            scale(1.15);
+    }
+
+}
+
+
+
+/* =====================================================
+   SEHR KLEINE DISPLAYS
+===================================================== */
+
+@media (max-height: 700px) and (max-width: 700px) {
+
+    .eyebrow {
+
+        margin-bottom:
+            18px;
+    }
+
+
+    .hero-title {
 
         font-size:
             clamp(
-                18px,
-                2vw,
-                25px
+                48px,
+                14vw,
+                78px
             );
 
-        line-height:
-            1.45;
-
-        color:
-            #666;
-
-        will-change:
-            transform,
-            opacity;
+        margin-bottom:
+            20px;
     }
 
 
+    .hero-text {
 
-    /* =====================================================
-       SEITEN-INHALT
-    ===================================================== */
+        font-size:
+            16px;
+    }
 
-    .page-content {
+}
 
-        transform:
-            translate3d(0,60px,0)
-            scale(0.92);
 
-        opacity:
-            0;
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .page {
 
         transition:
-
-            transform 1s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            ),
-
-            opacity 0.7s ease;
+            none;
     }
 
 
-    .page.active .page-content {
-
-        transform:
-            translate3d(0,0,0)
-            scale(1);
-
-        opacity:
-            1;
-    }
-
-
-
-    /* =====================================================
-       GROSSE ÜBERSCHRIFTEN
-    ===================================================== */
-
-    .page-title {
-
-        transform:
-            scale(0.92);
-
-        opacity:
-            0;
+    .page-content,
+    .page-title,
+    .eyebrow,
+    .eyebrow .forma-o {
 
         transition:
-
-            transform 1.2s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            ),
-
-            opacity 0.8s ease;
+            none;
     }
 
-
-    .page.active .page-title {
-
-        transform:
-            scale(1);
-
-        opacity:
-            1;
-    }
-
-
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media (max-width: 700px) {
-
-
-        .forma-logo {
-
-            font-size:
-                19px;
-
-            letter-spacing:
-                2.4px;
-        }
-
-
-        .eyebrow {
-
-            margin-bottom:
-                28px;
-        }
-
-
-        .eyebrow .forma-logo {
-
-            font-size:
-                34px;
-
-            letter-spacing:
-                5px;
-        }
-
-
-        .eyebrow .forma-o {
-
-            font-size:
-                1.08em;
-
-            font-weight:
-                300;
-        }
-
-
-        nav .nav-links a {
-
-            margin-left:
-                15px;
-
-            padding:
-                7px 8px;
-
-            font-size:
-                13px;
-        }
-
-
-        .hero {
-
-            padding:
-                70px 25px 40px;
-        }
-
-
-        .hero-title {
-
-            letter-spacing:
-                -4px;
-        }
-
-
-        .about,
-        .contact {
-
-            padding:
-                80px 25px;
-        }
-
-
-        .about-title,
-        .contact-title {
-
-            letter-spacing:
-                -4px;
-        }
-
-
-        .about-text,
-        .contact-text {
-
-            max-width:
-                100%;
-        }
-
-
-
-        /* ---------------------------------------------
-           MOBILE SCROLL ANIMATION
-        --------------------------------------------- */
-
-        .page.leaving .eyebrow {
-
-            transform:
-                translate3d(0,-28px,0)
-                scale(1.12);
-        }
-
-
-        .page.leaving .eyebrow .forma-o {
-
-            transform:
-                scale(1.15);
-        }
-
-    }
-
-
-
-    /* =====================================================
-       REDUCED MOTION
-    ===================================================== */
-
-    @media (prefers-reduced-motion: reduce) {
-
-        .page {
-
-            transition:
-                none;
-        }
-
-
-        .page-content,
-        .page-title,
-        .eyebrow,
-        .eyebrow .forma-o {
-
-            transition:
-                none;
-        }
-
-    }
+}
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <!-- =====================================================
      NAVIGATION
@@ -1184,86 +1383,80 @@
 
 <nav>
 
+```
+<a
+    href="#"
+    class="logo"
+    id="homeButton"
+>
 
-    <a
-        href="#"
-        class="logo"
-        id="homeButton"
+    <span
+        class="forma-logo"
     >
 
         <span
-            class="forma-logo"
+            class="forma-letter"
         >
-
-            <span
-                class="forma-letter"
-            >
-                F
-            </span>
-
-
-            <span
-                class="forma-o"
-            >
-                O
-            </span>
-
-
-            <span
-                class="forma-letter"
-            >
-                R
-            </span>
-
-
-            <span
-                class="forma-letter"
-            >
-                M
-            </span>
-
-
-            <span
-                class="forma-letter"
-            >
-                A
-            </span>
-
-
-            <span
-                class="forma-dot"
-            ></span>
-
+            F
         </span>
 
+        <span
+            class="forma-o"
+        >
+            O
+        </span>
+
+        <span
+            class="forma-letter"
+        >
+            R
+        </span>
+
+        <span
+            class="forma-letter"
+        >
+            M
+        </span>
+
+        <span
+            class="forma-letter"
+        >
+            A
+        </span>
+
+        <span
+            class="forma-dot"
+        ></span>
+
+    </span>
+
+</a>
+
+
+
+<div
+    class="nav-links"
+>
+
+    <a
+        href="#about"
+        data-page="1"
+    >
+        Über uns
     </a>
 
 
-
-    <div
-        class="nav-links"
+    <a
+        href="#contact"
+        data-page="2"
     >
+        Kontakt
+    </a>
 
-        <a
-            href="#about"
-            data-page="1"
-        >
-            Über uns
-        </a>
-
-
-        <a
-            href="#contact"
-            data-page="2"
-        >
-            Kontakt
-        </a>
-
-    </div>
+</div>
+```
 
 </nav>
-
-
 
 <!-- =====================================================
      SEITEN
@@ -1273,200 +1466,191 @@
     class="page-container"
 >
 
+```
+<!-- =================================================
+     STARTSEITE
+================================================= -->
 
-    <!-- =================================================
-         STARTSEITE
-    ================================================= -->
+<section
+    class="page hero active"
+    data-index="0"
+>
 
-    <section
-        class="page hero active"
-        data-index="0"
+
+    <div
+        class="hero-content page-content"
     >
 
 
         <div
-            class="hero-content page-content"
+            class="eyebrow"
         >
 
-
-            <div
-                class="eyebrow"
+            <span
+                class="forma-logo"
             >
-
 
                 <span
-                    class="forma-logo"
+                    class="forma-letter"
                 >
-
-                    <span
-                        class="forma-letter"
-                    >
-                        F
-                    </span>
-
-
-                    <span
-                        class="forma-o"
-                    >
-                        O
-                    </span>
-
-
-                    <span
-                        class="forma-letter"
-                    >
-                        R
-                    </span>
-
-
-                    <span
-                        class="forma-letter"
-                    >
-                        M
-                    </span>
-
-
-                    <span
-                        class="forma-letter"
-                    >
-                        A
-                    </span>
-
-
-                    <span
-                        class="forma-dot"
-                    ></span>
-
+                    F
                 </span>
 
+                <span
+                    class="forma-o"
+                >
+                    O
+                </span>
 
-            </div>
+                <span
+                    class="forma-letter"
+                >
+                    R
+                </span>
 
+                <span
+                    class="forma-letter"
+                >
+                    M
+                </span>
 
+                <span
+                    class="forma-letter"
+                >
+                    A
+                </span>
 
-            <h1
-                class="hero-title page-title"
-            >
+                <span
+                    class="forma-dot"
+                ></span>
 
-                Einfach.<br>
-
-                Stark.<br>
-
-                Anders.
-
-            </h1>
-
-
-
-            <p
-                class="hero-text"
-            >
-
-                Klare Ideen. Starkes Design.
-                Anders gedacht. Besser gestaltet.
-
-            </p>
-
+            </span>
 
         </div>
 
 
-    </section>
+
+        <h1
+            class="hero-title page-title"
+        >
+
+            Einfach.<br>
+
+            Stark.<br>
+
+            Anders.
+
+        </h1>
 
 
 
-    <!-- =================================================
-         ÜBER UNS
-    ================================================= -->
+        <p
+            class="hero-text"
+        >
 
-    <section
-        class="page about"
-        data-index="1"
+            Klare Ideen. Starkes Design.
+            Anders gedacht. Besser gestaltet.
+
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =================================================
+     ÜBER UNS
+================================================= -->
+
+<section
+    class="page about"
+    data-index="1"
+>
+
+
+    <div
+        class="about-content page-content"
     >
 
 
-        <div
-            class="about-content page-content"
+        <h2
+            class="about-title page-title"
         >
 
+            Weniger.<br>
 
-            <h2
-                class="about-title page-title"
-            >
+            Aber besser.
 
-                Weniger.<br>
-
-                Aber besser.
-
-            </h2>
+        </h2>
 
 
-            <p
-                class="about-text"
-            >
+        <p
+            class="about-text"
+        >
 
-                FORMA. steht für
-                minimalistisches, modernes
-                und durchdachtes Design.
+            FORMA. steht für
+            minimalistisches, modernes
+            und durchdachtes Design.
 
-                Wir reduzieren auf das Wesentliche
-                und schaffen Lösungen mit Charakter.
+            Wir reduzieren auf das Wesentliche
+            und schaffen Lösungen mit Charakter.
 
-            </p>
-
-
-        </div>
+        </p>
 
 
-    </section>
+    </div>
+
+
+</section>
 
 
 
-    <!-- =================================================
-         KONTAKT
-    ================================================= -->
+<!-- =================================================
+     KONTAKT
+================================================= -->
 
-    <section
-        class="page contact"
-        data-index="2"
+<section
+    class="page contact"
+    data-index="2"
+>
+
+
+    <div
+        class="contact-content page-content"
     >
 
 
-        <div
-            class="contact-content page-content"
+        <h2
+            class="contact-title page-title"
         >
 
+            Lass uns<br>
 
-            <h2
-                class="contact-title page-title"
-            >
+            etwas gestalten.
 
-                Lass uns<br>
-
-                etwas gestalten.
-
-            </h2>
+        </h2>
 
 
-            <p
-                class="contact-text"
-            >
+        <p
+            class="contact-text"
+        >
 
-                Du hast eine Idee?
-                Wir machen daraus ein Design.
+            Du hast eine Idee?
+            Wir machen daraus ein Design.
 
-            </p>
-
-
-        </div>
+        </p>
 
 
-    </section>
+    </div>
 
+
+</section>
+```
 
 </main>
-
-
 
 <!-- =====================================================
      JAVASCRIPT
@@ -1475,197 +1659,110 @@
 <script>
 
 
-    const pages =
-        document.querySelectorAll(
-            ".page"
-        );
+const pages =
+    document.querySelectorAll(
+        ".page"
+    );
 
 
-    const homeButton =
-        document.querySelector(
-            "#homeButton"
-        );
+const homeButton =
+    document.querySelector(
+        "#homeButton"
+    );
 
 
-    const navLinks =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
 
 
-    let currentPage = 0;
+let currentPage = 0;
 
-    let isAnimating = false;
+let isAnimating = false;
 
-    let touchStartY = 0;
+let touchStartY = 0;
 
-    let touchEndY = 0;
+let touchEndY = 0;
 
 
 
-    /* =================================================
-       SEITE WECHSELN
-    ================================================= */
+/* =================================================
+   SEITE WECHSELN
+================================================= */
 
-    function goToPage(index) {
+function goToPage(index) {
 
 
-        if (
+    if (
 
-            index < 0 ||
+        index < 0 ||
 
-            index >= pages.length ||
+        index >= pages.length ||
 
-            index === currentPage ||
+        index === currentPage ||
 
-            isAnimating
+        isAnimating
 
-        ) {
+    ) {
 
-            return;
-        }
+        return;
+    }
 
 
-        isAnimating = true;
+    isAnimating = true;
 
 
-        const oldPage =
-            pages[currentPage];
+    const oldPage =
+        pages[currentPage];
 
 
 
-        /* ---------------------------------------------
-           STARTSEITE VERLÄSST DEN BILDSCHIRM
-        --------------------------------------------- */
+    /* ---------------------------------------------
+       STARTSEITE VERLÄSST DEN BILDSCHIRM
+    --------------------------------------------- */
 
-        if (
-            currentPage === 0 &&
-            index > 0
-        ) {
+    if (
+        currentPage === 0 &&
+        index > 0
+    ) {
 
-            oldPage.classList.add(
-                "leaving"
-            );
-
-        }
-
-
-
-        /* ---------------------------------------------
-           SEITENKLASSEN
-        --------------------------------------------- */
-
-        pages.forEach(
-            (page, i) => {
-
-
-                page.classList.remove(
-                    "active",
-                    "previous",
-                    "next"
-                );
-
-
-                if (i === index) {
-
-                    page.classList.add(
-                        "active"
-                    );
-
-                }
-
-
-                else if (i < index) {
-
-                    page.classList.add(
-                        "previous"
-                    );
-
-                }
-
-
-                else {
-
-                    page.classList.add(
-                        "next"
-                    );
-
-                }
-
-            }
-        );
-
-
-        currentPage = index;
-
-
-
-        /* ---------------------------------------------
-           STARTSEITE ZURÜCKSETZEN
-        --------------------------------------------- */
-
-        if (
-            index === 0
-        ) {
-
-            pages[0].classList.remove(
-                "leaving"
-            );
-
-        }
-
-
-
-        /* ---------------------------------------------
-           ANIMATION LOCK
-        --------------------------------------------- */
-
-        setTimeout(
-            () => {
-
-                isAnimating = false;
-
-            },
-            950
+        oldPage.classList.add(
+            "leaving"
         );
 
     }
 
 
 
-    /* =================================================
-       MAUSRAD
-    ================================================= */
+    /* ---------------------------------------------
+       SEITENKLASSEN
+    --------------------------------------------- */
 
-    window.addEventListener(
-
-        "wheel",
-
-        event => {
+    pages.forEach(
+        (page, i) => {
 
 
-            if (isAnimating) {
+            page.classList.remove(
+                "active",
+                "previous",
+                "next"
+            );
 
-                return;
+
+            if (i === index) {
+
+                page.classList.add(
+                    "active"
+                );
+
             }
 
 
-            if (
-                Math.abs(
-                    event.deltaY
-                ) < 25
-            ) {
+            else if (i < index) {
 
-                return;
-            }
-
-
-            if (
-                event.deltaY > 0
-            ) {
-
-                goToPage(
-                    currentPage + 1
+                page.classList.add(
+                    "previous"
                 );
 
             }
@@ -1673,254 +1770,374 @@
 
             else {
 
-                goToPage(
-                    currentPage - 1
+                page.classList.add(
+                    "next"
                 );
 
             }
 
-        },
-
-        {
-            passive: true
         }
-
     );
 
 
-
-    /* =================================================
-       TOUCH / WISCHEN
-    ================================================= */
-
-    window.addEventListener(
-
-        "touchstart",
-
-        event => {
-
-            touchStartY =
-                event
-                    .changedTouches[0]
-                    .screenY;
-
-        },
-
-        {
-            passive: true
-        }
-
-    );
+    currentPage = index;
 
 
-    window.addEventListener(
 
-        "touchend",
+    /* ---------------------------------------------
+       STARTSEITE ZURÜCKSETZEN
+    --------------------------------------------- */
 
-        event => {
+    if (
+        index === 0
+    ) {
 
+        pages[0].classList.remove(
+            "leaving"
+        );
 
-            touchEndY =
-                event
-                    .changedTouches[0]
-                    .screenY;
-
-
-            const difference =
-                touchStartY -
-                touchEndY;
+    }
 
 
-            if (
-                Math.abs(
-                    difference
-                ) < 50
-            ) {
 
-                return;
-            }
+    /* ---------------------------------------------
+       URL HASH AKTUALISIEREN
+    --------------------------------------------- */
+
+    if (index === 0) {
+
+        history.replaceState(
+            null,
+            "",
+            window.location.pathname
+        );
+
+    }
+
+    else if (index === 1) {
+
+        history.replaceState(
+            null,
+            "",
+            "#about"
+        );
+
+    }
+
+    else if (index === 2) {
+
+        history.replaceState(
+            null,
+            "",
+            "#contact"
+        );
+
+    }
 
 
-            if (
-                difference > 0
-            ) {
 
-                goToPage(
-                    currentPage + 1
-                );
+    /* ---------------------------------------------
+       ANIMATION LOCK
+    --------------------------------------------- */
 
-            }
+    setTimeout(
+        () => {
 
-
-            else {
-
-                goToPage(
-                    currentPage - 1
-                );
-
-            }
+            isAnimating = false;
 
         },
-
-        {
-            passive: true
-        }
-
+        950
     );
 
+}
 
 
-    /* =================================================
-       TASTATUR
-    ================================================= */
 
-    window.addEventListener(
+/* =================================================
+   MAUSRAD
+================================================= */
 
-        "keydown",
+window.addEventListener(
 
-        event => {
+    "wheel",
 
-
-            if (
-                event.key ===
-                "ArrowDown"
-            ) {
-
-                goToPage(
-                    currentPage + 1
-                );
-
-            }
+    event => {
 
 
-            if (
-                event.key ===
-                "ArrowUp"
-            ) {
+        if (isAnimating) {
 
-                goToPage(
-                    currentPage - 1
-                );
-
-            }
+            return;
+        }
 
 
-            if (
-                event.key ===
-                " "
-            ) {
+        if (
+            Math.abs(
+                event.deltaY
+            ) < 25
+        ) {
+
+            return;
+        }
+
+
+        if (
+            event.deltaY > 0
+        ) {
+
+            goToPage(
+                currentPage + 1
+            );
+
+        }
+
+
+        else {
+
+            goToPage(
+                currentPage - 1
+            );
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+
+);
+
+
+
+/* =================================================
+   TOUCH / WISCHEN
+================================================= */
+
+window.addEventListener(
+
+    "touchstart",
+
+    event => {
+
+        touchStartY =
+            event
+                .changedTouches[0]
+                .screenY;
+
+    },
+
+    {
+        passive: true
+    }
+
+);
+
+
+window.addEventListener(
+
+    "touchend",
+
+    event => {
+
+
+        touchEndY =
+            event
+                .changedTouches[0]
+                .screenY;
+
+
+        const difference =
+            touchStartY -
+            touchEndY;
+
+
+        if (
+            Math.abs(
+                difference
+            ) < 50
+        ) {
+
+            return;
+        }
+
+
+        if (
+            difference > 0
+        ) {
+
+            goToPage(
+                currentPage + 1
+            );
+
+        }
+
+
+        else {
+
+            goToPage(
+                currentPage - 1
+            );
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+
+);
+
+
+
+/* =================================================
+   TASTATUR
+================================================= */
+
+window.addEventListener(
+
+    "keydown",
+
+    event => {
+
+
+        if (
+            event.key ===
+            "ArrowDown"
+        ) {
+
+            goToPage(
+                currentPage + 1
+            );
+
+        }
+
+
+        if (
+            event.key ===
+            "ArrowUp"
+        ) {
+
+            goToPage(
+                currentPage - 1
+            );
+
+        }
+
+
+        if (
+            event.key ===
+            " "
+        ) {
+
+            event.preventDefault();
+
+            goToPage(
+                currentPage + 1
+            );
+
+        }
+
+    }
+
+);
+
+
+
+/* =================================================
+   NAVIGATION
+================================================= */
+
+navLinks.forEach(
+
+    link => {
+
+
+        link.addEventListener(
+
+            "click",
+
+            event => {
 
 
                 event.preventDefault();
 
 
-                goToPage(
-                    currentPage + 1
-                );
+                const page =
+                    Number(
+                        link.dataset.page
+                    );
+
+
+                goToPage(page);
 
             }
 
-        }
+        );
 
-    );
+    }
 
-
-
-    /* =================================================
-       NAVIGATION
-    ================================================= */
-
-    navLinks.forEach(
-
-        link => {
-
-
-            link.addEventListener(
-
-                "click",
-
-                event => {
-
-
-                    event.preventDefault();
-
-
-                    const page =
-                        Number(
-                            link.dataset.page
-                        );
-
-
-                    goToPage(page);
-
-                }
-
-            );
-
-        }
-
-    );
+);
 
 
 
-    /* =================================================
-       LOGO
-    ================================================= */
+/* =================================================
+   LOGO
+================================================= */
 
-    homeButton.addEventListener(
+homeButton.addEventListener(
 
-        "click",
+    "click",
 
-        event => {
-
-
-            event.preventDefault();
+    event => {
 
 
-            goToPage(0);
+        event.preventDefault();
+
+
+        goToPage(0);
+
+    }
+
+);
+
+
+
+/* =================================================
+   URL / HASH
+================================================= */
+
+window.addEventListener(
+
+    "load",
+
+    () => {
+
+
+        if (
+            window.location.hash ===
+            "#about"
+        ) {
+
+            goToPage(1);
 
         }
 
-    );
 
+        if (
+            window.location.hash ===
+            "#contact"
+        ) {
 
-
-    /* =================================================
-       URL / HASH
-    ================================================= */
-
-    window.addEventListener(
-
-        "load",
-
-        () => {
-
-
-            if (
-                window.location.hash ===
-                "#about"
-            ) {
-
-                goToPage(1);
-
-            }
-
-
-            if (
-                window.location.hash ===
-                "#contact"
-            ) {
-
-                goToPage(2);
-
-            }
+            goToPage(2);
 
         }
 
-    );
+    }
+
+);
 
 </script>
-
 
 </body>
 
