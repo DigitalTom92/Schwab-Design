@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="de">
+
 <head>
 
     <meta charset="UTF-8">
@@ -9,13 +11,14 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>FORMA.</title>
+    <title>Schwab Design</title>
+
 
     <style>
 
-        /* =====================================================
+        /* =========================
            GRUNDLAGEN
-        ===================================================== */
+        ========================= */
 
         * {
             margin: 0;
@@ -35,8 +38,9 @@
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
-                "Helvetica Neue",
                 "Segoe UI",
+                Roboto,
+                Helvetica,
                 Arial,
                 sans-serif;
 
@@ -45,9 +49,6 @@
             background: #fff;
 
             overflow: hidden;
-
-            -webkit-font-smoothing: antialiased;
-            text-rendering: geometricPrecision;
         }
 
 
@@ -56,17 +57,14 @@
             --schwab-blue: #0066CC;
 
             --dark-text: #1d1d1f;
-
-            --soft-gray: #666;
-
         }
 
 
 
-        /* =====================================================
+        /* =========================
            NAVIGATION
-           APPLE STYLE GLASS
-        ===================================================== */
+           APPLE STYLE GLOSSY
+        ========================= */
 
         nav {
 
@@ -89,40 +87,67 @@
             right: 0;
 
 
+            /*
+             * Durchgezogene transparente
+             * Glasfläche
+             */
+
             background:
+
                 linear-gradient(
                     180deg,
-                    rgba(255,255,255,0.95) 0%,
-                    rgba(255,255,255,0.84) 38%,
-                    rgba(248,248,250,0.75) 100%
+                    rgba(255,255,255,0.94) 0%,
+                    rgba(255,255,255,0.82) 35%,
+                    rgba(248,248,250,0.74) 100%
                 );
 
 
+            /*
+             * Apple-artiger Glass-Blur
+             */
+
             backdrop-filter:
+
                 blur(24px)
                 saturate(180%);
 
             -webkit-backdrop-filter:
+
                 blur(24px)
                 saturate(180%);
 
 
-            border-bottom:
-                1px solid
-                rgba(0,0,0,0.07);
+            /*
+             * Sehr feine untere Kante
+             */
 
+            border-bottom:
+
+                1px solid
+                rgba(0,0,0,0.08);
+
+
+            /*
+             * Dezenter Schatten
+             */
 
             box-shadow:
 
                 0 8px 30px
-                rgba(0,0,0,0.05),
+                rgba(0,0,0,0.06),
 
                 0 2px 8px
-                rgba(0,0,0,0.025),
+                rgba(0,0,0,0.035),
 
                 inset 0 1px 0
                 rgba(255,255,255,0.95);
 
+
+            /*
+             * Wichtig:
+             * Glossy-Effekt bleibt innerhalb
+             * der gesamten Leiste
+             */
 
             overflow: hidden;
 
@@ -131,9 +156,9 @@
 
 
 
-        /* =====================================================
-           GLOSSY REFLEX
-        ===================================================== */
+        /* =========================
+           GLOSSY LICHTREFLEX
+        ========================= */
 
         nav::before {
 
@@ -151,9 +176,10 @@
 
 
             background:
+
                 linear-gradient(
                     180deg,
-                    rgba(255,255,255,0.75),
+                    rgba(255,255,255,0.72),
                     rgba(255,255,255,0)
                 );
 
@@ -165,384 +191,72 @@
 
 
 
-        /* =====================================================
-           FORMA LOGO
-           EINZIGARTIGE WORTMARKE
-        ===================================================== */
+        /* =========================
+           LOGO
+        ========================= */
 
-        .brand {
+        .logo {
 
             position: relative;
 
-            z-index: 2;
+            z-index: 1;
 
-            display: flex;
-
-            align-items: center;
-
-            gap: 11px;
-
-            text-decoration: none;
-
-            cursor: pointer;
-
-            transition:
-                opacity 0.25s ease,
-                transform 0.25s ease;
-        }
-
-
-        .brand:hover {
-
-            opacity: 0.78;
-
-            transform:
-                translateY(-1px);
-        }
-
-
-
-        /* =====================================================
-           FORMA WORTMARKE
-        ===================================================== */
-
-        .forma {
-
-            display: flex;
-
-            align-items: center;
-
-            color:
-                var(--schwab-blue);
-
-            font-family:
-                "Helvetica Neue",
-                "Arial Narrow",
-                Arial,
-                sans-serif;
 
             font-size: 21px;
 
-            font-weight: 650;
-
-            letter-spacing: 2.4px;
-
-            line-height: 1;
-
-            transform:
-                scaleX(0.94);
-
-            transform-origin: left center;
-
-            white-space: nowrap;
-        }
-
-
-
-        /* =====================================================
-           EINZELNE BUCHSTABEN
-        ===================================================== */
-
-        .forma-letter {
-
-            display: inline-block;
-
-            position: relative;
-
-            transition:
-                transform 0.3s ease;
-        }
-
-
-        /*
-         * F
-         */
-
-        .forma-f {
-
             font-weight: 600;
 
-            margin-right: 1px;
-        }
+            letter-spacing: -0.6px;
 
-
-        /*
-         * R
-         */
-
-        .forma-r {
-
-            font-weight: 600;
-
-            margin-right: 1px;
-        }
-
-
-        /*
-         * M
-         */
-
-        .forma-m {
-
-            font-weight: 650;
-
-            letter-spacing: 1.8px;
-
-            margin-left: 1px;
-        }
-
-
-        /*
-         * A
-         */
-
-        .forma-a {
-
-            font-weight: 600;
-
-            margin-left: 1px;
-        }
-
-
-
-        /* =====================================================
-           O / Ø
-           EIGENES GRAFISCHES ELEMENT
-        ===================================================== */
-
-        .forma-o {
-
-            position: relative;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            width: 16px;
-
-            height: 20px;
-
-            margin:
-                0 1px;
+            text-decoration: none;
 
             color:
                 var(--dark-text);
 
-            flex-shrink: 0;
-        }
+            cursor: pointer;
 
-
-        /*
-         * O-Kontur
-         */
-
-        .forma-o::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 13px;
-
-            height: 17px;
-
-            border:
-                2px solid
-                var(--dark-text);
-
-            border-radius: 50%;
-
-            transform:
-                scaleX(0.78);
-        }
-
-
-        /*
-         * Diagonaler Schnitt
-         */
-
-        .forma-o::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 18px;
-
-            height: 1.5px;
-
-            background:
-                var(--dark-text);
-
-            border-radius: 2px;
-
-            transform:
-                rotate(-52deg);
-        }
-
-
-
-        /* =====================================================
-           PUNKT
-        ===================================================== */
-
-        .forma-dot {
-
-            display: inline-block;
-
-            width: 3px;
-
-            height: 3px;
-
-            margin-left: 2px;
-
-            margin-top: 13px;
-
-            border-radius: 50%;
-
-            background:
-                var(--schwab-blue);
-        }
-
-
-
-        /* =====================================================
-           ABSTRAKTES LOGO-SYMBOL
-           MINIMAL / ARCHITEKTUR
-        ===================================================== */
-
-        .brand-symbol {
-
-            position: relative;
-
-            width: 22px;
-
-            height: 22px;
-
-            display: block;
-
-            opacity: 0.9;
 
             transition:
-                transform 0.45s
-                cubic-bezier(
-                    0.22,
-                    1,
-                    0.36,
-                    1
-                );
+
+                opacity 0.2s ease,
+
+                transform 0.2s ease;
         }
 
 
-        /*
-         * Vertikale Linie
-         */
+        .logo:hover {
 
-        .brand-symbol::before {
-
-            content: "";
-
-            position: absolute;
-
-            left: 10px;
-
-            top: 1px;
-
-            width: 1px;
-
-            height: 20px;
-
-            background:
-                var(--schwab-blue);
+            opacity: 0.75;
 
             transform:
-                rotate(34deg);
-
-            transform-origin:
-                center;
+                scale(0.98);
         }
 
 
-        /*
-         * Horizontale / schräge Linie
-         */
+        .logo .schwab {
 
-        .brand-symbol::after {
+            color:
+                var(--schwab-blue);
+        }
 
-            content: "";
 
-            position: absolute;
+        .logo .design {
 
-            left: 2px;
-
-            top: 11px;
-
-            width: 20px;
-
-            height: 1px;
-
-            background:
+            color:
                 var(--dark-text);
-
-            transform:
-                rotate(-34deg);
-
-            transform-origin:
-                center;
-        }
-
-
-        /*
-         * Kleiner Mittelpunkt
-         */
-
-        .brand-symbol span {
-
-            position: absolute;
-
-            left: 9px;
-
-            top: 9px;
-
-            width: 4px;
-
-            height: 4px;
-
-            border-radius: 50%;
-
-            background:
-                var(--schwab-blue);
-
-            z-index: 2;
-        }
-
-
-        /*
-         * Hover:
-         * Das Zeichen dreht sich
-         * nur minimal.
-         */
-
-        .brand:hover .brand-symbol {
-
-            transform:
-                rotate(12deg)
-                scale(1.04);
         }
 
 
 
-        /* =====================================================
+        /* =========================
            NAVIGATION LINKS
-        ===================================================== */
+        ========================= */
 
         nav .nav-links {
 
             position: relative;
 
-            z-index: 2;
+            z-index: 1;
 
             display: flex;
 
@@ -581,6 +295,11 @@
         }
 
 
+        /*
+         * Dezenter Apple-ähnlicher
+         * Hover-Effekt
+         */
+
         nav .nav-links a:hover {
 
             color:
@@ -599,6 +318,10 @@
         }
 
 
+        /*
+         * Klick-Effekt
+         */
+
         nav .nav-links a:active {
 
             transform:
@@ -607,9 +330,9 @@
 
 
 
-        /* =====================================================
+        /* =========================
            FULL PAGE CONTAINER
-        ===================================================== */
+        ========================= */
 
         .page-container {
 
@@ -626,9 +349,9 @@
 
 
 
-        /* =====================================================
+        /* =========================
            EINZELNE SEITE
-        ===================================================== */
+        ========================= */
 
         .page {
 
@@ -661,7 +384,7 @@
             pointer-events: none;
 
             transform:
-                translate3d(0,100%,0);
+                translate3d(0, 100%, 0);
 
 
             transition:
@@ -679,9 +402,9 @@
 
 
 
-        /* =====================================================
-           AKTIVE SEITE
-        ===================================================== */
+        /* =========================
+           AKTUELLE SEITE
+        ========================= */
 
         .page.active {
 
@@ -690,56 +413,54 @@
             pointer-events: auto;
 
             transform:
-                translate3d(0,0,0);
+                translate3d(0, 0, 0);
 
             z-index: 2;
         }
 
 
 
-        /* =====================================================
+        /* =========================
            VORHERIGE SEITE
-        ===================================================== */
+        ========================= */
 
         .page.previous {
 
             opacity: 0;
 
             transform:
-                translate3d(0,-100%,0);
+                translate3d(0, -100%, 0);
 
             z-index: 1;
         }
 
 
 
-        /* =====================================================
+        /* =========================
            NÄCHSTE SEITE
-        ===================================================== */
+        ========================= */
 
         .page.next {
 
             opacity: 0;
 
             transform:
-                translate3d(0,100%,0);
+                translate3d(0, 100%, 0);
 
             z-index: 1;
         }
 
 
 
-        /* =====================================================
+        /* =========================
            STARTSEITE
-        ===================================================== */
+        ========================= */
 
         .hero {
 
-            background:
-                #fff;
+            background: #fff;
 
-            text-align:
-                center;
+            text-align: center;
 
             padding:
                 80px 6% 50px;
@@ -758,50 +479,37 @@
         }
 
 
-
-        /* =====================================================
-           FORMA EYEBROW
-        ===================================================== */
-
         .eyebrow {
 
-            display: flex;
+    font-size:
+        clamp(
+            24px,
+            2vw,
+            32px
+        );
 
-            justify-content: center;
+    font-weight: 600;
 
-            align-items: center;
+    margin-bottom: 28px;
 
-            font-size:
-                clamp(
-                    24px,
-                    2vw,
-                    32px
-                );
+    letter-spacing: -0.4px;
 
-            font-weight: 600;
+    opacity: 0;
 
-            margin-bottom: 28px;
+    transform:
+        translate3d(0, 30px, 0);
 
-            letter-spacing: 2.5px;
-
-            opacity: 0;
-
-            transform:
-                translate3d(0,30px,0);
-
-            transition:
-
-                opacity 0.8s ease 0.25s,
-
-                transform 0.8s
-                cubic-bezier(
-                    0.22,
-                    1,
-                    0.36,
-                    1
-                )
-                0.25s;
-        }
+    transition:
+        opacity 0.8s ease 0.25s,
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        0.25s;
+}
 
 
         .page.active .eyebrow {
@@ -809,64 +517,27 @@
             opacity: 1;
 
             transform:
-                translate3d(0,0,0);
+                translate3d(0, 0, 0);
         }
 
 
-        .eyebrow .forma {
+        .eyebrow .schwab {
 
-            font-size:
-                clamp(
-                    24px,
-                    2vw,
-                    32px
-                );
-
-            letter-spacing: 3px;
+            color:
+                var(--schwab-blue);
         }
 
 
-        .eyebrow .forma-o {
+        .eyebrow .design {
 
-            width: 21px;
-
-            height: 28px;
-        }
-
-
-        .eyebrow .forma-o::before {
-
-            width: 17px;
-
-            height: 23px;
-
-            border-width:
-                2.2px;
-        }
-
-
-        .eyebrow .forma-o::after {
-
-            width: 23px;
-
-            height: 1.8px;
-        }
-
-
-        .eyebrow .forma-dot {
-
-            width: 4px;
-
-            height: 4px;
-
-            margin-top: 18px;
+            color: #777;
         }
 
 
 
-        /* =====================================================
+        /* =========================
            HERO TITLE
-        ===================================================== */
+        ========================= */
 
         .hero-title {
 
@@ -877,17 +548,13 @@
                     150px
                 );
 
-            line-height:
-                0.92;
+            line-height: 0.92;
 
-            letter-spacing:
-                -7px;
+            letter-spacing: -7px;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            margin-bottom:
-                38px;
+            margin-bottom: 38px;
 
             will-change:
                 transform,
@@ -896,9 +563,9 @@
 
 
 
-        /* =====================================================
+        /* =========================
            HERO TEXT
-        ===================================================== */
+        ========================= */
 
         .hero-text {
 
@@ -909,17 +576,13 @@
                     25px
                 );
 
-            color:
-                #666;
+            color: #666;
 
-            max-width:
-                700px;
+            max-width: 700px;
 
-            margin:
-                auto;
+            margin: auto;
 
-            line-height:
-                1.4;
+            line-height: 1.4;
 
             will-change:
                 transform,
@@ -928,20 +591,17 @@
 
 
 
-        /* =====================================================
+        /* =========================
            ÜBER UNS
-        ===================================================== */
+        ========================= */
 
         .about {
 
-            background:
-                #000;
+            background: #000;
 
-            color:
-                #fff;
+            color: #fff;
 
-            justify-content:
-                flex-start;
+            justify-content: flex-start;
 
             padding:
                 10vw 8%;
@@ -950,11 +610,9 @@
 
         .about-content {
 
-            width:
-                100%;
+            width: 100%;
 
-            max-width:
-                1300px;
+            max-width: 1300px;
         }
 
 
@@ -967,17 +625,13 @@
                     140px
                 );
 
-            line-height:
-                0.92;
+            line-height: 0.92;
 
-            letter-spacing:
-                -6px;
+            letter-spacing: -6px;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            margin-bottom:
-                45px;
+            margin-bottom: 45px;
 
             will-change:
                 transform,
@@ -987,8 +641,7 @@
 
         .about-text {
 
-            max-width:
-                700px;
+            max-width: 700px;
 
             font-size:
                 clamp(
@@ -997,11 +650,9 @@
                     25px
                 );
 
-            line-height:
-                1.45;
+            line-height: 1.45;
 
-            color:
-                #aaa;
+            color: #aaa;
 
             will-change:
                 transform,
@@ -1010,17 +661,15 @@
 
 
 
-        /* =====================================================
+        /* =========================
            KONTAKT
-        ===================================================== */
+        ========================= */
 
         .contact {
 
-            background:
-                #fff;
+            background: #fff;
 
-            justify-content:
-                flex-start;
+            justify-content: flex-start;
 
             padding:
                 10vw 8%;
@@ -1029,11 +678,9 @@
 
         .contact-content {
 
-            width:
-                100%;
+            width: 100%;
 
-            max-width:
-                1300px;
+            max-width: 1300px;
         }
 
 
@@ -1046,17 +693,13 @@
                     140px
                 );
 
-            line-height:
-                0.92;
+            line-height: 0.92;
 
-            letter-spacing:
-                -6px;
+            letter-spacing: -6px;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            margin-bottom:
-                45px;
+            margin-bottom: 45px;
 
             will-change:
                 transform,
@@ -1066,8 +709,7 @@
 
         .contact-text {
 
-            max-width:
-                700px;
+            max-width: 700px;
 
             font-size:
                 clamp(
@@ -1076,11 +718,9 @@
                     25px
                 );
 
-            line-height:
-                1.45;
+            line-height: 1.45;
 
-            color:
-                #666;
+            color: #666;
 
             will-change:
                 transform,
@@ -1089,18 +729,17 @@
 
 
 
-        /* =====================================================
+        /* =========================
            SEITEN-ANIMATIONEN
-        ===================================================== */
+        ========================= */
 
         .page-content {
 
             transform:
-                translate3d(0,60px,0)
+                translate3d(0, 60px, 0)
                 scale(0.92);
 
-            opacity:
-                0;
+            opacity: 0;
 
 
             transition:
@@ -1120,26 +759,24 @@
         .page.active .page-content {
 
             transform:
-                translate3d(0,0,0)
+                translate3d(0, 0, 0)
                 scale(1);
 
-            opacity:
-                1;
+            opacity: 1;
         }
 
 
 
-        /* =====================================================
+        /* =========================
            GROSSE ÜBERSCHRIFTEN
-        ===================================================== */
+        ========================= */
 
         .page-title {
 
             transform:
                 scale(0.92);
 
-            opacity:
-                0;
+            opacity: 0;
 
 
             transition:
@@ -1161,185 +798,39 @@
             transform:
                 scale(1);
 
-            opacity:
-                1;
+            opacity: 1;
         }
 
 
 
-        /* =====================================================
+        /* =========================
            MOBILE
-        ===================================================== */
+        ========================= */
 
         @media (max-width: 700px) {
 
+    .eyebrow {
 
-            .eyebrow {
+        font-size: 23px;
 
-                font-size:
-                    23px;
+        margin-bottom: 24px;
 
-                margin-bottom:
-                    24px;
-            }
-
-
-            .eyebrow .forma {
-
-                font-size:
-                    23px;
-
-                letter-spacing:
-                    2.4px;
-            }
-
-
-            .eyebrow .forma-o {
-
-                width:
-                    18px;
-
-                height:
-                    24px;
-            }
-
-
-            .eyebrow .forma-o::before {
-
-                width:
-                    14px;
-
-                height:
-                    20px;
-            }
-
-
-            .eyebrow .forma-o::after {
-
-                width:
-                    20px;
-            }
-
+    }
 
             nav .nav-links a {
 
-                margin-left:
-                    15px;
+                margin-left: 15px;
 
                 padding:
                     7px 8px;
 
-                font-size:
-                    13px;
+                font-size: 13px;
             }
 
 
-            .brand {
+            .logo {
 
-                gap:
-                    8px;
-            }
-
-
-            .forma {
-
-                font-size:
-                    19px;
-
-                letter-spacing:
-                    2px;
-            }
-
-
-            .forma-o {
-
-                width:
-                    14px;
-
-                height:
-                    18px;
-            }
-
-
-            .forma-o::before {
-
-                width:
-                    11px;
-
-                height:
-                    15px;
-
-                border-width:
-                    1.8px;
-            }
-
-
-            .forma-o::after {
-
-                width:
-                    17px;
-
-                height:
-                    1.3px;
-            }
-
-
-            .forma-dot {
-
-                width:
-                    3px;
-
-                height:
-                    3px;
-
-                margin-top:
-                    12px;
-            }
-
-
-            .brand-symbol {
-
-                width:
-                    18px;
-
-                height:
-                    18px;
-            }
-
-
-            .brand-symbol::before {
-
-                left:
-                    8px;
-
-                height:
-                    17px;
-            }
-
-
-            .brand-symbol::after {
-
-                left:
-                    1px;
-
-                width:
-                    17px;
-            }
-
-
-            .brand-symbol span {
-
-                left:
-                    7px;
-
-                top:
-                    7px;
-
-                width:
-                    4px;
-
-                height:
-                    4px;
+                font-size: 19px;
             }
 
 
@@ -1352,8 +843,7 @@
 
             .hero-title {
 
-                letter-spacing:
-                    -4px;
+                letter-spacing: -4px;
             }
 
 
@@ -1368,25 +858,23 @@
             .about-title,
             .contact-title {
 
-                letter-spacing:
-                    -4px;
+                letter-spacing: -4px;
             }
 
 
             .about-text,
             .contact-text {
 
-                max-width:
-                    100%;
+                max-width: 100%;
             }
 
         }
 
 
 
-        /* =====================================================
+        /* =========================
            REDUCED MOTION
-        ===================================================== */
+        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -1405,14 +893,6 @@
                     none;
             }
 
-
-            .brand,
-            .brand-symbol {
-
-                transition:
-                    none;
-            }
-
         }
 
     </style>
@@ -1423,91 +903,30 @@
 <body>
 
 
-    <!-- =====================================================
+    <!-- =========================
          NAVIGATION
-    ===================================================== -->
+    ========================= -->
 
     <nav>
 
-
-        <!-- =========================
-             FORMA BRANDING
-        ========================= -->
-
         <a
             href="#"
-            class="brand"
+            class="logo"
             id="homeButton"
         >
 
-
-            <span class="forma">
-
-
-                <span
-                    class="forma-letter forma-f"
-                >
-                    F
-                </span>
-
-
-                <span
-                    class="forma-o"
-                ></span>
-
-
-                <span
-                    class="forma-letter forma-r"
-                >
-                    R
-                </span>
-
-
-                <span
-                    class="forma-letter forma-m"
-                >
-                    M
-                </span>
-
-
-                <span
-                    class="forma-letter forma-a"
-                >
-                    A
-                </span>
-
-
-                <span
-                    class="forma-dot"
-                ></span>
-
-
+            <span class="schwab">
+                Schwab
             </span>
 
-
-            <!-- Abstraktes Zeichen -->
-
-            <span
-                class="brand-symbol"
-            >
-
-                <span></span>
-
+            <span class="design">
+                Design
             </span>
-
 
         </a>
 
 
-
-        <!-- =========================
-             NAVIGATION
-        ========================= -->
-
-        <div
-            class="nav-links"
-        >
-
+        <div class="nav-links">
 
             <a
                 href="#about"
@@ -1524,109 +943,54 @@
                 Kontakt
             </a>
 
-
         </div>
-
 
     </nav>
 
 
 
-    <!-- =====================================================
+    <!-- =========================
          SEITEN
-    ===================================================== -->
+    ========================= -->
 
-    <main
-        class="page-container"
-    >
+    <main class="page-container">
 
 
-        <!-- =================================================
+        <!-- =====================
              STARTSEITE
-        ================================================= -->
+        ===================== -->
 
         <section
             class="page hero active"
             data-index="0"
         >
 
-
             <div
                 class="hero-content page-content"
             >
 
+                <div class="eyebrow">
 
-                <!-- FORMA -->
-
-                <div
-                    class="eyebrow"
-                >
-
-
-                    <span
-                        class="forma"
-                    >
-
-
-                        <span
-                            class="forma-letter forma-f"
-                        >
-                            F
-                        </span>
-
-
-                        <span
-                            class="forma-o"
-                        ></span>
-
-
-                        <span
-                            class="forma-letter forma-r"
-                        >
-                            R
-                        </span>
-
-
-                        <span
-                            class="forma-letter forma-m"
-                        >
-                            M
-                        </span>
-
-
-                        <span
-                            class="forma-letter forma-a"
-                        >
-                            A
-                        </span>
-
-
-                        <span
-                            class="forma-dot"
-                        ></span>
-
-
+                    <span class="schwab">
+                        Schwab
                     </span>
 
+                    <span class="design">
+                        Design
+                    </span>
 
                 </div>
 
-
-
-                <!-- HERO -->
 
                 <h1
                     class="hero-title page-title"
                 >
 
                     Einfach.<br>
-
-                    Stark.<br>
-
+                    Stark.
                     Anders.
 
                 </h1>
-
 
 
                 <p
@@ -1638,35 +1002,30 @@
 
                 </p>
 
-
             </div>
-
 
         </section>
 
 
 
-        <!-- =================================================
+        <!-- =====================
              ÜBER UNS
-        ================================================= -->
+        ===================== -->
 
         <section
             class="page about"
             data-index="1"
         >
 
-
             <div
                 class="about-content page-content"
             >
-
 
                 <h2
                     class="about-title page-title"
                 >
 
                     Weniger.<br>
-
                     Aber besser.
 
                 </h2>
@@ -1676,7 +1035,7 @@
                     class="about-text"
                 >
 
-                    FORMA. steht für
+                    Schwab Design steht für
                     minimalistisches, modernes
                     und durchdachtes Design.
 
@@ -1685,35 +1044,30 @@
 
                 </p>
 
-
             </div>
-
 
         </section>
 
 
 
-        <!-- =================================================
+        <!-- =====================
              KONTAKT
-        ================================================= -->
+        ===================== -->
 
         <section
             class="page contact"
             data-index="2"
         >
 
-
             <div
                 class="contact-content page-content"
             >
-
 
                 <h2
                     class="contact-title page-title"
                 >
 
                     Lass uns<br>
-
                     etwas gestalten.
 
                 </h2>
@@ -1728,9 +1082,7 @@
 
                 </p>
 
-
             </div>
-
 
         </section>
 
@@ -1739,23 +1091,19 @@
 
 
 
-    <!-- =====================================================
+    <!-- =========================
          JAVASCRIPT
-    ===================================================== -->
+    ========================= -->
 
     <script>
 
 
         const pages =
-            document.querySelectorAll(
-                ".page"
-            );
+            document.querySelectorAll(".page");
 
 
         const homeButton =
-            document.querySelector(
-                "#homeButton"
-            );
+            document.querySelector("#homeButton");
 
 
         const navLinks =
@@ -1766,17 +1114,20 @@
 
         let currentPage = 0;
 
+
         let isAnimating = false;
 
+
         let touchStartY = 0;
+
 
         let touchEndY = 0;
 
 
 
-        /* =================================================
+        /* =========================
            SEITE WECHSELN
-        ================================================= */
+        ========================= */
 
         function goToPage(index) {
 
@@ -1794,7 +1145,6 @@
             ) {
 
                 return;
-
             }
 
 
@@ -1814,36 +1164,29 @@
 
                     if (i === index) {
 
-
                         page.classList.add(
                             "active"
                         );
-
 
                     }
 
 
                     else if (i < index) {
 
-
                         page.classList.add(
                             "previous"
                         );
-
 
                     }
 
 
                     else {
 
-
                         page.classList.add(
                             "next"
                         );
 
-
                     }
-
 
                 }
             );
@@ -1865,9 +1208,9 @@
 
 
 
-        /* =================================================
+        /* =========================
            MAUSRAD
-        ================================================= */
+        ========================= */
 
         window.addEventListener(
 
@@ -1879,30 +1222,23 @@
                 if (isAnimating) {
 
                     return;
-
                 }
 
 
                 if (
-                    Math.abs(
-                        event.deltaY
-                    ) < 25
+                    Math.abs(event.deltaY) < 25
                 ) {
 
                     return;
-
                 }
 
 
-                if (
-                    event.deltaY > 0
-                ) {
+                if (event.deltaY > 0) {
 
 
                     goToPage(
                         currentPage + 1
                     );
-
 
                 }
 
@@ -1914,9 +1250,7 @@
                         currentPage - 1
                     );
 
-
                 }
-
 
             },
 
@@ -1928,9 +1262,9 @@
 
 
 
-        /* =================================================
+        /* =========================
            TOUCH / WISCHEN
-        ================================================= */
+        ========================= */
 
         window.addEventListener(
 
@@ -1938,12 +1272,8 @@
 
             event => {
 
-
                 touchStartY =
-                    event
-                        .changedTouches[0]
-                        .screenY;
-
+                    event.changedTouches[0].screenY;
 
             },
 
@@ -1962,36 +1292,27 @@
 
 
                 touchEndY =
-                    event
-                        .changedTouches[0]
-                        .screenY;
+                    event.changedTouches[0].screenY;
 
 
                 const difference =
-                    touchStartY -
-                    touchEndY;
+                    touchStartY - touchEndY;
 
 
                 if (
-                    Math.abs(
-                        difference
-                    ) < 50
+                    Math.abs(difference) < 50
                 ) {
 
                     return;
-
                 }
 
 
-                if (
-                    difference > 0
-                ) {
+                if (difference > 0) {
 
 
                     goToPage(
                         currentPage + 1
                     );
-
 
                 }
 
@@ -2003,9 +1324,7 @@
                         currentPage - 1
                     );
 
-
                 }
-
 
             },
 
@@ -2017,9 +1336,9 @@
 
 
 
-        /* =================================================
+        /* =========================
            TASTATUR
-        ================================================= */
+        ========================= */
 
         window.addEventListener(
 
@@ -2029,36 +1348,29 @@
 
 
                 if (
-                    event.key ===
-                    "ArrowDown"
+                    event.key === "ArrowDown"
                 ) {
-
 
                     goToPage(
                         currentPage + 1
                     );
 
-
                 }
 
 
                 if (
-                    event.key ===
-                    "ArrowUp"
+                    event.key === "ArrowUp"
                 ) {
-
 
                     goToPage(
                         currentPage - 1
                     );
 
-
                 }
 
 
                 if (
-                    event.key ===
-                    " "
+                    event.key === " "
                 ) {
 
 
@@ -2069,9 +1381,7 @@
                         currentPage + 1
                     );
 
-
                 }
-
 
             }
 
@@ -2079,9 +1389,9 @@
 
 
 
-        /* =================================================
+        /* =========================
            NAVIGATION
-        ================================================= */
+        ========================= */
 
         navLinks.forEach(
 
@@ -2106,11 +1416,9 @@
 
                         goToPage(page);
 
-
                     }
 
                 );
-
 
             }
 
@@ -2118,9 +1426,9 @@
 
 
 
-        /* =================================================
+        /* =========================
            LOGO
-        ================================================= */
+        ========================= */
 
         homeButton.addEventListener(
 
@@ -2134,16 +1442,15 @@
 
                 goToPage(0);
 
-
             }
 
         );
 
 
 
-        /* =================================================
+        /* =========================
            URL / HASH
-        ================================================= */
+        ========================= */
 
         window.addEventListener(
 
@@ -2157,9 +1464,7 @@
                     "#about"
                 ) {
 
-
                     goToPage(1);
-
 
                 }
 
@@ -2169,12 +1474,9 @@
                     "#contact"
                 ) {
 
-
                     goToPage(2);
 
-
                 }
-
 
             }
 
@@ -2184,4 +1486,5 @@
 
 
 </body>
+
 </html>
