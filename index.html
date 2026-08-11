@@ -253,6 +253,9 @@
         font-weight: 500;
 
         line-height: 1;
+
+        transform-origin:
+            center center;
     }
 
 
@@ -506,8 +509,8 @@
 
 
     /* =====================================================
-       FORMA AUF DER STARTSEITE
-       APPLE-LIKE ANIMATION
+       FORMA AUF STARTSEITE
+       GROSS + PRÄSENT
     ===================================================== */
 
     .eyebrow {
@@ -522,20 +525,20 @@
             center;
 
         margin-bottom:
-            32px;
+            38px;
 
         opacity:
             0;
 
         transform:
-            translate3d(0,30px,0)
-            scale(0.96);
+            translate3d(0,35px,0)
+            scale(0.94);
 
         transition:
 
-            opacity 0.8s ease 0.25s,
+            opacity 0.85s ease 0.25s,
 
-            transform 1s
+            transform 1.05s
             cubic-bezier(
                 0.22,
                 1,
@@ -567,51 +570,16 @@
 
 
     /* =====================================================
-       FORMA BEIM VERLASSEN DER STARTSEITE
-       LEICHTER ZOOM + NACH OBEN
-    ===================================================== */
-
-    .page.leaving .eyebrow {
-
-        opacity:
-            0;
-
-        transform:
-            translate3d(0,-32px,0)
-            scale(1.12);
-
-        transition:
-
-            opacity 0.42s
-            cubic-bezier(
-                0.4,
-                0,
-                1,
-                1
-            ),
-
-            transform 0.75s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            );
-    }
-
-
-
-    /* =====================================================
-       GROSSES FORMA AUF STARTSEITE
+       GROSSES FORMA
     ===================================================== */
 
     .eyebrow .forma-logo {
 
         font-size:
             clamp(
-                30px,
-                3.2vw,
-                46px
+                42px,
+                5vw,
+                72px
             );
 
         font-weight:
@@ -619,9 +587,9 @@
 
         letter-spacing:
             clamp(
-                4px,
-                0.75vw,
-                10px
+                5px,
+                0.9vw,
+                13px
             );
 
         line-height:
@@ -633,32 +601,124 @@
 
         font-weight:
             300;
+
+        transition:
+            transform 0.75s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            );
     }
 
+
+    /* =====================================================
+       ROTES O
+       BESONDERS PRÄSENT
+    ===================================================== */
 
     .eyebrow .forma-o {
 
+        font-size:
+            1.08em;
+
         font-weight:
-            300;
+            400;
 
         color:
             var(--forma-red);
+
+        transform-origin:
+            center center;
+
+        transition:
+
+            transform 0.8s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            ),
+
+            filter 0.8s ease;
     }
 
+
+    /* =====================================================
+       ROTES O BEIM VERLASSEN
+       ===================================================== */
+
+    .page.leaving .eyebrow {
+
+        opacity:
+            0;
+
+        transform:
+            translate3d(0,-42px,0)
+            scale(1.16);
+
+        transition:
+
+            opacity 0.46s
+            cubic-bezier(
+                0.4,
+                0,
+                1,
+                1
+            ),
+
+            transform 0.8s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            );
+    }
+
+
+    .page.leaving .eyebrow .forma-o {
+
+        transform:
+            scale(1.20);
+
+        filter:
+            saturate(1.2);
+    }
+
+
+
+    /* =====================================================
+       ROTES O BEIM EINTRETEN
+    ===================================================== */
+
+    .page.active .eyebrow .forma-o {
+
+        transform:
+            scale(1);
+    }
+
+
+
+    /* =====================================================
+       PUNKT
+    ===================================================== */
 
     .eyebrow .forma-dot {
 
         width:
-            4px;
+            5px;
 
         height:
-            4px;
+            5px;
 
         margin-left:
-            3px;
+            4px;
 
         margin-bottom:
-            2px;
+            3px;
 
         background:
             var(--forma-red);
@@ -987,17 +1047,24 @@
         .eyebrow {
 
             margin-bottom:
-                25px;
+                28px;
         }
 
 
         .eyebrow .forma-logo {
 
             font-size:
-                27px;
+                34px;
 
             letter-spacing:
-                4px;
+                5px;
+        }
+
+
+        .eyebrow .forma-o {
+
+            font-size:
+                1.08em;
         }
 
 
@@ -1053,15 +1120,21 @@
 
 
         /* ---------------------------------------------
-           MOBILE FORMA ANIMATION
+           MOBILE SCROLL ANIMATION
         --------------------------------------------- */
 
         .page.leaving .eyebrow {
 
             transform:
-                translate3d(0,-24px,0)
-                scale(1.08);
+                translate3d(0,-28px,0)
+                scale(1.12);
+        }
 
+
+        .page.leaving .eyebrow .forma-o {
+
+            transform:
+                scale(1.15);
         }
 
     }
@@ -1083,7 +1156,8 @@
 
         .page-content,
         .page-title,
-        .eyebrow {
+        .eyebrow,
+        .eyebrow .forma-o {
 
             transition:
                 none;
@@ -1453,13 +1527,10 @@
         const oldPage =
             pages[currentPage];
 
-        const newPage =
-            pages[index];
-
 
 
         /* ---------------------------------------------
-           FORMA STARTSEITEN-ANIMATION
+           STARTSEITE VERLÄSST DEN BILDSCHIRM
         --------------------------------------------- */
 
         if (
@@ -1476,7 +1547,7 @@
 
 
         /* ---------------------------------------------
-           KLASSEN DER SEITEN SETZEN
+           SEITENKLASSEN
         --------------------------------------------- */
 
         pages.forEach(
@@ -1525,8 +1596,7 @@
 
 
         /* ---------------------------------------------
-           FORMA ZURÜCKSETZEN
-           Beim Zurückkehren auf Startseite
+           STARTSEITE ZURÜCKSETZEN
         --------------------------------------------- */
 
         if (
