@@ -51,67 +51,301 @@
        NAVIGATION
     ========================= */
 
+nav {
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: fixed;
+
+    top: 10px;
+    left: 2%;
+    right: 2%;
+
+    /*
+     * Glas / Glossy
+     */
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.88) 0%,
+            rgba(255,255,255,0.68) 45%,
+            rgba(245,245,247,0.58) 100%
+        );
+
+    backdrop-filter:
+        blur(24px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(180%);
+
+    /*
+     * Feiner Apple-ähnlicher Rand
+     */
+
+    border:
+        1px solid rgba(255,255,255,0.75);
+
+    /*
+     * Tiefe + weicher Schatten
+     */
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.08),
+        0 2px 8px rgba(0,0,0,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.95);
+
+    /*
+     * Leicht abgerundet
+     */
+
+    border-radius: 18px;
+
+    z-index: 100;
+
+    /*
+     * Wichtig für den Glossy-Effekt
+     */
+
+    overflow: hidden;
+}
+
+
+/*
+ * =========================
+ * GLANZ / LICHTREFLEX
+ * =========================
+ */
+
+nav::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 45%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.55),
+            rgba(255,255,255,0)
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/*
+ * =========================
+ * NAVIGATIONSELEMENTE
+ * =========================
+ */
+
+.logo,
+.nav-links {
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/*
+ * =========================
+ * LOGO
+ * =========================
+ */
+
+.logo {
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.6px;
+
+    text-decoration: none;
+
+    color: var(--dark-text);
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.logo:hover {
+
+    opacity: 0.75;
+
+    transform:
+        scale(0.98);
+}
+
+
+.logo .schwab {
+
+    color:
+        var(--schwab-yellow);
+}
+
+
+.logo .design {
+
+    color:
+        var(--dark-text);
+}
+
+
+/*
+ * =========================
+ * NAV LINKS
+ * =========================
+ */
+
+nav .nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+nav .nav-links a {
+
+    position: relative;
+
+    color:
+        rgba(29,29,31,0.82);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    margin-left: 22px;
+
+    padding:
+        8px 13px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.2s ease;
+}
+
+
+/*
+ * Hover = dezente Glasfläche
+ */
+
+nav .nav-links a:hover {
+
+    color:
+        #000;
+
+    background:
+        rgba(255,255,255,0.55);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.8);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/*
+ * Klick-Effekt
+ */
+
+nav .nav-links a:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/*
+ * =========================
+ * MOBILE
+ * =========================
+ */
+
+@media (max-width: 700px) {
+
     nav {
-        height: 60px;
 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        height: 58px;
 
-        padding: 0 6%;
+        top: 8px;
 
-        position: fixed;
+        left: 12px;
 
-        top: 0;
-        left: 0;
-        right: 0;
+        right: 12px;
 
-        background:
-            rgba(255,255,255,0.82);
+        padding:
+            0 14px;
 
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        border-radius:
+            16px;
 
-        z-index: 100;
+        backdrop-filter:
+            blur(22px)
+            saturate(180%);
+
+        -webkit-backdrop-filter:
+            blur(22px)
+            saturate(180%);
     }
 
 
-    .logo {
-        font-size: 21px;
-        font-weight: 600;
+    nav .nav-links {
 
-        letter-spacing: -0.6px;
-
-        text-decoration: none;
-
-        color: var(--dark-text);
-
-        cursor: pointer;
-    }
-
-
-    .logo .schwab {
-        color: var(--schwab-yellow);
-    }
-
-
-    .logo .design {
-        color: var(--dark-text);
+        gap: 2px;
     }
 
 
     nav .nav-links a {
 
-        color: var(--dark-text);
+        margin-left: 4px;
 
-        text-decoration: none;
+        padding:
+            7px 9px;
 
-        font-size: 14px;
-
-        margin-left: 30px;
-
-        cursor: pointer;
+        font-size: 13px;
     }
+
+
+    .logo {
+
+        font-size: 19px;
+    }
+}
 
 
     /* =========================
