@@ -29,9 +29,7 @@
 
 
     html {
-
         scroll-behavior: auto;
-
         overflow: hidden;
     }
 
@@ -259,13 +257,11 @@
 
 
     /* =====================================================
-       DAS O
-       GLEICHE TYPOGRAFIE WIE DIE ANDEREN BUCHSTABEN
+       O
+       NORMALES TYPOGRAFISCHES O
     ===================================================== */
 
     .forma-o {
-
-        position: relative;
 
         display: inline-block;
 
@@ -275,42 +271,6 @@
         font-weight: 500;
 
         line-height: 1;
-    }
-
-
-    /*
-     * Das O selbst wird ganz normal
-     * als typografisches O dargestellt.
-     *
-     * Nur der rote diagonale Schnitt
-     * macht es zum FORMA.-Logo.
-     */
-
-    .forma-o::after {
-
-        content: "";
-
-        position: absolute;
-
-        left: 50%;
-
-        top: 50%;
-
-        width: 125%;
-
-        height: 1.5px;
-
-        background:
-            var(--forma-red);
-
-        border-radius: 2px;
-
-        transform:
-            translate(-50%, -50%)
-            rotate(-52deg);
-
-        transform-origin:
-            center;
     }
 
 
@@ -656,16 +616,6 @@
 
         font-weight:
             300;
-    }
-
-
-    .eyebrow .forma-o::after {
-
-        width:
-            125%;
-
-        height:
-            1.6px;
     }
 
 
@@ -1023,13 +973,6 @@
         }
 
 
-        .eyebrow .forma-o::after {
-
-            height:
-                1.4px;
-        }
-
-
         nav .nav-links a {
 
             margin-left:
@@ -1226,8 +1169,6 @@
         >
 
 
-            <!-- FILIGRANE FORMA WORTMARKE -->
-
             <div
                 class="eyebrow"
             >
@@ -1283,8 +1224,6 @@
 
 
 
-            <!-- HERO TITLE -->
-
             <h1
                 class="hero-title page-title"
             >
@@ -1298,8 +1237,6 @@
             </h1>
 
 
-
-            <!-- HERO TEXT -->
 
             <p
                 class="hero-text"
