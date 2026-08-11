@@ -1,493 +1,1187 @@
 <!DOCTYPE html>
 
 <html lang="de">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+```
+<title>Schwab Design</title>
 
-    <title>Schwab Design</title>
+<style>
 
+    /* =========================
+       GRUNDLAGEN
+    ========================= */
 
-    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        /* =========================
-           GRUNDLAGEN
-        ========================= */
+    html {
+        scroll-behavior: auto;
+        overflow: hidden;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
 
+        color: #1d1d1f;
+        background: #fff;
 
-        html {
+        overflow: hidden;
+    }
 
-            scroll-behavior: auto;
-
-            overflow: hidden;
-        }
-
-
-        body {
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
-
-            color: #1d1d1f;
-
-            background: #fff;
-
-            overflow: hidden;
-        }
+    :root {
+        --schwab-yellow: #d6b300;
+        --dark-text: #1d1d1f;
+    }
 
 
-        :root {
+    /* =========================
+       NAVIGATION
+    ========================= */
 
-            --schwab-yellow: #d6b300;
+    nav {
+        height: 60px;
 
-            --dark-text: #1d1d1f;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 6%;
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        background:
+            rgba(255,255,255,0.82);
+
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        z-index: 100;
+    }
 
 
+    .logo {
+        font-size: 21px;
+        font-weight: 600;
 
-        /* =========================
-           NAVIGATION
-           APPLE GLOSSY / GLASS
-        ========================= */
+        letter-spacing: -0.6px;
+
+        text-decoration: none;
+
+        color: var(--dark-text);
+
+        cursor: pointer;
+    }
+
+
+    .logo .schwab {
+        color: var(--schwab-yellow);
+    }
+
+
+    .logo .design {
+        color: var(--dark-text);
+    }
+
+
+    nav .nav-links a {
+
+        color: var(--dark-text);
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        margin-left: 30px;
+
+        cursor: pointer;
+    }
+
+
+    /* =========================
+       FULL PAGE CONTAINER
+    ========================= */
+
+    .page-container {
+
+        width: 100vw;
+
+        height: 100vh;
+        height: 100dvh;
+
+        overflow: hidden;
+
+        position: relative;
+    }
+
+
+    /* =========================
+       EINZELNE SEITE
+    ========================= */
+
+    .page {
+
+        width: 100vw;
+
+        height: 100vh;
+        height: 100dvh;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transform:
+            translate3d(0, 100%, 0);
+
+        transition:
+            transform 0.9s
+            cubic-bezier(0.77, 0, 0.175, 1),
+
+            opacity 0.6s ease;
+    }
+
+
+    /*
+     * Aktuelle Seite
+     */
+
+    .page.active {
+
+        opacity: 1;
+
+        pointer-events: auto;
+
+        transform:
+            translate3d(0, 0, 0);
+
+        z-index: 2;
+    }
+
+
+    /*
+     * Vorherige Seite
+     */
+
+    .page.previous {
+
+        opacity: 0;
+
+        transform:
+            translate3d(0, -100%, 0);
+
+        z-index: 1;
+    }
+
+
+    /*
+     * Nächste Seite
+     */
+
+    .page.next {
+
+        opacity: 0;
+
+        transform:
+            translate3d(0, 100%, 0);
+
+        z-index: 1;
+    }
+
+
+    /* =========================
+       STARTSEITE
+    ========================= */
+
+    .hero {
+
+        background: #fff;
+
+        text-align: center;
+
+        padding:
+            80px 6% 50px;
+    }
+
+
+    .hero-content {
+
+        width: 100%;
+
+        max-width: 1200px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .eyebrow {
+
+        font-size:
+            clamp(
+                20px,
+                1.7vw,
+                26px
+            );
+
+        font-weight: 600;
+
+        margin-bottom: 25px;
+
+        letter-spacing: 0.2px;
+
+        opacity: 0;
+
+        transform:
+            translate3d(0, 30px, 0);
+
+        transition:
+            opacity 0.8s ease 0.25s,
+            transform 0.8s
+            cubic-bezier(0.22, 1, 0.36, 1)
+            0.25s;
+    }
+
+
+    .page.active .eyebrow {
+
+        opacity: 1;
+
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+
+    .eyebrow .schwab {
+
+        color:
+            var(--schwab-yellow);
+    }
+
+
+    .eyebrow .design {
+
+        color: #777;
+    }
+
+
+    .hero-title {
+
+        font-size:
+            clamp(
+                70px,
+                10vw,
+                150px
+            );
+
+        line-height: 0.92;
+
+        letter-spacing: -7px;
+
+        font-weight: 700;
+
+        margin-bottom: 38px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .hero-text {
+
+        font-size:
+            clamp(
+                19px,
+                2vw,
+                25px
+            );
+
+        color: #666;
+
+        max-width: 700px;
+
+        margin: auto;
+
+        line-height: 1.4;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    /* =========================
+       ÜBER UNS
+    ========================= */
+
+    .about {
+
+        background: #000;
+
+        color: #fff;
+
+        justify-content: flex-start;
+
+        padding:
+            10vw 8%;
+    }
+
+
+    .about-content {
+
+        width: 100%;
+
+        max-width: 1300px;
+    }
+
+
+    .about-title {
+
+        font-size:
+            clamp(
+                65px,
+                9vw,
+                140px
+            );
+
+        line-height: 0.92;
+
+        letter-spacing: -6px;
+
+        font-weight: 700;
+
+        margin-bottom: 45px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .about-text {
+
+        max-width: 700px;
+
+        font-size:
+            clamp(
+                18px,
+                2vw,
+                25px
+            );
+
+        line-height: 1.45;
+
+        color: #aaa;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    /* =========================
+       KONTAKT
+    ========================= */
+
+    .contact {
+
+        background: #fff;
+
+        justify-content: flex-start;
+
+        padding:
+            10vw 8%;
+    }
+
+
+    .contact-content {
+
+        width: 100%;
+
+        max-width: 1300px;
+    }
+
+
+    .contact-title {
+
+        font-size:
+            clamp(
+                65px,
+                9vw,
+                140px
+            );
+
+        line-height: 0.92;
+
+        letter-spacing: -6px;
+
+        font-weight: 700;
+
+        margin-bottom: 45px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .contact-text {
+
+        max-width: 700px;
+
+        font-size:
+            clamp(
+                18px,
+                2vw,
+                25px
+            );
+
+        line-height: 1.45;
+
+        color: #666;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    /* =========================
+       SEITEN-ANIMATIONEN
+    ========================= */
+
+    .page-content {
+
+        transform:
+            translate3d(0, 60px, 0)
+            scale(0.92);
+
+        opacity: 0;
+
+        transition:
+            transform 1s
+            cubic-bezier(0.22, 1, 0.36, 1),
+
+            opacity 0.7s ease;
+    }
+
+
+    .page.active .page-content {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+
+        opacity: 1;
+    }
+
+
+    /*
+     * Große Überschriften
+     */
+
+    .page-title {
+
+        transform:
+            scale(0.92);
+
+        opacity: 0;
+
+        transition:
+            transform 1.2s
+            cubic-bezier(0.22, 1, 0.36, 1),
+
+            opacity 0.8s ease;
+    }
+
+
+    .page.active .page-title {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
 
         nav {
 
-            height: 60px;
+            height: 58px;
 
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 6%;
-
-            position: fixed;
-
-            top: 0;
-
-            left: 0;
-
-            right: 0;
-
-
-            /*
-             * Transparenter Glas-Look
-             */
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(255,255,255,0.90) 0%,
-                    rgba(255,255,255,0.72) 45%,
-                    rgba(245,245,247,0.62) 100%
-                );
-
-
-            /*
-             * Apple-ähnlicher Blur
-             */
-
-            backdrop-filter:
-                blur(24px)
-                saturate(180%);
-
-            -webkit-backdrop-filter:
-                blur(24px)
-                saturate(180%);
-
-
-            /*
-             * Feiner Glasrand
-             */
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.75);
-
-
-            /*
-             * Dezenter Schatten
-             */
-
-            box-shadow:
-                0 8px 30px
-                rgba(0,0,0,0.07),
-
-                0 2px 8px
-                rgba(0,0,0,0.035),
-
-                inset 0 1px 0
-                rgba(255,255,255,0.95);
-
-
-            z-index: 100;
-
-            overflow: hidden;
-        }
-
-
-
-        /* =========================
-           GLOSSY LICHTREFLEX
-        ========================= */
-
-        nav::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            right: 0;
-
-            height: 45%;
-
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(255,255,255,0.55),
-                    rgba(255,255,255,0)
-                );
-
-
-            pointer-events: none;
-
-            z-index: 0;
-        }
-
-
-
-        /* =========================
-           LOGO
-        ========================= */
-
-        .logo {
-
-            position: relative;
-
-            z-index: 1;
-
-            font-size: 21px;
-
-            font-weight: 600;
-
-            letter-spacing: -0.6px;
-
-            text-decoration: none;
-
-            color: var(--dark-text);
-
-            cursor: pointer;
-
-
-            transition:
-                opacity 0.2s ease,
-                transform 0.2s ease;
-        }
-
-
-        .logo:hover {
-
-            opacity: 0.75;
-
-            transform:
-                scale(0.98);
-        }
-
-
-        .logo .schwab {
-
-            color:
-                var(--schwab-yellow);
-        }
-
-
-        .logo .design {
-
-            color:
-                var(--dark-text);
-        }
-
-
-
-        /* =========================
-           NAV LINKS
-        ========================= */
-
-        nav .nav-links {
-
-            position: relative;
-
-            z-index: 1;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 8px;
+            padding:
+                0 20px;
         }
 
 
         nav .nav-links a {
 
-            position: relative;
+            margin-left: 15px;
 
-            color:
-                rgba(29,29,31,0.82);
-
-            text-decoration: none;
-
-            font-size: 14px;
-
-            font-weight: 500;
-
-            margin-left: 22px;
-
-            padding:
-                8px 13px;
-
-            border-radius: 10px;
-
-            cursor: pointer;
-
-
-            transition:
-                color 0.25s ease,
-                background 0.25s ease,
-                transform 0.2s ease;
+            font-size: 13px;
         }
 
 
-        /*
-         * Hover-Effekt
-         */
+        .logo {
 
-        nav .nav-links a:hover {
-
-            color:
-                #000;
-
-            background:
-                rgba(255,255,255,0.55);
-
-            box-shadow:
-                inset 0 1px 0
-                rgba(255,255,255,0.8);
-
-            transform:
-                translateY(-1px);
+            font-size: 19px;
         }
 
-
-        /*
-         * Klick-Effekt
-         */
-
-        nav .nav-links a:active {
-
-            transform:
-                scale(0.96);
-        }
-
-
-
-        /* =========================
-           FULL PAGE CONTAINER
-        ========================= */
-
-        .page-container {
-
-            width: 100vw;
-
-            height: 100vh;
-
-            height: 100dvh;
-
-            overflow: hidden;
-
-            position: relative;
-        }
-
-
-
-        /* =========================
-           EINZELNE SEITE
-        ========================= */
-
-        .page {
-
-            width: 100vw;
-
-            height: 100vh;
-
-            height: 100dvh;
-
-            min-height: 100vh;
-
-            min-height: 100dvh;
-
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            overflow: hidden;
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            transform:
-                translate3d(0, 100%, 0);
-
-
-            transition:
-
-                transform 0.9s
-                cubic-bezier(
-                    0.77,
-                    0,
-                    0.175,
-                    1
-                ),
-
-                opacity 0.6s ease;
-        }
-
-
-
-        /* =========================
-           AKTUELLE SEITE
-        ========================= */
-
-        .page.active {
-
-            opacity: 1;
-
-            pointer-events: auto;
-
-            transform:
-                translate3d(0, 0, 0);
-
-            z-index: 2;
-        }
-
-
-
-        /* =========================
-           VORHERIGE SEITE
-        ========================= */
-
-        .page.previous {
-
-            opacity: 0;
-
-            transform:
-                translate3d(0, -100%, 0);
-
-            z-index: 1;
-        }
-
-
-
-        /* =========================
-           NÄCHSTE SEITE
-        ========================= */
-
-        .page.next {
-
-            opacity: 0;
-
-            transform:
-                translate3d(0, 100%, 0);
-
-            z-index: 1;
-        }
-
-
-
-        /* =========================
-           STARTSEITE
-        ========================= */
 
         .hero {
 
-            background: #fff;
+            padding:
+                70px 25px 40px;
+        }
 
-            text-align: center;
+
+        .hero-title {
+
+            letter-spacing: -4px;
+        }
+
+
+        .about,
+        .contact {
 
             padding:
-                80px 6% 50px;
+                80px 25px;
         }
 
 
-        .hero-content {
+        .about-title,
+        .contact-title {
 
-            width: 100%;
-
-            max-width: 1200px;
-
-            will-change:
-                transform,
-                opacity;
+            letter-spacing: -4px;
         }
 
 
-        .eyebrow {
+        .about-text,
+        .contact-text {
 
-            font-size:
-                clamp(
-                    20px,
-                    1.7vw,
-                    26px
-                );
+            max-width: 100%;
+        }
 
-            font-weight: 600;
+    }
 
-            margin-bottom: 25px;
 
-            letter-spacing: 0.2px;
+    /* =========================
+       REDUCED MOTION
+    ========================= */
 
-            opacity: 0;
+    @media (prefers-reduced-motion: reduce) {
 
-            transform:
-                translate3d(0, 30px, 0);
-
+        .page {
 
             transition:
+                none;
+        }
 
-                opacity 0.8s ease 0.25s,
+        .page-content,
+        .page-title,
+        .eyebrow {
 
-                transform 0.8s
-                cubic-bezier(
-                    
+            transition:
+                none;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a
+        href="#"
+        class="logo"
+        id="homeButton"
+    >
+
+        <span class="schwab">
+            Schwab
+        </span>
+
+        <span class="design">
+            Design
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a
+            href="#about"
+            data-page="1"
+        >
+            Über uns
+        </a>
+
+        <a
+            href="#contact"
+            data-page="2"
+        >
+            Kontakt
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     SEITEN
+========================= -->
+
+<main class="page-container">
+
+
+    <!-- =====================
+         STARTSEITE
+    ===================== -->
+
+    <section
+        class="page hero active"
+        data-index="0"
+    >
+
+        <div
+            class="hero-content page-content"
+        >
+
+            <div class="eyebrow">
+
+                <span class="schwab">
+                    Schwab
+                </span>
+
+                <span class="design">
+                    Design
+                </span>
+
+            </div>
+
+
+            <h1
+                class="hero-title page-title"
+            >
+
+                Design.<br>
+                Einfach.
+
+            </h1>
+
+
+            <p
+                class="hero-text"
+            >
+
+                Klare Ideen. Starkes Design.
+                Lösungen, die einfach funktionieren.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================
+         ÜBER UNS
+    ===================== -->
+
+    <section
+        class="page about"
+        data-index="1"
+    >
+
+        <div
+            class="about-content page-content"
+        >
+
+            <h2
+                class="about-title page-title"
+            >
+
+                Weniger.<br>
+                Aber besser.
+
+            </h2>
+
+
+            <p
+                class="about-text"
+            >
+
+                Schwab Design steht für
+                minimalistisches, modernes
+                und durchdachtes Design.
+
+                Wir reduzieren auf das Wesentliche
+                und schaffen Lösungen mit Charakter.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================
+         KONTAKT
+    ===================== -->
+
+    <section
+        class="page contact"
+        data-index="2"
+    >
+
+        <div
+            class="contact-content page-content"
+        >
+
+            <h2
+                class="contact-title page-title"
+            >
+
+                Lass uns<br>
+                etwas gestalten.
+
+            </h2>
+
+
+            <p
+                class="contact-text"
+            >
+
+                Du hast eine Idee?
+                Wir machen daraus ein Design.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    const homeButton =
+        document.querySelector("#homeButton");
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
+
+
+    let currentPage = 0;
+
+    let isAnimating = false;
+
+    let touchStartY = 0;
+
+    let touchEndY = 0;
+
+
+    /*
+     * =========================
+     * SEITE WECHSELN
+     * =========================
+     */
+
+    function goToPage(index) {
+
+        if (
+            index < 0 ||
+            index >= pages.length ||
+            index === currentPage ||
+            isAnimating
+        ) {
+            return;
+        }
+
+
+        isAnimating = true;
+
+
+        /*
+         * Aktuelle Seite
+         */
+
+        pages.forEach(
+            (page, i) => {
+
+                page.classList.remove(
+                    "active",
+                    "previous",
+                    "next"
+                );
+
+
+                if (i === index) {
+
+                    page.classList.add(
+                        "active"
+                    );
+
+                }
+
+                else if (i < index) {
+
+                    page.classList.add(
+                        "previous"
+                    );
+
+                }
+
+                else {
+
+                    page.classList.add(
+                        "next"
+                    );
+                }
+
+            }
+        );
+
+
+        currentPage = index;
+
+
+        /*
+         * Nach der Animation
+         * wieder freigeben.
+         */
+
+        setTimeout(
+            () => {
+
+                isAnimating = false;
+
+            },
+            950
+        );
+    }
+
+
+    /*
+     * =========================
+     * MAUSRAD
+     * =========================
+     */
+
+    window.addEventListener(
+        "wheel",
+        event => {
+
+            /*
+             * Während einer Animation
+             * ignorieren wir weitere Eingaben.
+             */
+
+            if (isAnimating) {
+                return;
+            }
+
+
+            /*
+             * Mindestbewegung,
+             * damit kleine Mausradbewegungen
+             * nicht sofort umschalten.
+             */
+
+            if (
+                Math.abs(event.deltaY) < 25
+            ) {
+                return;
+            }
+
+
+            if (event.deltaY > 0) {
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+            else {
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+     * =========================
+     * TOUCH / WISCHEN
+     * =========================
+     */
+
+    window.addEventListener(
+        "touchstart",
+        event => {
+
+            touchStartY =
+                event.changedTouches[0].screenY;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    window.addEventListener(
+        "touchend",
+        event => {
+
+            touchEndY =
+                event.changedTouches[0].screenY;
+
+
+            const difference =
+                touchStartY - touchEndY;
+
+
+            /*
+             * Mindeststrecke für einen Swipe
+             */
+
+            if (
+                Math.abs(difference) < 50
+            ) {
+                return;
+            }
+
+
+            if (difference > 0) {
+
+                /*
+                 * Nach oben wischen
+                 * = nächste Seite
+                 */
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+            else {
+
+                /*
+                 * Nach unten wischen
+                 * = vorherige Seite
+                 */
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+     * =========================
+     * TASTATUR
+     * =========================
+     */
+
+    window.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "ArrowDown") {
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+
+            if (event.key === "ArrowUp") {
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+
+            if (event.key === " ") {
+
+                event.preventDefault();
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+        }
+    );
+
+
+    /*
+     * =========================
+     * NAVIGATION
+     * =========================
+     */
+
+    navLinks.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+
+                    const page =
+                        Number(
+                            link.dataset.page
+                        );
+
+
+                    goToPage(page);
+
+                }
+            );
+
+        }
+    );
+
+
+    /*
+     * =========================
+     * LOGO
+     * =========================
+     */
+
+    homeButton.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            goToPage(0);
+
+        }
+    );
+
+
+    /*
+     * =========================
+     * URL / HASH
+     * =========================
+     */
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            if (
+                window.location.hash ===
+                "#about"
+            ) {
+
+                goToPage(1);
+
+            }
+
+
+            if (
+                window.location.hash ===
+                "#contact"
+            ) {
+
+                goToPage(2);
+
+            }
+
+        }
+    );
+
+</script>
+```
+
+</body>
+</html>
