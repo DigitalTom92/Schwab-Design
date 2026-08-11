@@ -9,6 +9,11 @@
 <title>Schwab Design</title>
 
 <style>
+
+    /* =========================
+       GRUNDLAGEN
+    ========================= */
+
     * {
         margin: 0;
         padding: 0;
@@ -20,26 +25,33 @@
     }
 
     body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                     Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
+
         color: #1d1d1f;
         background: #fff;
+
         overflow-x: hidden;
     }
 
-    /* =========================
-       FARBEN
-    ========================= */
-
     :root {
         --schwab-yellow: #d6b300;
+        --dark-text: #1d1d1f;
     }
+
 
     /* =========================
        NAVIGATION
     ========================= */
 
     nav {
+
         height: 60px;
 
         display: flex;
@@ -54,32 +66,42 @@
         left: 0;
         right: 0;
 
-        background: rgba(255,255,255,0.82);
+        background:
+            rgba(255,255,255,0.82);
 
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
 
         z-index: 100;
-
-        transition: background 0.4s ease;
     }
+
 
     .logo {
-        font-size: 20px;
+
+        font-size: 21px;
         font-weight: 600;
-        letter-spacing: -0.5px;
+
+        letter-spacing: -0.6px;
+
+        text-decoration: none;
+
+        color: var(--dark-text);
     }
+
 
     .logo .schwab {
         color: var(--schwab-yellow);
     }
 
+
     .logo .design {
-        color: #1d1d1f;
+        color: var(--dark-text);
     }
 
-    nav a {
-        color: #1d1d1f;
+
+    nav a:not(.logo) {
+
+        color: var(--dark-text);
 
         text-decoration: none;
 
@@ -88,134 +110,303 @@
         margin-left: 30px;
     }
 
+
     /* =========================
-       HERO
+       ALLE SEITEN
     ========================= */
 
-    .hero {
+    .page {
+
         height: 100vh;
-        min-height: 700px;
+
+        min-height: 600px;
+
+        width: 100%;
 
         display: flex;
+
         align-items: center;
         justify-content: center;
-
-        text-align: center;
-
-        padding: 100px 20px 60px;
 
         position: relative;
 
         overflow: hidden;
     }
 
-    .hero-content {
-        width: 100%;
 
-        max-width: 1100px;
+    /* =========================
+       STARTSEITE
+    ========================= */
 
-        will-change: transform, opacity;
+    .hero {
+
+        background: #fff;
+
+        text-align: center;
+
+        padding:
+            80px 6%
+            50px;
     }
 
+
+    .hero-content {
+
+        width: 100%;
+
+        max-width: 1200px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
     .eyebrow {
-        font-size: 24px;
+
+        font-size: clamp(
+            20px,
+            1.7vw,
+            26px
+        );
 
         font-weight: 600;
 
-        margin-bottom: 24px;
+        margin-bottom: 25px;
 
         letter-spacing: 0.2px;
 
-        will-change: transform, opacity;
+        will-change:
+            transform,
+            opacity;
     }
+
 
     .eyebrow .schwab {
-        color: var(--schwab-yellow);
+
+        color:
+            var(--schwab-yellow);
     }
 
+
     .eyebrow .design {
+
         color: #777;
     }
 
-    h1 {
-        font-size: clamp(60px, 10vw, 140px);
 
-        line-height: 0.95;
+    .hero-title {
 
-        letter-spacing: -6px;
+        font-size:
+            clamp(
+                70px,
+                10vw,
+                150px
+            );
+
+        line-height: 0.92;
+
+        letter-spacing: -7px;
 
         font-weight: 700;
 
-        margin-bottom: 35px;
+        margin-bottom: 38px;
 
-        will-change: transform, opacity;
+        will-change:
+            transform,
+            opacity;
     }
 
-    .hero p {
-        font-size: 24px;
+
+    .hero-text {
+
+        font-size:
+            clamp(
+                19px,
+                2vw,
+                25px
+            );
 
         color: #666;
 
-        max-width: 650px;
+        max-width: 700px;
 
         margin: auto;
 
         line-height: 1.4;
 
-        will-change: transform, opacity;
+        will-change:
+            transform,
+            opacity;
     }
+
 
     /* =========================
-       SECTIONS
+       ÜBER UNS
     ========================= */
 
-    section {
-        padding: 140px 8%;
-    }
+    .about {
 
-    .dark {
         background: #000;
 
-        color: white;
+        color: #fff;
+
+        justify-content: flex-start;
+
+        padding:
+            10vw 8%;
     }
 
-    .dark p {
+
+    .about-content {
+
+        width: 100%;
+
+        max-width: 1300px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .about-title {
+
+        font-size:
+            clamp(
+                65px,
+                9vw,
+                140px
+            );
+
+        line-height: 0.92;
+
+        letter-spacing: -6px;
+
+        font-weight: 700;
+
+        margin-bottom: 45px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .about-text {
+
+        max-width: 700px;
+
+        font-size:
+            clamp(
+                18px,
+                2vw,
+                25px
+            );
+
+        line-height: 1.45;
+
         color: #aaa;
+
+        will-change:
+            transform,
+            opacity;
     }
 
-    .section-title {
-        font-size: clamp(45px, 7vw, 90px);
 
-        letter-spacing: -4px;
+    /* =========================
+       KONTAKT
+    ========================= */
 
-        line-height: 1;
+    .contact {
 
-        margin-bottom: 30px;
+        background: #fff;
+
+        justify-content: flex-start;
+
+        padding:
+            10vw 8%;
     }
 
-    .section-text {
-        max-width: 650px;
 
-        font-size: 22px;
+    .contact-content {
 
-        line-height: 1.5;
+        width: 100%;
+
+        max-width: 1300px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .contact-title {
+
+        font-size:
+            clamp(
+                65px,
+                9vw,
+                140px
+            );
+
+        line-height: 0.92;
+
+        letter-spacing: -6px;
+
+        font-weight: 700;
+
+        margin-bottom: 45px;
+
+        will-change:
+            transform,
+            opacity;
+    }
+
+
+    .contact-text {
+
+        max-width: 700px;
+
+        font-size:
+            clamp(
+                18px,
+                2vw,
+                25px
+            );
+
+        line-height: 1.45;
 
         color: #666;
+
+        will-change:
+            transform,
+            opacity;
     }
+
 
     /* =========================
        FOOTER
     ========================= */
 
     footer {
-        padding: 50px 8%;
 
-        background: #f5f5f7;
+        min-height: 80px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 30px 8%;
+
+        background:
+            #f5f5f7;
 
         color: #777;
 
         font-size: 14px;
     }
+
 
     /* =========================
        MOBILE
@@ -224,39 +415,63 @@
     @media (max-width: 700px) {
 
         nav {
-            padding: 0 20px;
+
+            padding:
+                0 20px;
         }
 
-        nav a {
+
+        nav a:not(.logo) {
+
             margin-left: 15px;
 
             font-size: 13px;
         }
 
+
         .logo {
+
             font-size: 19px;
         }
 
-        .eyebrow {
-            font-size: 20px;
+
+        .page {
+
+            min-height: 100svh;
+
+            height: 100svh;
         }
 
-        h1 {
-            letter-spacing: -3px;
+
+        .hero {
+
+            padding:
+                80px 25px 40px;
         }
 
-        .hero p {
-            font-size: 20px;
+
+        .hero-title {
+
+            letter-spacing: -4px;
         }
 
-        section {
-            padding: 100px 25px;
+
+        .about,
+        .contact {
+
+            padding:
+                100px 25px;
         }
 
-        .section-title {
-            letter-spacing: -2px;
+
+        .about-title,
+        .contact-title {
+
+            letter-spacing: -4px;
         }
+
     }
+
 
     /* =========================
        REDUCED MOTION
@@ -265,17 +480,23 @@
     @media (prefers-reduced-motion: reduce) {
 
         html {
-            scroll-behavior: auto;
+
+            scroll-behavior:
+                auto;
         }
 
         *,
         *::before,
         *::after {
-            animation-duration: 0.01ms !important;
 
-            animation-iteration-count: 1 !important;
+            animation-duration:
+                0.01ms !important;
 
-            transition-duration: 0.01ms !important;
+            animation-iteration-count:
+                1 !important;
+
+            transition-duration:
+                0.01ms !important;
         }
     }
 
@@ -295,105 +516,174 @@
 
     <a href="#" class="logo">
 
-    <span class="schwab">Schwab</span>
-    <span class="design"> Design</span>
+        <span class="schwab">
+            Schwab
+        </span>
 
-</a>
+        <span class="design">
+            Design
+        </span>
+
+    </a>
+
 
     <div>
 
-        <a href="#about">Über uns</a>
-        <a href="#contact">Kontakt</a>
+        <a href="#about">
+            Über uns
+        </a>
+
+        <a href="#contact">
+            Kontakt
+        </a>
 
     </div>
 
 </nav>
 
 
+
 <!-- =========================
-     HERO
+     STARTSEITE
 ========================= -->
 
-<main>
+<section
+    class="page hero"
+    id="home"
+>
 
-    <section class="hero">
+    <div
+        class="hero-content"
+        id="heroContent"
+    >
 
-        <div class="hero-content" id="heroContent">
+        <div
+            class="eyebrow"
+            id="heroEyebrow"
+        >
 
-            <div class="eyebrow" id="eyebrow">
+            <span class="schwab">
+                Schwab
+            </span>
 
-                <span class="schwab">Schwab</span>
-                <span class="design"> Design</span>
-
-            </div>
-
-            <h1 id="heroTitle">
-
-                Design.<br>
-                Einfach.
-
-            </h1>
-
-            <p id="heroText">
-
-                Klare Ideen. Starkes Design.
-                Lösungen, die einfach funktionieren.
-
-            </p>
+            <span class="design">
+                Design
+            </span>
 
         </div>
 
-    </section>
+
+        <h1
+            class="hero-title"
+            id="heroTitle"
+        >
+
+            Design.<br>
+            Einfach.
+
+        </h1>
 
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
+        <p
+            class="hero-text"
+            id="heroText"
+        >
 
-    <section id="about" class="dark">
+            Klare Ideen. Starkes Design.
+            Lösungen, die einfach funktionieren.
 
-        <h2 class="section-title">
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ÜBER UNS
+========================= -->
+
+<section
+    class="page about"
+    id="about"
+>
+
+    <div
+        class="about-content"
+        id="aboutContent"
+    >
+
+        <h2
+            class="about-title"
+            id="aboutTitle"
+        >
 
             Weniger.<br>
             Aber besser.
 
         </h2>
 
-        <p class="section-text">
 
-            Schwab Design steht für minimalistisches,
-            modernes und durchdachtes Design.
-            Wir reduzieren auf das Wesentliche und
-            schaffen Lösungen mit Charakter.
+        <p
+            class="about-text"
+            id="aboutText"
+        >
+
+            Schwab Design steht für
+            minimalistisches, modernes
+            und durchdachtes Design.
+
+            Wir reduzieren auf das Wesentliche
+            und schaffen Lösungen mit Charakter.
 
         </p>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
 
-    <section id="contact">
+<!-- =========================
+     KONTAKT
+========================= -->
 
-        <h2 class="section-title">
+<section
+    class="page contact"
+    id="contact"
+>
+
+    <div
+        class="contact-content"
+        id="contactContent"
+    >
+
+        <h2
+            class="contact-title"
+            id="contactTitle"
+        >
 
             Lass uns<br>
             etwas gestalten.
 
         </h2>
 
-        <p class="section-text">
+
+        <p
+            class="contact-text"
+            id="contactText"
+        >
 
             Du hast eine Idee?
             Wir machen daraus ein Design.
 
         </p>
 
-    </section>
+    </div>
 
-</main>
+</section>
+
 
 
 <!-- =========================
@@ -407,179 +697,294 @@
 </footer>
 
 
+
 <!-- =========================
      SCROLL ANIMATION
 ========================= -->
 
 <script>
 
-    const hero =
-        document.querySelector(".hero");
+    const sections =
+        document.querySelectorAll(".page");
 
-    const heroContent =
-        document.querySelector("#heroContent");
 
-    const heroTitle =
-        document.querySelector("#heroTitle");
+    /*
+     * Alle Elemente,
+     * die animiert werden.
+     */
 
-    const heroText =
-        document.querySelector("#heroText");
+    const animations = [
 
-    const eyebrow =
-        document.querySelector("#eyebrow");
+        {
+            section:
+                document.querySelector("#home"),
+
+            title:
+                document.querySelector("#heroTitle"),
+
+            content:
+                document.querySelector("#heroContent"),
+
+            eyebrow:
+                document.querySelector("#heroEyebrow"),
+
+            text:
+                document.querySelector("#heroText")
+        },
+
+        {
+            section:
+                document.querySelector("#about"),
+
+            title:
+                document.querySelector("#aboutTitle"),
+
+            content:
+                document.querySelector("#aboutContent"),
+
+            text:
+                document.querySelector("#aboutText")
+        },
+
+        {
+            section:
+                document.querySelector("#contact"),
+
+            title:
+                document.querySelector("#contactTitle"),
+
+            content:
+                document.querySelector("#contactContent"),
+
+            text:
+                document.querySelector("#contactText")
+        }
+
+    ];
+
 
     let ticking = false;
 
 
-    function updateHero() {
+    function updateAnimations() {
 
-        const scrollY =
-            window.scrollY;
-
-        const heroHeight =
-            hero.offsetHeight;
+        const viewportHeight =
+            window.innerHeight;
 
 
-        /*
-         * Scroll-Fortschritt
-         */
+        animations.forEach(
+            animation => {
 
-        let progress =
-            scrollY / heroHeight;
-
-        progress =
-            Math.max(
-                0,
-                Math.min(progress, 1)
-            );
+                const rect =
+                    animation.section
+                    .getBoundingClientRect();
 
 
-        /*
-         * GROßER SCHRIFTZUG
-         *
-         * Bleibt komplett scharf.
-         */
+                /*
+                 * Position der Seite
+                 *
+                 * 0 = perfekt im Bildschirm
+                 * negativ = bereits darüber
+                 * positiv = kommt von unten
+                 */
 
-        const scale =
-            1 + progress * 1.25;
-
-        const titleMove =
-            progress * -110;
-
-
-        /*
-         * HERO BEWEGUNG
-         */
-
-        const contentMove =
-            progress * -45;
+                const distance =
+                    rect.top;
 
 
-        /*
-         * TITEL SICHTBARKEIT
-         */
+                /*
+                 * Fortschritt der Animation
+                 */
 
-        let titleOpacity = 1;
-
-        if (progress > 0.55) {
-
-            titleOpacity =
-                1 -
-                ((progress - 0.55) / 0.45);
-
-        }
-
-        titleOpacity =
-            Math.max(
-                0,
-                titleOpacity
-            );
+                let progress =
+                    -distance /
+                    viewportHeight;
 
 
-        /*
-         * SCHWAB DESIGN
-         */
-
-        let eyebrowOpacity =
-            1 - progress * 2.2;
-
-        eyebrowOpacity =
-            Math.max(
-                0,
-                eyebrowOpacity
-            );
+                progress =
+                    Math.max(
+                        0,
+                        Math.min(
+                            progress,
+                            1
+                        )
+                    );
 
 
-        /*
-         * BESCHREIBUNG
-         */
+                /*
+                 * Nur animieren,
+                 * wenn die Seite in der Nähe
+                 * des Bildschirms ist.
+                 */
 
-        let textOpacity =
-            1 - progress * 2;
+                if (
+                    rect.bottom < 0 ||
+                    rect.top > viewportHeight
+                ) {
 
-        textOpacity =
-            Math.max(
-                0,
-                textOpacity
-            );
-
-
-        /*
-         * HERO
-         */
-
-        heroContent.style.transform =
-            `translate3d(
-                0,
-                ${contentMove}px,
-                0
-            )`;
+                    return;
+                }
 
 
-        /*
-         * TITEL
-         */
+                /*
+                 * ZOOM
+                 *
+                 * Die große Schrift
+                 * kommt dem Betrachter entgegen.
+                 */
 
-        heroTitle.style.transform =
-            `translate3d(
-                0,
-                ${titleMove}px,
-                0
-            )
-            scale(${scale})`;
-
-        heroTitle.style.opacity =
-            titleOpacity;
+                const scale =
+                    1 +
+                    progress * 1.15;
 
 
-        /*
-         * SCHWAB DESIGN
-         */
+                /*
+                 * Bewegung nach oben
+                 */
 
-        eyebrow.style.transform =
-            `translate3d(
-                0,
-                ${progress * -70}px,
-                0
-            )`;
-
-        eyebrow.style.opacity =
-            eyebrowOpacity;
+                const titleMove =
+                    progress * -100;
 
 
-        /*
-         * BESCHREIBUNG
-         */
+                /*
+                 * Der Inhalt bewegt sich
+                 * leicht mit.
+                 */
 
-        heroText.style.transform =
-            `translate3d(
-                0,
-                ${progress * -40}px,
-                0
-            )`;
+                const contentMove =
+                    progress * -35;
 
-        heroText.style.opacity =
-            textOpacity;
+
+                /*
+                 * Transparenz
+                 *
+                 * Erst spät ausblenden.
+                 */
+
+                let opacity = 1;
+
+
+                if (progress > 0.65) {
+
+                    opacity =
+                        1 -
+                        (
+                            (progress - 0.65)
+                            / 0.35
+                        );
+                }
+
+
+                opacity =
+                    Math.max(
+                        0,
+                        opacity
+                    );
+
+
+                /*
+                 * GROSSER TITEL
+                 *
+                 * Kein Blur!
+                 * Dadurch bleibt er scharf.
+                 */
+
+                animation.title.style.transform =
+                    `
+                    translate3d(
+                        0,
+                        ${titleMove}px,
+                        0
+                    )
+                    scale(${scale})
+                    `;
+
+
+                animation.title.style.opacity =
+                    opacity;
+
+
+                /*
+                 * Gesamter Inhalt
+                 */
+
+                animation.content.style.transform =
+                    `
+                    translate3d(
+                        0,
+                        ${contentMove}px,
+                        0
+                    )
+                    `;
+
+
+                /*
+                 * Zusatztexte
+                 */
+
+                if (animation.text) {
+
+                    let textOpacity =
+                        1 -
+                        progress * 1.8;
+
+
+                    textOpacity =
+                        Math.max(
+                            0,
+                            textOpacity
+                        );
+
+
+                    animation.text.style.opacity =
+                        textOpacity;
+
+
+                    animation.text.style.transform =
+                        `
+                        translate3d(
+                            0,
+                            ${progress * -35}px,
+                            0
+                        )
+                        `;
+                }
+
+
+                /*
+                 * EYEBROW
+                 */
+
+                if (animation.eyebrow) {
+
+                    let eyebrowOpacity =
+                        1 -
+                        progress * 2;
+
+
+                    eyebrowOpacity =
+                        Math.max(
+                            0,
+                            eyebrowOpacity
+                        );
+
+
+                    animation.eyebrow.style.opacity =
+                        eyebrowOpacity;
+
+
+                    animation.eyebrow.style.transform =
+                        `
+                        translate3d(
+                            0,
+                            ${progress * -55}px,
+                            0
+                        )
+                        `;
+                }
+
+            }
+        );
 
 
         ticking = false;
@@ -587,7 +992,10 @@
 
 
     /*
-     * Flüssige Animation
+     * requestAnimationFrame
+     *
+     * Sorgt für möglichst
+     * flüssige Animationen.
      */
 
     function requestUpdate() {
@@ -595,7 +1003,7 @@
         if (!ticking) {
 
             window.requestAnimationFrame(
-                updateHero
+                updateAnimations
             );
 
             ticking = true;
@@ -606,7 +1014,9 @@
     window.addEventListener(
         "scroll",
         requestUpdate,
-        { passive: true }
+        {
+            passive: true
+        }
     );
 
 
@@ -616,7 +1026,7 @@
     );
 
 
-    updateHero();
+    updateAnimations();
 
 </script>
 ```
