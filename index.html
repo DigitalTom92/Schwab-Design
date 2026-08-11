@@ -71,7 +71,6 @@
 
     /* =====================================================
        NAVIGATION
-       APPLE STYLE GLOSSY
     ===================================================== */
 
     nav {
@@ -103,23 +102,17 @@
                 rgba(248,248,250,0.74) 100%
             );
 
-
         backdrop-filter:
-
             blur(24px)
             saturate(180%);
 
         -webkit-backdrop-filter:
-
             blur(24px)
             saturate(180%);
 
-
         border-bottom:
-
             1px solid
             rgba(0,0,0,0.08);
-
 
         box-shadow:
 
@@ -131,7 +124,6 @@
 
             inset 0 1px 0
             rgba(255,255,255,0.95);
-
 
         overflow: hidden;
 
@@ -158,7 +150,6 @@
 
         height: 42%;
 
-
         background:
 
             linear-gradient(
@@ -166,7 +157,6 @@
                 rgba(255,255,255,0.72),
                 rgba(255,255,255,0)
             );
-
 
         pointer-events: none;
 
@@ -176,7 +166,7 @@
 
 
     /* =====================================================
-       FORMA LOGO
+       LOGO
     ===================================================== */
 
     .logo {
@@ -212,7 +202,7 @@
 
 
     /* =====================================================
-       LOGO CONTAINER
+       FORMA LOGO
     ===================================================== */
 
     .forma-logo {
@@ -243,37 +233,7 @@
 
         white-space: nowrap;
 
-        padding-top: 5px;
-    }
-
-
-
-    /* =====================================================
-       FEINE DURCHGEHENDE LINIE
-       F → ÜBER O → R → M → A
-    ===================================================== */
-
-    .forma-logo::before {
-
-        content: "";
-
-        position: absolute;
-
-        left: 0;
-
-        right: 0;
-
-        top: 0;
-
-        height: 1.5px;
-
-        background:
-            var(--dark-text);
-
-        transform-origin:
-            left center;
-
-        opacity: 0.95;
+        padding-top: 0;
     }
 
 
@@ -290,13 +250,60 @@
             var(--dark-text);
 
         font-weight: 500;
+
+        position: relative;
+    }
+
+
+    .forma-f {
+
+        position: relative;
+
+        display: inline-block;
+
+        color:
+            var(--dark-text);
+
+        font-weight: 500;
+
+        margin-right: 0;
+    }
+
+
+
+    /* =====================================================
+       VERLÄNGERTER OBERER F-BALKEN
+       
+       Der Balken beginnt am F und läuft
+       exakt auf Höhe des oberen F-Strichs
+       bis über das A.
+    ===================================================== */
+
+    .forma-f::after {
+
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+
+        top: 0.08em;
+
+        width: 4.95em;
+
+        height: 1.5px;
+
+        background:
+            var(--dark-text);
+
+        pointer-events: none;
     }
 
 
 
     /* =====================================================
        O
-       ROT AUSGEFÜLLT
+       ROT
     ===================================================== */
 
     .forma-o {
@@ -315,7 +322,6 @@
 
     /* =====================================================
        PUNKT
-       ROT
     ===================================================== */
 
     .forma-dot {
@@ -373,7 +379,6 @@
         border-radius: 10px;
 
         cursor: pointer;
-
 
         transition:
 
@@ -466,7 +471,6 @@
 
         transform:
             translate3d(0,100%,0);
-
 
         transition:
 
@@ -566,7 +570,7 @@
 
 
     /* =====================================================
-       FORMA AUF DER STARTSEITE
+       FILIGRANES FORMA AUF DER STARTSEITE
     ===================================================== */
 
     .eyebrow {
@@ -616,7 +620,7 @@
 
 
     /* =====================================================
-       GROSSE FILIGRANE FORMA WORTMARKE
+       GROSSE FORMA WORTMARKE
     ===================================================== */
 
     .eyebrow .forma-logo {
@@ -640,27 +644,6 @@
 
         line-height:
             1;
-
-        padding-top:
-            9px;
-    }
-
-
-
-    /* =====================================================
-       LINIE DER STARTSEITE
-    ===================================================== */
-
-    .eyebrow .forma-logo::before {
-
-        height:
-            1.5px;
-
-        background:
-            var(--dark-text);
-
-        opacity:
-            0.9;
     }
 
 
@@ -668,6 +651,30 @@
 
         font-weight:
             300;
+    }
+
+
+    .eyebrow .forma-f {
+
+        font-weight:
+            300;
+    }
+
+
+    /* =====================================================
+       FEINERER F-BALKEN AUF STARTSEITE
+    ===================================================== */
+
+    .eyebrow .forma-f::after {
+
+        height:
+            1.25px;
+
+        top:
+            0.08em;
+
+        width:
+            4.95em;
     }
 
 
@@ -939,7 +946,6 @@
         opacity:
             0;
 
-
         transition:
 
             transform 1s
@@ -977,7 +983,6 @@
 
         opacity:
             0;
-
 
         transition:
 
@@ -1021,6 +1026,13 @@
         }
 
 
+        .forma-f::after {
+
+            width:
+                4.7em;
+        }
+
+
         .eyebrow {
 
             margin-bottom:
@@ -1035,9 +1047,16 @@
 
             letter-spacing:
                 4px;
+        }
 
-            padding-top:
-                7px;
+
+        .eyebrow .forma-f::after {
+
+            width:
+                4.75em;
+
+            height:
+                1.2px;
         }
 
 
@@ -1144,7 +1163,7 @@
         >
 
             <span
-                class="forma-letter"
+                class="forma-f"
             >
                 F
             </span>
@@ -1247,7 +1266,7 @@
                 >
 
                     <span
-                        class="forma-letter"
+                        class="forma-f"
                     >
                         F
                     </span>
