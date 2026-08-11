@@ -28,22 +28,34 @@
     }
 
     /* =========================
+       FARBEN
+    ========================= */
+
+    :root {
+        --schwab-yellow: #d6b300;
+    }
+
+    /* =========================
        NAVIGATION
     ========================= */
 
     nav {
         height: 60px;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         padding: 0 6%;
 
         position: fixed;
+
         top: 0;
         left: 0;
         right: 0;
 
         background: rgba(255,255,255,0.82);
+
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
 
@@ -58,10 +70,21 @@
         letter-spacing: -0.5px;
     }
 
+    .logo .schwab {
+        color: var(--schwab-yellow);
+    }
+
+    .logo .design {
+        color: #1d1d1f;
+    }
+
     nav a {
         color: #1d1d1f;
+
         text-decoration: none;
+
         font-size: 14px;
+
         margin-left: 30px;
     }
 
@@ -82,25 +105,36 @@
         padding: 100px 20px 60px;
 
         position: relative;
+
         overflow: hidden;
     }
 
     .hero-content {
         width: 100%;
+
         max-width: 1100px;
 
-        will-change: transform, opacity, filter;
+        will-change: transform, opacity;
     }
 
     .eyebrow {
-        font-size: 18px;
-        color: #777;
+        font-size: 24px;
 
-        margin-bottom: 20px;
+        font-weight: 600;
 
-        letter-spacing: 1px;
+        margin-bottom: 24px;
+
+        letter-spacing: 0.2px;
 
         will-change: transform, opacity;
+    }
+
+    .eyebrow .schwab {
+        color: var(--schwab-yellow);
+    }
+
+    .eyebrow .design {
+        color: #777;
     }
 
     h1 {
@@ -114,7 +148,7 @@
 
         margin-bottom: 35px;
 
-        will-change: transform, opacity, filter;
+        will-change: transform, opacity;
     }
 
     .hero p {
@@ -141,6 +175,7 @@
 
     .dark {
         background: #000;
+
         color: white;
     }
 
@@ -194,7 +229,16 @@
 
         nav a {
             margin-left: 15px;
+
             font-size: 13px;
+        }
+
+        .logo {
+            font-size: 19px;
+        }
+
+        .eyebrow {
+            font-size: 20px;
         }
 
         h1 {
@@ -228,7 +272,9 @@
         *::before,
         *::after {
             animation-duration: 0.01ms !important;
+
             animation-iteration-count: 1 !important;
+
             transition-duration: 0.01ms !important;
         }
     }
@@ -241,23 +287,32 @@
 <body>
 
 ```
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
     <div class="logo">
-        Schwab Design
+
+        <span class="schwab">Schwab</span>
+        <span class="design"> Design</span>
+
     </div>
 
     <div>
+
         <a href="#about">Über uns</a>
         <a href="#contact">Kontakt</a>
+
     </div>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <main>
 
@@ -266,17 +321,24 @@
         <div class="hero-content" id="heroContent">
 
             <div class="eyebrow" id="eyebrow">
-                Schwab Design
+
+                <span class="schwab">Schwab</span>
+                <span class="design"> Design</span>
+
             </div>
 
             <h1 id="heroTitle">
+
                 Design.<br>
                 Einfach.
+
             </h1>
 
             <p id="heroText">
+
                 Klare Ideen. Starkes Design.
                 Lösungen, die einfach funktionieren.
+
             </p>
 
         </div>
@@ -284,37 +346,49 @@
     </section>
 
 
-    <!-- ABOUT -->
+    <!-- =========================
+         ABOUT
+    ========================= -->
 
     <section id="about" class="dark">
 
         <h2 class="section-title">
+
             Weniger.<br>
             Aber besser.
+
         </h2>
 
         <p class="section-text">
+
             Schwab Design steht für minimalistisches,
             modernes und durchdachtes Design.
             Wir reduzieren auf das Wesentliche und
             schaffen Lösungen mit Charakter.
+
         </p>
 
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- =========================
+         CONTACT
+    ========================= -->
 
     <section id="contact">
 
         <h2 class="section-title">
+
             Lass uns<br>
             etwas gestalten.
+
         </h2>
 
         <p class="section-text">
+
             Du hast eine Idee?
             Wir machen daraus ein Design.
+
         </p>
 
     </section>
@@ -322,8 +396,14 @@
 </main>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
+
     © 2026 Schwab Design
+
 </footer>
 
 
@@ -333,112 +413,158 @@
 
 <script>
 
-    const hero = document.querySelector(".hero");
-    const heroContent = document.querySelector("#heroContent");
-    const heroTitle = document.querySelector("#heroTitle");
-    const heroText = document.querySelector("#heroText");
-    const eyebrow = document.querySelector("#eyebrow");
+    const hero =
+        document.querySelector(".hero");
+
+    const heroContent =
+        document.querySelector("#heroContent");
+
+    const heroTitle =
+        document.querySelector("#heroTitle");
+
+    const heroText =
+        document.querySelector("#heroText");
+
+    const eyebrow =
+        document.querySelector("#eyebrow");
 
     let ticking = false;
 
+
     function updateHero() {
 
-        const scrollY = window.scrollY;
-        const heroHeight = hero.offsetHeight;
+        const scrollY =
+            window.scrollY;
+
+        const heroHeight =
+            hero.offsetHeight;
+
 
         /*
          * Scroll-Fortschritt
-         * 0 = ganz oben
-         * 1 = Hero verlassen
          */
 
-        let progress = scrollY / heroHeight;
+        let progress =
+            scrollY / heroHeight;
 
-        progress = Math.max(0, Math.min(progress, 1));
+        progress =
+            Math.max(
+                0,
+                Math.min(progress, 1)
+            );
 
 
         /*
-         * DER GROSSE SCHRIFTZUG
+         * GROßER SCHRIFTZUG
          *
-         * Wird deutlich größer und bewegt sich
-         * leicht nach oben.
-         *
-         * Wichtig:
-         * Kein Blur und keine Filter.
-         * Dadurch bleibt die Schrift gestochen scharf.
+         * Bleibt komplett scharf.
          */
 
-        const scale = 1 + progress * 1.25;
+        const scale =
+            1 + progress * 1.25;
 
-        const titleMove = progress * -110;
+        const titleMove =
+            progress * -110;
 
 
         /*
-         * Der komplette Hero bewegt sich
-         * etwas nach oben.
+         * HERO BEWEGUNG
          */
 
-        const contentMove = progress * -45;
+        const contentMove =
+            progress * -45;
 
 
         /*
-         * Der große Schriftzug bleibt lange sichtbar
-         * und verschwindet erst gegen Ende.
+         * TITEL SICHTBARKEIT
          */
 
         let titleOpacity = 1;
 
         if (progress > 0.55) {
-            titleOpacity = 1 - ((progress - 0.55) / 0.45);
+
+            titleOpacity =
+                1 -
+                ((progress - 0.55) / 0.45);
+
         }
 
-        titleOpacity = Math.max(0, titleOpacity);
+        titleOpacity =
+            Math.max(
+                0,
+                titleOpacity
+            );
 
 
         /*
-         * Kleiner Untertitel verschwindet früher.
+         * SCHWAB DESIGN
          */
 
-        let eyebrowOpacity = 1 - progress * 2.2;
+        let eyebrowOpacity =
+            1 - progress * 2.2;
 
-        eyebrowOpacity = Math.max(0, eyebrowOpacity);
+        eyebrowOpacity =
+            Math.max(
+                0,
+                eyebrowOpacity
+            );
 
 
         /*
-         * Beschreibung verschwindet ebenfalls früher.
+         * BESCHREIBUNG
          */
 
-        let textOpacity = 1 - progress * 2;
+        let textOpacity =
+            1 - progress * 2;
 
-        textOpacity = Math.max(0, textOpacity);
+        textOpacity =
+            Math.max(
+                0,
+                textOpacity
+            );
 
 
         /*
-         * HERO CONTENT
+         * HERO
          */
 
         heroContent.style.transform =
-            `translate3d(0, ${contentMove}px, 0)`;
+            `translate3d(
+                0,
+                ${contentMove}px,
+                0
+            )`;
 
 
         /*
-         * HAUPTSCHRIFT
+         * TITEL
          */
 
         heroTitle.style.transform =
-            `translate3d(0, ${titleMove}px, 0) scale(${scale})`;
+            `translate3d(
+                0,
+                ${titleMove}px,
+                0
+            )
+            scale(${scale})`;
 
-        heroTitle.style.opacity = titleOpacity;
+        heroTitle.style.opacity =
+            titleOpacity;
 
 
         /*
-         * KLEINER SCHRIFTZUG
+         * SCHWAB DESIGN
          */
 
         eyebrow.style.transform =
-            `translate3d(0, ${progress * -70}px, 0)`;
+            `translate3d(
+                0,
+                ${progress * -70}px,
+                0
+            )`;
 
-        eyebrow.style.opacity = eyebrowOpacity;
+        eyebrow.style.opacity =
+            eyebrowOpacity;
 
 
         /*
@@ -446,9 +572,14 @@
          */
 
         heroText.style.transform =
-            `translate3d(0, ${progress * -40}px, 0)`;
+            `translate3d(
+                0,
+                ${progress * -40}px,
+                0
+            )`;
 
-        heroText.style.opacity = textOpacity;
+        heroText.style.opacity =
+            textOpacity;
 
 
         ticking = false;
@@ -456,16 +587,16 @@
 
 
     /*
-     * requestAnimationFrame sorgt dafür,
-     * dass die Animation möglichst flüssig
-     * mit dem Browser-Rendering läuft.
+     * Flüssige Animation
      */
 
     function requestUpdate() {
 
         if (!ticking) {
 
-            window.requestAnimationFrame(updateHero);
+            window.requestAnimationFrame(
+                updateHero
+            );
 
             ticking = true;
         }
@@ -488,7 +619,6 @@
     updateHero();
 
 </script>
-
 ```
 
 </body>
