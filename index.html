@@ -1039,6 +1039,10 @@ nav .nav-links a:active {
 
     padding:
         0;
+
+    will-change:
+        transform,
+        opacity;
 }
 
 
@@ -1073,6 +1077,10 @@ nav .nav-links a:active {
 
         0 10px 22px
         rgba(255,255,255,0.045);
+
+    will-change:
+        transform,
+        opacity;
 }
 
 
@@ -1097,26 +1105,75 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   ROTES O UND PUNKT IM ÜBER-UNS-TEXT
+   ROTES O UND ROTER PUNKT IM ABOUT-TEXT
 ===================================================== */
 
-.about-text .red-o {
+.about-text .forma-o {
 
     color:
         var(--forma-red);
 
     font-weight:
-        inherit;
+        500;
 }
 
 
-.about-text .red-dot {
+.about-text .forma-dot {
 
-    color:
+    display:
+        inline-block;
+
+    width:
+        5px;
+
+    height:
+        5px;
+
+    margin-left:
+        2px;
+
+    margin-bottom:
+        2px;
+
+    border-radius:
+        50%;
+
+    background:
         var(--forma-red);
+}
 
-    font-weight:
-        inherit;
+
+/* =====================================================
+   ABOUT EXIT / ZOOM EFFEKT
+   GLEICHER STIL WIE STARTSEITE
+===================================================== */
+
+.about.leaving .about-content {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
 }
 
 
@@ -1224,7 +1281,7 @@ nav .nav-links a:active {
         5px;
 
     left:
-        0;
+        9px;
 
     width:
         24px;
@@ -1371,6 +1428,10 @@ nav .nav-links a:active {
 
     padding:
         0;
+
+    will-change:
+        transform,
+        opacity;
 }
 
 
@@ -1405,6 +1466,10 @@ nav .nav-links a:active {
 
         0 10px 22px
         rgba(0,0,0,0.055);
+
+    will-change:
+        transform,
+        opacity;
 }
 
 
@@ -1425,6 +1490,40 @@ nav .nav-links a:active {
 
     color:
         #666;
+}
+
+
+/* =====================================================
+   KONTAKT EXIT / ZOOM EFFEKT
+   GLEICHER STIL WIE STARTSEITE
+===================================================== */
+
+.contact.leaving .contact-content {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
 }
 
 
@@ -1613,6 +1712,19 @@ nav .nav-links a:active {
 
         max-width:
             100%;
+    }
+
+
+    /* ---------------------------------------------
+       MOBILE EXIT ZOOM
+    --------------------------------------------- */
+
+    .about.leaving .about-content,
+    .contact.leaving .contact-content {
+
+        transform:
+            translate3d(0,-28px,0)
+            scale(1.12);
     }
 
 
@@ -1954,7 +2066,11 @@ nav .nav-links a:active {
 
                     <p class="about-text">
 
-                        F<span class="red-o">O</span>RMA<span class="red-dot">.</span> steht für
+                        <span class="forma-logo">
+                            <span class="forma-letter" style="color:#aaa;">F</span><span class="forma-o">O</span><span class="forma-letter" style="color:#aaa;">RMA</span><span class="forma-dot"></span>
+                        </span>
+
+                        steht für
                         minimalistisches, modernes
                         und durchdachtes Design.
 
@@ -2178,9 +2294,6 @@ let isAnimating = false;
 const aboutTrack =
     document.querySelector("#aboutTrack");
 
-const pageIndicator =
-    document.querySelector("#pageIndicator");
-
 const indicatorBubble =
     document.querySelector("#indicatorBubble");
 
@@ -2238,6 +2351,16 @@ function goToPage(index) {
         pages[currentPage];
 
 
+    /* ---------------------------------------------
+       EXIT-EFFEKT
+
+       Die aktuell sichtbare Seite bekommt
+       beim Verlassen den Zoom-Effekt.
+    --------------------------------------------- */
+
+    oldPage.classList.add("leaving");
+
+
     /*
        Wenn ABOUT verlassen wird:
        horizontale Unterseite immer auf
@@ -2247,25 +2370,6 @@ function goToPage(index) {
     if (currentPage === 1) {
 
         resetAboutSlide();
-
-    }
-
-
-    /*
-       Startseite verlässt Bildschirm
-    */
-
-    if (
-
-        currentPage === 0 &&
-
-        index > 0
-
-    ) {
-
-        oldPage.classList.add(
-            "leaving"
-        );
 
     }
 
@@ -2316,24 +2420,21 @@ function goToPage(index) {
 
 
     /*
-       Startseite zurücksetzen
-    */
-
-    if (index === 0) {
-
-        pages[0].classList.remove(
-            "leaving"
-        );
-
-    }
-
-
-    /*
-       Animation Lock
+       Exit-Klasse erst nach der
+       eigentlichen Animation entfernen,
+       damit der Effekt sauber abläuft.
     */
 
     setTimeout(
         () => {
+
+            pages.forEach(page => {
+
+                page.classList.remove(
+                    "leaving"
+                );
+
+            });
 
             isAnimating = false;
 
@@ -2383,36 +2484,51 @@ function goToAboutSlide(index) {
 
     /*
        Liquid Glass Blase
-       EXAKT MIT DEM MITTELPUNKT
-       DES AKTUELLEN PUNKTES AUSRICHTEN
+
+       EXAKTE MITTE ÜBER DEM JEWEILIGEN PUNKT.
+
+       Container:
+       left: 50%
+       padding links: 9px
+       Punktbreite: 10px
+       Abstand: 14px
+       Blase: 24px
+
+       Die Blase wird so positioniert,
+       dass ihr Mittelpunkt exakt dem
+       Mittelpunkt des jeweiligen Punktes
+       entspricht.
     */
 
-    requestAnimationFrame(
-        () => {
+    const dotWidth = 10;
 
-            const indicatorRect =
-                pageIndicator.getBoundingClientRect();
+    const gap = 14;
 
-            const dotRect =
-                indicatorDots[index].getBoundingClientRect();
+    const bubbleWidth = 24;
 
-            const bubbleWidth =
-                indicatorBubble.offsetWidth;
+    const startOffset = 9;
 
-            const dotCenter =
-                dotRect.left +
-                (dotRect.width / 2);
+    const firstDotCenter =
+        startOffset +
+        (dotWidth / 2);
 
-            const bubbleLeft =
-                dotCenter -
-                indicatorRect.left -
-                (bubbleWidth / 2);
+    const distance =
+        dotWidth +
+        gap;
 
-            indicatorBubble.style.transform =
-                `translateX(${bubbleLeft}px)`;
 
-        }
-    );
+    const bubbleCenter =
+        firstDotCenter +
+        (index * distance);
+
+
+    const bubbleLeft =
+        bubbleCenter -
+        (bubbleWidth / 2);
+
+
+    indicatorBubble.style.transform =
+        `translateX(${bubbleLeft - startOffset}px)`;
 
 
     setTimeout(
@@ -2438,86 +2554,10 @@ function resetAboutSlide() {
     aboutTrack.style.transform =
         "translate3d(0,0,0)";
 
-
-    /*
-       Blase exakt über Punkt 1 setzen
-    */
-
-    requestAnimationFrame(
-        () => {
-
-            const indicatorRect =
-                pageIndicator.getBoundingClientRect();
-
-            const dotRect =
-                indicatorDots[0].getBoundingClientRect();
-
-            const bubbleWidth =
-                indicatorBubble.offsetWidth;
-
-            const dotCenter =
-                dotRect.left +
-                (dotRect.width / 2);
-
-            const bubbleLeft =
-                dotCenter -
-                indicatorRect.left -
-                (bubbleWidth / 2);
-
-            indicatorBubble.style.transform =
-                `translateX(${bubbleLeft}px)`;
-
-        }
-    );
+    indicatorBubble.style.transform =
+        "translateX(0)";
 
 }
-
-
-/* =====================================================
-   BLASE BEI GRÖSSENÄNDERUNG
-===================================================== */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        if (currentPage !== 1) {
-
-            return;
-
-        }
-
-
-        requestAnimationFrame(
-            () => {
-
-                const indicatorRect =
-                    pageIndicator.getBoundingClientRect();
-
-                const dotRect =
-                    indicatorDots[currentAboutSlide]
-                    .getBoundingClientRect();
-
-                const bubbleWidth =
-                    indicatorBubble.offsetWidth;
-
-                const dotCenter =
-                    dotRect.left +
-                    (dotRect.width / 2);
-
-                const bubbleLeft =
-                    dotCenter -
-                    indicatorRect.left -
-                    (bubbleWidth / 2);
-
-                indicatorBubble.style.transform =
-                    `translateX(${bubbleLeft}px)`;
-
-            }
-        );
-
-    }
-);
 
 
 /* =====================================================
@@ -2820,9 +2860,11 @@ window.addEventListener(
 
             /*
                Finger nach OBEN
+               = nach UNTEN scrollen
                = nächste Seite
 
                Finger nach UNTEN
+               = nach OBEN scrollen
                = vorherige Seite
             */
 
