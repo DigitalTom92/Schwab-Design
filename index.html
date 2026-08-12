@@ -28,6 +28,9 @@
 html {
     scroll-behavior: auto;
     overflow: hidden;
+
+    /* Verhindert Browser-Overscroll / Safari-Navigation */
+    overscroll-behavior: none;
 }
 
 body {
@@ -45,6 +48,11 @@ body {
     background: #fff;
 
     overflow: hidden;
+
+    /* Verhindert Browser-Gesten */
+    overscroll-behavior: none;
+
+    -webkit-overflow-scrolling: auto;
 
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
@@ -302,6 +310,13 @@ nav .nav-links a:active {
     overflow: hidden;
 
     position: relative;
+
+    /*
+       Wichtig für Safari:
+       kein horizontales Overscroll-Verhalten
+    */
+    overscroll-behavior:
+        none;
 }
 
 
@@ -346,6 +361,9 @@ nav .nav-links a:active {
         ),
 
         opacity 0.6s ease;
+
+    overscroll-behavior:
+        none;
 }
 
 .page.active {
@@ -839,6 +857,12 @@ nav .nav-links a:active {
 
     padding:
         0;
+
+    /*
+       Safari Overscroll deaktivieren
+    */
+    overscroll-behavior:
+        none;
 }
 
 
@@ -861,6 +885,16 @@ nav .nav-links a:active {
 
     overflow:
         hidden;
+
+    overscroll-behavior:
+        none;
+
+    /*
+       Touchpad-Gesten bleiben innerhalb
+       dieses Bereichs
+    */
+    touch-action:
+        none;
 }
 
 .about-track {
@@ -887,6 +921,9 @@ nav .nav-links a:active {
 
     will-change:
         transform;
+
+    overscroll-behavior:
+        none;
 }
 
 .about-slide {
@@ -913,6 +950,12 @@ nav .nav-links a:active {
 
     overflow:
         hidden;
+
+    overscroll-behavior:
+        none;
+
+    touch-action:
+        none;
 }
 
 .about-content {
@@ -1079,6 +1122,12 @@ nav .nav-links a:active {
 
     transition:
         opacity 0.5s ease;
+
+    /*
+       Wichtig gegen Safari-Gesten
+    */
+    overscroll-behavior:
+        none;
 }
 
 .page.active .page-indicator {
@@ -1092,7 +1141,6 @@ nav .nav-links a:active {
 
 /* =====================================================
    GLAS-BLASE
-   EXAKT AUF MITTE DES JEWEILIGEN PUNKTES
 ===================================================== */
 
 .indicator-bubble {
@@ -1144,12 +1192,6 @@ nav .nav-links a:active {
     -webkit-backdrop-filter:
         blur(8px)
         saturate(190%);
-
-    /*
-       Die Position wird per JavaScript
-       anhand der echten Punkt-Mittelpunkte
-       berechnet.
-    */
 
     transform:
         translate3d(
@@ -2276,12 +2318,6 @@ function goToAboutSlide(index) {
         `translate3d(-${index * 33.333333}%, 0, 0)`;
 
 
-    /*
-       Nicht mit einem festen Pixel-Abstand arbeiten.
-       Stattdessen wird die tatsächliche Mitte
-       des jeweiligen Punktes verwendet.
-    */
-
     requestAnimationFrame(
         () => {
 
@@ -2337,6 +2373,8 @@ indicatorDots.forEach(
             "click",
             event => {
 
+                event.preventDefault();
+
                 event.stopPropagation();
 
 
@@ -2370,6 +2408,8 @@ scrollHints.forEach(
         hint.addEventListener(
             "click",
             event => {
+
+                event.preventDefault();
 
                 event.stopPropagation();
 
@@ -2407,9 +2447,19 @@ scrollHints.forEach(
 
 
 /* =====================================================
-   MAUSRAD / MAC TOUCHPAD
-   VERTIKAL = HAUPTSEITEN
-   HORIZONTAL = ÜBER-UNS-SEITEN
+   MAC TOUCHPAD / WHEEL
+   =====================================================
+
+   WICHTIG:
+
+   Safari interpretiert horizontale Trackpad-
+   Bewegungen gerne als Browser-Zurück/Weiter.
+
+   Deshalb wird bei horizontaler Bewegung
+   IMMER preventDefault() ausgeführt.
+
+   Die Bewegung wird anschließend ausschließlich
+   von unserem About-Karussell verarbeitet.
 ===================================================== */
 
 window.addEventListener(
@@ -2417,38 +2467,62 @@ window.addEventListener(
     event => {
 
         /*
-           Auf der Über-uns-Seite erkennen wir
-           horizontale Trackpad-Bewegungen.
-
-           deltaX:
-           Mac-Touchpad nach links/rechts
-
-           deltaY:
-           normales Scrollen bzw. vertikale
-           Trackpad-Bewegung
+           Sobald wir uns auf "Über uns" befinden,
+           werden horizontale Trackpad-Bewegungen
+           vollständig von der Website übernommen.
         */
 
         if (
             currentPage === 1 &&
-            Math.abs(event.deltaX) >
-            Math.abs(event.deltaY) &&
-            Math.abs(event.deltaX) > 5
+            Math.abs(event.deltaX) > 2
         ) {
 
-            event.preventDefault();
+            /*
+               Safari-Browser-Geste blockieren.
+            */
 
+            if (event.cancelable) {
+                event.preventDefault();
+            }
+
+
+            event.stopPropagation();
+
+
+            /*
+               Während einer Animation keine
+               weitere Bewegung ausführen.
+            */
 
             if (isHorizontalAnimating) {
                 return;
             }
 
 
-            if (event.deltaX > 0) {
+            /*
+               Kleine Trackpad-Bewegungen ignorieren,
+               damit das Karussell nicht zu empfindlich
+               reagiert.
+            */
 
-                /*
-                   Nach rechts gewischt:
-                   nächste Über-uns-Seite
-                */
+            if (
+                Math.abs(event.deltaX) < 5
+            ) {
+                return;
+            }
+
+
+            /*
+               deltaX > 0:
+               Wischen nach links / Inhalt bewegt sich
+               nach links -> nächste Seite
+
+               deltaX < 0:
+               Wischen nach rechts / Inhalt bewegt sich
+               nach rechts -> vorherige Seite
+            */
+
+            if (event.deltaX > 0) {
 
                 goToAboutSlide(
                     currentAboutSlide + 1
@@ -2457,11 +2531,6 @@ window.addEventListener(
             }
 
             else {
-
-                /*
-                   Nach links gewischt:
-                   vorherige Über-uns-Seite
-                */
 
                 goToAboutSlide(
                     currentAboutSlide - 1
@@ -2475,8 +2544,8 @@ window.addEventListener(
 
 
         /*
-           Normales vertikales Scrollen
-           bleibt für die Hauptseiten erhalten.
+           Vertikales Scrollen:
+           nur für die Hauptseiten.
         */
 
         if (isAnimating) {
@@ -2488,6 +2557,11 @@ window.addEventListener(
             Math.abs(event.deltaY) < 25
         ) {
             return;
+        }
+
+
+        if (event.cancelable) {
+            event.preventDefault();
         }
 
 
@@ -2509,7 +2583,8 @@ window.addEventListener(
 
     },
     {
-        passive: false
+        passive: false,
+        capture: true
     }
 );
 
@@ -2666,6 +2741,8 @@ window.addEventListener(
             event.key === "ArrowDown"
         ) {
 
+            event.preventDefault();
+
             goToPage(
                 currentPage + 1
             );
@@ -2676,6 +2753,8 @@ window.addEventListener(
         if (
             event.key === "ArrowUp"
         ) {
+
+            event.preventDefault();
 
             goToPage(
                 currentPage - 1
@@ -2689,6 +2768,8 @@ window.addEventListener(
             event.key === "ArrowRight"
         ) {
 
+            event.preventDefault();
+
             goToAboutSlide(
                 currentAboutSlide + 1
             );
@@ -2700,6 +2781,8 @@ window.addEventListener(
             currentPage === 1 &&
             event.key === "ArrowLeft"
         ) {
+
+            event.preventDefault();
 
             goToAboutSlide(
                 currentAboutSlide - 1
