@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="de">
 
 <head>
@@ -25,12 +26,10 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: auto;
     overflow: hidden;
 }
-
 
 body {
 
@@ -63,15 +62,6 @@ body {
     --dark-text: #1d1d1f;
 
     --soft-gray: #666;
-
-    --glass-white: rgba(255,255,255,0.28);
-
-    --glass-border: rgba(255,255,255,0.72);
-
-    --glass-shadow:
-        0 8px 24px rgba(0,0,0,0.10),
-        inset 0 1px 1px rgba(255,255,255,0.85),
-        inset 0 -1px 1px rgba(255,255,255,0.18);
 }
 
 
@@ -489,7 +479,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   FORMA STARTSEITE
+   FORMA AUF STARTSEITE
 ===================================================== */
 
 .eyebrow {
@@ -543,6 +533,11 @@ nav .nav-links a:active {
 }
 
 
+
+/* =====================================================
+   GROSSES FORMA
+===================================================== */
+
 .eyebrow .forma-logo {
 
     font-size:
@@ -573,6 +568,11 @@ nav .nav-links a:active {
         300;
 }
 
+
+
+/* =====================================================
+   ROTES O
+===================================================== */
 
 .eyebrow .forma-o {
 
@@ -739,7 +739,8 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   HORIZONTALE ÜBER-UNS SEITEN
+   HORIZONTALER CONTENT-BEREICH
+   SEITE 2 + 2 WEITERE SEITEN
 ===================================================== */
 
 .about {
@@ -754,7 +755,10 @@ nav .nav-links a:active {
         flex-start;
 
     padding:
-        10vw 8%;
+        10vw 0;
+
+    overflow:
+        hidden;
 }
 
 
@@ -766,30 +770,17 @@ nav .nav-links a:active {
     height:
         100%;
 
-    position:
-        relative;
-
-    overflow:
-        hidden;
-}
-
-
-.about-track {
-
     display:
         flex;
 
-    width:
-        300%;
-
-    height:
-        100%;
+    align-items:
+        center;
 
     transform:
         translate3d(0,0,0);
 
     transition:
-        transform 0.75s
+        transform 0.9s
         cubic-bezier(
             0.77,
             0,
@@ -802,16 +793,19 @@ nav .nav-links a:active {
 }
 
 
-.about-panel {
+.about-slide {
+
+    min-width:
+        100vw;
 
     width:
-        33.333333%;
+        100vw;
 
     height:
         100%;
 
-    flex:
-        0 0 33.333333%;
+    flex-shrink:
+        0;
 
     display:
         flex;
@@ -819,8 +813,8 @@ nav .nav-links a:active {
     align-items:
         center;
 
-    position:
-        relative;
+    padding:
+        0 8%;
 }
 
 
@@ -831,11 +825,13 @@ nav .nav-links a:active {
 
     max-width:
         1300px;
-
-    padding-bottom:
-        120px;
 }
 
+
+
+/* =====================================================
+   ÜBER UNS TITEL
+===================================================== */
 
 .about-title {
 
@@ -901,10 +897,62 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   LIQUID GLASS PAGINATION
+   ZWEITE HORIZONTALE SEITE
 ===================================================== */
 
-.about-pagination {
+.about-slide:nth-child(2) {
+
+    background:
+        #0a0a0a;
+}
+
+
+.about-slide:nth-child(2) .about-title {
+
+    color:
+        #fff;
+}
+
+
+.about-slide:nth-child(2) .about-text {
+
+    color:
+        #999;
+}
+
+
+
+/* =====================================================
+   DRITTE HORIZONTALE SEITE
+===================================================== */
+
+.about-slide:nth-child(3) {
+
+    background:
+        #111;
+}
+
+
+.about-slide:nth-child(3) .about-title {
+
+    color:
+        #fff;
+}
+
+
+.about-slide:nth-child(3) .about-text {
+
+    color:
+        #999;
+}
+
+
+
+/* =====================================================
+   LIQUID GLASS SEITEN-PUNKTE
+===================================================== */
+
+.page-indicator {
 
     position:
         absolute;
@@ -913,13 +961,18 @@ nav .nav-links a:active {
         50%;
 
     bottom:
-        82px;
+        calc(
+            86px +
+            env(
+                safe-area-inset-bottom
+            )
+        );
 
     transform:
         translateX(-50%);
 
     height:
-        34px;
+        32px;
 
     padding:
         5px 7px;
@@ -934,50 +987,59 @@ nav .nav-links a:active {
         center;
 
     gap:
-        8px;
+        7px;
 
     border-radius:
-        999px;
+        18px;
+
+    z-index:
+        60;
+
+    isolation:
+        isolate;
 
     background:
-        rgba(255,255,255,0.11);
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.20),
+            rgba(255,255,255,0.075)
+        );
 
     border:
         1px solid
-        rgba(255,255,255,0.22);
+        rgba(255,255,255,0.20);
 
     box-shadow:
 
-        0 8px 28px
-        rgba(0,0,0,0.28),
+        0 8px 25px
+        rgba(0,0,0,0.30),
 
-        inset 0 1px 1px
-        rgba(255,255,255,0.28),
+        inset 0 1px 0
+        rgba(255,255,255,0.35),
 
-        inset 0 -1px 1px
-        rgba(0,0,0,0.12);
+        inset 0 -1px 0
+        rgba(0,0,0,0.20);
 
     backdrop-filter:
-        blur(18px)
+        blur(22px)
         saturate(180%);
 
     -webkit-backdrop-filter:
-        blur(18px)
+        blur(22px)
         saturate(180%);
 
     overflow:
         hidden;
-
-    z-index:
-        30;
 }
 
 
-/* ---------------------------------------------
-   GLAS-REFLEX
---------------------------------------------- */
 
-.about-pagination::before {
+/* =====================================================
+   GLAS-LICHTREFLEX
+===================================================== */
+
+.page-indicator::before {
 
     content:
         "";
@@ -985,27 +1047,31 @@ nav .nav-links a:active {
     position:
         absolute;
 
+    left:
+        5px;
+
+    right:
+        5px;
+
     top:
         1px;
 
-    left:
-        8px;
-
-    right:
-        8px;
-
     height:
-        45%;
+        48%;
 
     border-radius:
-        999px;
+        15px;
 
     background:
+
         linear-gradient(
             180deg,
-            rgba(255,255,255,0.30),
+            rgba(255,255,255,0.38),
             rgba(255,255,255,0)
         );
+
+    opacity:
+        0.75;
 
     pointer-events:
         none;
@@ -1015,35 +1081,153 @@ nav .nav-links a:active {
 }
 
 
-/* ---------------------------------------------
-   BEWEGLICHE LIQUID-GLASS-BLASE
---------------------------------------------- */
+.page-indicator::after {
 
-.pagination-glass {
+    content:
+        "";
 
     position:
         absolute;
-
-    top:
-        5px;
-
-    left:
-        6px;
 
     width:
         18px;
 
     height:
-        24px;
+        18px;
 
-    border-radius:
-        999px;
+    top:
+        -9px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
 
     background:
+        rgba(255,255,255,0.25);
+
+    filter:
+        blur(13px);
+
+    opacity:
+        0.45;
+
+    pointer-events:
+        none;
+
+    z-index:
+        0;
+}
+
+
+
+/* =====================================================
+   DOTS
+===================================================== */
+
+.indicator-dot {
+
+    position:
+        relative;
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    border-radius:
+        50%;
+
+    border:
+        0;
+
+    padding:
+        0;
+
+    background:
+        rgba(255,255,255,0.40);
+
+    box-shadow:
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.45),
+
+        0 1px 2px
+        rgba(0,0,0,0.20);
+
+    opacity:
+        0.65;
+
+    cursor:
+        pointer;
+
+    z-index:
+        2;
+
+    transition:
+        transform 0.35s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.3s ease;
+}
+
+
+.indicator-dot:hover {
+
+    opacity:
+        0.9;
+
+    transform:
+        scale(1.18);
+}
+
+
+
+/* =====================================================
+   BEWEGLICHE LIQUID-GLASS-BLASE
+===================================================== */
+
+.indicator-glass {
+
+    position:
+        absolute;
+
+    top:
+        4px;
+
+    left:
+        7px;
+
+    width:
+        13px;
+
+    height:
+        22px;
+
+    border-radius:
+        50%;
+
+    pointer-events:
+        none;
+
+    z-index:
+        3;
+
+    background:
+
         linear-gradient(
-            180deg,
-            rgba(255,255,255,0.48),
-            rgba(255,255,255,0.19)
+            145deg,
+            rgba(255,255,255,0.72) 0%,
+            rgba(255,255,255,0.32) 28%,
+            rgba(255,255,255,0.14) 62%,
+            rgba(255,255,255,0.26) 100%
         );
 
     border:
@@ -1052,30 +1236,34 @@ nav .nav-links a:active {
 
     box-shadow:
 
-        0 2px 8px
-        rgba(0,0,0,0.20),
+        0 3px 10px
+        rgba(0,0,0,0.22),
 
-        inset 0 1px 1px
-        rgba(255,255,255,0.72),
+        inset 1px 1px 2px
+        rgba(255,255,255,0.75),
 
-        inset 0 -2px 4px
-        rgba(0,0,0,0.08);
+        inset -1px -1px 2px
+        rgba(0,0,0,0.12);
 
     backdrop-filter:
-        blur(8px)
+        blur(10px)
         saturate(190%);
 
     -webkit-backdrop-filter:
-        blur(8px)
+        blur(10px)
         saturate(190%);
+
+    transform:
+        translateX(0)
+        scale(1);
 
     transition:
 
-        transform 0.55s
+        transform 0.75s
         cubic-bezier(
-            0.22,
-            1,
-            0.36,
+            0.34,
+            1.56,
+            0.64,
             1
         ),
 
@@ -1086,18 +1274,15 @@ nav .nav-links a:active {
             0.36,
             1
         );
-
-    z-index:
-        1;
-
-    pointer-events:
-        none;
 }
 
 
-/* kleiner Lichtpunkt innerhalb der Glasblase */
 
-.pagination-glass::before {
+/* =====================================================
+   GLAS-REFLEX AUF DER AKTIVEN BLASE
+===================================================== */
+
+.indicator-glass::before {
 
     content:
         "";
@@ -1106,83 +1291,64 @@ nav .nav-links a:active {
         absolute;
 
     top:
-        3px;
+        2px;
 
     left:
-        4px;
+        2px;
+
+    right:
+        2px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.85),
+            rgba(255,255,255,0)
+        );
+
+    opacity:
+        0.75;
+}
+
+
+.indicator-glass::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
 
     width:
         8px;
 
     height:
-        4px;
+        8px;
+
+    left:
+        2px;
+
+    bottom:
+        3px;
 
     border-radius:
         50%;
 
     background:
-        rgba(255,255,255,0.58);
+        rgba(255,255,255,0.28);
 
     filter:
-        blur(1px);
-}
+        blur(3px);
 
-
-
-/* =====================================================
-   EINZELNE PUNKTE
-===================================================== */
-
-.pagination-dot {
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
-    width:
-        6px;
-
-    height:
-        6px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,0.48);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.42);
-
-    box-shadow:
-
-        0 1px 4px
-        rgba(0,0,0,0.18),
-
-        inset 0 1px 1px
-        rgba(255,255,255,0.40);
-
-    cursor:
-        pointer;
-
-    transition:
-
-        transform 0.35s ease,
-
-        opacity 0.35s ease;
-}
-
-
-.pagination-dot:hover {
-
-    transform:
-        scale(1.25);
-
-    background:
-        rgba(255,255,255,0.68);
+    opacity:
+        0.65;
 }
 
 
@@ -1201,7 +1367,7 @@ nav .nav-links a:active {
 
     bottom:
         calc(
-            24px +
+            22px +
             env(
                 safe-area-inset-bottom
             )
@@ -1303,18 +1469,6 @@ nav .nav-links a:active {
    PFEIL AUF SCHWARZER SEITE
 ===================================================== */
 
-.about .scroll-hint {
-
-    bottom:
-        calc(
-            20px +
-            env(
-                safe-area-inset-bottom
-            )
-        );
-}
-
-
 .about .scroll-hint svg {
 
     filter:
@@ -1377,6 +1531,11 @@ nav .nav-links a:active {
     }
 }
 
+
+
+/* =====================================================
+   PFEIL BEIM SEITENWECHSEL
+===================================================== */
 
 .page.leaving .scroll-hint {
 
@@ -1560,7 +1719,6 @@ nav .nav-links a:active {
 
 @media (max-width: 700px) {
 
-
     .forma-logo {
 
         font-size:
@@ -1625,8 +1783,7 @@ nav .nav-links a:active {
     }
 
 
-    .about,
-    .contact {
+    .about-slide {
 
         padding:
             80px 25px;
@@ -1649,61 +1806,74 @@ nav .nav-links a:active {
     }
 
 
-    /* ---------------------------------------------
-       LIQUID GLASS PUNKTE
-    --------------------------------------------- */
 
-    .about-pagination {
+    /* =================================================
+       MOBILE LIQUID GLASS
+    ================================================= */
+
+    .page-indicator {
 
         bottom:
-            88px;
+            calc(
+                84px +
+                env(
+                    safe-area-inset-bottom
+                )
+            );
 
         height:
-            32px;
+            31px;
 
         padding:
-            5px 6px;
+            5px 7px;
 
         gap:
-            8px;
+            7px;
+
+        border-radius:
+            17px;
+
+        backdrop-filter:
+            blur(24px)
+            saturate(190%);
+
+        -webkit-backdrop-filter:
+            blur(24px)
+            saturate(190%);
     }
 
 
-    .pagination-glass {
+    .indicator-dot {
+
+        width:
+            7px;
+
+        height:
+            7px;
+    }
+
+
+    .indicator-glass {
 
         top:
-            5px;
+            4px;
 
         left:
-            5px;
+            7px;
 
         width:
-            18px;
+            13px;
 
         height:
-            22px;
+            21px;
     }
 
-
-    .pagination-dot {
-
-        width:
-            6px;
-
-        height:
-            6px;
-    }
-
-
-    /* ---------------------------------------------
-       PFEIL
-    --------------------------------------------- */
 
     .scroll-hint {
 
         bottom:
             calc(
-                20px +
+                18px +
                 env(
                     safe-area-inset-bottom
                 )
@@ -1788,9 +1958,7 @@ nav .nav-links a:active {
     .page-content,
     .page-title,
     .eyebrow,
-    .eyebrow .forma-o,
-    .about-track,
-    .pagination-glass {
+    .eyebrow .forma-o {
 
         transition:
             none;
@@ -1800,6 +1968,20 @@ nav .nav-links a:active {
     .scroll-hint svg {
 
         animation:
+            none;
+    }
+
+
+    .about-slider {
+
+        transition:
+            none;
+    }
+
+
+    .indicator-glass {
+
+        transition:
             none;
     }
 
@@ -1978,8 +2160,7 @@ nav .nav-links a:active {
 
 
     <!-- =================================================
-         ÜBER UNS
-         3 SEITLICHE SEITEN
+         ÜBER UNS / HORIZONTALER SLIDER
     ================================================= -->
 
     <section
@@ -1987,151 +2168,109 @@ nav .nav-links a:active {
         data-index="1"
     >
 
-        <div class="about-slider">
 
-            <div
-                class="about-track"
-                id="aboutTrack"
-            >
-
-
-                <!-- =====================================
-                     ÜBER UNS SEITE 1
-                ====================================== -->
-
-                <div class="about-panel">
-
-                    <div class="about-content page-content">
-
-                        <h2 class="about-title page-title">
-
-                            Weniger.<br>
-
-                            Aber besser.
-
-                        </h2>
+        <div
+            class="about-slider"
+            id="aboutSlider"
+        >
 
 
-                        <p class="about-text">
+            <!-- =========================================
+                 HORIZONTALE SEITE 1
+            ========================================= -->
 
-                            FORMA. steht für
-                            minimalistisches, modernes
-                            und durchdachtes Design.
+            <div class="about-slide">
 
-                            Wir reduzieren auf das Wesentliche
-                            und schaffen Lösungen mit Charakter.
+                <div class="about-content page-content">
 
-                        </p>
+                    <h2 class="about-title page-title">
 
-                    </div>
+                        Weniger.<br>
 
-                </div>
+                        Aber besser.
 
-
-
-                <!-- =====================================
-                     ÜBER UNS SEITE 2
-                ====================================== -->
-
-                <div class="about-panel">
-
-                    <div class="about-content">
-
-                        <h2 class="about-title">
-
-                            Klar.<br>
-
-                            Präzise.
-
-                        </h2>
+                    </h2>
 
 
-                        <p class="about-text">
+                    <p class="about-text">
 
-                            Gute Gestaltung braucht
-                            keine unnötigen Elemente.
+                        FORMA. steht für
+                        minimalistisches, modernes
+                        und durchdachtes Design.
 
-                            Wir verbinden klare Formen,
-                            starke Typografie und
-                            durchdachte Details.
+                        Wir reduzieren auf das Wesentliche
+                        und schaffen Lösungen mit Charakter.
 
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =====================================
-                     ÜBER UNS SEITE 3
-                ====================================== -->
-
-                <div class="about-panel">
-
-                    <div class="about-content">
-
-                        <h2 class="about-title">
-
-                            Design.<br>
-
-                            Mit Haltung.
-
-                        </h2>
-
-
-                        <p class="about-text">
-
-                            Wir gestalten digitale
-                            Erlebnisse, die nicht nur
-                            gut aussehen.
-
-                            Sie sollen funktionieren,
-                            überzeugen und im Kopf bleiben.
-
-                        </p>
-
-                    </div>
+                    </p>
 
                 </div>
 
             </div>
 
 
+
             <!-- =========================================
-                 LIQUID GLASS PAGINATION
-            ========================================== -->
+                 HORIZONTALE SEITE 2
+            ========================================= -->
 
-            <div
-                class="about-pagination"
-                id="aboutPagination"
-            >
+            <div class="about-slide">
 
-                <div
-                    class="pagination-glass"
-                    id="paginationGlass"
-                ></div>
+                <div class="about-content page-content">
 
+                    <h2 class="about-title page-title">
 
-                <button
-                    class="pagination-dot"
-                    data-about-page="0"
-                    aria-label="Über uns Seite 1"
-                ></button>
+                        Klar.<br>
+
+                        Durchdacht.
+
+                    </h2>
 
 
-                <button
-                    class="pagination-dot"
-                    data-about-page="1"
-                    aria-label="Über uns Seite 2"
-                ></button>
+                    <p class="about-text">
+
+                        Gute Gestaltung beginnt
+                        mit einer klaren Idee.
+
+                        Wir verbinden Ästhetik,
+                        Funktion und Persönlichkeit
+                        zu einem stimmigen Gesamtbild.
+
+                    </p>
+
+                </div>
+
+            </div>
 
 
-                <button
-                    class="pagination-dot"
-                    data-about-page="2"
-                    aria-label="Über uns Seite 3"
-                ></button>
+
+            <!-- =========================================
+                 HORIZONTALE SEITE 3
+            ========================================= -->
+
+            <div class="about-slide">
+
+                <div class="about-content page-content">
+
+                    <h2 class="about-title page-title">
+
+                        Anders.<br>
+
+                        Mit System.
+
+                    </h2>
+
+
+                    <p class="about-text">
+
+                        Wir denken Gestaltung neu,
+                        ohne unnötig kompliziert zu werden.
+
+                        Reduziert auf das,
+                        was wirklich zählt.
+
+                    </p>
+
+                </div>
 
             </div>
 
@@ -2139,9 +2278,49 @@ nav .nav-links a:active {
 
 
 
-        <!-- =============================================
-             PFEIL ZUR NÄCHSTEN HAUPTSEITE
-        ============================================== -->
+        <!-- =================================================
+             LIQUID GLASS PAGE INDICATOR
+        ================================================= -->
+
+        <div
+            class="page-indicator"
+            id="pageIndicator"
+            aria-label="Horizontale Seiten"
+        >
+
+            <div
+                class="indicator-glass"
+                id="indicatorGlass"
+            ></div>
+
+
+            <button
+                class="indicator-dot"
+                data-slide="0"
+                aria-label="Seite 1"
+            ></button>
+
+
+            <button
+                class="indicator-dot"
+                data-slide="1"
+                aria-label="Seite 2"
+            ></button>
+
+
+            <button
+                class="indicator-dot"
+                data-slide="2"
+                aria-label="Seite 3"
+            ></button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PFEIL
+        ================================================= -->
 
         <div
             class="scroll-hint"
@@ -2208,10 +2387,15 @@ nav .nav-links a:active {
 
 
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
+
 /* =====================================================
-   HAUPTSEITEN
+   VERTIKALE SEITEN
 ===================================================== */
 
 const pages =
@@ -2241,32 +2425,28 @@ let touchEndY = 0;
 
 
 /* =====================================================
-   ÜBER-UNS SLIDER
+   HORIZONTALE SEITE
 ===================================================== */
 
-const aboutTrack =
-    document.querySelector("#aboutTrack");
+const aboutSlider =
+    document.querySelector("#aboutSlider");
 
 
-const aboutPagination =
-    document.querySelector("#aboutPagination");
+const indicatorGlass =
+    document.querySelector("#indicatorGlass");
 
 
-const paginationGlass =
-    document.querySelector("#paginationGlass");
+const indicatorDots =
+    document.querySelectorAll(".indicator-dot");
 
 
-const paginationDots =
-    document.querySelectorAll(".pagination-dot");
-
-
-let currentAboutPage = 0;
+let currentHorizontalSlide = 0;
 
 let touchStartX = 0;
 
 let touchEndX = 0;
 
-let isHorizontalSwipe = false;
+let horizontalAnimating = false;
 
 
 
@@ -2274,156 +2454,148 @@ let isHorizontalSwipe = false;
    LIQUID GLASS POSITION
 ===================================================== */
 
-function updateLiquidGlass() {
+function updateIndicator(
+    slideIndex,
+    animate = true
+) {
 
     const dot =
-        paginationDots[currentAboutPage];
+        indicatorDots[slideIndex];
 
     if (!dot) {
         return;
     }
 
 
-    const paginationRect =
-        aboutPagination.getBoundingClientRect();
+    const indicator =
+        document.querySelector("#pageIndicator");
 
 
     const dotRect =
         dot.getBoundingClientRect();
 
+    const indicatorRect =
+        indicator.getBoundingClientRect();
 
-    const centerX =
+
+    const center =
         dotRect.left -
-        paginationRect.left +
-        dotRect.width / 2;
+        indicatorRect.left +
+        (dotRect.width / 2);
 
 
-    const glassWidth =
-        paginationGlass.offsetWidth;
+    const bubbleWidth = 13;
 
 
-    const newX =
-        centerX -
-        glassWidth / 2;
+    const target =
+        center -
+        (bubbleWidth / 2);
 
 
-    paginationGlass.style.transform =
-        `translate3d(${newX}px, 0, 0)`;
+    if (!animate) {
+
+        indicatorGlass.style.transition =
+            "none";
+
+    }
+
+    else {
+
+        indicatorGlass.style.transition =
+            "";
+    }
+
+
+    indicatorGlass.style.transform =
+        `translateX(${target - 7}px)`;
+
+
+
+    /* Kleine Apple-artige Verformung
+       während des Seitenwechsels */
+
+    if (animate) {
+
+        indicatorGlass.animate(
+            [
+                {
+                    transform:
+                        `translateX(${target - 7}px) scaleX(1)`
+                },
+
+                {
+                    transform:
+                        `translateX(${target - 7}px) scaleX(1.28)`
+                },
+
+                {
+                    transform:
+                        `translateX(${target - 7}px) scaleX(0.92)`
+                },
+
+                {
+                    transform:
+                        `translateX(${target - 7}px) scaleX(1)`
+                }
+            ],
+            {
+                duration: 720,
+                easing:
+                    "cubic-bezier(0.34, 1.56, 0.64, 1)"
+            }
+        );
+    }
+
+
+    currentHorizontalSlide =
+        slideIndex;
 }
 
 
 
 /* =====================================================
-   ÜBER-UNS SEITE WECHSELN
+   HORIZONTALEN SLIDE WECHSELN
 ===================================================== */
 
-function goToAboutPage(index) {
+function goToHorizontalSlide(
+    index,
+    direction = null
+) {
 
     if (
         index < 0 ||
         index > 2 ||
-        index === currentAboutPage
+        index === currentHorizontalSlide ||
+        horizontalAnimating
     ) {
+
         return;
     }
 
 
-    currentAboutPage =
-        index;
+    horizontalAnimating = true;
 
 
-    aboutTrack.style.transform =
-        `translate3d(-${index * 33.333333}%, 0, 0)`;
+    aboutSlider.style.transform =
+        `translate3d(-${index * 100}vw, 0, 0)`;
 
 
-    paginationDots.forEach(
-        (dot, i) => {
-
-            dot.style.opacity =
-                i === index
-                    ? "0.85"
-                    : "0.48";
-
-        }
+    updateIndicator(
+        index,
+        true
     );
 
 
-    /*
-       Kleiner Moment, damit der Browser
-       zuerst die neue Position berechnet.
-       Dadurch folgt die Glasblase schön weich.
-    */
-
-    requestAnimationFrame(
+    setTimeout(
         () => {
 
-            updateLiquidGlass();
+            horizontalAnimating =
+                false;
 
-        }
+        },
+        900
     );
-
 }
-
-
-
-/* =====================================================
-   INITIALISIERUNG LIQUID GLASS
-===================================================== */
-
-window.addEventListener(
-    "load",
-    () => {
-
-        paginationDots.forEach(
-            (dot, i) => {
-
-                dot.style.opacity =
-                    i === 0
-                        ? "0.85"
-                        : "0.48";
-
-            }
-        );
-
-
-        requestAnimationFrame(
-            () => {
-
-                updateLiquidGlass();
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   PUNKTE KLICKEN
-===================================================== */
-
-paginationDots.forEach(
-    dot => {
-
-        dot.addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-                const index =
-                    Number(
-                        dot.dataset.aboutPage
-                    );
-
-                goToAboutPage(index);
-
-            }
-        );
-
-    }
-);
 
 
 
@@ -2510,14 +2682,30 @@ function goToPage(index) {
     );
 
 
-    currentPage =
-        index;
+    currentPage = index;
 
 
     if (index === 0) {
 
         pages[0].classList.remove(
             "leaving"
+        );
+
+    }
+
+
+    if (index === 1) {
+
+        setTimeout(
+            () => {
+
+                updateIndicator(
+                    currentHorizontalSlide,
+                    false
+                );
+
+            },
+            50
         );
 
     }
@@ -2607,6 +2795,16 @@ window.addEventListener(
         }
 
 
+        if (
+            currentPage === 1 &&
+            Math.abs(event.deltaX) > Math.abs(event.deltaY)
+        ) {
+
+            return;
+
+        }
+
+
         if (event.deltaY > 0) {
 
             goToPage(
@@ -2645,9 +2843,6 @@ window.addEventListener(
         touchStartX =
             event.changedTouches[0].screenX;
 
-        isHorizontalSwipe =
-            false;
-
     },
     {
         passive: true
@@ -2671,60 +2866,57 @@ window.addEventListener(
             event.changedTouches[0].screenX;
 
 
-        const differenceY =
+        const verticalDifference =
             touchStartY -
             touchEndY;
 
 
-        const differenceX =
+        const horizontalDifference =
             touchStartX -
             touchEndX;
 
 
-        /*
-           Auf der Über-uns-Seite zuerst prüfen,
-           ob horizontal gewischt wurde.
-        */
+
+        /* =============================================
+           HORIZONTAL SWIPE AUF ÜBER-UNS
+        ============================================= */
 
         if (
             currentPage === 1 &&
-            Math.abs(differenceX) >
-            Math.abs(differenceY) &&
-            Math.abs(differenceX) >= 50
+            Math.abs(horizontalDifference) >
+            Math.abs(verticalDifference) &&
+            Math.abs(horizontalDifference) > 50
         ) {
 
-            isHorizontalSwipe =
-                true;
+            if (
+                horizontalDifference > 0
+            ) {
 
-
-            if (differenceX > 0) {
-
-                goToAboutPage(
-                    currentAboutPage + 1
+                goToHorizontalSlide(
+                    currentHorizontalSlide + 1
                 );
 
             }
 
             else {
 
-                goToAboutPage(
-                    currentAboutPage - 1
+                goToHorizontalSlide(
+                    currentHorizontalSlide - 1
                 );
 
             }
 
-
             return;
-
         }
 
 
-        /*
-           Normales vertikales Wischen
-        */
+
+        /* =============================================
+           VERTIKALER SWIPE
+        ============================================= */
 
         if (
-            Math.abs(differenceY) < 50
+            Math.abs(verticalDifference) < 50
         ) {
 
             return;
@@ -2732,7 +2924,9 @@ window.addEventListener(
         }
 
 
-        if (differenceY > 0) {
+        if (
+            verticalDifference > 0
+        ) {
 
             goToPage(
                 currentPage + 1
@@ -2757,6 +2951,90 @@ window.addEventListener(
 
 
 /* =====================================================
+   MOUSE HORIZONTAL
+===================================================== */
+
+let mouseStartX = 0;
+
+let mouseStartY = 0;
+
+let mouseDown = false;
+
+
+aboutSlider.addEventListener(
+    "mousedown",
+    event => {
+
+        mouseDown = true;
+
+        mouseStartX =
+            event.clientX;
+
+        mouseStartY =
+            event.clientY;
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    event => {
+
+        if (
+            !mouseDown ||
+            currentPage !== 1
+        ) {
+
+            mouseDown = false;
+
+            return;
+        }
+
+
+        mouseDown = false;
+
+
+        const differenceX =
+            mouseStartX -
+            event.clientX;
+
+
+        const differenceY =
+            mouseStartY -
+            event.clientY;
+
+
+        if (
+            Math.abs(differenceX) >
+            Math.abs(differenceY) &&
+            Math.abs(differenceX) > 50
+        ) {
+
+            if (differenceX > 0) {
+
+                goToHorizontalSlide(
+                    currentHorizontalSlide + 1
+                );
+
+            }
+
+            else {
+
+                goToHorizontalSlide(
+                    currentHorizontalSlide - 1
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
    TASTATUR
 ===================================================== */
 
@@ -2764,22 +3042,26 @@ window.addEventListener(
     "keydown",
     event => {
 
-        /*
-           Auf Über-uns horizontal navigieren
-        */
 
-        if (currentPage === 1) {
+        /* =============================================
+           HORIZONTAL
+        ============================================= */
+
+        if (
+            currentPage === 1
+        ) {
 
             if (
                 event.key === "ArrowRight"
             ) {
 
-                goToAboutPage(
-                    currentAboutPage + 1
+                event.preventDefault();
+
+                goToHorizontalSlide(
+                    currentHorizontalSlide + 1
                 );
 
                 return;
-
             }
 
 
@@ -2787,20 +3069,22 @@ window.addEventListener(
                 event.key === "ArrowLeft"
             ) {
 
-                goToAboutPage(
-                    currentAboutPage - 1
+                event.preventDefault();
+
+                goToHorizontalSlide(
+                    currentHorizontalSlide - 1
                 );
 
                 return;
-
             }
 
         }
 
 
-        /*
-           Vertikale Hauptseiten
-        */
+
+        /* =============================================
+           VERTIKAL
+        ============================================= */
 
         if (
             event.key === "ArrowDown"
@@ -2835,6 +3119,38 @@ window.addEventListener(
             );
 
         }
+
+    }
+);
+
+
+
+/* =====================================================
+   LIQUID GLASS DOTS
+===================================================== */
+
+indicatorDots.forEach(
+    dot => {
+
+        dot.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+
+                const index =
+                    Number(
+                        dot.dataset.slide
+                    );
+
+
+                goToHorizontalSlide(
+                    index
+                );
+
+            }
+        );
 
     }
 );
@@ -2896,7 +3212,19 @@ window.addEventListener(
     "resize",
     () => {
 
-        updateLiquidGlass();
+        if (
+            currentPage === 1
+        ) {
+
+            aboutSlider.style.transform =
+                `translate3d(-${currentHorizontalSlide * 100}vw, 0, 0)`;
+
+            updateIndicator(
+                currentHorizontalSlide,
+                false
+            );
+
+        }
 
     }
 );
@@ -2928,6 +3256,19 @@ window.addEventListener(
 
         }
 
+
+        setTimeout(
+            () => {
+
+                updateIndicator(
+                    0,
+                    false
+                );
+
+            },
+            100
+        );
+
     }
 );
 
@@ -2935,4 +3276,5 @@ window.addEventListener(
 
 
 </body>
+
 </html>
