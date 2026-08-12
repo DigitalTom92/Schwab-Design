@@ -366,7 +366,7 @@
 
 
     /* =====================================================
-       EINZELNE SEITE
+       EINZELNE HAUPTSEITE
     ===================================================== */
 
     .page {
@@ -551,6 +551,7 @@
     }
 
 
+
     /* =====================================================
        GROSSES FORMA
     ===================================================== */
@@ -586,6 +587,7 @@
     }
 
 
+
     /* =====================================================
        ROTES O
     ===================================================== */
@@ -616,6 +618,7 @@
 
             filter 0.8s ease;
     }
+
 
 
     /* =====================================================
@@ -666,6 +669,7 @@
         transform:
             scale(1);
     }
+
 
 
     /* =====================================================
@@ -765,7 +769,6 @@
 
     /* =====================================================
        SCROLL-PFEIL
-       STARTSEITE
     ===================================================== */
 
     .scroll-hint {
@@ -878,7 +881,6 @@
 
     /* =====================================================
        PFEIL AUF SCHWARZER SEITE
-       HELL / WEISS
     ===================================================== */
 
     .about .scroll-hint svg {
@@ -944,6 +946,7 @@
     }
 
 
+
     /* =====================================================
        PFEIL BEIM SEITENWECHSEL
     ===================================================== */
@@ -965,6 +968,7 @@
 
     /* =====================================================
        ÜBER UNS
+       HORIZONTALE SEITEN
     ===================================================== */
 
     .about {
@@ -979,7 +983,86 @@
             flex-start;
 
         padding:
+            0;
+
+        display:
+            block;
+    }
+
+
+    /* =====================================================
+       HORIZONTALER CONTAINER
+    ===================================================== */
+
+    .about-slider {
+
+        width:
+            100vw;
+
+        height:
+            100vh;
+
+        height:
+            100dvh;
+
+        display:
+            flex;
+
+        overflow:
+            hidden;
+
+        touch-action:
+            pan-y;
+
+        will-change:
+            transform;
+
+        transition:
+            transform 0.8s
+            cubic-bezier(
+                0.77,
+                0,
+                0.175,
+                1
+            );
+    }
+
+
+    /* =====================================================
+       EINZELNE HORIZONTALE SEITE
+    ===================================================== */
+
+    .about-slide {
+
+        flex:
+            0 0 100vw;
+
+        width:
+            100vw;
+
+        height:
+            100vh;
+
+        height:
+            100dvh;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            flex-start;
+
+        padding:
             10vw 8%;
+
+        overflow:
+            hidden;
+
+        position:
+            relative;
     }
 
 
@@ -1052,6 +1135,142 @@
         will-change:
             transform,
             opacity;
+    }
+
+
+
+    /* =====================================================
+       HORIZONTALE TEXT-ANIMATION
+    ===================================================== */
+
+    .about-slide .about-content {
+
+        transform:
+            translate3d(60px,0,0)
+            scale(0.94);
+
+        opacity:
+            0;
+
+        transition:
+
+            transform 0.8s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            ),
+
+            opacity 0.55s ease;
+    }
+
+
+    .about-slide.current .about-content {
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+
+        opacity:
+            1;
+    }
+
+
+
+    /* =====================================================
+       IPHONE-STYLE SEITENPUNKTE
+    ===================================================== */
+
+    .about-dots {
+
+        position:
+            absolute;
+
+        left:
+            50%;
+
+        bottom:
+            calc(
+                27px +
+                env(
+                    safe-area-inset-bottom
+                )
+            );
+
+        transform:
+            translateX(-50%);
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        gap:
+            8px;
+
+        z-index:
+            40;
+
+        pointer-events:
+            auto;
+    }
+
+
+    .about-dot {
+
+        width:
+            6px;
+
+        height:
+            6px;
+
+        border-radius:
+            50%;
+
+        background:
+            rgba(255,255,255,0.32);
+
+        box-shadow:
+            0 1px 3px
+            rgba(0,0,0,0.35);
+
+        transition:
+
+            width 0.3s ease,
+
+            background 0.3s ease,
+
+            opacity 0.3s ease,
+
+            transform 0.3s ease;
+    }
+
+
+    .about-dot.active {
+
+        width:
+            7px;
+
+        height:
+            7px;
+
+        background:
+            rgba(255,255,255,0.82);
+
+        transform:
+            scale(1.05);
+    }
+
+
+    .about-dot:hover {
+
+        background:
+            rgba(255,255,255,0.65);
     }
 
 
@@ -1288,7 +1507,13 @@
         }
 
 
-        .about,
+        .about-slide {
+
+            padding:
+                80px 25px;
+        }
+
+
         .contact {
 
             padding:
@@ -1389,6 +1614,45 @@
                 scale(1.15);
         }
 
+
+        /* ---------------------------------------------
+           MOBILE PUNKTE
+        --------------------------------------------- */
+
+        .about-dots {
+
+            bottom:
+                calc(
+                    21px +
+                    env(
+                        safe-area-inset-bottom
+                    )
+                );
+
+            gap:
+                7px;
+        }
+
+
+        .about-dot {
+
+            width:
+                5px;
+
+            height:
+                5px;
+        }
+
+
+        .about-dot.active {
+
+            width:
+                6px;
+
+            height:
+                6px;
+        }
+
     }
 
 
@@ -1409,7 +1673,9 @@
         .page-content,
         .page-title,
         .eyebrow,
-        .eyebrow .forma-o {
+        .eyebrow .forma-o,
+        .about-slide .about-content,
+        .about-slider {
 
             transition:
                 none;
@@ -1567,9 +1833,7 @@
         </div>
 
 
-        <!-- =================================================
-             SCROLL-PFEIL STARTSEITE
-        ================================================= -->
+        <!-- SCROLL-PFEIL -->
 
         <div
             class="scroll-hint"
@@ -1602,6 +1866,7 @@
 
     <!-- =================================================
          ÜBER UNS
+         3 HORIZONTALE UNTERSEITEN
     ================================================= -->
 
     <section
@@ -1609,38 +1874,173 @@
         data-index="1"
     >
 
-        <div class="about-content page-content">
 
-            <h2 class="about-title page-title">
-
-                Weniger.<br>
-
-                Aber besser.
-
-            </h2>
+        <div
+            class="about-slider"
+            id="aboutSlider"
+        >
 
 
-            <p class="about-text">
+            <!-- =========================================
+                 HORIZONTALE SEITE 1
+            ========================================= -->
 
-                FORMA. steht für
-                minimalistisches, modernes
-                und durchdachtes Design.
+            <div
+                class="about-slide current"
+                data-slide="0"
+            >
 
-                Wir reduzieren auf das Wesentliche
-                und schaffen Lösungen mit Charakter.
+                <div class="about-content">
 
-            </p>
+                    <h2 class="about-title">
+
+                        Weniger.<br>
+
+                        Aber besser.
+
+                    </h2>
+
+
+                    <p class="about-text">
+
+                        FORMA. steht für
+                        minimalistisches, modernes
+                        und durchdachtes Design.
+
+                        Wir reduzieren auf das Wesentliche
+                        und schaffen Lösungen mit Charakter.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 HORIZONTALE SEITE 2
+            ========================================= -->
+
+            <div
+                class="about-slide"
+                data-slide="1"
+            >
+
+                <div class="about-content">
+
+                    <h2 class="about-title">
+
+                        Klar.<br>
+
+                        Und präzise.
+
+                    </h2>
+
+
+                    <p class="about-text">
+
+                        Gute Gestaltung braucht
+                        keine unnötigen Elemente.
+
+                        Wir verbinden klare Formen,
+                        starke Typografie und
+                        eine reduzierte visuelle Sprache.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 HORIZONTALE SEITE 3
+            ========================================= -->
+
+            <div
+                class="about-slide"
+                data-slide="2"
+            >
+
+                <div class="about-content">
+
+                    <h2 class="about-title">
+
+                        Design.<br>
+
+                        Mit Charakter.
+
+                    </h2>
+
+
+                    <p class="about-text">
+
+                        Jede Gestaltung bekommt
+                        ihren eigenen Ausdruck.
+
+                        Modern, eigenständig und
+                        auf das Wesentliche konzentriert.
+
+                    </p>
+
+                </div>
+
+            </div>
+
 
         </div>
 
 
+
         <!-- =================================================
-             SCROLL-PFEIL ÜBER UNS
-             HELL AUF SCHWARZ
+             IPHONE-STYLE PUNKTE
+        ================================================= -->
+
+        <div
+            class="about-dots"
+            aria-label="Unterseiten"
+        >
+
+            <span
+                class="about-dot active"
+                data-slide="0"
+                role="button"
+                tabindex="0"
+                aria-label="Seite 1"
+            ></span>
+
+
+            <span
+                class="about-dot"
+                data-slide="1"
+                role="button"
+                tabindex="0"
+                aria-label="Seite 2"
+            ></span>
+
+
+            <span
+                class="about-dot"
+                data-slide="2"
+                role="button"
+                tabindex="0"
+                aria-label="Seite 3"
+            ></span>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SCROLL-PFEIL
+             WEITER ZUR KONTAKTSEITE
         ================================================= -->
 
         <div
             class="scroll-hint"
+            id="aboutScrollHint"
             role="button"
             aria-label="Weiter zur Kontaktseite"
             tabindex="0"
@@ -1711,6 +2111,10 @@
 <script>
 
 
+    /* =====================================================
+       HAUPTSEITEN
+    ===================================================== */
+
     const pages =
         document.querySelectorAll(".page");
 
@@ -1731,15 +2135,47 @@
 
     let isAnimating = false;
 
+
+
+    /* =====================================================
+       HORIZONTALE ÜBER-UNS-SEITEN
+    ===================================================== */
+
+    const aboutSlider =
+        document.querySelector("#aboutSlider");
+
+
+    const aboutSlides =
+        document.querySelectorAll(".about-slide");
+
+
+    const aboutDots =
+        document.querySelectorAll(".about-dot");
+
+
+    let currentAboutSlide = 0;
+
+    let isHorizontalAnimating = false;
+
+
+
+    /* =====================================================
+       TOUCH VARIABLEN
+    ===================================================== */
+
+    let touchStartX = 0;
+
     let touchStartY = 0;
+
+    let touchEndX = 0;
 
     let touchEndY = 0;
 
 
 
-    /* =================================================
+    /* =====================================================
        SEITE WECHSELN
-    ================================================= */
+    ===================================================== */
 
     function goToPage(index) {
 
@@ -1862,9 +2298,92 @@
 
 
 
-    /* =================================================
+    /* =====================================================
+       HORIZONTALE SEITE WECHSELN
+    ===================================================== */
+
+    function goToAboutSlide(index) {
+
+
+        if (
+
+            index < 0 ||
+
+            index >= aboutSlides.length ||
+
+            index === currentAboutSlide ||
+
+            isHorizontalAnimating
+
+        ) {
+
+            return;
+
+        }
+
+
+        isHorizontalAnimating = true;
+
+
+        currentAboutSlide = index;
+
+
+        /* ---------------------------------------------
+           SLIDER BEWEGEN
+        --------------------------------------------- */
+
+        aboutSlider.style.transform =
+            `translate3d(-${index * 100}vw, 0, 0)`;
+
+
+        /* ---------------------------------------------
+           AKTUELLE SLIDE
+        --------------------------------------------- */
+
+        aboutSlides.forEach(
+            (slide, i) => {
+
+                slide.classList.toggle(
+                    "current",
+                    i === index
+                );
+
+            }
+        );
+
+
+        /* ---------------------------------------------
+           PUNKTE AKTUALISIEREN
+        --------------------------------------------- */
+
+        aboutDots.forEach(
+            (dot, i) => {
+
+                dot.classList.toggle(
+                    "active",
+                    i === index
+                );
+
+            }
+        );
+
+
+        setTimeout(
+            () => {
+
+                isHorizontalAnimating = false;
+
+            },
+            820
+        );
+
+    }
+
+
+
+    /* =====================================================
        SCROLL-PFEILE
-    ================================================= */
+    ===================================================== */
 
     scrollHints.forEach(
         hint => {
@@ -1909,9 +2428,62 @@
 
 
 
-    /* =================================================
+    /* =====================================================
+       IPHONE-STYLE PUNKTE
+    ===================================================== */
+
+    aboutDots.forEach(
+        dot => {
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    const index =
+                        Number(
+                            dot.dataset.slide
+                        );
+
+                    goToAboutSlide(index);
+
+                }
+            );
+
+
+            dot.addEventListener(
+                "keydown",
+                event => {
+
+                    if (
+
+                        event.key === "Enter" ||
+
+                        event.key === " "
+
+                    ) {
+
+                        event.preventDefault();
+
+                        const index =
+                            Number(
+                                dot.dataset.slide
+                            );
+
+                        goToAboutSlide(index);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
        MAUSRAD
-    ================================================= */
+    ===================================================== */
 
     window.addEventListener(
         "wheel",
@@ -1957,13 +2529,16 @@
 
 
 
-    /* =================================================
-       TOUCH / WISCHEN
-    ================================================= */
+    /* =====================================================
+       TOUCH START
+    ===================================================== */
 
     window.addEventListener(
         "touchstart",
         event => {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
 
             touchStartY =
                 event.changedTouches[0].screenY;
@@ -1975,21 +2550,86 @@
     );
 
 
+
+    /* =====================================================
+       TOUCH END
+    ===================================================== */
+
     window.addEventListener(
         "touchend",
         event => {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
 
             touchEndY =
                 event.changedTouches[0].screenY;
 
 
-            const difference =
+            const differenceX =
+                touchStartX -
+                touchEndX;
+
+
+            const differenceY =
                 touchStartY -
                 touchEndY;
 
 
+            const absX =
+                Math.abs(differenceX);
+
+
+            const absY =
+                Math.abs(differenceY);
+
+
+
+            /* =============================================
+               HORIZONTALES WISCHEN
+               NUR AUF DER ÜBER-UNS-SEITE
+            ============================================= */
+
             if (
-                Math.abs(difference) < 50
+
+                currentPage === 1 &&
+
+                absX > 50 &&
+
+                absX > absY
+
+            ) {
+
+
+                if (differenceX > 0) {
+
+                    goToAboutSlide(
+                        currentAboutSlide + 1
+                    );
+
+                }
+
+                else {
+
+                    goToAboutSlide(
+                        currentAboutSlide - 1
+                    );
+
+                }
+
+
+                return;
+
+            }
+
+
+
+            /* =============================================
+               VERTIKALES WISCHEN
+            ============================================= */
+
+            if (
+                absY < 50
             ) {
 
                 return;
@@ -1997,7 +2637,7 @@
             }
 
 
-            if (difference > 0) {
+            if (differenceY > 0) {
 
                 goToPage(
                     currentPage + 1
@@ -2021,13 +2661,57 @@
 
 
 
-    /* =================================================
+    /* =====================================================
        TASTATUR
-    ================================================= */
+    ===================================================== */
 
     window.addEventListener(
         "keydown",
         event => {
+
+
+            /* ---------------------------------------------
+               HORIZONTAL AUF ÜBER-UNS
+            --------------------------------------------- */
+
+            if (
+
+                currentPage === 1 &&
+
+                event.key === "ArrowRight"
+
+            ) {
+
+                goToAboutSlide(
+                    currentAboutSlide + 1
+                );
+
+                return;
+
+            }
+
+
+            if (
+
+                currentPage === 1 &&
+
+                event.key === "ArrowLeft"
+
+            ) {
+
+                goToAboutSlide(
+                    currentAboutSlide - 1
+                );
+
+                return;
+
+            }
+
+
+
+            /* ---------------------------------------------
+               VERTIKALE HAUPTSEITEN
+            --------------------------------------------- */
 
             if (
                 event.key === "ArrowDown"
@@ -2068,9 +2752,9 @@
 
 
 
-    /* =================================================
+    /* =====================================================
        NAVIGATION
-    ================================================= */
+    ===================================================== */
 
     navLinks.forEach(
         link => {
@@ -2098,9 +2782,9 @@
 
 
 
-    /* =================================================
+    /* =====================================================
        LOGO
-    ================================================= */
+    ===================================================== */
 
     homeButton.addEventListener(
         "click",
@@ -2115,9 +2799,9 @@
 
 
 
-    /* =================================================
+    /* =====================================================
        URL / HASH
-    ================================================= */
+    ===================================================== */
 
     window.addEventListener(
         "load",
@@ -2142,6 +2826,7 @@
 
         }
     );
+
 
 </script>
 
