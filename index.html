@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="de">
 
 <head>
@@ -16,581 +15,1578 @@
 
 <style>
 
-    /* =====================================================
-       GRUNDLAGEN
-    ===================================================== */
+/* =====================================================
+   GRUNDLAGEN
+===================================================== */
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 
-    html {
-        scroll-behavior: auto;
-        overflow: hidden;
-    }
+html {
+    scroll-behavior: auto;
+    overflow: hidden;
+}
 
 
-    body {
+body {
 
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "Helvetica Neue",
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
-        color: #1d1d1f;
+    color: #1d1d1f;
 
-        background: #fff;
+    background: #fff;
 
-        overflow: hidden;
+    overflow: hidden;
 
-        -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
 
-        text-rendering: geometricPrecision;
-    }
+    text-rendering: geometricPrecision;
+}
 
 
-    :root {
+:root {
 
-        --forma-red: #D72638;
+    --forma-red: #D72638;
 
-        --dark-text: #1d1d1f;
+    --dark-text: #1d1d1f;
 
-        --soft-gray: #666;
-    }
+    --soft-gray: #666;
 
+    --glass-white: rgba(255,255,255,0.28);
 
+    --glass-border: rgba(255,255,255,0.72);
 
-    /* =====================================================
-       NAVIGATION
-       APPLE STYLE GLOSSY
-    ===================================================== */
+    --glass-shadow:
+        0 8px 24px rgba(0,0,0,0.10),
+        inset 0 1px 1px rgba(255,255,255,0.85),
+        inset 0 -1px 1px rgba(255,255,255,0.18);
+}
 
-    nav {
 
-        height: 60px;
 
-        display: flex;
+/* =====================================================
+   NAVIGATION
+   APPLE STYLE GLOSSY
+===================================================== */
 
-        align-items: center;
+nav {
 
-        justify-content: space-between;
+    height: 60px;
 
-        padding: 0 6%;
+    display: flex;
 
-        position: fixed;
+    align-items: center;
 
-        top: 0;
+    justify-content: space-between;
 
-        left: 0;
+    padding: 0 6%;
 
-        right: 0;
+    position: fixed;
 
-        background:
+    top: 0;
 
-            linear-gradient(
-                180deg,
-                rgba(255,255,255,0.94) 0%,
-                rgba(255,255,255,0.82) 35%,
-                rgba(248,248,250,0.74) 100%
-            );
+    left: 0;
 
-        backdrop-filter:
-            blur(24px)
-            saturate(180%);
+    right: 0;
 
-        -webkit-backdrop-filter:
-            blur(24px)
-            saturate(180%);
+    background:
 
-        border-bottom:
-            1px solid
-            rgba(0,0,0,0.08);
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.94) 0%,
+            rgba(255,255,255,0.82) 35%,
+            rgba(248,248,250,0.74) 100%
+        );
 
-        box-shadow:
+    backdrop-filter:
+        blur(24px)
+        saturate(180%);
 
-            0 8px 30px
-            rgba(0,0,0,0.06),
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(180%);
 
-            0 2px 8px
-            rgba(0,0,0,0.035),
+    border-bottom:
+        1px solid
+        rgba(0,0,0,0.08);
 
-            inset 0 1px 0
-            rgba(255,255,255,0.95);
+    box-shadow:
 
-        overflow: hidden;
+        0 8px 30px
+        rgba(0,0,0,0.06),
 
-        z-index: 100;
-    }
+        0 2px 8px
+        rgba(0,0,0,0.035),
 
+        inset 0 1px 0
+        rgba(255,255,255,0.95);
 
-    /* =====================================================
-       GLOSSY LICHTREFLEX
-    ===================================================== */
+    overflow: hidden;
 
-    nav::before {
+    z-index: 100;
+}
 
-        content: "";
 
-        position: absolute;
+nav::before {
 
-        top: 0;
+    content: "";
 
-        left: 0;
+    position: absolute;
 
-        right: 0;
+    top: 0;
 
-        height: 42%;
+    left: 0;
 
-        background:
+    right: 0;
 
-            linear-gradient(
-                180deg,
-                rgba(255,255,255,0.72),
-                rgba(255,255,255,0)
-            );
+    height: 42%;
 
-        pointer-events: none;
+    background:
 
-        z-index: 0;
-    }
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.72),
+            rgba(255,255,255,0)
+        );
 
+    pointer-events: none;
 
+    z-index: 0;
+}
 
-    /* =====================================================
-       FORMA LOGO NAVIGATION
-    ===================================================== */
 
-    .logo {
 
-        position: relative;
+/* =====================================================
+   FORMA LOGO
+===================================================== */
 
-        z-index: 2;
+.logo {
 
-        display: flex;
+    position: relative;
 
-        align-items: center;
+    z-index: 2;
 
-        text-decoration: none;
+    display: flex;
 
-        cursor: pointer;
+    align-items: center;
 
-        transition:
+    text-decoration: none;
 
-            opacity 0.2s ease,
+    cursor: pointer;
 
-            transform 0.2s ease;
-    }
+    transition:
 
+        opacity 0.2s ease,
 
-    .logo:hover {
+        transform 0.2s ease;
+}
 
-        opacity: 0.72;
+
+.logo:hover {
+
+    opacity: 0.72;
+
+    transform:
+        translateY(-1px);
+}
+
+
+.forma-logo {
+
+    display: inline-flex;
+
+    align-items: baseline;
+
+    color:
+        var(--dark-text);
+
+    font-family:
+
+        "Helvetica Neue",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
+
+    font-size: 21px;
+
+    font-weight: 500;
+
+    letter-spacing: 2.8px;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+.forma-letter {
+
+    display: inline-block;
+
+    color:
+        var(--dark-text);
+
+    font-weight: 500;
+}
+
+
+.forma-o {
+
+    display: inline-block;
+
+    color:
+        var(--forma-red);
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    transform-origin:
+        center center;
+}
+
+
+.forma-dot {
+
+    display: inline-block;
+
+    width: 3px;
+
+    height: 3px;
+
+    margin-left: 2px;
+
+    margin-bottom: 1px;
+
+    border-radius: 50%;
+
+    background:
+        var(--forma-red);
+}
+
+
+
+/* =====================================================
+   NAVIGATION LINKS
+===================================================== */
+
+nav .nav-links {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+nav .nav-links a {
+
+    color:
+        rgba(29,29,31,0.82);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    margin-left: 30px;
+
+    padding:
+        8px 10px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+
+        color 0.25s ease,
+
+        background 0.25s ease,
+
+        transform 0.2s ease;
+}
+
+
+nav .nav-links a:hover {
+
+    color:
+        #000;
+
+    background:
+        rgba(255,255,255,0.55);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,0.8);
+
+    transform:
+        translateY(-1px);
+}
+
+
+nav .nav-links a:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+
+/* =====================================================
+   FULL PAGE CONTAINER
+===================================================== */
+
+.page-container {
+
+    width: 100vw;
+
+    height: 100vh;
+
+    height: 100dvh;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+
+/* =====================================================
+   EINZELNE SEITE
+===================================================== */
+
+.page {
+
+    width: 100vw;
+
+    height: 100vh;
+
+    height: 100dvh;
+
+    min-height: 100vh;
+
+    min-height: 100dvh;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translate3d(0,100%,0);
+
+    transition:
+
+        transform 0.9s
+        cubic-bezier(
+            0.77,
+            0,
+            0.175,
+            1
+        ),
+
+        opacity 0.6s ease;
+}
+
+
+.page.active {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translate3d(0,0,0);
+
+    z-index: 2;
+}
+
+
+.page.previous {
+
+    opacity: 0;
+
+    transform:
+        translate3d(0,-100%,0);
+
+    z-index: 1;
+}
+
+
+.page.next {
+
+    opacity: 0;
+
+    transform:
+        translate3d(0,100%,0);
+
+    z-index: 1;
+}
+
+
+
+/* =====================================================
+   STARTSEITE
+===================================================== */
+
+.hero {
+
+    background:
+        #fff;
+
+    text-align:
+        center;
+
+    padding:
+        80px 6% 50px;
+}
+
+
+.hero-content {
+
+    width:
+        100%;
+
+    max-width:
+        1200px;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   FORMA STARTSEITE
+===================================================== */
+
+.eyebrow {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        38px;
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,35px,0)
+        scale(0.94);
+
+    transition:
+
+        opacity 0.85s ease 0.25s,
+
+        transform 1.05s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        0.25s;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.page.active .eyebrow {
+
+    opacity:
+        1;
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+}
+
+
+.eyebrow .forma-logo {
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            72px
+        );
+
+    font-weight:
+        300;
+
+    letter-spacing:
+        clamp(
+            5px,
+            0.9vw,
+            13px
+        );
+
+    line-height:
+        1;
+}
+
+
+.eyebrow .forma-letter {
+
+    font-weight:
+        300;
+}
+
+
+.eyebrow .forma-o {
+
+    font-size:
+        1.08em;
+
+    font-weight:
+        300;
+
+    color:
+        var(--forma-red);
+
+    transform-origin:
+        center center;
+
+    transition:
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        filter 0.8s ease;
+}
+
+
+.page.leaving .eyebrow {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.page.leaving .eyebrow .forma-o {
+
+    transform:
+        scale(1.20);
+
+    filter:
+        saturate(1.2);
+}
+
+
+.page.active .eyebrow .forma-o {
+
+    transform:
+        scale(1);
+}
+
+
+.eyebrow .forma-dot {
+
+    width:
+        5px;
+
+    height:
+        5px;
+
+    margin-left:
+        4px;
+
+    margin-bottom:
+        3px;
+
+    background:
+        var(--forma-red);
+}
+
+
+
+/* =====================================================
+   HERO TITLE
+===================================================== */
+
+.hero-title {
+
+    font-size:
+        clamp(
+            70px,
+            10vw,
+            150px
+        );
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -7px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        38px;
+
+    text-shadow:
+
+        0 2px 2px
+        rgba(0,0,0,0.10),
+
+        0 5px 10px
+        rgba(0,0,0,0.12),
+
+        0 10px 22px
+        rgba(0,0,0,0.055);
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.hero-text {
+
+    font-size:
+        clamp(
+            19px,
+            2vw,
+            25px
+        );
+
+    color:
+        #666;
+
+    max-width:
+        700px;
+
+    margin:
+        auto;
+
+    line-height:
+        1.4;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   HORIZONTALE ÜBER-UNS SEITEN
+===================================================== */
+
+.about {
+
+    background:
+        #000;
+
+    color:
+        #fff;
+
+    justify-content:
+        flex-start;
+
+    padding:
+        10vw 8%;
+}
+
+
+.about-slider {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.about-track {
+
+    display:
+        flex;
+
+    width:
+        300%;
+
+    height:
+        100%;
+
+    transform:
+        translate3d(0,0,0);
+
+    transition:
+        transform 0.75s
+        cubic-bezier(
+            0.77,
+            0,
+            0.175,
+            1
+        );
+
+    will-change:
+        transform;
+}
+
+
+.about-panel {
+
+    width:
+        33.333333%;
+
+    height:
+        100%;
+
+    flex:
+        0 0 33.333333%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    position:
+        relative;
+}
+
+
+.about-content {
+
+    width:
+        100%;
+
+    max-width:
+        1300px;
+
+    padding-bottom:
+        120px;
+}
+
+
+.about-title {
+
+    font-size:
+        clamp(
+            65px,
+            9vw,
+            140px
+        );
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -6px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        45px;
+
+    text-shadow:
+
+        0 2px 2px
+        rgba(255,255,255,0.12),
+
+        0 5px 10px
+        rgba(255,255,255,0.10),
+
+        0 10px 22px
+        rgba(255,255,255,0.045);
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.about-text {
+
+    max-width:
+        700px;
+
+    font-size:
+        clamp(
+            18px,
+            2vw,
+            25px
+        );
+
+    line-height:
+        1.45;
+
+    color:
+        #aaa;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   LIQUID GLASS PAGINATION
+===================================================== */
+
+.about-pagination {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        82px;
+
+    transform:
+        translateX(-50%);
+
+    height:
+        34px;
+
+    padding:
+        5px 7px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        8px;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255,255,255,0.11);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.22);
+
+    box-shadow:
+
+        0 8px 28px
+        rgba(0,0,0,0.28),
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.28),
+
+        inset 0 -1px 1px
+        rgba(0,0,0,0.12);
+
+    backdrop-filter:
+        blur(18px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(180%);
+
+    overflow:
+        hidden;
+
+    z-index:
+        30;
+}
+
+
+/* ---------------------------------------------
+   GLAS-REFLEX
+--------------------------------------------- */
+
+.about-pagination::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        1px;
+
+    left:
+        8px;
+
+    right:
+        8px;
+
+    height:
+        45%;
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.30),
+            rgba(255,255,255,0)
+        );
+
+    pointer-events:
+        none;
+
+    z-index:
+        0;
+}
+
+
+/* ---------------------------------------------
+   BEWEGLICHE LIQUID-GLASS-BLASE
+--------------------------------------------- */
+
+.pagination-glass {
+
+    position:
+        absolute;
+
+    top:
+        5px;
+
+    left:
+        6px;
+
+    width:
+        18px;
+
+    height:
+        24px;
+
+    border-radius:
+        999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.48),
+            rgba(255,255,255,0.19)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.48);
+
+    box-shadow:
+
+        0 2px 8px
+        rgba(0,0,0,0.20),
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.72),
+
+        inset 0 -2px 4px
+        rgba(0,0,0,0.08);
+
+    backdrop-filter:
+        blur(8px)
+        saturate(190%);
+
+    -webkit-backdrop-filter:
+        blur(8px)
+        saturate(190%);
+
+    transition:
+
+        transform 0.55s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        width 0.45s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
+    z-index:
+        1;
+
+    pointer-events:
+        none;
+}
+
+
+/* kleiner Lichtpunkt innerhalb der Glasblase */
+
+.pagination-glass::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        3px;
+
+    left:
+        4px;
+
+    width:
+        8px;
+
+    height:
+        4px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,0.58);
+
+    filter:
+        blur(1px);
+}
+
+
+
+/* =====================================================
+   EINZELNE PUNKTE
+===================================================== */
+
+.pagination-dot {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,0.48);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.42);
+
+    box-shadow:
+
+        0 1px 4px
+        rgba(0,0,0,0.18),
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.40);
+
+    cursor:
+        pointer;
+
+    transition:
+
+        transform 0.35s ease,
+
+        opacity 0.35s ease;
+}
+
+
+.pagination-dot:hover {
+
+    transform:
+        scale(1.25);
+
+    background:
+        rgba(255,255,255,0.68);
+}
+
+
+
+/* =====================================================
+   PFEIL
+===================================================== */
+
+.scroll-hint {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        calc(
+            24px +
+            env(
+                safe-area-inset-bottom
+            )
+        );
+
+    transform:
+        translateX(-50%);
+
+    width:
+        46px;
+
+    height:
+        54px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    z-index:
+        50;
+
+    cursor:
+        pointer;
+
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+
+    transition:
+
+        opacity 0.7s ease,
+
+        transform 0.5s ease;
+}
+
+
+.page.active .scroll-hint {
+
+    opacity:
+        1;
+
+    pointer-events:
+        auto;
+}
+
+
+.scroll-hint svg {
+
+    width:
+        26px;
+
+    height:
+        32px;
+
+    overflow:
+        visible;
+
+    animation:
+        arrowFloat 1.8s
+        ease-in-out
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 2px 3px
+            rgba(0,0,0,0.12)
+        );
+}
+
+
+.scroll-hint path {
+
+    fill:
+        none;
+
+    stroke:
+        rgba(29,29,31,0.58);
+
+    stroke-width:
+        2;
+
+    stroke-linecap:
+        round;
+
+    stroke-linejoin:
+        round;
+}
+
+
+
+/* =====================================================
+   PFEIL AUF SCHWARZER SEITE
+===================================================== */
+
+.about .scroll-hint {
+
+    bottom:
+        calc(
+            20px +
+            env(
+                safe-area-inset-bottom
+            )
+        );
+}
+
+
+.about .scroll-hint svg {
+
+    filter:
+        drop-shadow(
+            0 0 4px
+            rgba(255,255,255,0.20)
+        );
+}
+
+
+.about .scroll-hint path {
+
+    stroke:
+        rgba(255,255,255,0.78);
+
+    stroke-width:
+        2.1;
+}
+
+
+.about .scroll-hint:hover path {
+
+    stroke:
+        rgba(255,255,255,1);
+}
+
+
+
+/* =====================================================
+   PFEIL ANIMATION
+===================================================== */
+
+@keyframes arrowFloat {
+
+    0% {
 
         transform:
-            translateY(-1px);
+            translateY(0);
+
+        opacity:
+            0.45;
     }
+
+    50% {
+
+        transform:
+            translateY(7px);
+
+        opacity:
+            0.95;
+    }
+
+    100% {
+
+        transform:
+            translateY(0);
+
+        opacity:
+            0.45;
+    }
+}
+
+
+.page.leaving .scroll-hint {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    pointer-events:
+        none;
+}
+
+
+
+/* =====================================================
+   KONTAKT
+===================================================== */
+
+.contact {
+
+    background:
+        #fff;
+
+    justify-content:
+        flex-start;
+
+    padding:
+        10vw 8%;
+}
+
+
+.contact-content {
+
+    width:
+        100%;
+
+    max-width:
+        1300px;
+}
+
+
+.contact-title {
+
+    font-size:
+        clamp(
+            65px,
+            9vw,
+            140px
+        );
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -6px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        45px;
+
+    text-shadow:
+
+        0 2px 2px
+        rgba(0,0,0,0.10),
+
+        0 5px 10px
+        rgba(0,0,0,0.12),
+
+        0 10px 22px
+        rgba(0,0,0,0.055);
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.contact-text {
+
+    max-width:
+        700px;
+
+    font-size:
+        clamp(
+            18px,
+            2vw,
+            25px
+        );
+
+    line-height:
+        1.45;
+
+    color:
+        #666;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* =====================================================
+   SEITEN-INHALT
+===================================================== */
+
+.page-content {
+
+    transform:
+        translate3d(0,60px,0)
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+
+        transform 1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.7s ease;
+}
+
+
+.page.active .page-content {
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    opacity:
+        1;
+}
+
+
+.page-title {
+
+    transform:
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+
+        transform 1.2s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.8s ease;
+}
+
+
+.page.active .page-title {
+
+    transform:
+        scale(1);
+
+    opacity:
+        1;
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
 
 
     .forma-logo {
 
-        display: inline-flex;
+        font-size:
+            19px;
 
-        align-items: baseline;
-
-        color:
-            var(--dark-text);
-
-        font-family:
-
-            "Helvetica Neue",
-            "Arial Narrow",
-            Arial,
-            sans-serif;
-
-        font-size: 21px;
-
-        font-weight: 500;
-
-        letter-spacing: 2.8px;
-
-        line-height: 1;
-
-        white-space: nowrap;
+        letter-spacing:
+            2.4px;
     }
 
-
-    .forma-letter {
-
-        display: inline-block;
-
-        color:
-            var(--dark-text);
-
-        font-weight: 500;
-    }
-
-
-    .forma-o {
-
-        display: inline-block;
-
-        color:
-            var(--forma-red);
-
-        font-weight: 500;
-
-        line-height: 1;
-
-        transform-origin:
-            center center;
-    }
-
-
-    .forma-dot {
-
-        display: inline-block;
-
-        width: 3px;
-
-        height: 3px;
-
-        margin-left: 2px;
-
-        margin-bottom: 1px;
-
-        border-radius: 50%;
-
-        background:
-            var(--forma-red);
-    }
-
-
-
-    /* =====================================================
-       NAVIGATION LINKS
-    ===================================================== */
-
-    nav .nav-links {
-
-        position: relative;
-
-        z-index: 2;
-
-        display: flex;
-
-        align-items: center;
-    }
-
-
-    nav .nav-links a {
-
-        color:
-            rgba(29,29,31,0.82);
-
-        text-decoration: none;
-
-        font-size: 14px;
-
-        font-weight: 500;
-
-        margin-left: 30px;
-
-        padding:
-            8px 10px;
-
-        border-radius: 10px;
-
-        cursor: pointer;
-
-        transition:
-
-            color 0.25s ease,
-
-            background 0.25s ease,
-
-            transform 0.2s ease;
-    }
-
-
-    nav .nav-links a:hover {
-
-        color:
-            #000;
-
-        background:
-            rgba(255,255,255,0.55);
-
-        box-shadow:
-
-            inset 0 1px 0
-            rgba(255,255,255,0.8);
-
-        transform:
-            translateY(-1px);
-    }
-
-
-    nav .nav-links a:active {
-
-        transform:
-            scale(0.96);
-    }
-
-
-
-    /* =====================================================
-       FULL PAGE CONTAINER
-    ===================================================== */
-
-    .page-container {
-
-        width: 100vw;
-
-        height: 100vh;
-
-        height: 100dvh;
-
-        overflow: hidden;
-
-        position: relative;
-    }
-
-
-
-    /* =====================================================
-       EINZELNE HAUPTSEITE
-    ===================================================== */
-
-    .page {
-
-        width: 100vw;
-
-        height: 100vh;
-
-        height: 100dvh;
-
-        min-height: 100vh;
-
-        min-height: 100dvh;
-
-        position: absolute;
-
-        top: 0;
-
-        left: 0;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        overflow: hidden;
-
-        opacity: 0;
-
-        pointer-events: none;
-
-        transform:
-            translate3d(0,100%,0);
-
-        transition:
-
-            transform 0.9s
-            cubic-bezier(
-                0.77,
-                0,
-                0.175,
-                1
-            ),
-
-            opacity 0.6s ease;
-    }
-
-
-    /* =====================================================
-       AKTUELLE SEITE
-    ===================================================== */
-
-    .page.active {
-
-        opacity: 1;
-
-        pointer-events: auto;
-
-        transform:
-            translate3d(0,0,0);
-
-        z-index: 2;
-    }
-
-
-    /* =====================================================
-       VORHERIGE SEITE
-    ===================================================== */
-
-    .page.previous {
-
-        opacity: 0;
-
-        transform:
-            translate3d(0,-100%,0);
-
-        z-index: 1;
-    }
-
-
-    /* =====================================================
-       NÄCHSTE SEITE
-    ===================================================== */
-
-    .page.next {
-
-        opacity: 0;
-
-        transform:
-            translate3d(0,100%,0);
-
-        z-index: 1;
-    }
-
-
-
-    /* =====================================================
-       STARTSEITE
-    ===================================================== */
-
-    .hero {
-
-        background:
-            #fff;
-
-        text-align:
-            center;
-
-        padding:
-            80px 6% 50px;
-    }
-
-
-    .hero-content {
-
-        width:
-            100%;
-
-        max-width:
-            1200px;
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-
-    /* =====================================================
-       FORMA AUF STARTSEITE
-    ===================================================== */
 
     .eyebrow {
 
-        display:
-            flex;
-
-        justify-content:
-            center;
-
-        align-items:
-            center;
-
         margin-bottom:
-            38px;
-
-        opacity:
-            0;
-
-        transform:
-            translate3d(0,35px,0)
-            scale(0.94);
-
-        transition:
-
-            opacity 0.85s ease 0.25s,
-
-            transform 1.05s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            )
-            0.25s;
-
-        will-change:
-            transform,
-            opacity;
+            28px;
     }
 
-
-    .page.active .eyebrow {
-
-        opacity:
-            1;
-
-        transform:
-            translate3d(0,0,0)
-            scale(1);
-    }
-
-
-
-    /* =====================================================
-       GROSSES FORMA
-    ===================================================== */
 
     .eyebrow .forma-logo {
 
         font-size:
-            clamp(
-                42px,
-                5vw,
-                72px
-            );
-
-        font-weight:
-            300;
+            34px;
 
         letter-spacing:
-            clamp(
-                5px,
-                0.9vw,
-                13px
-            );
-
-        line-height:
-            1;
+            5px;
     }
 
-
-    .eyebrow .forma-letter {
-
-        font-weight:
-            300;
-    }
-
-
-
-    /* =====================================================
-       ROTES O
-    ===================================================== */
 
     .eyebrow .forma-o {
 
@@ -599,1236 +1595,215 @@
 
         font-weight:
             300;
-
-        color:
-            var(--forma-red);
-
-        transform-origin:
-            center center;
-
-        transition:
-
-            transform 0.8s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            ),
-
-            filter 0.8s ease;
     }
 
 
-
-    /* =====================================================
-       FORMA BEIM VERLASSEN
-    ===================================================== */
-
-    .page.leaving .eyebrow {
-
-        opacity:
-            0;
-
-        transform:
-            translate3d(0,-42px,0)
-            scale(1.16);
-
-        transition:
-
-            opacity 0.46s
-            cubic-bezier(
-                0.4,
-                0,
-                1,
-                1
-            ),
-
-            transform 0.8s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            );
-    }
-
-
-    .page.leaving .eyebrow .forma-o {
-
-        transform:
-            scale(1.20);
-
-        filter:
-            saturate(1.2);
-    }
-
-
-    .page.active .eyebrow .forma-o {
-
-        transform:
-            scale(1);
-    }
-
-
-
-    /* =====================================================
-       PUNKT
-    ===================================================== */
-
-    .eyebrow .forma-dot {
-
-        width:
-            5px;
-
-        height:
-            5px;
+    nav .nav-links a {
 
         margin-left:
-            4px;
+            15px;
 
-        margin-bottom:
-            3px;
+        padding:
+            7px 8px;
 
-        background:
-            var(--forma-red);
+        font-size:
+            13px;
     }
 
 
+    .hero {
 
-    /* =====================================================
-       HERO TITLE
-    ===================================================== */
+        padding:
+            70px 25px 40px;
+    }
+
 
     .hero-title {
 
-        font-size:
-            clamp(
-                70px,
-                10vw,
-                150px
-            );
+        letter-spacing:
+            -4px;
+    }
 
-        line-height:
-            0.92;
+
+    .about,
+    .contact {
+
+        padding:
+            80px 25px;
+    }
+
+
+    .about-title,
+    .contact-title {
 
         letter-spacing:
-            -7px;
-
-        font-weight:
-            700;
-
-        margin-bottom:
-            38px;
-
-        text-shadow:
-
-            0 2px 2px
-            rgba(0,0,0,0.10),
-
-            0 5px 10px
-            rgba(0,0,0,0.12),
-
-            0 10px 22px
-            rgba(0,0,0,0.055);
-
-        will-change:
-            transform,
-            opacity;
+            -4px;
     }
 
 
-    .hero-text {
-
-        font-size:
-            clamp(
-                19px,
-                2vw,
-                25px
-            );
-
-        color:
-            #666;
+    .about-text,
+    .contact-text {
 
         max-width:
-            700px;
-
-        margin:
-            auto;
-
-        line-height:
-            1.4;
-
-        will-change:
-            transform,
-            opacity;
+            100%;
     }
 
 
+    /* ---------------------------------------------
+       LIQUID GLASS PUNKTE
+    --------------------------------------------- */
 
-    /* =====================================================
-       SCROLL-PFEIL
-    ===================================================== */
+    .about-pagination {
+
+        bottom:
+            88px;
+
+        height:
+            32px;
+
+        padding:
+            5px 6px;
+
+        gap:
+            8px;
+    }
+
+
+    .pagination-glass {
+
+        top:
+            5px;
+
+        left:
+            5px;
+
+        width:
+            18px;
+
+        height:
+            22px;
+    }
+
+
+    .pagination-dot {
+
+        width:
+            6px;
+
+        height:
+            6px;
+    }
+
+
+    /* ---------------------------------------------
+       PFEIL
+    --------------------------------------------- */
 
     .scroll-hint {
 
-        position:
-            absolute;
-
-        left:
-            50%;
-
         bottom:
             calc(
-                24px +
+                20px +
                 env(
                     safe-area-inset-bottom
                 )
             );
 
-        transform:
-            translateX(-50%);
-
         width:
-            46px;
+            48px;
 
         height:
-            54px;
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        z-index:
-            50;
-
-        cursor:
-            pointer;
-
-        opacity:
-            0;
-
-        pointer-events:
-            none;
-
-        transition:
-
-            opacity 0.7s ease,
-
-            transform 0.5s ease;
-    }
-
-
-    .page.active .scroll-hint {
-
-        opacity:
-            1;
-
-        pointer-events:
-            auto;
+            52px;
     }
 
 
     .scroll-hint svg {
 
         width:
-            26px;
+            24px;
 
         height:
-            32px;
-
-        overflow:
-            visible;
-
-        animation:
-            arrowFloat 1.8s
-            ease-in-out
-            infinite;
-
-        filter:
-            drop-shadow(
-                0 2px 3px
-                rgba(0,0,0,0.12)
-            );
+            30px;
     }
 
 
     .scroll-hint path {
 
-        fill:
-            none;
-
-        stroke:
-            rgba(29,29,31,0.58);
-
         stroke-width:
-            2;
-
-        stroke-linecap:
-            round;
-
-        stroke-linejoin:
-            round;
-    }
-
-
-
-    /* =====================================================
-       PFEIL AUF SCHWARZER SEITE
-    ===================================================== */
-
-    .about .scroll-hint svg {
-
-        filter:
-            drop-shadow(
-                0 0 4px
-                rgba(255,255,255,0.20)
-            );
+            2.2;
     }
 
 
     .about .scroll-hint path {
 
         stroke:
-            rgba(255,255,255,0.78);
+            rgba(255,255,255,0.82);
 
         stroke-width:
-            2.1;
+            2.2;
     }
 
 
-    .about .scroll-hint:hover path {
+    .about .scroll-hint svg {
 
-        stroke:
-            rgba(255,255,255,1);
-    }
-
-
-
-    /* =====================================================
-       PFEIL ANIMATION
-    ===================================================== */
-
-    @keyframes arrowFloat {
-
-        0% {
-
-            transform:
-                translateY(0);
-
-            opacity:
-                0.45;
-        }
-
-        50% {
-
-            transform:
-                translateY(7px);
-
-            opacity:
-                0.95;
-        }
-
-        100% {
-
-            transform:
-                translateY(0);
-
-            opacity:
-                0.45;
-        }
-    }
-
-
-
-    /* =====================================================
-       PFEIL BEIM SEITENWECHSEL
-    ===================================================== */
-
-    .page.leaving .scroll-hint {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-50%)
-            translateY(15px);
-
-        pointer-events:
-            none;
-    }
-
-
-
-    /* =====================================================
-       ÜBER UNS
-       HORIZONTALE SEITEN
-    ===================================================== */
-
-    .about {
-
-        background:
-            #000;
-
-        color:
-            #fff;
-
-        justify-content:
-            flex-start;
-
-        padding:
-            0;
-
-        display:
-            block;
-    }
-
-
-    /* =====================================================
-       HORIZONTALER CONTAINER
-    ===================================================== */
-
-    .about-slider {
-
-        width:
-            100vw;
-
-        height:
-            100vh;
-
-        height:
-            100dvh;
-
-        display:
-            flex;
-
-        overflow:
-            hidden;
-
-        touch-action:
-            pan-y;
-
-        will-change:
-            transform;
-
-        transition:
-            transform 0.8s
-            cubic-bezier(
-                0.77,
-                0,
-                0.175,
-                1
+        filter:
+            drop-shadow(
+                0 0 4px
+                rgba(255,255,255,0.22)
             );
     }
 
 
-    /* =====================================================
-       EINZELNE HORIZONTALE SEITE
-    ===================================================== */
-
-    .about-slide {
-
-        flex:
-            0 0 100vw;
-
-        width:
-            100vw;
-
-        height:
-            100vh;
-
-        height:
-            100dvh;
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            flex-start;
-
-        padding:
-            10vw 8%;
-
-        overflow:
-            hidden;
-
-        position:
-            relative;
-    }
-
-
-    .about-content {
-
-        width:
-            100%;
-
-        max-width:
-            1300px;
-    }
-
-
-    .about-title {
-
-        font-size:
-            clamp(
-                65px,
-                9vw,
-                140px
-            );
-
-        line-height:
-            0.92;
-
-        letter-spacing:
-            -6px;
-
-        font-weight:
-            700;
-
-        margin-bottom:
-            45px;
-
-        text-shadow:
-
-            0 2px 2px
-            rgba(255,255,255,0.12),
-
-            0 5px 10px
-            rgba(255,255,255,0.10),
-
-            0 10px 22px
-            rgba(255,255,255,0.045);
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-    .about-text {
-
-        max-width:
-            700px;
-
-        font-size:
-            clamp(
-                18px,
-                2vw,
-                25px
-            );
-
-        line-height:
-            1.45;
-
-        color:
-            #aaa;
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-
-    /* =====================================================
-       HORIZONTALE TEXT-ANIMATION
-    ===================================================== */
-
-    .about-slide .about-content {
+    .page.leaving .eyebrow {
 
         transform:
-            translate3d(60px,0,0)
-            scale(0.94);
-
-        opacity:
-            0;
-
-        transition:
-
-            transform 0.8s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            ),
-
-            opacity 0.55s ease;
-    }
-
-
-    .about-slide.current .about-content {
-
-        transform:
-            translate3d(0,0,0)
-            scale(1);
-
-        opacity:
-            1;
-    }
-
-
-
-    /* =====================================================
-       IPHONE / APPLE STYLE LIQUID GLASS PUNKTE
-    ===================================================== */
-
-    .about-dots {
-
-        position:
-            absolute;
-
-        left:
-            50%;
-
-        /*
-           Bewusst höher als der Pfeil,
-           damit deutlich mehr Abstand entsteht.
-        */
-
-        bottom:
-            calc(
-                82px +
-                env(
-                    safe-area-inset-bottom
-                )
-            );
-
-        transform:
-            translateX(-50%);
-
-        display:
-            flex;
-
-        align-items:
-            center;
-
-        justify-content:
-            center;
-
-        gap:
-            8px;
-
-        padding:
-            7px 10px;
-
-        border-radius:
-            999px;
-
-        /*
-           Liquid Glass Grundfläche
-        */
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(255,255,255,0.16),
-                rgba(255,255,255,0.07)
-            );
-
-        /*
-           Glas-Effekt
-        */
-
-        backdrop-filter:
-            blur(18px)
-            saturate(160%);
-
-        -webkit-backdrop-filter:
-            blur(18px)
-            saturate(160%);
-
-        /*
-           Feiner Glasrand
-        */
-
-        border:
-            1px solid
-            rgba(255,255,255,0.20);
-
-        /*
-           Tiefe + subtiler Lichtschein
-        */
-
-        box-shadow:
-
-            0 4px 14px
-            rgba(0,0,0,0.28),
-
-            inset 0 1px 1px
-            rgba(255,255,255,0.22),
-
-            inset 0 -1px 1px
-            rgba(0,0,0,0.12);
-
-        z-index:
-            40;
-
-        pointer-events:
-            auto;
-    }
-
-
-    /*
-       Feiner Lichtreflex über dem Glas
-    */
-
-    .about-dots::before {
-
-        content:
-            "";
-
-        position:
-            absolute;
-
-        top:
-            1px;
-
-        left:
-            10%;
-
-        right:
-            10%;
-
-        height:
-            45%;
-
-        border-radius:
-            999px;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(255,255,255,0.22),
-                rgba(255,255,255,0)
-            );
-
-        pointer-events:
-            none;
-    }
-
-
-    .about-dot {
-
-        position:
-            relative;
-
-        width:
-            6px;
-
-        height:
-            6px;
-
-        border-radius:
-            50%;
-
-        background:
-            rgba(255,255,255,0.28);
-
-        border:
-            1px solid
-            rgba(255,255,255,0.12);
-
-        box-shadow:
-
-            inset 0 1px 1px
-            rgba(255,255,255,0.22),
-
-            0 1px 3px
-            rgba(0,0,0,0.25);
-
-        transition:
-
-            width 0.35s ease,
-
-            height 0.35s ease,
-
-            background 0.35s ease,
-
-            box-shadow 0.35s ease,
-
-            transform 0.35s ease;
-    }
-
-
-    .about-dot.active {
-
-        width:
-            7px;
-
-        height:
-            7px;
-
-        background:
-            rgba(255,255,255,0.86);
-
-        border:
-            1px solid
-            rgba(255,255,255,0.45);
-
-        box-shadow:
-
-            0 0 7px
-            rgba(255,255,255,0.18),
-
-            inset 0 1px 1px
-            rgba(255,255,255,0.75),
-
-            0 1px 4px
-            rgba(0,0,0,0.30);
-
-        transform:
-            scale(1.05);
-    }
-
-
-    .about-dot:hover {
-
-        background:
-            rgba(255,255,255,0.62);
-
-        transform:
+            translate3d(0,-28px,0)
             scale(1.12);
     }
 
 
-
-    /* =====================================================
-       KONTAKT
-    ===================================================== */
-
-    .contact {
-
-        background:
-            #fff;
-
-        justify-content:
-            flex-start;
-
-        padding:
-            10vw 8%;
-    }
-
-
-    .contact-content {
-
-        width:
-            100%;
-
-        max-width:
-            1300px;
-    }
-
-
-    .contact-title {
-
-        font-size:
-            clamp(
-                65px,
-                9vw,
-                140px
-            );
-
-        line-height:
-            0.92;
-
-        letter-spacing:
-            -6px;
-
-        font-weight:
-            700;
-
-        margin-bottom:
-            45px;
-
-        text-shadow:
-
-            0 2px 2px
-            rgba(0,0,0,0.10),
-
-            0 5px 10px
-            rgba(0,0,0,0.12),
-
-            0 10px 22px
-            rgba(0,0,0,0.055);
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-    .contact-text {
-
-        max-width:
-            700px;
-
-        font-size:
-            clamp(
-                18px,
-                2vw,
-                25px
-            );
-
-        line-height:
-            1.45;
-
-        color:
-            #666;
-
-        will-change:
-            transform,
-            opacity;
-    }
-
-
-
-    /* =====================================================
-       SEITEN-INHALT
-    ===================================================== */
-
-    .page-content {
+    .page.leaving .eyebrow .forma-o {
 
         transform:
-            translate3d(0,60px,0)
-            scale(0.92);
+            scale(1.15);
+    }
 
-        opacity:
-            0;
+}
+
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .page {
 
         transition:
-
-            transform 1s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            ),
-
-            opacity 0.7s ease;
+            none;
     }
 
 
-    .page.active .page-content {
-
-        transform:
-            translate3d(0,0,0)
-            scale(1);
-
-        opacity:
-            1;
-    }
-
-
-    .page-title {
-
-        transform:
-            scale(0.92);
-
-        opacity:
-            0;
+    .page-content,
+    .page-title,
+    .eyebrow,
+    .eyebrow .forma-o,
+    .about-track,
+    .pagination-glass {
 
         transition:
-
-            transform 1.2s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            ),
-
-            opacity 0.8s ease;
+            none;
     }
 
 
-    .page.active .page-title {
+    .scroll-hint svg {
 
-        transform:
-            scale(1);
-
-        opacity:
-            1;
+        animation:
+            none;
     }
 
-
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media (max-width: 700px) {
-
-
-        .forma-logo {
-
-            font-size:
-                19px;
-
-            letter-spacing:
-                2.4px;
-        }
-
-
-        .eyebrow {
-
-            margin-bottom:
-                28px;
-        }
-
-
-        .eyebrow .forma-logo {
-
-            font-size:
-                34px;
-
-            letter-spacing:
-                5px;
-        }
-
-
-        .eyebrow .forma-o {
-
-            font-size:
-                1.08em;
-
-            font-weight:
-                300;
-        }
-
-
-        nav .nav-links a {
-
-            margin-left:
-                15px;
-
-            padding:
-                7px 8px;
-
-            font-size:
-                13px;
-        }
-
-
-        .hero {
-
-            padding:
-                70px 25px 40px;
-        }
-
-
-        .hero-title {
-
-            letter-spacing:
-                -4px;
-        }
-
-
-        .about-slide {
-
-            padding:
-                80px 25px;
-        }
-
-
-        .contact {
-
-            padding:
-                80px 25px;
-        }
-
-
-        .about-title,
-        .contact-title {
-
-            letter-spacing:
-                -4px;
-        }
-
-
-        .about-text,
-        .contact-text {
-
-            max-width:
-                100%;
-        }
-
-
-        /* ---------------------------------------------
-           MOBILE PFEIL
-        --------------------------------------------- */
-
-        .scroll-hint {
-
-            bottom:
-                calc(
-                    18px +
-                    env(
-                        safe-area-inset-bottom
-                    )
-                );
-
-            width:
-                48px;
-
-            height:
-                52px;
-        }
-
-
-        .scroll-hint svg {
-
-            width:
-                24px;
-
-            height:
-                30px;
-        }
-
-
-        .scroll-hint path {
-
-            stroke-width:
-                2.2;
-        }
-
-
-        /* ---------------------------------------------
-           HELLER PFEIL AUF MOBILE SCHWARZ
-        --------------------------------------------- */
-
-        .about .scroll-hint path {
-
-            stroke:
-                rgba(255,255,255,0.82);
-
-            stroke-width:
-                2.2;
-        }
-
-
-        .about .scroll-hint svg {
-
-            filter:
-                drop-shadow(
-                    0 0 4px
-                    rgba(255,255,255,0.22)
-                );
-        }
-
-
-        .page.leaving .eyebrow {
-
-            transform:
-                translate3d(0,-28px,0)
-                scale(1.12);
-        }
-
-
-        .page.leaving .eyebrow .forma-o {
-
-            transform:
-                scale(1.15);
-        }
-
-
-        /* ---------------------------------------------
-           MOBILE LIQUID GLASS PUNKTE
-        --------------------------------------------- */
-
-        .about-dots {
-
-            bottom:
-                calc(
-                    72px +
-                    env(
-                        safe-area-inset-bottom
-                    )
-                );
-
-            gap:
-                7px;
-
-            padding:
-                6px 9px;
-
-            border-radius:
-                999px;
-
-            backdrop-filter:
-                blur(16px)
-                saturate(160%);
-
-            -webkit-backdrop-filter:
-                blur(16px)
-                saturate(160%);
-        }
-
-
-        .about-dot {
-
-            width:
-                5px;
-
-            height:
-                5px;
-        }
-
-
-        .about-dot.active {
-
-            width:
-                6px;
-
-            height:
-                6px;
-        }
-
-    }
-
-
-
-    /* =====================================================
-       REDUCED MOTION
-    ===================================================== */
-
-    @media (prefers-reduced-motion: reduce) {
-
-        .page {
-
-            transition:
-                none;
-        }
-
-
-        .page-content,
-        .page-title,
-        .eyebrow,
-        .eyebrow .forma-o,
-        .about-slide .about-content,
-        .about-slider {
-
-            transition:
-                none;
-        }
-
-
-        .scroll-hint svg {
-
-            animation:
-                none;
-        }
-
-    }
+}
 
 </style>
 
@@ -1973,8 +1948,6 @@
         </div>
 
 
-        <!-- SCROLL-PFEIL -->
-
         <div
             class="scroll-hint"
             role="button"
@@ -2006,7 +1979,7 @@
 
     <!-- =================================================
          ÜBER UNS
-         3 HORIZONTALE UNTERSEITEN
+         3 SEITLICHE SEITEN
     ================================================= -->
 
     <section
@@ -2014,173 +1987,164 @@
         data-index="1"
     >
 
-
-        <div
-            class="about-slider"
-            id="aboutSlider"
-        >
-
-
-            <!-- =========================================
-                 HORIZONTALE SEITE 1
-            ========================================= -->
+        <div class="about-slider">
 
             <div
-                class="about-slide current"
-                data-slide="0"
+                class="about-track"
+                id="aboutTrack"
             >
 
-                <div class="about-content">
 
-                    <h2 class="about-title">
+                <!-- =====================================
+                     ÜBER UNS SEITE 1
+                ====================================== -->
 
-                        Weniger.<br>
+                <div class="about-panel">
 
-                        Aber besser.
+                    <div class="about-content page-content">
 
-                    </h2>
+                        <h2 class="about-title page-title">
+
+                            Weniger.<br>
+
+                            Aber besser.
+
+                        </h2>
 
 
-                    <p class="about-text">
+                        <p class="about-text">
 
-                        FORMA. steht für
-                        minimalistisches, modernes
-                        und durchdachtes Design.
+                            FORMA. steht für
+                            minimalistisches, modernes
+                            und durchdachtes Design.
 
-                        Wir reduzieren auf das Wesentliche
-                        und schaffen Lösungen mit Charakter.
+                            Wir reduzieren auf das Wesentliche
+                            und schaffen Lösungen mit Charakter.
 
-                    </p>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     ÜBER UNS SEITE 2
+                ====================================== -->
+
+                <div class="about-panel">
+
+                    <div class="about-content">
+
+                        <h2 class="about-title">
+
+                            Klar.<br>
+
+                            Präzise.
+
+                        </h2>
+
+
+                        <p class="about-text">
+
+                            Gute Gestaltung braucht
+                            keine unnötigen Elemente.
+
+                            Wir verbinden klare Formen,
+                            starke Typografie und
+                            durchdachte Details.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     ÜBER UNS SEITE 3
+                ====================================== -->
+
+                <div class="about-panel">
+
+                    <div class="about-content">
+
+                        <h2 class="about-title">
+
+                            Design.<br>
+
+                            Mit Haltung.
+
+                        </h2>
+
+
+                        <p class="about-text">
+
+                            Wir gestalten digitale
+                            Erlebnisse, die nicht nur
+                            gut aussehen.
+
+                            Sie sollen funktionieren,
+                            überzeugen und im Kopf bleiben.
+
+                        </p>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-
             <!-- =========================================
-                 HORIZONTALE SEITE 2
-            ========================================= -->
+                 LIQUID GLASS PAGINATION
+            ========================================== -->
 
             <div
-                class="about-slide"
-                data-slide="1"
+                class="about-pagination"
+                id="aboutPagination"
             >
 
-                <div class="about-content">
-
-                    <h2 class="about-title">
-
-                        Klar.<br>
-
-                        Und präzise.
-
-                    </h2>
+                <div
+                    class="pagination-glass"
+                    id="paginationGlass"
+                ></div>
 
 
-                    <p class="about-text">
-
-                        Gute Gestaltung braucht
-                        keine unnötigen Elemente.
-
-                        Wir verbinden klare Formen,
-                        starke Typografie und
-                        eine reduzierte visuelle Sprache.
-
-                    </p>
-
-                </div>
-
-            </div>
+                <button
+                    class="pagination-dot"
+                    data-about-page="0"
+                    aria-label="Über uns Seite 1"
+                ></button>
 
 
-
-            <!-- =========================================
-                 HORIZONTALE SEITE 3
-            ========================================= -->
-
-            <div
-                class="about-slide"
-                data-slide="2"
-            >
-
-                <div class="about-content">
-
-                    <h2 class="about-title">
-
-                        Design.<br>
-
-                        Mit Charakter.
-
-                    </h2>
+                <button
+                    class="pagination-dot"
+                    data-about-page="1"
+                    aria-label="Über uns Seite 2"
+                ></button>
 
 
-                    <p class="about-text">
-
-                        Jede Gestaltung bekommt
-                        ihren eigenen Ausdruck.
-
-                        Modern, eigenständig und
-                        auf das Wesentliche konzentriert.
-
-                    </p>
-
-                </div>
+                <button
+                    class="pagination-dot"
+                    data-about-page="2"
+                    aria-label="Über uns Seite 3"
+                ></button>
 
             </div>
-
 
         </div>
 
 
 
-        <!-- =================================================
-             IPHONE-STYLE LIQUID GLASS PUNKTE
-        ================================================= -->
-
-        <div
-            class="about-dots"
-            aria-label="Unterseiten"
-        >
-
-            <span
-                class="about-dot active"
-                data-slide="0"
-                role="button"
-                tabindex="0"
-                aria-label="Seite 1"
-            ></span>
-
-
-            <span
-                class="about-dot"
-                data-slide="1"
-                role="button"
-                tabindex="0"
-                aria-label="Seite 2"
-            ></span>
-
-
-            <span
-                class="about-dot"
-                data-slide="2"
-                role="button"
-                tabindex="0"
-                aria-label="Seite 3"
-            ></span>
-
-        </div>
-
-
-
-        <!-- =================================================
-             SCROLL-PFEIL
-             WEITER ZUR KONTAKTSEITE
-        ================================================= -->
+        <!-- =============================================
+             PFEIL ZUR NÄCHSTEN HAUPTSEITE
+        ============================================== -->
 
         <div
             class="scroll-hint"
-            id="aboutScrollHint"
             role="button"
             aria-label="Weiter zur Kontaktseite"
             tabindex="0"
@@ -2244,586 +2208,574 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
+/* =====================================================
+   HAUPTSEITEN
+===================================================== */
 
-    /* =====================================================
-       HAUPTSEITEN
-    ===================================================== */
-
-    const pages =
-        document.querySelectorAll(".page");
-
-
-    const homeButton =
-        document.querySelector("#homeButton");
+const pages =
+    document.querySelectorAll(".page");
 
 
-    const navLinks =
-        document.querySelectorAll(".nav-links a");
+const homeButton =
+    document.querySelector("#homeButton");
 
 
-    const scrollHints =
-        document.querySelectorAll(".scroll-hint");
+const navLinks =
+    document.querySelectorAll(".nav-links a");
 
 
-    let currentPage = 0;
-
-    let isAnimating = false;
-
+const scrollHints =
+    document.querySelectorAll(".scroll-hint");
 
 
-    /* =====================================================
-       HORIZONTALE ÜBER-UNS-SEITEN
-    ===================================================== */
+let currentPage = 0;
 
-    const aboutSlider =
-        document.querySelector("#aboutSlider");
+let isAnimating = false;
 
+let touchStartY = 0;
 
-    const aboutSlides =
-        document.querySelectorAll(".about-slide");
-
-
-    const aboutDots =
-        document.querySelectorAll(".about-dot");
-
-
-    let currentAboutSlide = 0;
-
-    let isHorizontalAnimating = false;
+let touchEndY = 0;
 
 
 
-    /* =====================================================
-       TOUCH VARIABLEN
-    ===================================================== */
+/* =====================================================
+   ÜBER-UNS SLIDER
+===================================================== */
 
-    let touchStartX = 0;
-
-    let touchStartY = 0;
-
-    let touchEndX = 0;
-
-    let touchEndY = 0;
+const aboutTrack =
+    document.querySelector("#aboutTrack");
 
 
-
-    /* =====================================================
-       SEITE WECHSELN
-    ===================================================== */
-
-    function goToPage(index) {
+const aboutPagination =
+    document.querySelector("#aboutPagination");
 
 
-        if (
+const paginationGlass =
+    document.querySelector("#paginationGlass");
 
-            index < 0 ||
 
-            index >= pages.length ||
+const paginationDots =
+    document.querySelectorAll(".pagination-dot");
 
-            index === currentPage ||
 
-            isAnimating
+let currentAboutPage = 0;
 
-        ) {
+let touchStartX = 0;
 
-            return;
+let touchEndX = 0;
+
+let isHorizontalSwipe = false;
+
+
+
+/* =====================================================
+   LIQUID GLASS POSITION
+===================================================== */
+
+function updateLiquidGlass() {
+
+    const dot =
+        paginationDots[currentAboutPage];
+
+    if (!dot) {
+        return;
+    }
+
+
+    const paginationRect =
+        aboutPagination.getBoundingClientRect();
+
+
+    const dotRect =
+        dot.getBoundingClientRect();
+
+
+    const centerX =
+        dotRect.left -
+        paginationRect.left +
+        dotRect.width / 2;
+
+
+    const glassWidth =
+        paginationGlass.offsetWidth;
+
+
+    const newX =
+        centerX -
+        glassWidth / 2;
+
+
+    paginationGlass.style.transform =
+        `translate3d(${newX}px, 0, 0)`;
+}
+
+
+
+/* =====================================================
+   ÜBER-UNS SEITE WECHSELN
+===================================================== */
+
+function goToAboutPage(index) {
+
+    if (
+        index < 0 ||
+        index > 2 ||
+        index === currentAboutPage
+    ) {
+        return;
+    }
+
+
+    currentAboutPage =
+        index;
+
+
+    aboutTrack.style.transform =
+        `translate3d(-${index * 33.333333}%, 0, 0)`;
+
+
+    paginationDots.forEach(
+        (dot, i) => {
+
+            dot.style.opacity =
+                i === index
+                    ? "0.85"
+                    : "0.48";
 
         }
+    );
 
 
-        isAnimating = true;
+    /*
+       Kleiner Moment, damit der Browser
+       zuerst die neue Position berechnet.
+       Dadurch folgt die Glasblase schön weich.
+    */
+
+    requestAnimationFrame(
+        () => {
+
+            updateLiquidGlass();
+
+        }
+    );
+
+}
 
 
-        const oldPage =
-            pages[currentPage];
+
+/* =====================================================
+   INITIALISIERUNG LIQUID GLASS
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        paginationDots.forEach(
+            (dot, i) => {
+
+                dot.style.opacity =
+                    i === 0
+                        ? "0.85"
+                        : "0.48";
+
+            }
+        );
 
 
-        /* ---------------------------------------------
-           STARTSEITE VERLÄSST DEN BILDSCHIRM
-        --------------------------------------------- */
+        requestAnimationFrame(
+            () => {
 
-        if (
+                updateLiquidGlass();
 
-            currentPage === 0 &&
+            }
+        );
 
-            index > 0
+    }
+);
 
-        ) {
 
-            oldPage.classList.add(
-                "leaving"
+
+/* =====================================================
+   PUNKTE KLICKEN
+===================================================== */
+
+paginationDots.forEach(
+    dot => {
+
+        dot.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                const index =
+                    Number(
+                        dot.dataset.aboutPage
+                    );
+
+                goToAboutPage(index);
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   SEITE WECHSELN
+===================================================== */
+
+function goToPage(index) {
+
+    if (
+
+        index < 0 ||
+
+        index >= pages.length ||
+
+        index === currentPage ||
+
+        isAnimating
+
+    ) {
+
+        return;
+
+    }
+
+
+    isAnimating = true;
+
+
+    const oldPage =
+        pages[currentPage];
+
+
+    if (
+
+        currentPage === 0 &&
+
+        index > 0
+
+    ) {
+
+        oldPage.classList.add(
+            "leaving"
+        );
+
+    }
+
+
+    pages.forEach(
+        (page, i) => {
+
+            page.classList.remove(
+                "active",
+                "previous",
+                "next"
             );
 
-        }
 
+            if (i === index) {
 
-        /* ---------------------------------------------
-           SEITENKLASSEN
-        --------------------------------------------- */
+                page.classList.add(
+                    "active"
+                );
 
-        pages.forEach(
-            (page, i) => {
+            }
 
-                page.classList.remove(
-                    "active",
-                    "previous",
+            else if (i < index) {
+
+                page.classList.add(
+                    "previous"
+                );
+
+            }
+
+            else {
+
+                page.classList.add(
                     "next"
                 );
 
-
-                if (i === index) {
-
-                    page.classList.add(
-                        "active"
-                    );
-
-                }
-
-                else if (i < index) {
-
-                    page.classList.add(
-                        "previous"
-                    );
-
-                }
-
-                else {
-
-                    page.classList.add(
-                        "next"
-                    );
-
-                }
-
             }
-        );
-
-
-        currentPage = index;
-
-
-        /* ---------------------------------------------
-           STARTSEITE ZURÜCKSETZEN
-        --------------------------------------------- */
-
-        if (index === 0) {
-
-            pages[0].classList.remove(
-                "leaving"
-            );
 
         }
+    );
 
 
-        /* ---------------------------------------------
-           ANIMATION LOCK
-        --------------------------------------------- */
+    currentPage =
+        index;
 
-        setTimeout(
-            () => {
 
-                isAnimating = false;
+    if (index === 0) {
 
-            },
-            950
+        pages[0].classList.remove(
+            "leaving"
         );
 
     }
 
 
+    setTimeout(
+        () => {
 
-    /* =====================================================
-       HORIZONTALE SEITE WECHSELN
-    ===================================================== */
+            isAnimating = false;
 
-    function goToAboutSlide(index) {
+        },
+        950
+    );
 
-
-        if (
-
-            index < 0 ||
-
-            index >= aboutSlides.length ||
-
-            index === currentAboutSlide ||
-
-            isHorizontalAnimating
-
-        ) {
-
-            return;
-
-        }
+}
 
 
-        isHorizontalAnimating = true;
 
+/* =====================================================
+   PFEILE
+===================================================== */
 
-        currentAboutSlide = index;
+scrollHints.forEach(
+    hint => {
 
+        hint.addEventListener(
+            "click",
+            () => {
 
-        /* ---------------------------------------------
-           SLIDER BEWEGEN
-        --------------------------------------------- */
-
-        aboutSlider.style.transform =
-            `translate3d(-${index * 100}vw, 0, 0)`;
-
-
-        /* ---------------------------------------------
-           AKTUELLE SLIDE
-        --------------------------------------------- */
-
-        aboutSlides.forEach(
-            (slide, i) => {
-
-                slide.classList.toggle(
-                    "current",
-                    i === index
+                goToPage(
+                    currentPage + 1
                 );
 
             }
         );
 
 
-        /* ---------------------------------------------
-           PUNKTE AKTUALISIEREN
-        --------------------------------------------- */
+        hint.addEventListener(
+            "keydown",
+            event => {
 
-        aboutDots.forEach(
-            (dot, i) => {
+                if (
 
-                dot.classList.toggle(
-                    "active",
-                    i === index
-                );
+                    event.key === "Enter" ||
 
-            }
-        );
+                    event.key === " "
 
+                ) {
 
-        setTimeout(
-            () => {
-
-                isHorizontalAnimating = false;
-
-            },
-            820
-        );
-
-    }
-
-
-
-    /* =====================================================
-       SCROLL-PFEILE
-    ===================================================== */
-
-    scrollHints.forEach(
-        hint => {
-
-            hint.addEventListener(
-                "click",
-                () => {
+                    event.preventDefault();
 
                     goToPage(
                         currentPage + 1
                     );
 
                 }
-            );
+
+            }
+        );
+
+    }
+);
 
 
-            hint.addEventListener(
-                "keydown",
-                event => {
 
-                    if (
+/* =====================================================
+   MAUSRAD
+===================================================== */
 
-                        event.key === "Enter" ||
+window.addEventListener(
+    "wheel",
+    event => {
 
-                        event.key === " "
+        if (isAnimating) {
 
-                    ) {
+            return;
 
-                        event.preventDefault();
+        }
 
-                        goToPage(
-                            currentPage + 1
-                        );
 
-                    }
+        if (
+            Math.abs(event.deltaY) < 25
+        ) {
 
-                }
+            return;
+
+        }
+
+
+        if (event.deltaY > 0) {
+
+            goToPage(
+                currentPage + 1
             );
 
         }
-    );
 
+        else {
 
-
-    /* =====================================================
-       IPHONE-STYLE PUNKTE
-    ===================================================== */
-
-    aboutDots.forEach(
-        dot => {
-
-            dot.addEventListener(
-                "click",
-                () => {
-
-                    const index =
-                        Number(
-                            dot.dataset.slide
-                        );
-
-                    goToAboutSlide(index);
-
-                }
-            );
-
-
-            dot.addEventListener(
-                "keydown",
-                event => {
-
-                    if (
-
-                        event.key === "Enter" ||
-
-                        event.key === " "
-
-                    ) {
-
-                        event.preventDefault();
-
-                        const index =
-                            Number(
-                                dot.dataset.slide
-                            );
-
-                        goToAboutSlide(index);
-
-                    }
-
-                }
+            goToPage(
+                currentPage - 1
             );
 
         }
-    );
+
+    },
+    {
+        passive: true
+    }
+);
 
 
 
-    /* =====================================================
-       MAUSRAD
-    ===================================================== */
+/* =====================================================
+   TOUCH START
+===================================================== */
 
-    window.addEventListener(
-        "wheel",
-        event => {
+window.addEventListener(
+    "touchstart",
+    event => {
 
-            if (isAnimating) {
+        touchStartY =
+            event.changedTouches[0].screenY;
 
-                return;
+        touchStartX =
+            event.changedTouches[0].screenX;
 
-            }
+        isHorizontalSwipe =
+            false;
+
+    },
+    {
+        passive: true
+    }
+);
 
 
-            if (
-                Math.abs(event.deltaY) < 25
-            ) {
 
-                return;
+/* =====================================================
+   TOUCH END
+===================================================== */
 
-            }
+window.addEventListener(
+    "touchend",
+    event => {
+
+        touchEndY =
+            event.changedTouches[0].screenY;
+
+        touchEndX =
+            event.changedTouches[0].screenX;
 
 
-            if (event.deltaY > 0) {
+        const differenceY =
+            touchStartY -
+            touchEndY;
 
-                goToPage(
-                    currentPage + 1
+
+        const differenceX =
+            touchStartX -
+            touchEndX;
+
+
+        /*
+           Auf der Über-uns-Seite zuerst prüfen,
+           ob horizontal gewischt wurde.
+        */
+
+        if (
+            currentPage === 1 &&
+            Math.abs(differenceX) >
+            Math.abs(differenceY) &&
+            Math.abs(differenceX) >= 50
+        ) {
+
+            isHorizontalSwipe =
+                true;
+
+
+            if (differenceX > 0) {
+
+                goToAboutPage(
+                    currentAboutPage + 1
                 );
 
             }
 
             else {
 
-                goToPage(
-                    currentPage - 1
+                goToAboutPage(
+                    currentAboutPage - 1
                 );
 
             }
 
-        },
-        {
-            passive: true
+
+            return;
+
         }
-    );
 
 
+        /*
+           Normales vertikales Wischen
+        */
 
-    /* =====================================================
-       TOUCH START
-    ===================================================== */
+        if (
+            Math.abs(differenceY) < 50
+        ) {
 
-    window.addEventListener(
-        "touchstart",
-        event => {
+            return;
 
-            touchStartX =
-                event.changedTouches[0].screenX;
-
-            touchStartY =
-                event.changedTouches[0].screenY;
-
-        },
-        {
-            passive: true
         }
-    );
+
+
+        if (differenceY > 0) {
+
+            goToPage(
+                currentPage + 1
+            );
+
+        }
+
+        else {
+
+            goToPage(
+                currentPage - 1
+            );
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
 
 
 
-    /* =====================================================
-       TOUCH END
-    ===================================================== */
+/* =====================================================
+   TASTATUR
+===================================================== */
 
-    window.addEventListener(
-        "touchend",
-        event => {
+window.addEventListener(
+    "keydown",
+    event => {
 
-            touchEndX =
-                event.changedTouches[0].screenX;
+        /*
+           Auf Über-uns horizontal navigieren
+        */
 
-            touchEndY =
-                event.changedTouches[0].screenY;
-
-
-            const differenceX =
-                touchStartX -
-                touchEndX;
-
-
-            const differenceY =
-                touchStartY -
-                touchEndY;
-
-
-            const absX =
-                Math.abs(differenceX);
-
-
-            const absY =
-                Math.abs(differenceY);
-
-
-
-            /* =============================================
-               HORIZONTALES WISCHEN
-               NUR AUF DER ÜBER-UNS-SEITE
-            ============================================= */
+        if (currentPage === 1) {
 
             if (
-
-                currentPage === 1 &&
-
-                absX > 50 &&
-
-                absX > absY
-
-            ) {
-
-
-                if (differenceX > 0) {
-
-                    goToAboutSlide(
-                        currentAboutSlide + 1
-                    );
-
-                }
-
-                else {
-
-                    goToAboutSlide(
-                        currentAboutSlide - 1
-                    );
-
-                }
-
-
-                return;
-
-            }
-
-
-
-            /* =============================================
-               VERTIKALES WISCHEN
-            ============================================= */
-
-            if (
-                absY < 50
-            ) {
-
-                return;
-
-            }
-
-
-            if (differenceY > 0) {
-
-                goToPage(
-                    currentPage + 1
-                );
-
-            }
-
-            else {
-
-                goToPage(
-                    currentPage - 1
-                );
-
-            }
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-
-    /* =====================================================
-       TASTATUR
-    ===================================================== */
-
-    window.addEventListener(
-        "keydown",
-        event => {
-
-
-            /* ---------------------------------------------
-               HORIZONTAL AUF ÜBER-UNS
-            --------------------------------------------- */
-
-            if (
-
-                currentPage === 1 &&
-
                 event.key === "ArrowRight"
-
             ) {
 
-                goToAboutSlide(
-                    currentAboutSlide + 1
+                goToAboutPage(
+                    currentAboutPage + 1
                 );
 
                 return;
@@ -2832,145 +2784,155 @@
 
 
             if (
-
-                currentPage === 1 &&
-
                 event.key === "ArrowLeft"
-
             ) {
 
-                goToAboutSlide(
-                    currentAboutSlide - 1
+                goToAboutPage(
+                    currentAboutPage - 1
                 );
 
                 return;
-
-            }
-
-
-
-            /* ---------------------------------------------
-               VERTIKALE HAUPTSEITEN
-            --------------------------------------------- */
-
-            if (
-                event.key === "ArrowDown"
-            ) {
-
-                goToPage(
-                    currentPage + 1
-                );
-
-            }
-
-
-            if (
-                event.key === "ArrowUp"
-            ) {
-
-                goToPage(
-                    currentPage - 1
-                );
-
-            }
-
-
-            if (
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                goToPage(
-                    currentPage + 1
-                );
 
             }
 
         }
-    );
 
 
+        /*
+           Vertikale Hauptseiten
+        */
 
-    /* =====================================================
-       NAVIGATION
-    ===================================================== */
+        if (
+            event.key === "ArrowDown"
+        ) {
 
-    navLinks.forEach(
-        link => {
-
-            link.addEventListener(
-                "click",
-                event => {
-
-                    event.preventDefault();
-
-
-                    const page =
-                        Number(
-                            link.dataset.page
-                        );
-
-
-                    goToPage(page);
-
-                }
+            goToPage(
+                currentPage + 1
             );
 
         }
-    );
 
 
+        if (
+            event.key === "ArrowUp"
+        ) {
 
-    /* =====================================================
-       LOGO
-    ===================================================== */
+            goToPage(
+                currentPage - 1
+            );
 
-    homeButton.addEventListener(
-        "click",
-        event => {
+        }
+
+
+        if (
+            event.key === " "
+        ) {
 
             event.preventDefault();
 
-            goToPage(0);
+            goToPage(
+                currentPage + 1
+            );
 
         }
-    );
+
+    }
+);
 
 
 
-    /* =====================================================
-       URL / HASH
-    ===================================================== */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-    window.addEventListener(
-        "load",
-        () => {
+navLinks.forEach(
+    link => {
 
-            if (
-                window.location.hash === "#about"
-            ) {
+        link.addEventListener(
+            "click",
+            event => {
 
-                goToPage(1);
+                event.preventDefault();
+
+
+                const page =
+                    Number(
+                        link.dataset.page
+                    );
+
+
+                goToPage(page);
 
             }
+        );
+
+    }
+);
 
 
-            if (
-                window.location.hash === "#contact"
-            ) {
 
-                goToPage(2);
+/* =====================================================
+   LOGO
+===================================================== */
 
-            }
+homeButton.addEventListener(
+    "click",
+    event => {
+
+        event.preventDefault();
+
+        goToPage(0);
+
+    }
+);
+
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        updateLiquidGlass();
+
+    }
+);
+
+
+
+/* =====================================================
+   URL / HASH
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        if (
+            window.location.hash === "#about"
+        ) {
+
+            goToPage(1);
 
         }
-    );
 
+
+        if (
+            window.location.hash === "#contact"
+        ) {
+
+            goToPage(2);
+
+        }
+
+    }
+);
 
 </script>
 
 
 </body>
-
 </html>
