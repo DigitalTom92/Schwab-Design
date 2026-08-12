@@ -131,6 +131,10 @@
     }
 
 
+    /* =====================================================
+       GLOSSY LICHTREFLEX
+    ===================================================== */
+
     nav::before {
 
         content: "";
@@ -161,7 +165,7 @@
 
 
     /* =====================================================
-       LOGO
+       FORMA LOGO NAVIGATION
     ===================================================== */
 
     .logo {
@@ -412,6 +416,10 @@
     }
 
 
+    /* =====================================================
+       AKTUELLE SEITE
+    ===================================================== */
+
     .page.active {
 
         opacity: 1;
@@ -425,6 +433,10 @@
     }
 
 
+    /* =====================================================
+       VORHERIGE SEITE
+    ===================================================== */
+
     .page.previous {
 
         opacity: 0;
@@ -435,6 +447,10 @@
         z-index: 1;
     }
 
+
+    /* =====================================================
+       NÄCHSTE SEITE
+    ===================================================== */
 
     .page.next {
 
@@ -462,9 +478,6 @@
 
         padding:
             80px 6% 50px;
-
-        isolation:
-            isolate;
     }
 
 
@@ -476,12 +489,6 @@
         max-width:
             1200px;
 
-        position:
-            relative;
-
-        z-index:
-            10;
-
         will-change:
             transform,
             opacity;
@@ -490,612 +497,7 @@
 
 
     /* =====================================================
-       GLOSSY SEIFENBLASE
-       APPLE / IOS STYLE
-    ===================================================== */
-
-    .soap-bubble {
-
-        position:
-            absolute;
-
-        z-index:
-            2;
-
-        width:
-            min(
-                850px,
-                72vw
-            );
-
-        height:
-            min(
-                620px,
-                66vh
-            );
-
-        left:
-            50%;
-
-        top:
-            50%;
-
-        transform:
-            translate(
-                -50%,
-                -50%
-            )
-            rotate(-7deg)
-            scale(0.82);
-
-        border-radius:
-            48%
-            52%
-            56%
-            44%
-            /
-            54%
-            44%
-            56%
-            46%;
-
-        opacity:
-            0;
-
-        filter:
-            blur(0.2px);
-
-        pointer-events:
-            none;
-
-        overflow:
-            hidden;
-
-        transition:
-
-            opacity 1.15s
-            ease 0.15s,
-
-            transform 1.5s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            );
-    }
-
-
-
-    /* =====================================================
-       GLAS / IRISIERENDE GRUNDOBERFLÄCHE
-    ===================================================== */
-
-    .soap-bubble::before {
-
-        content:
-            "";
-
-        position:
-            absolute;
-
-        inset:
-            -8%;
-
-        border-radius:
-            inherit;
-
-        background:
-
-            radial-gradient(
-                ellipse at 30% 24%,
-                rgba(255,255,255,0.94) 0%,
-                rgba(255,255,255,0.60) 7%,
-                rgba(255,255,255,0.14) 18%,
-                transparent 34%
-            ),
-
-            radial-gradient(
-                ellipse at 72% 22%,
-                rgba(184,218,255,0.30) 0%,
-                rgba(184,218,255,0.08) 22%,
-                transparent 44%
-            ),
-
-            radial-gradient(
-                ellipse at 76% 73%,
-                rgba(242,188,226,0.24) 0%,
-                rgba(166,214,255,0.14) 24%,
-                transparent 47%
-            ),
-
-            radial-gradient(
-                ellipse at 27% 76%,
-                rgba(189,244,230,0.24) 0%,
-                rgba(194,218,255,0.08) 26%,
-                transparent 50%
-            ),
-
-            radial-gradient(
-                ellipse at 52% 52%,
-                rgba(255,255,255,0.12),
-                rgba(228,237,255,0.08) 42%,
-                rgba(255,255,255,0.01) 68%
-            );
-
-        filter:
-            blur(2px);
-
-        transform:
-            scale(1.04);
-
-        animation:
-            bubbleSurface
-            12s
-            ease-in-out
-            infinite;
-    }
-
-
-
-    /* =====================================================
-       GLÄNZENDER RAND
-    ===================================================== */
-
-    .soap-bubble::after {
-
-        content:
-            "";
-
-        position:
-            absolute;
-
-        inset:
-            2%;
-
-        border-radius:
-            inherit;
-
-        border:
-            1.5px solid
-            rgba(255,255,255,0.58);
-
-        box-shadow:
-
-            inset
-            0 0 15px
-            rgba(255,255,255,0.30),
-
-            inset
-            0 0 45px
-            rgba(187,220,255,0.13),
-
-            0 12px 40px
-            rgba(110,135,170,0.08);
-
-        opacity:
-            0.82;
-
-        animation:
-            bubbleEdge
-            9s
-            ease-in-out
-            infinite;
-    }
-
-
-
-    /* =====================================================
-       BUBBLE GLOW
-    ===================================================== */
-
-    .bubble-glow {
-
-        position:
-            absolute;
-
-        width:
-            75%;
-
-        height:
-            72%;
-
-        left:
-            12%;
-
-        top:
-            10%;
-
-        border-radius:
-            50%;
-
-        background:
-
-            radial-gradient(
-                ellipse,
-                rgba(255,255,255,0.32)
-                0%,
-
-                rgba(255,255,255,0.08)
-                30%,
-
-                transparent
-                68%
-            );
-
-        filter:
-            blur(18px);
-
-        opacity:
-            0.72;
-
-        animation:
-            bubbleGlow
-            8s
-            ease-in-out
-            infinite;
-    }
-
-
-
-    /* =====================================================
-       GROSSER GLANZREFLEX
-    ===================================================== */
-
-    .bubble-highlight {
-
-        position:
-            absolute;
-
-        width:
-            42%;
-
-        height:
-            18%;
-
-        left:
-            16%;
-
-        top:
-            13%;
-
-        border-radius:
-            50%;
-
-        background:
-            rgba(255,255,255,0.55);
-
-        filter:
-            blur(10px);
-
-        transform:
-            rotate(-17deg);
-
-        opacity:
-            0.55;
-
-        animation:
-            highlightMove
-            10s
-            ease-in-out
-            infinite;
-    }
-
-
-
-    /* =====================================================
-       KLEINER GLANZPUNKT
-    ===================================================== */
-
-    .bubble-shine {
-
-        position:
-            absolute;
-
-        width:
-            12%;
-
-        height:
-            8%;
-
-        left:
-            25%;
-
-        top:
-            28%;
-
-        border-radius:
-            50%;
-
-        background:
-            rgba(255,255,255,0.75);
-
-        filter:
-            blur(5px);
-
-        transform:
-            rotate(-20deg);
-
-        opacity:
-            0.52;
-
-        animation:
-            shineMove
-            7s
-            ease-in-out
-            infinite;
-    }
-
-
-
-    /* =====================================================
-       SUBTILE REGENBOGEN-KANTE
-    ===================================================== */
-
-    .bubble-rainbow {
-
-        position:
-            absolute;
-
-        width:
-            70%;
-
-        height:
-            35%;
-
-        right:
-            -15%;
-
-        bottom:
-            4%;
-
-        border-radius:
-            50%;
-
-        background:
-
-            linear-gradient(
-                115deg,
-                transparent 0%,
-                rgba(190,235,255,0.08) 20%,
-                rgba(235,190,255,0.15) 35%,
-                rgba(255,214,190,0.11) 48%,
-                rgba(190,255,231,0.12) 60%,
-                transparent 82%
-            );
-
-        filter:
-            blur(20px);
-
-        transform:
-            rotate(-12deg);
-
-        opacity:
-            0.55;
-
-        animation:
-            rainbowMove
-            13s
-            ease-in-out
-            infinite;
-    }
-
-
-
-    /* =====================================================
-       BUBBLE ANIMATIONEN
-    ===================================================== */
-
-    @keyframes bubbleSurface {
-
-        0%,
-        100% {
-
-            transform:
-                scale(1.04)
-                rotate(0deg)
-                translate3d(0,0,0);
-        }
-
-        25% {
-
-            transform:
-                scale(1.07)
-                rotate(1.5deg)
-                translate3d(8px,-5px,0);
-        }
-
-        50% {
-
-            transform:
-                scale(1.03)
-                rotate(-1deg)
-                translate3d(-5px,7px,0);
-        }
-
-        75% {
-
-            transform:
-                scale(1.06)
-                rotate(1deg)
-                translate3d(4px,3px,0);
-        }
-    }
-
-
-    @keyframes bubbleEdge {
-
-        0%,
-        100% {
-
-            transform:
-                scale(1);
-        }
-
-        50% {
-
-            transform:
-                scale(1.018);
-        }
-    }
-
-
-    @keyframes bubbleGlow {
-
-        0%,
-        100% {
-
-            transform:
-                translate3d(0,0,0)
-                scale(1);
-
-            opacity:
-                0.65;
-        }
-
-        50% {
-
-            transform:
-                translate3d(18px,-12px,0)
-                scale(1.08);
-
-            opacity:
-                0.82;
-        }
-    }
-
-
-    @keyframes highlightMove {
-
-        0%,
-        100% {
-
-            transform:
-                translate3d(0,0,0)
-                rotate(-17deg);
-
-            opacity:
-                0.45;
-        }
-
-        50% {
-
-            transform:
-                translate3d(24px,12px,0)
-                rotate(-12deg);
-
-            opacity:
-                0.72;
-        }
-    }
-
-
-    @keyframes shineMove {
-
-        0%,
-        100% {
-
-            transform:
-                translate3d(0,0,0)
-                rotate(-20deg);
-
-            opacity:
-                0.40;
-        }
-
-        50% {
-
-            transform:
-                translate3d(-10px,14px,0)
-                rotate(-12deg);
-
-            opacity:
-                0.70;
-        }
-    }
-
-
-    @keyframes rainbowMove {
-
-        0%,
-        100% {
-
-            transform:
-                translate3d(0,0,0)
-                rotate(-12deg);
-
-            opacity:
-                0.40;
-        }
-
-        50% {
-
-            transform:
-                translate3d(-30px,-15px,0)
-                rotate(-7deg);
-
-            opacity:
-                0.62;
-        }
-    }
-
-
-
-    /* =====================================================
-       BUBBLE ERSCHEINT
-    ===================================================== */
-
-    .hero.active .soap-bubble {
-
-        opacity:
-            1;
-
-        transform:
-            translate(
-                -50%,
-                -50%
-            )
-            rotate(-3deg)
-            scale(1);
-    }
-
-
-
-    /* =====================================================
-       BUBBLE BEIM SCROLLEN
-    ===================================================== */
-
-    .hero.leaving .soap-bubble {
-
-        opacity:
-            0;
-
-        transform:
-            translate(
-                -50%,
-                -58%
-            )
-            rotate(9deg)
-            scale(1.18);
-
-        transition:
-
-            opacity 0.65s
-            ease,
-
-            transform 1s
-            cubic-bezier(
-                0.22,
-                1,
-                0.36,
-                1
-            );
-    }
-
-
-
-    /* =====================================================
-       FORMA
+       FORMA AUF STARTSEITE
     ===================================================== */
 
     .eyebrow {
@@ -1149,6 +551,10 @@
     }
 
 
+    /* =====================================================
+       GROSSES FORMA
+    ===================================================== */
+
     .eyebrow .forma-logo {
 
         font-size:
@@ -1170,14 +576,6 @@
 
         line-height:
             1;
-
-        text-shadow:
-
-            0 1px 2px
-            rgba(0,0,0,0.18),
-
-            0 4px 9px
-            rgba(0,0,0,0.12);
     }
 
 
@@ -1187,6 +585,10 @@
             300;
     }
 
+
+    /* =====================================================
+       ROTES O
+    ===================================================== */
 
     .eyebrow .forma-o {
 
@@ -1214,7 +616,6 @@
 
             filter 0.8s ease;
     }
-
 
 
     /* =====================================================
@@ -1267,7 +668,6 @@
     }
 
 
-
     /* =====================================================
        PUNKT
     ===================================================== */
@@ -1294,6 +694,7 @@
 
     /* =====================================================
        HERO TITLE
+       LEICHT ERHABEN
     ===================================================== */
 
     .hero-title {
@@ -1317,33 +718,22 @@
         margin-bottom:
             38px;
 
-        color:
-            #1d1d1f;
-
         text-shadow:
 
-            0 1px 0
-            rgba(255,255,255,0.65),
-
             0 2px 2px
-            rgba(0,0,0,0.18),
+            rgba(0,0,0,0.10),
 
             0 5px 10px
             rgba(0,0,0,0.12),
 
             0 10px 22px
-            rgba(0,0,0,0.07);
+            rgba(0,0,0,0.055);
 
         will-change:
             transform,
             opacity;
     }
 
-
-
-    /* =====================================================
-       HERO TEXT
-    ===================================================== */
 
     .hero-text {
 
@@ -1366,11 +756,6 @@
         line-height:
             1.4;
 
-        text-shadow:
-
-            0 1px 2px
-            rgba(0,0,0,0.08);
-
         will-change:
             transform,
             opacity;
@@ -1380,6 +765,7 @@
 
     /* =====================================================
        SCROLL-PFEIL
+       STARTSEITE
     ===================================================== */
 
     .scroll-hint {
@@ -1464,8 +850,8 @@
 
         filter:
             drop-shadow(
-                0 2px 5px
-                rgba(0,0,0,0.18)
+                0 2px 3px
+                rgba(0,0,0,0.12)
             );
     }
 
@@ -1476,7 +862,7 @@
             none;
 
         stroke:
-            rgba(29,29,31,0.55);
+            rgba(29,29,31,0.58);
 
         stroke-width:
             2;
@@ -1489,6 +875,44 @@
     }
 
 
+
+    /* =====================================================
+       PFEIL AUF SCHWARZER SEITE
+       HELL / WEISS
+    ===================================================== */
+
+    .about .scroll-hint svg {
+
+        filter:
+            drop-shadow(
+                0 0 4px
+                rgba(255,255,255,0.20)
+            );
+    }
+
+
+    .about .scroll-hint path {
+
+        stroke:
+            rgba(255,255,255,0.78);
+
+        stroke-width:
+            2.1;
+    }
+
+
+    .about .scroll-hint:hover path {
+
+        stroke:
+            rgba(255,255,255,1);
+    }
+
+
+
+    /* =====================================================
+       PFEIL ANIMATION
+    ===================================================== */
+
     @keyframes arrowFloat {
 
         0% {
@@ -1497,7 +921,7 @@
                 translateY(0);
 
             opacity:
-                0.4;
+                0.45;
         }
 
         50% {
@@ -1506,7 +930,7 @@
                 translateY(7px);
 
             opacity:
-                0.9;
+                0.95;
         }
 
         100% {
@@ -1515,10 +939,14 @@
                 translateY(0);
 
             opacity:
-                0.4;
+                0.45;
         }
     }
 
+
+    /* =====================================================
+       PFEIL BEIM SEITENWECHSEL
+    ===================================================== */
 
     .page.leaving .scroll-hint {
 
@@ -1627,13 +1055,6 @@
     }
 
 
-    .about .scroll-hint path {
-
-        stroke:
-            rgba(255,255,255,0.82);
-    }
-
-
 
     /* =====================================================
        KONTAKT
@@ -1721,13 +1142,6 @@
         will-change:
             transform,
             opacity;
-    }
-
-
-    .contact .scroll-hint path {
-
-        stroke:
-            rgba(29,29,31,0.58);
     }
 
 
@@ -1867,86 +1281,10 @@
         }
 
 
-
-        /* =============================================
-           SEIFENBLASE MOBILE
-        ============================================= */
-
-        .soap-bubble {
-
-            width:
-                115vw;
-
-            height:
-                72vh;
-
-            left:
-                50%;
-
-            top:
-                49%;
-
-            transform:
-                translate(
-                    -50%,
-                    -50%
-                )
-                rotate(-8deg)
-                scale(0.82);
-        }
-
-
-        .hero.active .soap-bubble {
-
-            transform:
-                translate(
-                    -50%,
-                    -50%
-                )
-                rotate(-3deg)
-                scale(1);
-        }
-
-
-        .hero.leaving .soap-bubble {
-
-            transform:
-                translate(
-                    -50%,
-                    -58%
-                )
-                rotate(10deg)
-                scale(1.18);
-        }
-
-
-
-        /* =============================================
-           HERO
-        ============================================= */
-
         .hero-title {
-
-            font-size:
-                clamp(
-                    58px,
-                    17vw,
-                    95px
-                );
 
             letter-spacing:
                 -4px;
-        }
-
-
-        .hero-text {
-
-            font-size:
-                clamp(
-                    17px,
-                    5vw,
-                    21px
-                );
         }
 
 
@@ -1973,6 +1311,10 @@
                 100%;
         }
 
+
+        /* ---------------------------------------------
+           MOBILE PFEIL
+        --------------------------------------------- */
 
         .scroll-hint {
 
@@ -2002,13 +1344,34 @@
         }
 
 
-        .about .scroll-hint path {
-
-            stroke:
-                rgba(255,255,255,0.84);
+        .scroll-hint path {
 
             stroke-width:
                 2.2;
+        }
+
+
+        /* ---------------------------------------------
+           HELLER PFEIL AUF MOBILE SCHWARZ
+        --------------------------------------------- */
+
+        .about .scroll-hint path {
+
+            stroke:
+                rgba(255,255,255,0.82);
+
+            stroke-width:
+                2.2;
+        }
+
+
+        .about .scroll-hint svg {
+
+            filter:
+                drop-shadow(
+                    0 0 4px
+                    rgba(255,255,255,0.22)
+                );
         }
 
 
@@ -2046,20 +1409,13 @@
         .page-content,
         .page-title,
         .eyebrow,
-        .eyebrow .forma-o,
-        .soap-bubble {
+        .eyebrow .forma-o {
 
             transition:
                 none;
         }
 
 
-        .soap-bubble::before,
-        .soap-bubble::after,
-        .bubble-glow,
-        .bubble-highlight,
-        .bubble-shine,
-        .bubble-rainbow,
         .scroll-hint svg {
 
             animation:
@@ -2081,7 +1437,6 @@
 ===================================================== -->
 
 <nav>
-
 
     <a
         href="#"
@@ -2157,39 +1512,10 @@
         data-index="0"
     >
 
-
-        <!-- =============================================
-             GLOSSY SEIFENBLASE
-        ============================================= -->
-
-        <div
-            class="soap-bubble"
-            aria-hidden="true"
-        >
-
-            <div class="bubble-glow"></div>
-
-            <div class="bubble-highlight"></div>
-
-            <div class="bubble-shine"></div>
-
-            <div class="bubble-rainbow"></div>
-
-        </div>
-
-
-
-        <!-- =============================================
-             HERO CONTENT
-        ============================================= -->
-
-        <div
-            class="hero-content page-content"
-        >
+        <div class="hero-content page-content">
 
 
             <div class="eyebrow">
-
 
                 <span class="forma-logo">
 
@@ -2217,14 +1543,10 @@
 
                 </span>
 
-
             </div>
 
 
-
-            <h1
-                class="hero-title page-title"
-            >
+            <h1 class="hero-title page-title">
 
                 Einfach.<br>
 
@@ -2235,7 +1557,6 @@
             </h1>
 
 
-
             <p class="hero-text">
 
                 Klare Ideen. Starkes Design.
@@ -2243,14 +1564,12 @@
 
             </p>
 
-
         </div>
 
 
-
-        <!-- =============================================
-             SCROLL PFEIL
-        ============================================= -->
+        <!-- =================================================
+             SCROLL-PFEIL STARTSEITE
+        ================================================= -->
 
         <div
             class="scroll-hint"
@@ -2277,7 +1596,6 @@
 
         </div>
 
-
     </section>
 
 
@@ -2291,15 +1609,9 @@
         data-index="1"
     >
 
+        <div class="about-content page-content">
 
-        <div
-            class="about-content page-content"
-        >
-
-
-            <h2
-                class="about-title page-title"
-            >
+            <h2 class="about-title page-title">
 
                 Weniger.<br>
 
@@ -2308,9 +1620,7 @@
             </h2>
 
 
-            <p
-                class="about-text"
-            >
+            <p class="about-text">
 
                 FORMA. steht für
                 minimalistisches, modernes
@@ -2321,14 +1631,13 @@
 
             </p>
 
-
         </div>
 
 
-
-        <!-- =============================================
-             SCROLL PFEIL
-        ============================================= -->
+        <!-- =================================================
+             SCROLL-PFEIL ÜBER UNS
+             HELL AUF SCHWARZ
+        ================================================= -->
 
         <div
             class="scroll-hint"
@@ -2355,7 +1664,6 @@
 
         </div>
 
-
     </section>
 
 
@@ -2369,15 +1677,9 @@
         data-index="2"
     >
 
+        <div class="contact-content page-content">
 
-        <div
-            class="contact-content page-content"
-        >
-
-
-            <h2
-                class="contact-title page-title"
-            >
+            <h2 class="contact-title page-title">
 
                 Lass uns<br>
 
@@ -2386,18 +1688,14 @@
             </h2>
 
 
-            <p
-                class="contact-text"
-            >
+            <p class="contact-text">
 
                 Du hast eine Idee?
                 Wir machen daraus ein Design.
 
             </p>
 
-
         </div>
-
 
     </section>
 
@@ -2414,27 +1712,19 @@
 
 
     const pages =
-        document.querySelectorAll(
-            ".page"
-        );
+        document.querySelectorAll(".page");
 
 
     const homeButton =
-        document.querySelector(
-            "#homeButton"
-        );
+        document.querySelector("#homeButton");
 
 
     const navLinks =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+        document.querySelectorAll(".nav-links a");
 
 
     const scrollHints =
-        document.querySelectorAll(
-            ".scroll-hint"
-        );
+        document.querySelectorAll(".scroll-hint");
 
 
     let currentPage = 0;
@@ -2467,6 +1757,7 @@
         ) {
 
             return;
+
         }
 
 
@@ -2475,7 +1766,6 @@
 
         const oldPage =
             pages[currentPage];
-
 
 
         /* ---------------------------------------------
@@ -2495,7 +1785,6 @@
             );
 
         }
-
 
 
         /* ---------------------------------------------
@@ -2520,7 +1809,6 @@
 
                 }
 
-
                 else if (i < index) {
 
                     page.classList.add(
@@ -2528,7 +1816,6 @@
                     );
 
                 }
-
 
                 else {
 
@@ -2542,9 +1829,7 @@
         );
 
 
-        currentPage =
-            index;
-
+        currentPage = index;
 
 
         /* ---------------------------------------------
@@ -2558,7 +1843,6 @@
             );
 
         }
-
 
 
         /* ---------------------------------------------
@@ -2579,12 +1863,11 @@
 
 
     /* =================================================
-       PFEILE
+       SCROLL-PFEILE
     ================================================= */
 
     scrollHints.forEach(
         hint => {
-
 
             hint.addEventListener(
                 "click",
@@ -2631,11 +1914,8 @@
     ================================================= */
 
     window.addEventListener(
-
         "wheel",
-
         event => {
-
 
             if (isAnimating) {
 
@@ -2645,9 +1925,7 @@
 
 
             if (
-                Math.abs(
-                    event.deltaY
-                ) < 25
+                Math.abs(event.deltaY) < 25
             ) {
 
                 return;
@@ -2655,16 +1933,13 @@
             }
 
 
-            if (
-                event.deltaY > 0
-            ) {
+            if (event.deltaY > 0) {
 
                 goToPage(
                     currentPage + 1
                 );
 
             }
-
 
             else {
 
@@ -2675,11 +1950,9 @@
             }
 
         },
-
         {
             passive: true
         }
-
     );
 
 
@@ -2689,36 +1962,25 @@
     ================================================= */
 
     window.addEventListener(
-
         "touchstart",
-
         event => {
 
             touchStartY =
-                event
-                    .changedTouches[0]
-                    .screenY;
+                event.changedTouches[0].screenY;
 
         },
-
         {
             passive: true
         }
-
     );
 
 
     window.addEventListener(
-
         "touchend",
-
         event => {
 
-
             touchEndY =
-                event
-                    .changedTouches[0]
-                    .screenY;
+                event.changedTouches[0].screenY;
 
 
             const difference =
@@ -2727,9 +1989,7 @@
 
 
             if (
-                Math.abs(
-                    difference
-                ) < 50
+                Math.abs(difference) < 50
             ) {
 
                 return;
@@ -2737,16 +1997,13 @@
             }
 
 
-            if (
-                difference > 0
-            ) {
+            if (difference > 0) {
 
                 goToPage(
                     currentPage + 1
                 );
 
             }
-
 
             else {
 
@@ -2757,11 +2014,9 @@
             }
 
         },
-
         {
             passive: true
         }
-
     );
 
 
@@ -2771,15 +2026,11 @@
     ================================================= */
 
     window.addEventListener(
-
         "keydown",
-
         event => {
 
-
             if (
-                event.key ===
-                "ArrowDown"
+                event.key === "ArrowDown"
             ) {
 
                 goToPage(
@@ -2790,8 +2041,7 @@
 
 
             if (
-                event.key ===
-                "ArrowUp"
+                event.key === "ArrowUp"
             ) {
 
                 goToPage(
@@ -2802,8 +2052,7 @@
 
 
             if (
-                event.key ===
-                " "
+                event.key === " "
             ) {
 
                 event.preventDefault();
@@ -2815,7 +2064,6 @@
             }
 
         }
-
     );
 
 
@@ -2825,16 +2073,11 @@
     ================================================= */
 
     navLinks.forEach(
-
         link => {
 
-
             link.addEventListener(
-
                 "click",
-
                 event => {
-
 
                     event.preventDefault();
 
@@ -2848,11 +2091,9 @@
                     goToPage(page);
 
                 }
-
             );
 
         }
-
     );
 
 
@@ -2862,19 +2103,14 @@
     ================================================= */
 
     homeButton.addEventListener(
-
         "click",
-
         event => {
 
-
             event.preventDefault();
-
 
             goToPage(0);
 
         }
-
     );
 
 
@@ -2884,15 +2120,11 @@
     ================================================= */
 
     window.addEventListener(
-
         "load",
-
         () => {
 
-
             if (
-                window.location.hash ===
-                "#about"
+                window.location.hash === "#about"
             ) {
 
                 goToPage(1);
@@ -2901,8 +2133,7 @@
 
 
             if (
-                window.location.hash ===
-                "#contact"
+                window.location.hash === "#contact"
             ) {
 
                 goToPage(2);
@@ -2910,9 +2141,7 @@
             }
 
         }
-
     );
-
 
 </script>
 
