@@ -62,7 +62,6 @@ body {
     --dark-text: #1d1d1f;
 
     --soft-gray: #666;
-
 }
 
 
@@ -1018,10 +1017,6 @@ nav .nav-links a:active {
     justify-content:
         flex-start;
 
-    /*
-       EXAKT WIE KONTAKT:
-       8% Abstand links/rechts.
-    */
     padding:
         10vw 8%;
 
@@ -1038,10 +1033,6 @@ nav .nav-links a:active {
     max-width:
         1300px;
 
-    /*
-       Gleiche Positionierung wie
-       .contact-content
-    */
     margin:
         0;
 
@@ -1049,6 +1040,133 @@ nav .nav-links a:active {
         0;
 }
 
+
+/* =====================================================
+   FORMA LOGO AUF ÜBER UNS
+   GLEICHES DESIGN WIE STARTSEITE
+===================================================== */
+
+.about-logo {
+
+    display:
+        inline-flex;
+
+    align-items:
+        baseline;
+
+    margin-bottom:
+        42px;
+
+    color:
+        #fff;
+
+    font-family:
+        "Helvetica Neue",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(
+            32px,
+            4vw,
+            58px
+        );
+
+    font-weight:
+        300;
+
+    letter-spacing:
+        clamp(
+            4px,
+            0.7vw,
+            9px
+        );
+
+    line-height:
+        1;
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,35px,0)
+        scale(0.94);
+
+    transition:
+
+        opacity 0.8s ease 0.2s,
+
+        transform 1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ) 0.2s;
+}
+
+
+.about-slide .about-logo .forma-letter {
+
+    color:
+        #fff;
+
+    font-weight:
+        300;
+}
+
+
+.about-slide .about-logo .forma-o {
+
+    color:
+        var(--forma-red);
+
+    font-weight:
+        300;
+
+    font-size:
+        1.08em;
+}
+
+
+.about-slide .about-logo .forma-dot {
+
+    width:
+        4px;
+
+    height:
+        4px;
+
+    margin-left:
+        4px;
+
+    margin-bottom:
+        3px;
+
+    background:
+        var(--forma-red);
+}
+
+
+/* =====================================================
+   LOGO ANIMATION AUF AKTIVER ABOUT-SEITE
+===================================================== */
+
+.page.active .about-logo {
+
+    opacity:
+        1;
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+}
+
+
+/* =====================================================
+   ABOUT TITLE
+===================================================== */
 
 .about-title {
 
@@ -1552,10 +1670,9 @@ nav .nav-links a:active {
     }
 
 
-    /*
-       Über Uns und Kontakt verwenden
-       denselben linken Abstand.
-    */
+    /* ---------------------------------------------
+       ABOUT / KONTAKT
+    --------------------------------------------- */
 
     .about,
     .contact {
@@ -1586,6 +1703,39 @@ nav .nav-links a:active {
 
         padding:
             0;
+    }
+
+
+    /* ---------------------------------------------
+       FORMA AUF ABOUT MOBILE
+    --------------------------------------------- */
+
+    .about-logo {
+
+        font-size:
+            30px;
+
+        letter-spacing:
+            4px;
+
+        margin-bottom:
+            32px;
+    }
+
+
+    .about-slide .about-logo .forma-dot {
+
+        width:
+            4px;
+
+        height:
+            4px;
+
+        margin-left:
+            3px;
+
+        margin-bottom:
+            2px;
     }
 
 
@@ -1740,6 +1890,7 @@ nav .nav-links a:active {
     .page-title,
     .eyebrow,
     .eyebrow .forma-o,
+    .about-logo,
     .about-track,
     .indicator-bubble {
 
@@ -1932,6 +2083,25 @@ nav .nav-links a:active {
 
                 <div class="about-content">
 
+                    <!-- FORMA LOGO MIT ROTEM O -->
+
+                    <div class="about-logo">
+
+                        <span class="forma-letter">F</span>
+
+                        <span class="forma-o">O</span>
+
+                        <span class="forma-letter">R</span>
+
+                        <span class="forma-letter">M</span>
+
+                        <span class="forma-letter">A</span>
+
+                        <span class="forma-dot"></span>
+
+                    </div>
+
+
                     <h2 class="about-title">
 
                         Weniger.<br>
@@ -1966,6 +2136,25 @@ nav .nav-links a:active {
 
                 <div class="about-content">
 
+                    <!-- FORMA LOGO MIT ROTEM O -->
+
+                    <div class="about-logo">
+
+                        <span class="forma-letter">F</span>
+
+                        <span class="forma-o">O</span>
+
+                        <span class="forma-letter">R</span>
+
+                        <span class="forma-letter">M</span>
+
+                        <span class="forma-letter">A</span>
+
+                        <span class="forma-dot"></span>
+
+                    </div>
+
+
                     <h2 class="about-title">
 
                         Klar.<br>
@@ -1996,6 +2185,25 @@ nav .nav-links a:active {
             <div class="about-slide">
 
                 <div class="about-content">
+
+                    <!-- FORMA LOGO MIT ROTEM O -->
+
+                    <div class="about-logo">
+
+                        <span class="forma-letter">F</span>
+
+                        <span class="forma-o">O</span>
+
+                        <span class="forma-letter">R</span>
+
+                        <span class="forma-letter">M</span>
+
+                        <span class="forma-letter">A</span>
+
+                        <span class="forma-dot"></span>
+
+                    </div>
+
 
                     <h2 class="about-title">
 
@@ -2369,9 +2577,6 @@ function goToAboutSlide(index) {
 
     /*
        Liquid Glass Blase
-
-       Die Berechnung berücksichtigt
-       exakt die Abstände der Punkte.
     */
 
     const dotWidth = 10;
@@ -2733,8 +2938,6 @@ window.addEventListener(
 
 
             /*
-               WICHTIG:
-
                Finger nach OBEN
                = nach UNTEN scrollen
                = nächste Seite
