@@ -958,6 +958,78 @@ nav .nav-links a:active {
         none;
 }
 
+
+/* =====================================================
+   ZOOM-EFFEKT – ÜBER UNS / KONTAKT
+   Gleiches leichte Rein-/Rauszoomen wie auf Startseite
+===================================================== */
+
+.about-content {
+    transform:
+        translate3d(0,60px,0)
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+        transform 1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.7s ease;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+.about.active .about-content {
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    opacity:
+        1;
+}
+
+.page.leaving .about-content,
+.page.leaving .contact-content {
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.12);
+
+    opacity:
+        0;
+
+    transition:
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+.page.leaving .about-title,
+.page.leaving .contact-title {
+    transform:
+        scale(1.04);
+}
+
 .about-content {
     width:
         100%;
@@ -2460,16 +2532,13 @@ function goToPage(index) {
     }
 
 
-    if (
-        currentPage === 0 &&
-        index > 0
-    ) {
-
-        oldPage.classList.add(
-            "leaving"
-        );
-
-    }
+    /*
+       Beim Verlassen jeder Hauptseite denselben
+       leichten Zoom-/Fade-Effekt ausführen.
+    */
+    oldPage.classList.add(
+        "leaving"
+    );
 
 
     pages.forEach(
@@ -2513,13 +2582,10 @@ function goToPage(index) {
     currentPage = index;
 
 
-    if (index === 0) {
-
-        pages[0].classList.remove(
-            "leaving"
-        );
-
-    }
+    /* Die neu aktive Seite darf nicht im Leaving-Zustand bleiben. */
+    pages[index].classList.remove(
+        "leaving"
+    );
 
 
     if (index === 1) {
@@ -2537,6 +2603,14 @@ function goToPage(index) {
 
     setTimeout(
         () => {
+
+            pages.forEach(
+                page => {
+                    if (!page.classList.contains("active")) {
+                        page.classList.remove("leaving");
+                    }
+                }
+            );
 
             isAnimating = false;
 
