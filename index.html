@@ -7,7 +7,7 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
 <title>FORMA.</title>
@@ -29,6 +29,8 @@
 html {
     scroll-behavior: auto;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -50,13 +52,22 @@ body {
 
     overflow: hidden;
 
+    width: 100%;
+    height: 100%;
+
     -webkit-font-smoothing: antialiased;
 
     text-rendering: geometricPrecision;
 
     user-select: none;
+
+    overscroll-behavior: none;
 }
 
+
+/* =====================================================
+   FARBEN
+===================================================== */
 
 :root {
 
@@ -71,7 +82,6 @@ body {
 
 /* =====================================================
    NAVIGATION
-   APPLE STYLE GLOSSY
 ===================================================== */
 
 nav {
@@ -161,7 +171,7 @@ nav::before {
 
 
 /* =====================================================
-   FORMA LOGO
+   LOGO
 ===================================================== */
 
 .logo {
@@ -341,7 +351,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   FULL PAGE CONTAINER
+   PAGE CONTAINER
 ===================================================== */
 
 .page-container {
@@ -355,11 +365,15 @@ nav .nav-links a:active {
     overflow: hidden;
 
     position: relative;
+
+    touch-action: none;
+
+    overscroll-behavior: none;
 }
 
 
 /* =====================================================
-   SEITEN
+   EINZELNE SEITE
 ===================================================== */
 
 .page {
@@ -406,6 +420,8 @@ nav .nav-links a:active {
         ),
 
         opacity 0.6s ease;
+
+    touch-action: none;
 }
 
 
@@ -689,10 +705,6 @@ nav .nav-links a:active {
 
         0 10px 22px
         rgba(0,0,0,0.055);
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
@@ -716,15 +728,11 @@ nav .nav-links a:active {
 
     line-height:
         1.4;
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
 /* =====================================================
-   SCROLL-PFEIL
+   PFEIL
 ===================================================== */
 
 .scroll-hint {
@@ -1572,13 +1580,15 @@ nav .nav-links a:active {
 
 <script>
 
-
 /* =====================================================
    ELEMENTE
 ===================================================== */
 
 const pages =
     document.querySelectorAll(".page");
+
+const pageContainer =
+    document.querySelector(".page-container");
 
 const homeButton =
     document.querySelector("#homeButton");
@@ -1602,9 +1612,7 @@ let touchStartX = 0;
 
 let touchStartY = 0;
 
-let touchEndX = 0;
-
-let touchEndY = 0;
+let touchTracking = false;
 
 
 /* =====================================================
@@ -1613,12 +1621,36 @@ let touchEndY = 0;
 
 function goToPage(index) {
 
+    /*
+       Keine Seite außerhalb des Bereichs.
+    */
+
     if (
         index < 0 ||
-        index >= pages.length ||
-        index === currentPage ||
-        isAnimating
+        index >= pages.length
     ) {
+        return;
+    }
+
+
+    /*
+       Wenn wir bereits auf der gewünschten
+       Seite sind, nichts machen.
+    */
+
+    if (
+        index === currentPage
+    ) {
+        return;
+    }
+
+
+    /*
+       Während der Animation keine zweite
+       Navigation zulassen.
+    */
+
+    if (isAnimating) {
         return;
     }
 
@@ -1631,7 +1663,7 @@ function goToPage(index) {
 
 
     /*
-       STARTSEITE VERLÄSST DEN BILDSCHIRM
+       Startseite verlässt den Bildschirm.
     */
 
     if (
@@ -1647,7 +1679,7 @@ function goToPage(index) {
 
 
     /*
-       SEITENKLASSEN
+       Alle Seiten neu positionieren.
     */
 
     pages.forEach(
@@ -1688,14 +1720,21 @@ function goToPage(index) {
     );
 
 
+    /*
+       Aktuelle Seite aktualisieren.
+    */
+
     currentPage = index;
 
 
     /*
-       STARTSEITE ZURÜCKSETZEN
+       Wenn wir wieder auf die Startseite
+       kommen, Leaving entfernen.
     */
 
-    if (index === 0) {
+    if (
+        index === 0
+    ) {
 
         pages[0].classList.remove(
             "leaving"
@@ -1705,7 +1744,7 @@ function goToPage(index) {
 
 
     /*
-       ANIMATION LOCK
+       Animation freigeben.
     */
 
     setTimeout(
@@ -1722,7 +1761,7 @@ function goToPage(index) {
 
 /* =====================================================
    PFEIL
-   IMMER NUR NACH UNTEN
+   AUSSCHLIESSLICH NACH UNTEN
 ===================================================== */
 
 scrollHints.forEach(
@@ -1730,11 +1769,13 @@ scrollHints.forEach(
 
         hint.addEventListener(
             "click",
-            () => {
+            event => {
+
+                event.preventDefault();
 
                 /*
-                   Der Pfeil bewegt sich
-                   ausschließlich vertikal.
+                   Der Pfeil kann ausschließlich
+                   nach unten navigieren.
                 */
 
                 goToPage(
@@ -1770,83 +1811,287 @@ scrollHints.forEach(
 
 
 /* =====================================================
-   MAUSRAD
+   MAUSRAD / SCROLL
 ===================================================== */
 
-window.addEventListener(
-    "wheel",
-    event => {
+/*
+   Wir verwenden den pageContainer als
+   Scroll-Fläche und nicht nur window.
 
-        if (isAnimating) {
+   Dadurch funktioniert das Hochscrollen
+   von Seite 2 zuverlässig.
+*/
+
+function handleWheel(event) {
+
+    if (isAnimating) {
+        return;
+    }
+
+
+    /*
+       Kleine Trackpad-Bewegungen ignorieren.
+    */
+
+    if (
+        Math.abs(event.deltaY) < 15
+    ) {
+        return;
+    }
+
+
+    /*
+       Nach unten.
+    */
+
+    if (
+        event.deltaY > 0
+    ) {
+
+        goToPage(
+            currentPage + 1
+        );
+
+        return;
+    }
+
+
+    /*
+       Nach oben.
+
+       WICHTIG:
+       Auf Seite 2 wird explizit
+       die Startseite aufgerufen.
+    */
+
+    if (
+        event.deltaY < 0
+    ) {
+
+        if (
+            currentPage === 1
+        ) {
+
+            goToPage(0);
+
             return;
         }
 
 
+        goToPage(
+            currentPage - 1
+        );
+
+    }
+
+}
+
+
+/*
+   Capture = true sorgt dafür,
+   dass der Event früh abgefangen wird.
+*/
+
+window.addEventListener(
+    "wheel",
+    handleWheel,
+    {
+        passive: true,
+        capture: true
+    }
+);
+
+
+/* =====================================================
+   TOUCH START
+===================================================== */
+
+function handleTouchStart(event) {
+
+    if (
+        !event.changedTouches ||
+        !event.changedTouches.length
+    ) {
+        return;
+    }
+
+
+    const touch =
+        event.changedTouches[0];
+
+
+    touchStartX =
+        touch.clientX;
+
+    touchStartY =
+        touch.clientY;
+
+    touchTracking = true;
+
+}
+
+
+/* =====================================================
+   TOUCH END
+===================================================== */
+
+function handleTouchEnd(event) {
+
+    if (
+        !touchTracking
+    ) {
+        return;
+    }
+
+
+    touchTracking = false;
+
+
+    if (
+        !event.changedTouches ||
+        !event.changedTouches.length
+    ) {
+        return;
+    }
+
+
+    const touch =
+        event.changedTouches[0];
+
+
+    const touchEndX =
+        touch.clientX;
+
+    const touchEndY =
+        touch.clientY;
+
+
+    const differenceX =
+        touchStartX -
+        touchEndX;
+
+
+    const differenceY =
+        touchStartY -
+        touchEndY;
+
+
+    const absX =
+        Math.abs(differenceX);
+
+    const absY =
+        Math.abs(differenceY);
+
+
+    /*
+       Zu kleiner Wisch.
+    */
+
+    if (
+        Math.max(absX, absY) < 45
+    ) {
+        return;
+    }
+
+
+    /*
+       Nur vertikale Wischbewegungen
+       steuern die Seiten.
+    */
+
+    if (
+        absY <= absX
+    ) {
+
+        return;
+    }
+
+
+    /*
+       NACH OBEN WISCHEN
+    */
+
+    if (
+        differenceY > 0
+    ) {
+
+        /*
+           SPEZIELL SEITE 2:
+
+           Immer direkt zurück
+           zur Startseite.
+        */
+
         if (
-            Math.abs(event.deltaY) < 25
+            currentPage === 1
         ) {
+
+            goToPage(0);
+
             return;
         }
 
 
         /*
-           WICHTIG:
-
-           Seite 0:
-           ↓ = Seite 1
-
-           Seite 1:
-           ↑ = Seite 0
-           ↓ = Seite 2
-
-           Seite 2:
-           ↑ = Seite 1
-
-           Keine horizontale Navigation
-           über das Mausrad.
+           Von Seite 3 zurück auf Seite 2.
         */
 
-        if (event.deltaY > 0) {
+        goToPage(
+            currentPage - 1
+        );
 
-            goToPage(
-                currentPage + 1
-            );
+        return;
+    }
 
-        }
 
-        else {
+    /*
+       NACH UNTEN WISCHEN
+    */
 
-            goToPage(
-                currentPage - 1
-            );
+    if (
+        differenceY < 0
+    ) {
 
-        }
+        goToPage(
+            currentPage + 1
+        );
 
-    },
+    }
+
+}
+
+
+/*
+   Touch direkt am Container registrieren.
+*/
+
+pageContainer.addEventListener(
+    "touchstart",
+    handleTouchStart,
     {
         passive: true
     }
 );
 
 
-/* =====================================================
-   TOUCH / WISCHEN
-===================================================== */
+pageContainer.addEventListener(
+    "touchend",
+    handleTouchEnd,
+    {
+        passive: true
+    }
+);
+
+
+/*
+   Zusätzlich global.
+   Das macht die Navigation auf iPhone
+   und verschiedenen Browsern zuverlässiger.
+*/
 
 window.addEventListener(
     "touchstart",
-    event => {
-
-        const touch =
-            event.changedTouches[0];
-
-        touchStartX =
-            touch.screenX;
-
-        touchStartY =
-            touch.screenY;
-
-    },
+    handleTouchStart,
     {
         passive: true
     }
@@ -1855,104 +2100,7 @@ window.addEventListener(
 
 window.addEventListener(
     "touchend",
-    event => {
-
-        const touch =
-            event.changedTouches[0];
-
-        touchEndX =
-            touch.screenX;
-
-        touchEndY =
-            touch.screenY;
-
-
-        const differenceX =
-            touchStartX -
-            touchEndX;
-
-
-        const differenceY =
-            touchStartY -
-            touchEndY;
-
-
-        /*
-           MINDESTDISTANZ
-        */
-
-        if (
-            Math.max(
-                Math.abs(differenceX),
-                Math.abs(differenceY)
-            ) < 50
-        ) {
-
-            return;
-
-        }
-
-
-        /*
-           VERTIKALER WISCH
-           
-           ↑ = vorherige Seite
-           ↓ = nächste Seite
-        */
-
-        if (
-            Math.abs(differenceY) >
-            Math.abs(differenceX)
-        ) {
-
-            if (differenceY > 0) {
-
-                /*
-                   Nach oben:
-                   immer eine Seite zurück.
-
-                   Seite 1 → Startseite
-                   Seite 2 → Seite 1
-                */
-
-                goToPage(
-                    currentPage - 1
-                );
-
-            }
-
-            else {
-
-                /*
-                   Nach unten:
-                   immer eine Seite weiter.
-                */
-
-                goToPage(
-                    currentPage + 1
-                );
-
-            }
-
-            return;
-
-        }
-
-
-        /*
-           HORIZONTALE WISCHES
-           
-           Hier wird bewusst NICHTS
-           mehr ausgeführt.
-
-           Dadurch kann man auf der
-           zweiten Seite nicht versehentlich
-           durch horizontales Wischen
-           die vertikale Seitenstruktur
-           beeinflussen.
-        */
-
-    },
+    handleTouchEnd,
     {
         passive: true
     }
@@ -1967,27 +2115,64 @@ window.addEventListener(
     "keydown",
     event => {
 
+        /*
+           Pfeil nach unten
+           = nächste Seite.
+        */
+
         if (
             event.key === "ArrowDown"
         ) {
+
+            event.preventDefault();
 
             goToPage(
                 currentPage + 1
             );
 
+            return;
         }
 
+
+        /*
+           Pfeil nach oben
+           = vorherige Seite.
+        */
 
         if (
             event.key === "ArrowUp"
         ) {
 
-            goToPage(
-                currentPage - 1
-            );
+            event.preventDefault();
 
+            /*
+               Seite 2 immer direkt
+               zur Startseite.
+            */
+
+            if (
+                currentPage === 1
+            ) {
+
+                goToPage(0);
+
+            }
+
+            else {
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+            return;
         }
 
+
+        /*
+           Leertaste = nächste Seite.
+        */
 
         if (
             event.key === " "
