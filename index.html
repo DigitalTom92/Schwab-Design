@@ -1353,11 +1353,9 @@ nav .nav-links a:active {
 
 /* =====================================================
    SEITEN-INHALT
-   GLEICHER ZOOM-EFFEKT FÜR ALLE HAUPTSEITEN
 ===================================================== */
 
-.page-content,
-.about-content {
+.page-content {
     transform:
         translate3d(0,60px,0)
         scale(0.92);
@@ -1375,53 +1373,15 @@ nav .nav-links a:active {
         ),
 
         opacity 0.7s ease;
-
-    will-change:
-        transform,
-        opacity;
 }
 
-.page.active .page-content,
-.page.active .about-content {
+.page.active .page-content {
     transform:
         translate3d(0,0,0)
         scale(1);
 
     opacity:
         1;
-}
-
-
-/* =====================================================
-   ZOOM-/FADE-EFFEKT BEIM VERLASSEN
-   GILT JETZT FÜR START, ÜBER UNS UND KONTAKT
-===================================================== */
-
-.page.leaving .page-content,
-.page.leaving .about-content {
-    transform:
-        translate3d(0,-45px,0)
-        scale(1.06);
-
-    opacity:
-        0;
-
-    transition:
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        ),
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        );
 }
 
 .page-title {
@@ -1671,7 +1631,6 @@ nav .nav-links a:active {
 
 
     .page-content,
-    .about-content,
     .page-title,
     .eyebrow,
     .eyebrow .forma-o,
@@ -1687,6 +1646,65 @@ nav .nav-links a:active {
             none;
     }
 
+}
+
+
+/* =====================================================
+   THREADS HINTERGRUND – REACT-BITS LOOK
+   Angepasst für reines HTML/CSS/JS
+===================================================== */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.threads-background {
+    position: absolute;
+    inset: 60px 0 0 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.72;
+    transform: scale(1);
+    transition:
+        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.75s ease;
+}
+
+.threads-background canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero .scroll-hint {
+    z-index: 3;
+}
+
+.hero.leaving .threads-background {
+    opacity: 0;
+    transform: scale(1.10);
+    filter: blur(4px);
+}
+
+@media (max-width: 700px) {
+    .threads-background {
+        inset: 60px 0 0 0;
+        opacity: 0.60;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .threads-background {
+        transition: none;
+    }
 }
 
 </style>
@@ -1766,6 +1784,12 @@ nav .nav-links a:active {
     class="page hero active"
     data-index="0"
 >
+
+    <!-- Threads-Hintergrund: Farbe [0.48235, 0.51373, 0.56078], Amplitude 0.9 -->
+    <div class="threads-background" id="threadsBackground" aria-hidden="true">
+        <canvas id="threadsCanvas"></canvas>
+    </div>
+
 
     <div class="hero-content page-content">
 
@@ -2049,6 +2073,196 @@ nav .nav-links a:active {
 
 
 /* =====================================================
+   THREADS HINTERGRUND
+   React-Bits-inspirierte Vanilla-JS-Version
+   Farbe: [0.48235294, 0.51372549, 0.56078431]
+   Amplitude: 0.9
+   Mausinteraktion: aktiv
+===================================================== */
+
+(() => {
+    const canvas = document.querySelector("#threadsCanvas");
+    const host = document.querySelector("#threadsBackground");
+
+    if (!canvas || !host) return;
+
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    const THREAD_COLOR = [123, 131, 143];
+    const ACCENT_COLOR = [215, 38, 56];
+    const AMPLITUDE = 0.9;
+    const LINE_COUNT = 46;
+
+    // Wenige rote Akzent-Threads passend zum FORMA.-Logo.
+    // Die Positionen sind bewusst verteilt und nicht regelmäßig,
+    // damit der Effekt natürlich im grauen Linienfeld sitzt.
+    const RED_THREAD_INDICES = new Set([8, 17, 24, 32, 40]);
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let animationFrame = 0;
+    let startTime = performance.now();
+
+    const pointer = {
+        x: 0.5,
+        y: 0.5,
+        targetX: 0.5,
+        targetY: 0.5,
+        active: false
+    };
+
+    function resizeThreads() {
+        const rect = host.getBoundingClientRect();
+        width = Math.max(1, rect.width);
+        height = Math.max(1, rect.height);
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function smoothstep(a, b, x) {
+        const t = Math.max(0, Math.min(1, (x - a) / (b - a)));
+        return t * t * (3 - 2 * t);
+    }
+
+    function threadNoise(x, seed, time) {
+        return (
+            Math.sin(x * 0.010 + time * 0.00046 + seed * 0.83) * 0.48 +
+            Math.sin(x * 0.021 - time * 0.00031 + seed * 1.71) * 0.27 +
+            Math.sin(x * 0.0045 + time * 0.00018 + seed * 2.43) * 0.25
+        );
+    }
+
+    function drawThreads(now) {
+        const time = now - startTime;
+        ctx.clearRect(0, 0, width, height);
+
+        pointer.x += (pointer.targetX - pointer.x) * 0.055;
+        pointer.y += (pointer.targetY - pointer.y) * 0.055;
+
+        const centerY = height * 0.52;
+        const spread = Math.min(height * 0.62, 500);
+        const step = spread / Math.max(1, LINE_COUNT - 1);
+        const amplitudePx = Math.min(58, height * 0.075) * AMPLITUDE;
+        const mouseX = pointer.x * width;
+        const mouseY = pointer.y * height;
+
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        for (let i = 0; i < LINE_COUNT; i++) {
+            const normalized = i / (LINE_COUNT - 1);
+            const band = normalized * 2 - 1;
+            const baseY = centerY + band * spread * 0.5;
+            const centerWeight = 1 - Math.min(1, Math.abs(band));
+            const alpha = 0.095 + centerWeight * 0.11;
+
+            ctx.beginPath();
+
+            const resolution = Math.max(4, Math.round(width / 220));
+            const pointStep = width / (resolution * 18);
+            let first = true;
+
+            for (let x = -20; x <= width + 20; x += pointStep) {
+                const edge = smoothstep(0, width * 0.16, x) *
+                             (1 - smoothstep(width * 0.84, width, x));
+
+                const perspective = Math.sin((x / Math.max(width, 1)) * Math.PI);
+                const wave = threadNoise(x, i * 0.62, time) *
+                             amplitudePx * (0.48 + perspective * 0.72);
+
+                const weave = Math.sin(
+                    x * 0.0065 + i * 0.46 - time * 0.00024
+                ) * amplitudePx * 0.22;
+
+                let mouseOffset = 0;
+
+                if (pointer.active) {
+                    const dx = x - mouseX;
+                    const dy = baseY - mouseY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const radius = Math.min(width, height) * 0.34;
+
+                    if (distance < radius) {
+                        const influence = 1 - distance / radius;
+                        const eased = influence * influence * (3 - 2 * influence);
+                        const direction = dy >= 0 ? 1 : -1;
+                        mouseOffset = direction * eased * amplitudePx * 1.28;
+                    }
+                }
+
+                const y = baseY + (wave + weave) * (0.60 + edge * 0.40) + mouseOffset;
+
+                if (first) {
+                    ctx.moveTo(x, y);
+                    first = false;
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+
+            const isAccentThread = RED_THREAD_INDICES.has(i);
+            const color = isAccentThread ? ACCENT_COLOR : THREAD_COLOR;
+            const finalAlpha = isAccentThread
+                ? Math.min(0.34, alpha * 1.55)
+                : alpha;
+
+            ctx.strokeStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${finalAlpha})`;
+            ctx.lineWidth = isAccentThread
+                ? 1.08 + centerWeight * 0.24
+                : 1 + centerWeight * 0.22;
+            ctx.stroke();
+        }
+
+        animationFrame = requestAnimationFrame(drawThreads);
+    }
+
+    function setPointerFromEvent(clientX, clientY) {
+        const rect = host.getBoundingClientRect();
+        pointer.targetX = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        pointer.targetY = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+        pointer.active = true;
+    }
+
+    window.addEventListener("pointermove", event => {
+        if (currentPage !== 0) return;
+        setPointerFromEvent(event.clientX, event.clientY);
+    }, { passive: true });
+
+    window.addEventListener("pointerleave", () => {
+        pointer.targetX = 0.5;
+        pointer.targetY = 0.5;
+        pointer.active = false;
+    });
+
+    window.addEventListener("blur", () => {
+        pointer.targetX = 0.5;
+        pointer.targetY = 0.5;
+        pointer.active = false;
+    });
+
+    window.addEventListener("resize", resizeThreads, { passive: true });
+
+    resizeThreads();
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        drawThreads(performance.now());
+        cancelAnimationFrame(animationFrame);
+    } else {
+        animationFrame = requestAnimationFrame(drawThreads);
+    }
+})();
+
+
+
+/* =====================================================
    HAUPTSEITEN
 ===================================================== */
 
@@ -2246,14 +2460,16 @@ function goToPage(index) {
     }
 
 
-    /*
-       Jeder vertikale Seitenwechsel bekommt
-       denselben Leaving-Effekt.
-    */
+    if (
+        currentPage === 0 &&
+        index > 0
+    ) {
 
-    oldPage.classList.add(
-        "leaving"
-    );
+        oldPage.classList.add(
+            "leaving"
+        );
+
+    }
 
 
     pages.forEach(
@@ -2297,6 +2513,15 @@ function goToPage(index) {
     currentPage = index;
 
 
+    if (index === 0) {
+
+        pages[0].classList.remove(
+            "leaving"
+        );
+
+    }
+
+
     if (index === 1) {
 
         requestAnimationFrame(
@@ -2312,15 +2537,6 @@ function goToPage(index) {
 
     setTimeout(
         () => {
-
-            /*
-               Leaving-Zustand nach der Animation
-               sauber entfernen.
-            */
-
-            oldPage.classList.remove(
-                "leaving"
-            );
 
             isAnimating = false;
 
@@ -2487,6 +2703,7 @@ scrollHints.forEach(
 
 /* =====================================================
    MAC TOUCHPAD / WHEEL
+   =====================================================
 
    WICHTIG:
 
