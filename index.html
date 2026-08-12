@@ -64,6 +64,8 @@
         --dark-text: #1d1d1f;
 
         --soft-gray: #666;
+
+        --blob-gray: #3a3a3c;
     }
 
 
@@ -129,6 +131,7 @@
 
         z-index: 100;
     }
+
 
 
     /* =====================================================
@@ -478,6 +481,9 @@
 
         padding:
             80px 6% 50px;
+
+        isolation:
+            isolate;
     }
 
 
@@ -489,9 +495,214 @@
         max-width:
             1200px;
 
+        position:
+            relative;
+
+        z-index:
+            2;
+
         will-change:
             transform,
             opacity;
+    }
+
+
+
+    /* =====================================================
+       ABSTRAKTER DUNKELGRAUER FARBKLECKS
+       HINTER DEM STARTSEITEN-INHALT
+    ===================================================== */
+
+    .hero::before {
+
+        content: "";
+
+        position:
+            absolute;
+
+        width:
+            clamp(
+                420px,
+                48vw,
+                720px
+            );
+
+        height:
+            clamp(
+                340px,
+                43vw,
+                620px
+            );
+
+        left:
+            50%;
+
+        top:
+            50%;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(-8deg);
+
+        background:
+
+            radial-gradient(
+                ellipse at 48% 45%,
+                rgba(58,58,60,0.19) 0%,
+                rgba(58,58,60,0.14) 35%,
+                rgba(58,58,60,0.08) 58%,
+                rgba(58,58,60,0.025) 76%,
+                rgba(58,58,60,0) 100%
+            );
+
+        border-radius:
+            47%
+            53%
+            58%
+            42%
+            /
+            48%
+            44%
+            56%
+            52%;
+
+        filter:
+            blur(18px);
+
+        opacity:
+            0;
+
+        z-index:
+            0;
+
+        pointer-events:
+            none;
+
+        transition:
+
+            opacity 1.4s ease 0.25s,
+
+            transform 1.6s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            );
+    }
+
+
+    /* =====================================================
+       FARBKLECKS ERSCHEINT
+    ===================================================== */
+
+    .hero.active::before {
+
+        opacity:
+            1;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(-5deg)
+            scale(1);
+    }
+
+
+    /* =====================================================
+       LEICHTE BEWEGUNG DES FARBKLECKS
+    ===================================================== */
+
+    .hero.active::after {
+
+        content: "";
+
+        position:
+            absolute;
+
+        width:
+            clamp(
+                260px,
+                30vw,
+                460px
+            );
+
+        height:
+            clamp(
+                180px,
+                22vw,
+                340px
+            );
+
+        left:
+            50%;
+
+        top:
+            48%;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            );
+
+        background:
+
+            radial-gradient(
+                ellipse,
+                rgba(30,30,32,0.045) 0%,
+                rgba(30,30,32,0) 72%
+            );
+
+        filter:
+            blur(20px);
+
+        border-radius:
+            50%;
+
+        z-index:
+            0;
+
+        pointer-events:
+            none;
+
+        animation:
+            blobFloat 8s
+            ease-in-out
+            infinite;
+    }
+
+
+    @keyframes blobFloat {
+
+        0%,
+        100% {
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                )
+                scale(1);
+
+        }
+
+        50% {
+
+            transform:
+                translate(
+                    -50%,
+                    -53%
+                )
+                scale(1.06);
+
+        }
+
     }
 
 
@@ -549,6 +760,7 @@
             translate3d(0,0,0)
             scale(1);
     }
+
 
 
     /* =====================================================
@@ -618,6 +830,7 @@
     }
 
 
+
     /* =====================================================
        FORMA BEIM VERLASSEN
     ===================================================== */
@@ -666,6 +879,7 @@
         transform:
             scale(1);
     }
+
 
 
     /* =====================================================
@@ -735,6 +949,11 @@
     }
 
 
+
+    /* =====================================================
+       HERO TEXT
+    ===================================================== */
+
     .hero-text {
 
         font-size:
@@ -765,7 +984,6 @@
 
     /* =====================================================
        SCROLL-PFEIL
-       STARTSEITE
     ===================================================== */
 
     .scroll-hint {
@@ -878,7 +1096,6 @@
 
     /* =====================================================
        PFEIL AUF SCHWARZER SEITE
-       HELL / WEISS
     ===================================================== */
 
     .about .scroll-hint svg {
@@ -943,10 +1160,6 @@
         }
     }
 
-
-    /* =====================================================
-       PFEIL BEIM SEITENWECHSEL
-    ===================================================== */
 
     .page.leaving .scroll-hint {
 
@@ -1281,6 +1494,61 @@
         }
 
 
+        /* ---------------------------------------------
+           FARBKLECKS MOBILE
+        --------------------------------------------- */
+
+        .hero::before {
+
+            width:
+                105vw;
+
+            height:
+                58vh;
+
+            top:
+                50%;
+
+            filter:
+                blur(18px);
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                )
+                rotate(-7deg);
+        }
+
+
+        .hero.active::before {
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                )
+                rotate(-4deg)
+                scale(1);
+        }
+
+
+        .hero::after {
+
+            width:
+                75vw;
+
+            height:
+                34vh;
+
+            top:
+                48%;
+
+            filter:
+                blur(20px);
+        }
+
+
         .hero-title {
 
             letter-spacing:
@@ -1351,10 +1619,6 @@
         }
 
 
-        /* ---------------------------------------------
-           HELLER PFEIL AUF MOBILE SCHWARZ
-        --------------------------------------------- */
-
         .about .scroll-hint path {
 
             stroke:
@@ -1416,7 +1680,8 @@
         }
 
 
-        .scroll-hint svg {
+        .scroll-hint svg,
+        .hero.active::after {
 
             animation:
                 none;
@@ -1567,8 +1832,9 @@
         </div>
 
 
+
         <!-- =================================================
-             SCROLL-PFEIL STARTSEITE
+             SCROLL-PFEIL
         ================================================= -->
 
         <div
@@ -1634,9 +1900,9 @@
         </div>
 
 
+
         <!-- =================================================
              SCROLL-PFEIL ÜBER UNS
-             HELL AUF SCHWARZ
         ================================================= -->
 
         <div
