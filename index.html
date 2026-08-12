@@ -594,6 +594,10 @@ nav .nav-links a:active {
 }
 
 
+/* =====================================================
+   STARTSEITE LEAVE / ZOOM
+===================================================== */
+
 .page.leaving .eyebrow {
 
     opacity:
@@ -1039,15 +1043,85 @@ nav .nav-links a:active {
 
     padding:
         0;
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
 /* =====================================================
-   ABOUT TITEL
+   FORMA AUF ÜBER UNS
+   NUR O UND PUNKT ROT
+===================================================== */
+
+.about-forma {
+
+    display:
+        inline-flex;
+
+    align-items:
+        baseline;
+
+    font-family:
+        "Helvetica Neue",
+        "Arial Narrow",
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(
+            28px,
+            3.5vw,
+            48px
+        );
+
+    font-weight:
+        500;
+
+    letter-spacing:
+        clamp(
+            3px,
+            0.55vw,
+            7px
+        );
+
+    line-height:
+        1;
+
+    margin-bottom:
+        35px;
+
+    color:
+        #fff;
+}
+
+
+.about-forma .forma-letter {
+
+    color:
+        #fff;
+
+    font-weight:
+        500;
+}
+
+
+.about-forma .forma-o {
+
+    color:
+        var(--forma-red);
+
+    font-weight:
+        500;
+}
+
+
+.about-forma .forma-dot {
+
+    background:
+        var(--forma-red);
+}
+
+
+/* =====================================================
+   ÜBER UNS TITEL
 ===================================================== */
 
 .about-title {
@@ -1105,23 +1179,10 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   ROTES O UND PUNKT IM ABOUT-TEXT
+   ABOUT SEITEN-INHALT
 ===================================================== */
 
-.about-text .forma-red {
-
-    color:
-        var(--forma-red);
-}
-
-
-/* =====================================================
-   ZOOM-EFFEKT BEIM VERLASSEN
-   ÜBER UNS + KONTAKT
-===================================================== */
-
-.about .about-content,
-.contact .contact-content {
+.about .about-content {
 
     transform:
         translate3d(0,60px,0)
@@ -1141,15 +1202,10 @@ nav .nav-links a:active {
         ),
 
         opacity 0.7s ease;
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
-.about.active .about-content,
-.contact.active .contact-content {
+.about.active .about-content {
 
     transform:
         translate3d(0,0,0)
@@ -1160,22 +1216,18 @@ nav .nav-links a:active {
 }
 
 
-/*
-   BEIM VERLASSEN:
-   Schrift zoomt leicht heraus,
-   bewegt sich nach oben und
-   verschwindet gleichzeitig.
-*/
+/* =====================================================
+   ABOUT LEAVE / ZOOM
+===================================================== */
 
-.about.leaving .about-content,
-.contact.leaving .contact-content {
+.about.leaving .about-content {
 
     opacity:
         0;
 
     transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
+        translate3d(0,-55px,0)
+        scale(1.14);
 
     transition:
 
@@ -1187,6 +1239,22 @@ nav .nav-links a:active {
             1
         ),
 
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.about.leaving .about-title {
+
+    transform:
+        scale(1.16);
+
+    transition:
         transform 0.8s
         cubic-bezier(
             0.22,
@@ -1230,6 +1298,9 @@ nav .nav-links a:active {
         flex;
 
     align-items:
+        center;
+
+    justify-content:
         center;
 
     gap:
@@ -1290,6 +1361,7 @@ nav .nav-links a:active {
 
 /* =====================================================
    GLASS BLASE
+   EXAKT ÜBER DEM JEWEILIGEN PUNKT
 ===================================================== */
 
 .indicator-bubble {
@@ -1506,7 +1578,94 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   SEITEN-INHALT
+   KONTAKT INHALT
+===================================================== */
+
+.contact .contact-content {
+
+    transform:
+        translate3d(0,60px,0)
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+
+        transform 1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.7s ease;
+}
+
+
+.contact.active .contact-content {
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    opacity:
+        1;
+}
+
+
+/* =====================================================
+   KONTAKT LEAVE / ZOOM
+===================================================== */
+
+.contact.leaving .contact-content {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-55px,0)
+        scale(1.14);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.contact.leaving .contact-title {
+
+    transform:
+        scale(1.16);
+
+    transition:
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* =====================================================
+   ALLGEMEINER SEITEN-INHALT
 ===================================================== */
 
 .page-content {
@@ -1543,43 +1702,6 @@ nav .nav-links a:active {
 }
 
 
-/* =====================================================
-   GENERELLER ZOOM-EFFEKT BEIM VERLASSEN
-===================================================== */
-
-.page.leaving .page-content {
-
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
-
-/* =====================================================
-   TITEL
-===================================================== */
-
 .page-title {
 
     transform:
@@ -1609,38 +1731,6 @@ nav .nav-links a:active {
 
     opacity:
         1;
-}
-
-
-/* =====================================================
-   TITEL BEIM VERLASSEN
-===================================================== */
-
-.page.leaving .page-title {
-
-    opacity:
-        0;
-
-    transform:
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
 }
 
 
@@ -1743,6 +1833,19 @@ nav .nav-links a:active {
 
         padding:
             0;
+    }
+
+
+    .about-forma {
+
+        font-size:
+            28px;
+
+        letter-spacing:
+            4px;
+
+        margin-bottom:
+            28px;
     }
 
 
@@ -1878,31 +1981,12 @@ nav .nav-links a:active {
     }
 
 
-    /* ---------------------------------------------
-       MOBILE ZOOM BEIM VERLASSEN
-    --------------------------------------------- */
-
-    .page.leaving .page-content {
-
-        transform:
-            translate3d(0,-28px,0)
-            scale(1.12);
-    }
-
-
     .about.leaving .about-content,
     .contact.leaving .contact-content {
 
         transform:
-            translate3d(0,-28px,0)
-            scale(1.12);
-    }
-
-
-    .page.leaving .page-title {
-
-        transform:
-            scale(1.12);
+            translate3d(0,-35px,0)
+            scale(1.10);
     }
 
 }
@@ -2115,9 +2199,26 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content page-content">
+                <div class="about-content">
 
-                    <h2 class="about-title page-title">
+                    <div class="about-forma">
+
+                        <span class="forma-letter">F</span>
+
+                        <span class="forma-o">O</span>
+
+                        <span class="forma-letter">R</span>
+
+                        <span class="forma-letter">M</span>
+
+                        <span class="forma-letter">A</span>
+
+                        <span class="forma-dot"></span>
+
+                    </div>
+
+
+                    <h2 class="about-title">
 
                         Weniger.<br>
 
@@ -2128,8 +2229,7 @@ nav .nav-links a:active {
 
                     <p class="about-text">
 
-                        <span class="forma-red">FORMA.</span>
-                        steht für
+                        FORMA. steht für
                         minimalistisches, modernes
                         und durchdachtes Design.
 
@@ -2150,9 +2250,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content page-content">
+                <div class="about-content">
 
-                    <h2 class="about-title page-title">
+                    <h2 class="about-title">
 
                         Klar.<br>
 
@@ -2181,9 +2281,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content page-content">
+                <div class="about-content">
 
-                    <h2 class="about-title page-title">
+                    <h2 class="about-title">
 
                         Anders.<br>
 
@@ -2410,10 +2510,19 @@ function goToPage(index) {
         pages[currentPage];
 
 
-    /* ---------------------------------------------
-       ABOUT VERLASSEN
-       horizontale Unterseite zurücksetzen
-    --------------------------------------------- */
+    /* -------------------------------------------------
+       LEAVE-EFFEKT
+       Für ALLE Seiten
+    ------------------------------------------------- */
+
+    oldPage.classList.add("leaving");
+
+
+    /*
+       Wenn ABOUT verlassen wird:
+       horizontale Unterseite immer auf
+       Position 1 zurücksetzen.
+    */
 
     if (currentPage === 1) {
 
@@ -2422,19 +2531,9 @@ function goToPage(index) {
     }
 
 
-    /* ---------------------------------------------
-       JEDE AKTUELLE SEITE BEIM VERLASSEN
-       MIT ZOOM-EFFEKT ANIMIEREN
-    --------------------------------------------- */
-
-    oldPage.classList.add(
-        "leaving"
-    );
-
-
-    /* ---------------------------------------------
-       SEITENKLASSEN
-    --------------------------------------------- */
+    /*
+       Seitenklassen
+    */
 
     pages.forEach(
         (page, i) => {
@@ -2477,9 +2576,10 @@ function goToPage(index) {
     currentPage = index;
 
 
-    /* ---------------------------------------------
-       ALTE SEITE NACH DER ANIMATION BEREINIGEN
-    --------------------------------------------- */
+    /*
+       Leave-Klasse nach der
+       Übergangsanimation entfernen
+    */
 
     setTimeout(
         () => {
@@ -2487,18 +2587,6 @@ function goToPage(index) {
             oldPage.classList.remove(
                 "leaving"
             );
-
-        },
-        950
-    );
-
-
-    /* ---------------------------------------------
-       ANIMATION LOCK
-    --------------------------------------------- */
-
-    setTimeout(
-        () => {
 
             isAnimating = false;
 
@@ -2538,19 +2626,27 @@ function goToAboutSlide(index) {
     currentAboutSlide = index;
 
 
-    /* ---------------------------------------------
+    /*
        Horizontale Position
-    --------------------------------------------- */
+    */
 
     aboutTrack.style.transform =
         `translate3d(-${index * 33.333333}%, 0, 0)`;
 
 
-    /* ---------------------------------------------
+    /*
        LIQUID GLASS BLASE
 
-       Exakt mittig über dem jeweiligen Punkt.
-    --------------------------------------------- */
+       Die Blase wird anhand der tatsächlichen
+       Punktposition berechnet.
+
+       Punktabstand:
+       10px Punkt + 14px Gap = 24px
+
+       Die Blase ist ebenfalls 24px breit.
+       Dadurch liegt ihr Mittelpunkt exakt
+       auf dem Mittelpunkt des jeweiligen Punktes.
+    */
 
     const dotWidth = 10;
 
@@ -2560,26 +2656,46 @@ function goToAboutSlide(index) {
 
     const startOffset = 9;
 
+    const distance =
+        dotWidth +
+        gap;
+
+
+    /*
+       Der Mittelpunkt des ersten Punktes
+       relativ zum Indicator.
+    */
 
     const firstDotCenter =
         startOffset +
         (dotWidth / 2);
 
 
-    const distance =
-        dotWidth +
-        gap;
-
+    /*
+       Mittelpunkt des aktuellen Punktes.
+    */
 
     const bubbleCenter =
         firstDotCenter +
         (index * distance);
 
 
+    /*
+       Linke Position der Blase,
+       sodass deren Mittelpunkt exakt
+       über dem Mittelpunkt des Punktes liegt.
+    */
+
     const bubbleLeft =
         bubbleCenter -
         (bubbleWidth / 2);
 
+
+    /*
+       Da indicator-bubble bereits
+       left: 9px besitzt, wird nur die
+       zusätzliche Verschiebung angewendet.
+    */
 
     indicatorBubble.style.transform =
         `translateX(${bubbleLeft - startOffset}px)`;
@@ -2665,6 +2781,11 @@ scrollHints.forEach(
                 event.stopPropagation();
 
 
+                /*
+                   Pfeil bedeutet IMMER:
+                   nächste vertikale Hauptseite.
+                */
+
                 goToPage(
                     currentPage + 1
                 );
@@ -2725,6 +2846,12 @@ window.addEventListener(
         }
 
 
+        /*
+           Auf ABOUT:
+           Mausrad bleibt VERTIKAL.
+           Niemals horizontal.
+        */
+
         if (event.deltaY > 0) {
 
             goToPage(
@@ -2768,6 +2895,11 @@ window.addEventListener(
             touch.screenY;
 
 
+        /*
+           Prüfen, ob Touch auf Punktleiste
+           begonnen wurde.
+        */
+
         touchStartedOnIndicator =
             !!event.target.closest(
                 ".page-indicator"
@@ -2787,6 +2919,12 @@ window.addEventListener(
 window.addEventListener(
     "touchend",
     event => {
+
+        /*
+           Wenn direkt auf Punktleiste
+           gestartet wurde, nicht als
+           Seiten-Wisch interpretieren.
+        */
 
         if (touchStartedOnIndicator) {
 
@@ -2827,6 +2965,10 @@ window.addEventListener(
             Math.abs(differenceY);
 
 
+        /*
+           Zu kleiner Wisch
+        */
+
         if (
             Math.max(absX, absY) < 50
         ) {
@@ -2837,14 +2979,19 @@ window.addEventListener(
 
 
         /* =================================================
-           AUF ABOUT:
-           HORIZONTAL = UNTERSEITEN
+           AUF DER ZWEITEN HAUPTSEITE:
+           HORIZONTAL = Unterseiten
         ================================================= */
 
         if (
             currentPage === 1 &&
             absX > absY
         ) {
+
+            /*
+               Finger nach links:
+               nächste Unterseite
+            */
 
             if (differenceX > 0) {
 
@@ -2853,6 +3000,11 @@ window.addEventListener(
                 );
 
             }
+
+            /*
+               Finger nach rechts:
+               vorherige Unterseite
+            */
 
             else {
 
@@ -2870,10 +3022,21 @@ window.addEventListener(
 
         /* =================================================
            VERTIKAL:
-           HAUPTSEITEN
+           GILT FÜR ALLE HAUPTSEITEN
         ================================================= */
 
         if (absY >= absX) {
+
+
+            /*
+               Finger nach OBEN
+               = nach UNTEN scrollen
+               = nächste Seite
+
+               Finger nach UNTEN
+               = nach OBEN scrollen
+               = vorherige Seite
+            */
 
             if (differenceY > 0) {
 
@@ -2930,9 +3093,9 @@ window.addEventListener(
         }
 
 
-        /* ---------------------------------------------
+        /*
            Horizontal nur auf ABOUT
-        --------------------------------------------- */
+        */
 
         if (
             currentPage === 1 &&
@@ -3053,7 +3216,6 @@ window.addEventListener(
 ===================================================== */
 
 resetAboutSlide();
-
 
 </script>
 
