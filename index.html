@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="de">
 
 <head>
@@ -26,10 +25,12 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: auto;
     overflow: hidden;
 }
+
 
 body {
 
@@ -62,6 +63,7 @@ body {
     --dark-text: #1d1d1f;
 
     --soft-gray: #666;
+
 }
 
 
@@ -129,6 +131,10 @@ nav {
 }
 
 
+/* =====================================================
+   GLOSSY LICHTREFLEX
+===================================================== */
+
 nav::before {
 
     content: "";
@@ -177,9 +183,7 @@ nav::before {
     cursor: pointer;
 
     transition:
-
         opacity 0.2s ease,
-
         transform 0.2s ease;
 }
 
@@ -203,7 +207,6 @@ nav::before {
         var(--dark-text);
 
     font-family:
-
         "Helvetica Neue",
         "Arial Narrow",
         Arial,
@@ -360,7 +363,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   EINZELNE SEITE
+   VERTIKALE SEITEN
 ===================================================== */
 
 .page {
@@ -479,7 +482,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   FORMA AUF STARTSEITE
+   FORMA STARTSEITE
 ===================================================== */
 
 .eyebrow {
@@ -533,11 +536,6 @@ nav .nav-links a:active {
 }
 
 
-
-/* =====================================================
-   GROSSES FORMA
-===================================================== */
-
 .eyebrow .forma-logo {
 
     font-size:
@@ -568,11 +566,6 @@ nav .nav-links a:active {
         300;
 }
 
-
-
-/* =====================================================
-   ROTES O
-===================================================== */
 
 .eyebrow .forma-o {
 
@@ -739,8 +732,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   HORIZONTALER CONTENT-BEREICH
-   SEITE 2 + 2 WEITERE SEITEN
+   HORIZONTALE ÜBER-UNS-BÜHNE
 ===================================================== */
 
 .about {
@@ -755,32 +747,40 @@ nav .nav-links a:active {
         flex-start;
 
     padding:
-        10vw 0;
+        0;
 
     overflow:
         hidden;
 }
 
 
+/*
+   Die horizontale Bühne liegt innerhalb
+   der zweiten vertikalen Seite.
+*/
+
 .about-slider {
 
-    width:
-        100%;
+    position:
+        absolute;
 
-    height:
-        100%;
+    inset:
+        0;
 
     display:
         flex;
 
-    align-items:
-        center;
+    width:
+        300vw;
+
+    height:
+        100%;
 
     transform:
         translate3d(0,0,0);
 
     transition:
-        transform 0.9s
+        transform 0.85s
         cubic-bezier(
             0.77,
             0,
@@ -795,17 +795,14 @@ nav .nav-links a:active {
 
 .about-slide {
 
-    min-width:
-        100vw;
-
     width:
         100vw;
 
     height:
         100%;
 
-    flex-shrink:
-        0;
+    flex:
+        0 0 100vw;
 
     display:
         flex;
@@ -813,8 +810,14 @@ nav .nav-links a:active {
     align-items:
         center;
 
+    justify-content:
+        flex-start;
+
     padding:
-        0 8%;
+        10vw 8%;
+
+    overflow:
+        hidden;
 }
 
 
@@ -827,11 +830,6 @@ nav .nav-links a:active {
         1300px;
 }
 
-
-
-/* =====================================================
-   ÜBER UNS TITEL
-===================================================== */
 
 .about-title {
 
@@ -864,10 +862,6 @@ nav .nav-links a:active {
 
         0 10px 22px
         rgba(255,255,255,0.045);
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
@@ -888,71 +882,34 @@ nav .nav-links a:active {
 
     color:
         #aaa;
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
 
 /* =====================================================
-   ZWEITE HORIZONTALE SEITE
+   HORIZONTALE SLIDES
 ===================================================== */
 
 .about-slide:nth-child(2) {
 
     background:
-        #0a0a0a;
+        #000;
 }
 
-
-.about-slide:nth-child(2) .about-title {
-
-    color:
-        #fff;
-}
-
-
-.about-slide:nth-child(2) .about-text {
-
-    color:
-        #999;
-}
-
-
-
-/* =====================================================
-   DRITTE HORIZONTALE SEITE
-===================================================== */
 
 .about-slide:nth-child(3) {
 
     background:
-        #111;
-}
-
-
-.about-slide:nth-child(3) .about-title {
-
-    color:
-        #fff;
-}
-
-
-.about-slide:nth-child(3) .about-text {
-
-    color:
-        #999;
+        #000;
 }
 
 
 
 /* =====================================================
-   LIQUID GLASS SEITEN-PUNKTE
+   LIQUID GLASS PAGINATION
 ===================================================== */
 
-.page-indicator {
+.about-pagination {
 
     position:
         absolute;
@@ -962,7 +919,7 @@ nav .nav-links a:active {
 
     bottom:
         calc(
-            86px +
+            96px +
             env(
                 safe-area-inset-bottom
             )
@@ -971,11 +928,97 @@ nav .nav-links a:active {
     transform:
         translateX(-50%);
 
+    z-index:
+        80;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        auto;
+
     height:
-        32px;
+        34px;
 
     padding:
-        5px 7px;
+        5px 8px;
+
+    border-radius:
+        20px;
+
+    /*
+       Sehr dezente Glasfläche
+    */
+
+    background:
+        rgba(255,255,255,0.075);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
+
+    box-shadow:
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.20),
+
+        inset 0 -1px 1px
+        rgba(0,0,0,0.20),
+
+        0 6px 18px
+        rgba(0,0,0,0.22);
+
+    backdrop-filter:
+        blur(18px)
+        saturate(160%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(160%);
+
+    /*
+       Nicht zu eng.
+    */
+
+    gap:
+        16px;
+
+    touch-action:
+        none;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+
+    cursor:
+        grab;
+}
+
+
+.about-pagination:active {
+
+    cursor:
+        grabbing;
+}
+
+
+
+/* =====================================================
+   GLAS-PUNKTE
+===================================================== */
+
+.pagination-track {
+
+    position:
+        relative;
 
     display:
         flex;
@@ -987,146 +1030,17 @@ nav .nav-links a:active {
         center;
 
     gap:
-        7px;
-
-    border-radius:
-        18px;
-
-    z-index:
-        60;
-
-    isolation:
-        isolate;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.20),
-            rgba(255,255,255,0.075)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,0.20);
-
-    box-shadow:
-
-        0 8px 25px
-        rgba(0,0,0,0.30),
-
-        inset 0 1px 0
-        rgba(255,255,255,0.35),
-
-        inset 0 -1px 0
-        rgba(0,0,0,0.20);
-
-    backdrop-filter:
-        blur(22px)
-        saturate(180%);
-
-    -webkit-backdrop-filter:
-        blur(22px)
-        saturate(180%);
-
-    overflow:
-        hidden;
-}
-
-
-
-/* =====================================================
-   GLAS-LICHTREFLEX
-===================================================== */
-
-.page-indicator::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    left:
-        5px;
-
-    right:
-        5px;
-
-    top:
-        1px;
+        16px;
 
     height:
-        48%;
+        24px;
 
-    border-radius:
-        15px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.38),
-            rgba(255,255,255,0)
-        );
-
-    opacity:
-        0.75;
-
-    pointer-events:
-        none;
-
-    z-index:
-        0;
+    padding:
+        0 3px;
 }
 
 
-.page-indicator::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        18px;
-
-    height:
-        18px;
-
-    top:
-        -9px;
-
-    left:
-        50%;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        rgba(255,255,255,0.25);
-
-    filter:
-        blur(13px);
-
-    opacity:
-        0.45;
-
-    pointer-events:
-        none;
-
-    z-index:
-        0;
-}
-
-
-
-/* =====================================================
-   DOTS
-===================================================== */
-
-.indicator-dot {
+.pagination-dot {
 
     position:
         relative;
@@ -1137,64 +1051,137 @@ nav .nav-links a:active {
     height:
         7px;
 
+    flex:
+        0 0 7px;
+
     border-radius:
         50%;
 
-    border:
-        0;
-
-    padding:
-        0;
-
     background:
-        rgba(255,255,255,0.40);
+        rgba(255,255,255,0.38);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.34);
 
     box-shadow:
 
         inset 0 1px 1px
         rgba(255,255,255,0.45),
 
-        0 1px 2px
-        rgba(0,0,0,0.20);
-
-    opacity:
-        0.65;
-
-    cursor:
-        pointer;
-
-    z-index:
-        2;
+        0 1px 3px
+        rgba(0,0,0,0.25);
 
     transition:
-        transform 0.35s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        ),
-
-        opacity 0.3s ease;
+        transform 0.35s ease,
+        opacity 0.35s ease;
 }
 
 
-.indicator-dot:hover {
+.pagination-dot.active {
 
     opacity:
-        0.9;
-
-    transform:
-        scale(1.18);
+        0.95;
 }
 
 
 
 /* =====================================================
-   BEWEGLICHE LIQUID-GLASS-BLASE
+   LIQUID GLASS BLASE
 ===================================================== */
 
-.indicator-glass {
+.pagination-bubble {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        0;
+
+    width:
+        24px;
+
+    height:
+        24px;
+
+    border-radius:
+        50%;
+
+    transform:
+        translate3d(0,-50%,0);
+
+    /*
+       Mehrschichtiges Liquid Glass
+    */
+
+    background:
+
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255,255,255,0.92) 0%,
+            rgba(255,255,255,0.52) 16%,
+            rgba(255,255,255,0.20) 40%,
+            rgba(255,255,255,0.10) 68%,
+            rgba(255,255,255,0.18) 100%
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.72);
+
+    box-shadow:
+
+        inset 2px 2px 4px
+        rgba(255,255,255,0.72),
+
+        inset -2px -2px 5px
+        rgba(0,0,0,0.16),
+
+        0 2px 5px
+        rgba(0,0,0,0.28),
+
+        0 0 12px
+        rgba(255,255,255,0.12);
+
+    backdrop-filter:
+        blur(10px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(10px)
+        saturate(180%);
+
+    pointer-events:
+        none;
+
+    z-index:
+        5;
+
+    will-change:
+        transform;
+
+    transition:
+        transform 0.65s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/*
+   Glanzpunkt der Blase
+*/
+
+.pagination-bubble::before {
+
+    content:
+        "";
 
     position:
         absolute;
@@ -1203,122 +1190,33 @@ nav .nav-links a:active {
         4px;
 
     left:
+        5px;
+
+    width:
         7px;
 
-    width:
-        13px;
-
     height:
-        22px;
-
-    border-radius:
-        50%;
-
-    pointer-events:
-        none;
-
-    z-index:
-        3;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.72) 0%,
-            rgba(255,255,255,0.32) 28%,
-            rgba(255,255,255,0.14) 62%,
-            rgba(255,255,255,0.26) 100%
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,0.48);
-
-    box-shadow:
-
-        0 3px 10px
-        rgba(0,0,0,0.22),
-
-        inset 1px 1px 2px
-        rgba(255,255,255,0.75),
-
-        inset -1px -1px 2px
-        rgba(0,0,0,0.12);
-
-    backdrop-filter:
-        blur(10px)
-        saturate(190%);
-
-    -webkit-backdrop-filter:
-        blur(10px)
-        saturate(190%);
-
-    transform:
-        translateX(0)
-        scale(1);
-
-    transition:
-
-        transform 0.75s
-        cubic-bezier(
-            0.34,
-            1.56,
-            0.64,
-            1
-        ),
-
-        width 0.45s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
-
-
-/* =====================================================
-   GLAS-REFLEX AUF DER AKTIVEN BLASE
-===================================================== */
-
-.indicator-glass::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    top:
-        2px;
-
-    left:
-        2px;
-
-    right:
-        2px;
-
-    height:
-        8px;
+        5px;
 
     border-radius:
         50%;
 
     background:
+        rgba(255,255,255,0.82);
 
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.85),
-            rgba(255,255,255,0)
-        );
+    filter:
+        blur(1px);
 
     opacity:
-        0.75;
+        0.9;
 }
 
 
-.indicator-glass::after {
+/*
+   Leichter unterer Lichtsaum
+*/
+
+.pagination-bubble::after {
 
     content:
         "";
@@ -1326,29 +1224,61 @@ nav .nav-links a:active {
     position:
         absolute;
 
-    width:
-        8px;
-
-    height:
-        8px;
-
     left:
-        2px;
+        4px;
+
+    right:
+        4px;
 
     bottom:
+        3px;
+
+    height:
         3px;
 
     border-radius:
         50%;
 
     background:
-        rgba(255,255,255,0.28);
+        rgba(255,255,255,0.20);
 
     filter:
-        blur(3px);
+        blur(2px);
+}
 
-    opacity:
-        0.65;
+
+
+/* =====================================================
+   BUBBLE WÄHREND DES ZIEHENS
+===================================================== */
+
+.about-pagination.dragging
+.pagination-bubble {
+
+    transition:
+        none;
+
+    transform:
+        translate3d(
+            var(--drag-x),
+            -50%,
+            0
+        )
+        scale(1.08);
+
+    box-shadow:
+
+        inset 2px 2px 5px
+        rgba(255,255,255,0.80),
+
+        inset -2px -2px 5px
+        rgba(0,0,0,0.14),
+
+        0 3px 8px
+        rgba(0,0,0,0.30),
+
+        0 0 16px
+        rgba(255,255,255,0.15);
 }
 
 
@@ -1380,7 +1310,7 @@ nav .nav-links a:active {
         46px;
 
     height:
-        54px;
+        46px;
 
     display:
         flex;
@@ -1392,32 +1322,22 @@ nav .nav-links a:active {
         center;
 
     z-index:
-        50;
+        90;
 
     cursor:
         pointer;
-
-    opacity:
-        0;
-
-    pointer-events:
-        none;
-
-    transition:
-
-        opacity 0.7s ease,
-
-        transform 0.5s ease;
-}
-
-
-.page.active .scroll-hint {
 
     opacity:
         1;
 
     pointer-events:
         auto;
+
+    transition:
+
+        opacity 0.7s ease,
+
+        transform 0.5s ease;
 }
 
 
@@ -1440,7 +1360,7 @@ nav .nav-links a:active {
     filter:
         drop-shadow(
             0 2px 3px
-            rgba(0,0,0,0.12)
+            rgba(255,255,255,0.12)
         );
 }
 
@@ -1451,7 +1371,7 @@ nav .nav-links a:active {
         none;
 
     stroke:
-        rgba(29,29,31,0.58);
+        rgba(255,255,255,0.78);
 
     stroke-width:
         2;
@@ -1464,32 +1384,7 @@ nav .nav-links a:active {
 }
 
 
-
-/* =====================================================
-   PFEIL AUF SCHWARZER SEITE
-===================================================== */
-
-.about .scroll-hint svg {
-
-    filter:
-        drop-shadow(
-            0 0 4px
-            rgba(255,255,255,0.20)
-        );
-}
-
-
-.about .scroll-hint path {
-
-    stroke:
-        rgba(255,255,255,0.78);
-
-    stroke-width:
-        2.1;
-}
-
-
-.about .scroll-hint:hover path {
+.scroll-hint:hover path {
 
     stroke:
         rgba(255,255,255,1);
@@ -1529,25 +1424,6 @@ nav .nav-links a:active {
         opacity:
             0.45;
     }
-}
-
-
-
-/* =====================================================
-   PFEIL BEIM SEITENWECHSEL
-===================================================== */
-
-.page.leaving .scroll-hint {
-
-    opacity:
-        0;
-
-    transform:
-        translateX(-50%)
-        translateY(15px);
-
-    pointer-events:
-        none;
 }
 
 
@@ -1610,10 +1486,6 @@ nav .nav-links a:active {
 
         0 10px 22px
         rgba(0,0,0,0.055);
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
@@ -1634,16 +1506,12 @@ nav .nav-links a:active {
 
     color:
         #666;
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
 
 /* =====================================================
-   SEITEN-INHALT
+   SEITEN-INHALT ANIMATION
 ===================================================== */
 
 .page-content {
@@ -1718,6 +1586,7 @@ nav .nav-links a:active {
 ===================================================== */
 
 @media (max-width: 700px) {
+
 
     .forma-logo {
 
@@ -1807,73 +1676,73 @@ nav .nav-links a:active {
 
 
 
-    /* =================================================
-       MOBILE LIQUID GLASS
-    ================================================= */
+    /* ---------------------------------------------
+       MOBILE GLASS PAGINATION
+    --------------------------------------------- */
 
-    .page-indicator {
+    .about-pagination {
 
         bottom:
             calc(
-                84px +
+                94px +
                 env(
                     safe-area-inset-bottom
                 )
             );
 
         height:
-            31px;
+            34px;
 
         padding:
-            5px 7px;
+            5px 9px;
 
         gap:
-            7px;
+            15px;
 
         border-radius:
-            17px;
-
-        backdrop-filter:
-            blur(24px)
-            saturate(190%);
-
-        -webkit-backdrop-filter:
-            blur(24px)
-            saturate(190%);
+            20px;
     }
 
 
-    .indicator-dot {
+    .pagination-track {
+
+        gap:
+            15px;
+    }
+
+
+    .pagination-dot {
 
         width:
             7px;
 
         height:
             7px;
+
+        flex-basis:
+            7px;
     }
 
 
-    .indicator-glass {
-
-        top:
-            4px;
-
-        left:
-            7px;
+    .pagination-bubble {
 
         width:
-            13px;
+            24px;
 
         height:
-            21px;
+            24px;
     }
 
+
+    /* ---------------------------------------------
+       MOBILE PFEIL
+    --------------------------------------------- */
 
     .scroll-hint {
 
         bottom:
             calc(
-                18px +
+                20px +
                 env(
                     safe-area-inset-bottom
                 )
@@ -1883,7 +1752,7 @@ nav .nav-links a:active {
             48px;
 
         height:
-            52px;
+            46px;
     }
 
 
@@ -1903,41 +1772,6 @@ nav .nav-links a:active {
             2.2;
     }
 
-
-    .about .scroll-hint path {
-
-        stroke:
-            rgba(255,255,255,0.82);
-
-        stroke-width:
-            2.2;
-    }
-
-
-    .about .scroll-hint svg {
-
-        filter:
-            drop-shadow(
-                0 0 4px
-                rgba(255,255,255,0.22)
-            );
-    }
-
-
-    .page.leaving .eyebrow {
-
-        transform:
-            translate3d(0,-28px,0)
-            scale(1.12);
-    }
-
-
-    .page.leaving .eyebrow .forma-o {
-
-        transform:
-            scale(1.15);
-    }
-
 }
 
 
@@ -1948,7 +1782,9 @@ nav .nav-links a:active {
 
 @media (prefers-reduced-motion: reduce) {
 
-    .page {
+    .page,
+    .about-slider,
+    .pagination-bubble {
 
         transition:
             none;
@@ -1968,20 +1804,6 @@ nav .nav-links a:active {
     .scroll-hint svg {
 
         animation:
-            none;
-    }
-
-
-    .about-slider {
-
-        transition:
-            none;
-    }
-
-
-    .indicator-glass {
-
-        transition:
             none;
     }
 
@@ -2009,25 +1831,15 @@ nav .nav-links a:active {
 
         <span class="forma-logo">
 
-            <span class="forma-letter">
-                F
-            </span>
+            <span class="forma-letter">F</span>
 
-            <span class="forma-o">
-                O
-            </span>
+            <span class="forma-o">O</span>
 
-            <span class="forma-letter">
-                R
-            </span>
+            <span class="forma-letter">R</span>
 
-            <span class="forma-letter">
-                M
-            </span>
+            <span class="forma-letter">M</span>
 
-            <span class="forma-letter">
-                A
-            </span>
+            <span class="forma-letter">A</span>
 
             <span class="forma-dot"></span>
 
@@ -2066,211 +1878,126 @@ nav .nav-links a:active {
 <main class="page-container">
 
 
-    <!-- =================================================
-         STARTSEITE
-    ================================================= -->
+<!-- =====================================================
+     STARTSEITE
+===================================================== -->
 
-    <section
-        class="page hero active"
-        data-index="0"
+<section
+    class="page hero active"
+    data-index="0"
+>
+
+    <div class="hero-content page-content">
+
+
+        <div class="eyebrow">
+
+            <span class="forma-logo">
+
+                <span class="forma-letter">F</span>
+
+                <span class="forma-o">O</span>
+
+                <span class="forma-letter">R</span>
+
+                <span class="forma-letter">M</span>
+
+                <span class="forma-letter">A</span>
+
+                <span class="forma-dot"></span>
+
+            </span>
+
+        </div>
+
+
+        <h1 class="hero-title page-title">
+
+            Einfach.<br>
+            Stark.<br>
+            Anders.
+
+        </h1>
+
+
+        <p class="hero-text">
+
+            Klare Ideen. Starkes Design.
+            Anders gedacht. Besser gestaltet.
+
+        </p>
+
+    </div>
+
+
+    <div
+        class="scroll-hint"
+        role="button"
+        aria-label="Weiter zur nächsten Seite"
+        tabindex="0"
     >
 
-        <div class="hero-content page-content">
-
-
-            <div class="eyebrow">
-
-                <span class="forma-logo">
-
-                    <span class="forma-letter">
-                        F
-                    </span>
-
-                    <span class="forma-o">
-                        O
-                    </span>
-
-                    <span class="forma-letter">
-                        R
-                    </span>
-
-                    <span class="forma-letter">
-                        M
-                    </span>
-
-                    <span class="forma-letter">
-                        A
-                    </span>
-
-                    <span class="forma-dot"></span>
-
-                </span>
-
-            </div>
-
-
-            <h1 class="hero-title page-title">
-
-                Einfach.<br>
-
-                Stark.<br>
-
-                Anders.
-
-            </h1>
-
-
-            <p class="hero-text">
-
-                Klare Ideen. Starkes Design.
-                Anders gedacht. Besser gestaltet.
-
-            </p>
-
-        </div>
-
-
-        <div
-            class="scroll-hint"
-            role="button"
-            aria-label="Weiter zur nächsten Seite"
-            tabindex="0"
+        <svg
+            viewBox="0 0 24 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
         >
 
-            <svg
-                viewBox="0 0 24 32"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-            >
+            <path d="M6 12 L12 18 L18 12" />
 
-                <path
-                    d="M6 12 L12 18 L18 12"
-                />
+            <path d="M6 19 L12 25 L18 19" />
 
-                <path
-                    d="M6 19 L12 25 L18 19"
-                />
+        </svg>
 
-            </svg>
+    </div>
 
-        </div>
-
-    </section>
+</section>
 
 
 
-    <!-- =================================================
-         ÜBER UNS / HORIZONTALER SLIDER
-    ================================================= -->
+<!-- =====================================================
+     ÜBER UNS
+     MIT 3 HORIZONTALEN SEITEN
+===================================================== -->
 
-    <section
-        class="page about"
-        data-index="1"
+<section
+    class="page about"
+    data-index="1"
+>
+
+
+    <div
+        class="about-slider"
+        id="aboutSlider"
     >
 
 
-        <div
-            class="about-slider"
-            id="aboutSlider"
-        >
+        <!-- ---------------------------------------------
+             ÜBER UNS 1
+        --------------------------------------------- -->
+
+        <div class="about-slide">
+
+            <div class="about-content page-content">
+
+                <h2 class="about-title page-title">
+
+                    Weniger.<br>
+                    Aber besser.
+
+                </h2>
 
 
-            <!-- =========================================
-                 HORIZONTALE SEITE 1
-            ========================================= -->
+                <p class="about-text">
 
-            <div class="about-slide">
+                    FORMA. steht für
+                    minimalistisches, modernes
+                    und durchdachtes Design.
 
-                <div class="about-content page-content">
+                    Wir reduzieren auf das Wesentliche
+                    und schaffen Lösungen mit Charakter.
 
-                    <h2 class="about-title page-title">
-
-                        Weniger.<br>
-
-                        Aber besser.
-
-                    </h2>
-
-
-                    <p class="about-text">
-
-                        FORMA. steht für
-                        minimalistisches, modernes
-                        und durchdachtes Design.
-
-                        Wir reduzieren auf das Wesentliche
-                        und schaffen Lösungen mit Charakter.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 HORIZONTALE SEITE 2
-            ========================================= -->
-
-            <div class="about-slide">
-
-                <div class="about-content page-content">
-
-                    <h2 class="about-title page-title">
-
-                        Klar.<br>
-
-                        Durchdacht.
-
-                    </h2>
-
-
-                    <p class="about-text">
-
-                        Gute Gestaltung beginnt
-                        mit einer klaren Idee.
-
-                        Wir verbinden Ästhetik,
-                        Funktion und Persönlichkeit
-                        zu einem stimmigen Gesamtbild.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =========================================
-                 HORIZONTALE SEITE 3
-            ========================================= -->
-
-            <div class="about-slide">
-
-                <div class="about-content page-content">
-
-                    <h2 class="about-title page-title">
-
-                        Anders.<br>
-
-                        Mit System.
-
-                    </h2>
-
-
-                    <p class="about-text">
-
-                        Wir denken Gestaltung neu,
-                        ohne unnötig kompliziert zu werden.
-
-                        Reduziert auf das,
-                        was wirklich zählt.
-
-                    </p>
-
-                </div>
+                </p>
 
             </div>
 
@@ -2278,121 +2005,186 @@ nav .nav-links a:active {
 
 
 
-        <!-- =================================================
-             LIQUID GLASS PAGE INDICATOR
-        ================================================= -->
+        <!-- ---------------------------------------------
+             ÜBER UNS 2
+        --------------------------------------------- -->
+
+        <div class="about-slide">
+
+            <div class="about-content page-content">
+
+                <h2 class="about-title page-title">
+
+                    Klar.<br>
+                    Präzise. 
+
+                </h2>
+
+
+                <p class="about-text">
+
+                    Gute Gestaltung braucht keine
+                    unnötigen Elemente.
+
+                    Wir verbinden klare Formen,
+                    starke Typografie und intelligente
+                    Konzepte zu einem harmonischen
+                    Gesamtbild.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ---------------------------------------------
+             ÜBER UNS 3
+        --------------------------------------------- -->
+
+        <div class="about-slide">
+
+            <div class="about-content page-content">
+
+                <h2 class="about-title page-title">
+
+                    Design.<br>
+                    Mit Charakter.
+
+                </h2>
+
+
+                <p class="about-text">
+
+                    Jede Idee bekommt ihren eigenen
+                    Ausdruck.
+
+                    Modern, eigenständig und mit dem
+                    Anspruch, auch langfristig
+                    relevant zu bleiben.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         LIQUID GLASS PAGINATION
+    ================================================= -->
+
+    <div
+        class="about-pagination"
+        id="aboutPagination"
+        aria-label="Über uns Seiten"
+    >
 
         <div
-            class="page-indicator"
-            id="pageIndicator"
-            aria-label="Horizontale Seiten"
+            class="pagination-track"
+            id="paginationTrack"
         >
 
-            <div
-                class="indicator-glass"
-                id="indicatorGlass"
-            ></div>
-
-
-            <button
-                class="indicator-dot"
+            <span
+                class="pagination-dot active"
                 data-slide="0"
-                aria-label="Seite 1"
-            ></button>
+            ></span>
 
-
-            <button
-                class="indicator-dot"
+            <span
+                class="pagination-dot"
                 data-slide="1"
-                aria-label="Seite 2"
-            ></button>
+            ></span>
 
-
-            <button
-                class="indicator-dot"
+            <span
+                class="pagination-dot"
                 data-slide="2"
-                aria-label="Seite 3"
-            ></button>
+            ></span>
+
+
+            <span
+                class="pagination-bubble"
+                id="paginationBubble"
+            ></span>
 
         </div>
 
-
-
-        <!-- =================================================
-             PFEIL
-        ================================================= -->
-
-        <div
-            class="scroll-hint"
-            role="button"
-            aria-label="Weiter zur Kontaktseite"
-            tabindex="0"
-        >
-
-            <svg
-                viewBox="0 0 24 32"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-            >
-
-                <path
-                    d="M6 12 L12 18 L18 12"
-                />
-
-                <path
-                    d="M6 19 L12 25 L18 19"
-                />
-
-            </svg>
-
-        </div>
-
-    </section>
+    </div>
 
 
 
     <!-- =================================================
-         KONTAKT
+         PFEIL
+         UNTERHALB DER LIQUID-GLASS-PUNKTE
     ================================================= -->
 
-    <section
-        class="page contact"
-        data-index="2"
+    <div
+        class="scroll-hint"
+        id="aboutArrow"
+        role="button"
+        aria-label="Weiter zur Kontaktseite"
+        tabindex="0"
     >
 
-        <div class="contact-content page-content">
+        <svg
+            viewBox="0 0 24 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+        >
 
-            <h2 class="contact-title page-title">
+            <path d="M6 12 L12 18 L18 12" />
 
-                Lass uns<br>
+            <path d="M6 19 L12 25 L18 19" />
 
-                etwas gestalten.
+        </svg>
 
-            </h2>
+    </div>
 
 
-            <p class="contact-text">
+</section>
 
-                Du hast eine Idee?
-                Wir machen daraus ein Design.
 
-            </p>
 
-        </div>
+<!-- =====================================================
+     KONTAKT
+===================================================== -->
 
-    </section>
+<section
+    class="page contact"
+    data-index="2"
+>
+
+    <div class="contact-content page-content">
+
+        <h2 class="contact-title page-title">
+
+            Lass uns<br>
+            etwas gestalten.
+
+        </h2>
+
+
+        <p class="contact-text">
+
+            Du hast eine Idee?
+            Wir machen daraus ein Design.
+
+        </p>
+
+    </div>
+
+</section>
 
 
 </main>
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
-
 
 /* =====================================================
    VERTIKALE SEITEN
@@ -2401,14 +2193,11 @@ nav .nav-links a:active {
 const pages =
     document.querySelectorAll(".page");
 
-
 const homeButton =
     document.querySelector("#homeButton");
 
-
 const navLinks =
     document.querySelectorAll(".nav-links a");
-
 
 const scrollHints =
     document.querySelectorAll(".scroll-hint");
@@ -2425,185 +2214,955 @@ let touchEndY = 0;
 
 
 /* =====================================================
-   HORIZONTALE SEITE
+   HORIZONTALE ÜBER-UNS SEITEN
 ===================================================== */
 
 const aboutSlider =
     document.querySelector("#aboutSlider");
 
+const aboutPagination =
+    document.querySelector("#aboutPagination");
 
-const indicatorGlass =
-    document.querySelector("#indicatorGlass");
+const paginationTrack =
+    document.querySelector("#paginationTrack");
+
+const paginationBubble =
+    document.querySelector("#paginationBubble");
+
+const paginationDots =
+    document.querySelectorAll(".pagination-dot");
 
 
-const indicatorDots =
-    document.querySelectorAll(".indicator-dot");
+let currentAboutSlide = 0;
 
+let isDraggingBubble = false;
 
-let currentHorizontalSlide = 0;
+let dragStartX = 0;
 
-let touchStartX = 0;
-
-let touchEndX = 0;
-
-let horizontalAnimating = false;
+let dragStartBubbleX = 0;
 
 
 
 /* =====================================================
-   LIQUID GLASS POSITION
+   LIQUID GLASS BLASE POSITIONIEREN
 ===================================================== */
 
-function updateIndicator(
-    slideIndex,
+function updateBubblePosition(
+    slide,
     animate = true
 ) {
 
+    if (!paginationDots.length) {
+        return;
+    }
+
+
     const dot =
-        indicatorDots[slideIndex];
+        paginationDots[slide];
 
     if (!dot) {
         return;
     }
 
 
-    const indicator =
-        document.querySelector("#pageIndicator");
-
-
     const dotRect =
         dot.getBoundingClientRect();
 
-    const indicatorRect =
-        indicator.getBoundingClientRect();
+    const trackRect =
+        paginationTrack.getBoundingClientRect();
 
 
-    const center =
-        dotRect.left -
-        indicatorRect.left +
-        (dotRect.width / 2);
-
-
-    const bubbleWidth = 13;
-
-
-    const target =
-        center -
-        (bubbleWidth / 2);
+    const targetX =
+        dotRect.left
+        +
+        dotRect.width / 2
+        -
+        trackRect.left
+        -
+        12;
 
 
     if (!animate) {
 
-        indicatorGlass.style.transition =
+        paginationBubble.style.transition =
             "none";
+
+    }
+
+    else if (!isDraggingBubble) {
+
+        paginationBubble.style.transition =
+            "transform 0.65s cubic-bezier(0.22,1,0.36,1)";
+    }
+
+
+    paginationBubble.style.setProperty(
+        "--drag-x",
+        `${targetX}px`
+    );
+
+
+    if (!isDraggingBubble) {
+
+        paginationBubble.style.transform =
+            `translate3d(${targetX}px,-50%,0)`;
+    }
+
+
+    paginationDots.forEach(
+        (dotElement, index) => {
+
+            dotElement.classList.toggle(
+                "active",
+                index === slide
+            );
+
+        }
+    );
+}
+
+
+
+/* =====================================================
+   HORIZONTALE SEITE WECHSELN
+===================================================== */
+
+function goToAboutSlide(
+    index,
+    animate = true
+) {
+
+    index =
+        Math.max(
+            0,
+            Math.min(
+                2,
+                index
+            )
+        );
+
+
+    currentAboutSlide =
+        index;
+
+
+    if (animate) {
+
+        aboutSlider.style.transition =
+            "transform 0.85s cubic-bezier(0.77,0,0.175,1)";
 
     }
 
     else {
 
-        indicatorGlass.style.transition =
-            "";
+        aboutSlider.style.transition =
+            "none";
     }
-
-
-    indicatorGlass.style.transform =
-        `translateX(${target - 7}px)`;
-
-
-
-    /* Kleine Apple-artige Verformung
-       während des Seitenwechsels */
-
-    if (animate) {
-
-        indicatorGlass.animate(
-            [
-                {
-                    transform:
-                        `translateX(${target - 7}px) scaleX(1)`
-                },
-
-                {
-                    transform:
-                        `translateX(${target - 7}px) scaleX(1.28)`
-                },
-
-                {
-                    transform:
-                        `translateX(${target - 7}px) scaleX(0.92)`
-                },
-
-                {
-                    transform:
-                        `translateX(${target - 7}px) scaleX(1)`
-                }
-            ],
-            {
-                duration: 720,
-                easing:
-                    "cubic-bezier(0.34, 1.56, 0.64, 1)"
-            }
-        );
-    }
-
-
-    currentHorizontalSlide =
-        slideIndex;
-}
-
-
-
-/* =====================================================
-   HORIZONTALEN SLIDE WECHSELN
-===================================================== */
-
-function goToHorizontalSlide(
-    index,
-    direction = null
-) {
-
-    if (
-        index < 0 ||
-        index > 2 ||
-        index === currentHorizontalSlide ||
-        horizontalAnimating
-    ) {
-
-        return;
-    }
-
-
-    horizontalAnimating = true;
 
 
     aboutSlider.style.transform =
-        `translate3d(-${index * 100}vw, 0, 0)`;
+        `translate3d(-${index * 100}vw,0,0)`;
 
 
-    updateIndicator(
+    updateBubblePosition(
         index,
-        true
+        animate
     );
 
-
-    setTimeout(
-        () => {
-
-            horizontalAnimating =
-                false;
-
-        },
-        900
-    );
 }
 
 
 
 /* =====================================================
-   SEITE WECHSELN
+   HORIZONTALE WISCHBEWEGUNG
+===================================================== */
+
+let aboutTouchStartX = 0;
+
+let aboutTouchStartY = 0;
+
+
+aboutSlider.addEventListener(
+    "touchstart",
+    event => {
+
+        if (isDraggingBubble) {
+            return;
+        }
+
+
+        aboutTouchStartX =
+            event.changedTouches[0].clientX;
+
+        aboutTouchStartY =
+            event.changedTouches[0].clientY;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+aboutSlider.addEventListener(
+    "touchend",
+    event => {
+
+        if (isDraggingBubble) {
+            return;
+        }
+
+
+        const endX =
+            event.changedTouches[0].clientX;
+
+        const endY =
+            event.changedTouches[0].clientY;
+
+
+        const differenceX =
+            aboutTouchStartX - endX;
+
+        const differenceY =
+            aboutTouchStartY - endY;
+
+
+        /*
+           Nur horizontale Bewegung
+        */
+
+        if (
+            Math.abs(differenceX)
+            <=
+            Math.abs(differenceY)
+        ) {
+
+            return;
+        }
+
+
+        if (
+            Math.abs(differenceX) < 45
+        ) {
+
+            return;
+        }
+
+
+        if (differenceX > 0) {
+
+            goToAboutSlide(
+                currentAboutSlide + 1
+            );
+
+        }
+
+        else {
+
+            goToAboutSlide(
+                currentAboutSlide - 1
+            );
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+
+/* =====================================================
+   MAUS-WISCHEN AUF DER ÜBER-UNS-SEITE
+===================================================== */
+
+let mouseStartX = 0;
+
+let mouseStartY = 0;
+
+let mouseDown = false;
+
+
+aboutSlider.addEventListener(
+    "mousedown",
+    event => {
+
+        /*
+           Nicht auslösen,
+           wenn die Blase gezogen wird.
+        */
+
+        if (isDraggingBubble) {
+            return;
+        }
+
+
+        mouseDown = true;
+
+        mouseStartX =
+            event.clientX;
+
+        mouseStartY =
+            event.clientY;
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    event => {
+
+        if (!mouseDown) {
+            return;
+        }
+
+
+        mouseDown = false;
+
+
+        const differenceX =
+            mouseStartX -
+            event.clientX;
+
+        const differenceY =
+            mouseStartY -
+            event.clientY;
+
+
+        if (
+            Math.abs(differenceX)
+            <=
+            Math.abs(differenceY)
+        ) {
+
+            return;
+        }
+
+
+        if (
+            Math.abs(differenceX) < 45
+        ) {
+
+            return;
+        }
+
+
+        if (differenceX > 0) {
+
+            goToAboutSlide(
+                currentAboutSlide + 1
+            );
+
+        }
+
+        else {
+
+            goToAboutSlide(
+                currentAboutSlide - 1
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   BLASE MIT MAUSZIEHER STEUERN
+===================================================== */
+
+aboutPagination.addEventListener(
+    "mousedown",
+    event => {
+
+        isDraggingBubble = true;
+
+
+        aboutPagination.classList.add(
+            "dragging"
+        );
+
+
+        const bubbleRect =
+            paginationBubble.getBoundingClientRect();
+
+
+        dragStartX =
+            event.clientX;
+
+
+        dragStartBubbleX =
+            bubbleRect.left;
+
+
+        document.body.style.cursor =
+            "grabbing";
+
+
+        event.preventDefault();
+
+    }
+);
+
+
+window.addEventListener(
+    "mousemove",
+    event => {
+
+        if (!isDraggingBubble) {
+            return;
+        }
+
+
+        const trackRect =
+            paginationTrack.getBoundingClientRect();
+
+
+        const firstDotRect =
+            paginationDots[0]
+            .getBoundingClientRect();
+
+
+        const lastDotRect =
+            paginationDots[2]
+            .getBoundingClientRect();
+
+
+        const bubbleRadius =
+            12;
+
+
+        const minX =
+            firstDotRect.left
+            +
+            firstDotRect.width / 2
+            -
+            trackRect.left
+            -
+            bubbleRadius;
+
+
+        const maxX =
+            lastDotRect.left
+            +
+            lastDotRect.width / 2
+            -
+            trackRect.left
+            -
+            bubbleRadius;
+
+
+        let newX =
+            dragStartBubbleX
+            -
+            trackRect.left
+            -
+            bubbleRadius
+            +
+            (
+                event.clientX
+                -
+                dragStartX
+            );
+
+
+        newX =
+            Math.max(
+                minX,
+                Math.min(
+                    maxX,
+                    newX
+                )
+            );
+
+
+        paginationBubble.style.setProperty(
+            "--drag-x",
+            `${newX}px`
+        );
+
+
+        paginationBubble.style.transform =
+            `translate3d(${newX}px,-50%,0) scale(1.08)`;
+
+
+        /*
+           Ermitteln, welcher Punkt
+           am nächsten liegt.
+        */
+
+        let closest =
+            0;
+
+        let closestDistance =
+            Infinity;
+
+
+        paginationDots.forEach(
+            (dot, index) => {
+
+                const rect =
+                    dot.getBoundingClientRect();
+
+                const center =
+                    rect.left
+                    +
+                    rect.width / 2;
+
+                const distance =
+                    Math.abs(
+                        (
+                            trackRect.left
+                            +
+                            newX
+                            +
+                            bubbleRadius
+                        )
+                        -
+                        center
+                    );
+
+
+                if (
+                    distance
+                    <
+                    closestDistance
+                ) {
+
+                    closestDistance =
+                        distance;
+
+                    closest =
+                        index;
+
+                }
+
+            }
+        );
+
+
+        paginationDots.forEach(
+            (dot, index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index === closest
+                );
+
+            }
+        );
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    () => {
+
+        if (!isDraggingBubble) {
+            return;
+        }
+
+
+        isDraggingBubble = false;
+
+
+        aboutPagination.classList.remove(
+            "dragging"
+        );
+
+
+        document.body.style.cursor =
+            "";
+
+
+        /*
+           Nach dem Loslassen zur
+           nächsten Position springen.
+        */
+
+        const bubbleRect =
+            paginationBubble.getBoundingClientRect();
+
+
+        const bubbleCenter =
+            bubbleRect.left
+            +
+            bubbleRect.width / 2;
+
+
+        let closest =
+            0;
+
+        let closestDistance =
+            Infinity;
+
+
+        paginationDots.forEach(
+            (dot, index) => {
+
+                const rect =
+                    dot.getBoundingClientRect();
+
+                const center =
+                    rect.left
+                    +
+                    rect.width / 2;
+
+                const distance =
+                    Math.abs(
+                        bubbleCenter
+                        -
+                        center
+                    );
+
+
+                if (
+                    distance
+                    <
+                    closestDistance
+                ) {
+
+                    closestDistance =
+                        distance;
+
+                    closest =
+                        index;
+
+                }
+
+            }
+        );
+
+
+        goToAboutSlide(
+            closest
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   TOUCH:
+   BLASE AUCH AUF DEM SMARTPHONE ZIEHBAR
+===================================================== */
+
+aboutPagination.addEventListener(
+    "touchstart",
+    event => {
+
+        isDraggingBubble = true;
+
+
+        aboutPagination.classList.add(
+            "dragging"
+        );
+
+
+        const touch =
+            event.touches[0];
+
+
+        dragStartX =
+            touch.clientX;
+
+
+        const bubbleRect =
+            paginationBubble.getBoundingClientRect();
+
+
+        dragStartBubbleX =
+            bubbleRect.left;
+
+
+        event.preventDefault();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+window.addEventListener(
+    "touchmove",
+    event => {
+
+        if (!isDraggingBubble) {
+            return;
+        }
+
+
+        const touch =
+            event.touches[0];
+
+
+        const trackRect =
+            paginationTrack.getBoundingClientRect();
+
+
+        const firstDotRect =
+            paginationDots[0]
+            .getBoundingClientRect();
+
+
+        const lastDotRect =
+            paginationDots[2]
+            .getBoundingClientRect();
+
+
+        const bubbleRadius =
+            12;
+
+
+        const minX =
+            firstDotRect.left
+            +
+            firstDotRect.width / 2
+            -
+            trackRect.left
+            -
+            bubbleRadius;
+
+
+        const maxX =
+            lastDotRect.left
+            +
+            lastDotRect.width / 2
+            -
+            trackRect.left
+            -
+            bubbleRadius;
+
+
+        let newX =
+            dragStartBubbleX
+            -
+            trackRect.left
+            -
+            bubbleRadius
+            +
+            (
+                touch.clientX
+                -
+                dragStartX
+            );
+
+
+        newX =
+            Math.max(
+                minX,
+                Math.min(
+                    maxX,
+                    newX
+                )
+            );
+
+
+        paginationBubble.style.transform =
+            `translate3d(${newX}px,-50%,0) scale(1.08)`;
+
+
+        /*
+           Während des Ziehens
+           bereits die passende Seite
+           erkennen.
+        */
+
+        const bubbleCenter =
+            trackRect.left
+            +
+            newX
+            +
+            bubbleRadius;
+
+
+        let closest =
+            0;
+
+        let closestDistance =
+            Infinity;
+
+
+        paginationDots.forEach(
+            (dot, index) => {
+
+                const rect =
+                    dot.getBoundingClientRect();
+
+                const center =
+                    rect.left
+                    +
+                    rect.width / 2;
+
+                const distance =
+                    Math.abs(
+                        bubbleCenter
+                        -
+                        center
+                    );
+
+
+                if (
+                    distance
+                    <
+                    closestDistance
+                ) {
+
+                    closestDistance =
+                        distance;
+
+                    closest =
+                        index;
+
+                }
+
+            }
+        );
+
+
+        paginationDots.forEach(
+            (dot, index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index === closest
+                );
+
+            }
+        );
+
+
+        event.preventDefault();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+window.addEventListener(
+    "touchend",
+    () => {
+
+        if (!isDraggingBubble) {
+            return;
+        }
+
+
+        isDraggingBubble = false;
+
+
+        aboutPagination.classList.remove(
+            "dragging"
+        );
+
+
+        const bubbleRect =
+            paginationBubble.getBoundingClientRect();
+
+
+        const bubbleCenter =
+            bubbleRect.left
+            +
+            bubbleRect.width / 2;
+
+
+        let closest =
+            0;
+
+        let closestDistance =
+            Infinity;
+
+
+        paginationDots.forEach(
+            (dot, index) => {
+
+                const rect =
+                    dot.getBoundingClientRect();
+
+                const center =
+                    rect.left
+                    +
+                    rect.width / 2;
+
+                const distance =
+                    Math.abs(
+                        bubbleCenter
+                        -
+                        center
+                    );
+
+
+                if (
+                    distance
+                    <
+                    closestDistance
+                ) {
+
+                    closestDistance =
+                        distance;
+
+                    closest =
+                        index;
+
+                }
+
+            }
+        );
+
+
+        goToAboutSlide(
+            closest
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   PUNKTE DIREKT ANKLICKEN
+===================================================== */
+
+paginationDots.forEach(
+    dot => {
+
+        dot.addEventListener(
+            "click",
+            () => {
+
+                const index =
+                    Number(
+                        dot.dataset.slide
+                    );
+
+
+                goToAboutSlide(
+                    index
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   VERTIKALE SEITE WECHSELN
 ===================================================== */
 
 function goToPage(index) {
+
 
     if (
 
@@ -2618,7 +3177,6 @@ function goToPage(index) {
     ) {
 
         return;
-
     }
 
 
@@ -2682,7 +3240,8 @@ function goToPage(index) {
     );
 
 
-    currentPage = index;
+    currentPage =
+        index;
 
 
     if (index === 0) {
@@ -2694,18 +3253,23 @@ function goToPage(index) {
     }
 
 
+    /*
+       Beim Betreten von Über uns
+       immer auf Seite 1 starten.
+    */
+
     if (index === 1) {
 
         setTimeout(
             () => {
 
-                updateIndicator(
-                    currentHorizontalSlide,
+                goToAboutSlide(
+                    currentAboutSlide,
                     false
                 );
 
             },
-            50
+            20
         );
 
     }
@@ -2735,6 +3299,33 @@ scrollHints.forEach(
             "click",
             () => {
 
+                /*
+                   Auf Über-uns-Seite:
+                   erst horizontal weiter,
+                   danach vertikal zu Kontakt.
+                */
+
+                if (
+                    currentPage === 1
+                    &&
+                    hint.id === "aboutArrow"
+                ) {
+
+                    if (
+                        currentAboutSlide < 2
+                    ) {
+
+                        goToAboutSlide(
+                            currentAboutSlide + 1
+                        );
+
+                        return;
+
+                    }
+
+                }
+
+
                 goToPage(
                     currentPage + 1
                 );
@@ -2756,6 +3347,28 @@ scrollHints.forEach(
                 ) {
 
                     event.preventDefault();
+
+
+                    if (
+                        currentPage === 1
+                        &&
+                        hint.id === "aboutArrow"
+                    ) {
+
+                        if (
+                            currentAboutSlide < 2
+                        ) {
+
+                            goToAboutSlide(
+                                currentAboutSlide + 1
+                            );
+
+                            return;
+
+                        }
+
+                    }
+
 
                     goToPage(
                         currentPage + 1
@@ -2780,9 +3393,7 @@ window.addEventListener(
     event => {
 
         if (isAnimating) {
-
             return;
-
         }
 
 
@@ -2791,19 +3402,55 @@ window.addEventListener(
         ) {
 
             return;
+        }
+
+
+        /*
+           Auf Über-uns zunächst
+           horizontal navigieren.
+        */
+
+        if (currentPage === 1) {
+
+            if (event.deltaY > 0) {
+
+                if (
+                    currentAboutSlide < 2
+                ) {
+
+                    goToAboutSlide(
+                        currentAboutSlide + 1
+                    );
+
+                    return;
+
+                }
+
+            }
+
+            else {
+
+                if (
+                    currentAboutSlide > 0
+                ) {
+
+                    goToAboutSlide(
+                        currentAboutSlide - 1
+                    );
+
+                    return;
+
+                }
+
+            }
 
         }
 
 
-        if (
-            currentPage === 1 &&
-            Math.abs(event.deltaX) > Math.abs(event.deltaY)
-        ) {
-
-            return;
-
-        }
-
+        /*
+           Wenn am Ende angekommen:
+           vertikal weiter.
+        */
 
         if (event.deltaY > 0) {
 
@@ -2830,7 +3477,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   TOUCH START
+   TOUCH VERTIKAL
 ===================================================== */
 
 window.addEventListener(
@@ -2840,20 +3487,12 @@ window.addEventListener(
         touchStartY =
             event.changedTouches[0].screenY;
 
-        touchStartX =
-            event.changedTouches[0].screenX;
-
     },
     {
         passive: true
     }
 );
 
-
-
-/* =====================================================
-   TOUCH END
-===================================================== */
 
 window.addEventListener(
     "touchend",
@@ -2862,71 +3501,32 @@ window.addEventListener(
         touchEndY =
             event.changedTouches[0].screenY;
 
-        touchEndX =
-            event.changedTouches[0].screenX;
 
-
-        const verticalDifference =
+        const difference =
             touchStartY -
             touchEndY;
 
 
-        const horizontalDifference =
-            touchStartX -
-            touchEndX;
-
-
-
-        /* =============================================
-           HORIZONTAL SWIPE AUF ÜBER-UNS
-        ============================================= */
-
         if (
-            currentPage === 1 &&
-            Math.abs(horizontalDifference) >
-            Math.abs(verticalDifference) &&
-            Math.abs(horizontalDifference) > 50
+            Math.abs(difference) < 50
         ) {
-
-            if (
-                horizontalDifference > 0
-            ) {
-
-                goToHorizontalSlide(
-                    currentHorizontalSlide + 1
-                );
-
-            }
-
-            else {
-
-                goToHorizontalSlide(
-                    currentHorizontalSlide - 1
-                );
-
-            }
 
             return;
         }
 
 
+        /*
+           Wenn wir auf Über uns sind,
+           horizontale Gesten werden
+           bereits vom Slider verarbeitet.
+        */
 
-        /* =============================================
-           VERTIKALER SWIPE
-        ============================================= */
-
-        if (
-            Math.abs(verticalDifference) < 50
-        ) {
-
+        if (currentPage === 1) {
             return;
-
         }
 
 
-        if (
-            verticalDifference > 0
-        ) {
+        if (difference > 0) {
 
             goToPage(
                 currentPage + 1
@@ -2951,90 +3551,6 @@ window.addEventListener(
 
 
 /* =====================================================
-   MOUSE HORIZONTAL
-===================================================== */
-
-let mouseStartX = 0;
-
-let mouseStartY = 0;
-
-let mouseDown = false;
-
-
-aboutSlider.addEventListener(
-    "mousedown",
-    event => {
-
-        mouseDown = true;
-
-        mouseStartX =
-            event.clientX;
-
-        mouseStartY =
-            event.clientY;
-
-    }
-);
-
-
-window.addEventListener(
-    "mouseup",
-    event => {
-
-        if (
-            !mouseDown ||
-            currentPage !== 1
-        ) {
-
-            mouseDown = false;
-
-            return;
-        }
-
-
-        mouseDown = false;
-
-
-        const differenceX =
-            mouseStartX -
-            event.clientX;
-
-
-        const differenceY =
-            mouseStartY -
-            event.clientY;
-
-
-        if (
-            Math.abs(differenceX) >
-            Math.abs(differenceY) &&
-            Math.abs(differenceX) > 50
-        ) {
-
-            if (differenceX > 0) {
-
-                goToHorizontalSlide(
-                    currentHorizontalSlide + 1
-                );
-
-            }
-
-            else {
-
-                goToHorizontalSlide(
-                    currentHorizontalSlide - 1
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
    TASTATUR
 ===================================================== */
 
@@ -3043,13 +3559,11 @@ window.addEventListener(
     event => {
 
 
-        /* =============================================
-           HORIZONTAL
-        ============================================= */
+        /*
+           Über uns horizontal
+        */
 
-        if (
-            currentPage === 1
-        ) {
+        if (currentPage === 1) {
 
             if (
                 event.key === "ArrowRight"
@@ -3057,11 +3571,12 @@ window.addEventListener(
 
                 event.preventDefault();
 
-                goToHorizontalSlide(
-                    currentHorizontalSlide + 1
+                goToAboutSlide(
+                    currentAboutSlide + 1
                 );
 
                 return;
+
             }
 
 
@@ -3071,20 +3586,16 @@ window.addEventListener(
 
                 event.preventDefault();
 
-                goToHorizontalSlide(
-                    currentHorizontalSlide - 1
+                goToAboutSlide(
+                    currentAboutSlide - 1
                 );
 
                 return;
+
             }
 
         }
 
-
-
-        /* =============================================
-           VERTIKAL
-        ============================================= */
 
         if (
             event.key === "ArrowDown"
@@ -3126,38 +3637,6 @@ window.addEventListener(
 
 
 /* =====================================================
-   LIQUID GLASS DOTS
-===================================================== */
-
-indicatorDots.forEach(
-    dot => {
-
-        dot.addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-
-                const index =
-                    Number(
-                        dot.dataset.slide
-                    );
-
-
-                goToHorizontalSlide(
-                    index
-                );
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
    NAVIGATION
 ===================================================== */
 
@@ -3177,7 +3656,9 @@ navLinks.forEach(
                     );
 
 
-                goToPage(page);
+                goToPage(
+                    page
+                );
 
             }
         );
@@ -3205,39 +3686,30 @@ homeButton.addEventListener(
 
 
 /* =====================================================
-   RESIZE
-===================================================== */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        if (
-            currentPage === 1
-        ) {
-
-            aboutSlider.style.transform =
-                `translate3d(-${currentHorizontalSlide * 100}vw, 0, 0)`;
-
-            updateIndicator(
-                currentHorizontalSlide,
-                false
-            );
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
    URL / HASH
 ===================================================== */
 
 window.addEventListener(
     "load",
     () => {
+
+        /*
+           Position der Liquid-Glass-Blase
+           beim Laden korrekt setzen.
+        */
+
+        setTimeout(
+            () => {
+
+                updateBubblePosition(
+                    currentAboutSlide,
+                    false
+                );
+
+            },
+            50
+        );
+
 
         if (
             window.location.hash === "#about"
@@ -3256,18 +3728,31 @@ window.addEventListener(
 
         }
 
+    }
+);
 
-        setTimeout(
-            () => {
 
-                updateIndicator(
-                    0,
-                    false
-                );
 
-            },
-            100
+/* =====================================================
+   RESIZE
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        updateBubblePosition(
+            currentAboutSlide,
+            false
         );
+
+
+        aboutSlider.style.transition =
+            "none";
+
+
+        aboutSlider.style.transform =
+            `translate3d(-${currentAboutSlide * 100}vw,0,0)`;
 
     }
 );
