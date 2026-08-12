@@ -844,141 +844,6 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   FORMA AUF ÜBER UNS
-   NUR O UND PUNKT ROT
-===================================================== */
-
-.about-eyebrow {
-    position:
-        absolute;
-
-    top:
-        88px;
-
-    left:
-        8%;
-
-    z-index:
-        20;
-
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,30px,0)
-        scale(0.94);
-
-    transition:
-        opacity 0.85s ease 0.25s,
-
-        transform 1.05s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        )
-        0.25s;
-}
-
-.about.active .about-eyebrow {
-    opacity:
-        1;
-
-    transform:
-        translate3d(0,0,0)
-        scale(1);
-}
-
-.about-eyebrow .forma-logo {
-    color:
-        #fff;
-
-    font-size:
-        clamp(
-            42px,
-            5vw,
-            72px
-        );
-
-    font-weight:
-        300;
-
-    letter-spacing:
-        clamp(
-            5px,
-            0.9vw,
-            13px
-        );
-
-    line-height:
-        1;
-}
-
-.about-eyebrow .forma-letter {
-    color:
-        #fff;
-
-    font-weight:
-        300;
-}
-
-.about-eyebrow .forma-o {
-    color:
-        var(--forma-red);
-
-    font-weight:
-        300;
-
-    font-size:
-        1.08em;
-
-    transform-origin:
-        center center;
-
-    transition:
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
-.about-eyebrow .forma-dot {
-    background:
-        var(--forma-red);
-
-    width:
-        5px;
-
-    height:
-        5px;
-
-    margin-left:
-        4px;
-
-    margin-bottom:
-        3px;
-}
-
-.about.leaving .about-eyebrow {
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
-}
-
-.about.leaving .about-eyebrow .forma-o {
-    transform:
-        scale(1.20);
-}
-
-
-/* =====================================================
    HORIZONTALES INNEN-KARUSSELL
 ===================================================== */
 
@@ -1225,7 +1090,6 @@ nav .nav-links a:active {
 
 /* =====================================================
    GLASS BLASE
-   EXAKT ÜBER DEM JEWEILIGEN PUNKT
 ===================================================== */
 
 .indicator-bubble {
@@ -1536,32 +1400,6 @@ nav .nav-links a:active {
     }
 
 
-    /* ---------------------------------------------
-       FORMA AUF ÜBER UNS – MOBILE
-    --------------------------------------------- */
-
-    .about-eyebrow {
-        top:
-            82px;
-
-        left:
-            25px;
-    }
-
-    .about-eyebrow .forma-logo {
-        font-size:
-            34px;
-
-        letter-spacing:
-            5px;
-    }
-
-    .about-eyebrow .forma-o {
-        font-size:
-            1.08em;
-    }
-
-
     nav .nav-links a {
         margin-left:
             15px;
@@ -1753,8 +1591,6 @@ nav .nav-links a:active {
     .page-title,
     .eyebrow,
     .eyebrow .forma-o,
-    .about-eyebrow,
-    .about-eyebrow .forma-o,
     .about-track,
     .indicator-bubble {
         transition:
@@ -1891,8 +1727,6 @@ nav .nav-links a:active {
     </div>
 
 
-    <!-- PFEIL -->
-
     <div
         class="scroll-hint"
         role="button"
@@ -1920,38 +1754,12 @@ nav .nav-links a:active {
 
 <!-- =====================================================
      ÜBER UNS
-     MIT 3 HORIZONTALEN UNTERSEITEN
 ===================================================== -->
 
 <section
     class="page about"
     data-index="1"
 >
-
-
-    <!-- =================================================
-         FORMA SCHRIFTZUG AUF ÜBER UNS
-    ================================================= -->
-
-    <div class="about-eyebrow">
-
-        <span class="forma-logo">
-
-            <span class="forma-letter">F</span>
-
-            <span class="forma-o">O</span>
-
-            <span class="forma-letter">R</span>
-
-            <span class="forma-letter">M</span>
-
-            <span class="forma-letter">A</span>
-
-            <span class="forma-dot"></span>
-
-        </span>
-
-    </div>
 
 
     <div class="about-slider">
@@ -2103,11 +1911,6 @@ nav .nav-links a:active {
 
 
 
-    <!-- =================================================
-         PFEIL
-         BLEIBT VERTIKAL
-    ================================================= -->
-
     <div
         class="scroll-hint"
         id="aboutNextButton"
@@ -2257,20 +2060,10 @@ function goToPage(index) {
         pages[currentPage];
 
 
-    /*
-       Wenn ABOUT verlassen wird:
-       horizontale Unterseite immer auf
-       Position 1 zurücksetzen.
-    */
-
     if (currentPage === 1) {
         resetAboutSlide();
     }
 
-
-    /*
-       Startseite verlässt Bildschirm
-    */
 
     if (
         currentPage === 0 &&
@@ -2281,10 +2074,6 @@ function goToPage(index) {
         );
     }
 
-
-    /*
-       Seitenklassen
-    */
 
     pages.forEach(
         (page, i) => {
@@ -2327,10 +2116,6 @@ function goToPage(index) {
     currentPage = index;
 
 
-    /*
-       Startseite zurücksetzen
-    */
-
     if (index === 0) {
 
         pages[0].classList.remove(
@@ -2339,10 +2124,6 @@ function goToPage(index) {
 
     }
 
-
-    /*
-       Animation Lock
-    */
 
     setTimeout(
         () => {
@@ -2378,29 +2159,9 @@ function goToAboutSlide(index) {
     currentAboutSlide = index;
 
 
-    /*
-       Horizontale Position
-    */
-
     aboutTrack.style.transform =
         `translate3d(-${index * 33.333333}%, 0, 0)`;
 
-
-    /*
-       Liquid Glass Blase
-
-       Die Blase wird exakt anhand
-       des tatsächlichen Punkt-Abstands
-       positioniert.
-
-       Punktbreite = 10px
-       Abstand = 14px
-       Gesamtweg = 24px
-
-       Dadurch bleibt das Zentrum der
-       Blase exakt über dem Zentrum
-       des jeweiligen Punktes.
-    */
 
     const dotWidth = 10;
 
@@ -2479,7 +2240,6 @@ indicatorDots.forEach(
 
 /* =====================================================
    SCROLL-PFEILE
-   IMMER VERTIKAL
 ===================================================== */
 
 scrollHints.forEach(
@@ -2490,12 +2250,6 @@ scrollHints.forEach(
             event => {
 
                 event.stopPropagation();
-
-
-                /*
-                   Pfeil bedeutet IMMER:
-                   nächste vertikale Hauptseite.
-                */
 
                 goToPage(
                     currentPage + 1
@@ -2550,12 +2304,6 @@ window.addEventListener(
         }
 
 
-        /*
-           Auf ABOUT:
-           Mausrad bleibt VERTIKAL.
-           Niemals horizontal.
-        */
-
         if (event.deltaY > 0) {
 
             goToPage(
@@ -2599,11 +2347,6 @@ window.addEventListener(
             touch.screenY;
 
 
-        /*
-           Prüfen, ob Touch auf Punktleiste
-           begonnen wurde.
-        */
-
         touchStartedOnIndicator =
             !!event.target.closest(
                 ".page-indicator"
@@ -2623,12 +2366,6 @@ window.addEventListener(
 window.addEventListener(
     "touchend",
     event => {
-
-        /*
-           Wenn direkt auf Punktleiste
-           gestartet wurde, nicht als
-           Seiten-Wisch interpretieren.
-        */
 
         if (touchStartedOnIndicator) {
 
@@ -2669,10 +2406,6 @@ window.addEventListener(
             Math.abs(differenceY);
 
 
-        /*
-           Zu kleiner Wisch
-        */
-
         if (
             Math.max(absX, absY) < 50
         ) {
@@ -2680,20 +2413,10 @@ window.addEventListener(
         }
 
 
-        /* =================================================
-           AUF DER ZWEITEN HAUPTSEITE:
-           HORIZONTAL = Unterseiten
-        ================================================= */
-
         if (
             currentPage === 1 &&
             absX > absY
         ) {
-
-            /*
-               Finger nach links:
-               nächste Unterseite
-            */
 
             if (differenceX > 0) {
 
@@ -2702,12 +2425,6 @@ window.addEventListener(
                 );
 
             }
-
-
-            /*
-               Finger nach rechts:
-               vorherige Unterseite
-            */
 
             else {
 
@@ -2723,25 +2440,7 @@ window.addEventListener(
         }
 
 
-        /* =================================================
-           VERTIKAL:
-           GILT FÜR ALLE HAUPTSEITEN
-        ================================================= */
-
         if (absY >= absX) {
-
-
-            /*
-               WICHTIG:
-
-               Finger nach OBEN
-               = nach UNTEN scrollen
-               = nächste Seite
-
-               Finger nach UNTEN
-               = nach OBEN scrollen
-               = vorherige Seite
-            */
 
             if (differenceY > 0) {
 
@@ -2797,10 +2496,6 @@ window.addEventListener(
 
         }
 
-
-        /*
-           Horizontal nur auf ABOUT
-        */
 
         if (
             currentPage === 1 &&
