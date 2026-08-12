@@ -1224,7 +1224,7 @@ nav .nav-links a:active {
         5px;
 
     left:
-        9px;
+        0;
 
     width:
         24px;
@@ -2178,6 +2178,9 @@ let isAnimating = false;
 const aboutTrack =
     document.querySelector("#aboutTrack");
 
+const pageIndicator =
+    document.querySelector("#pageIndicator");
+
 const indicatorBubble =
     document.querySelector("#indicatorBubble");
 
@@ -2380,40 +2383,36 @@ function goToAboutSlide(index) {
 
     /*
        Liquid Glass Blase
-
-       Die Berechnung berücksichtigt
-       exakt die Abstände der Punkte.
+       EXAKT MIT DEM MITTELPUNKT
+       DES AKTUELLEN PUNKTES AUSRICHTEN
     */
 
-    const dotWidth = 10;
+    requestAnimationFrame(
+        () => {
 
-    const gap = 14;
+            const indicatorRect =
+                pageIndicator.getBoundingClientRect();
 
-    const bubbleWidth = 24;
+            const dotRect =
+                indicatorDots[index].getBoundingClientRect();
 
-    const startOffset = 9;
+            const bubbleWidth =
+                indicatorBubble.offsetWidth;
 
-    const firstDotCenter =
-        startOffset +
-        (dotWidth / 2);
+            const dotCenter =
+                dotRect.left +
+                (dotRect.width / 2);
 
-    const distance =
-        dotWidth +
-        gap;
+            const bubbleLeft =
+                dotCenter -
+                indicatorRect.left -
+                (bubbleWidth / 2);
 
+            indicatorBubble.style.transform =
+                `translateX(${bubbleLeft}px)`;
 
-    const bubbleCenter =
-        firstDotCenter +
-        (index * distance);
-
-
-    const bubbleLeft =
-        bubbleCenter -
-        (bubbleWidth / 2);
-
-
-    indicatorBubble.style.transform =
-        `translateX(${bubbleLeft - startOffset}px)`;
+        }
+    );
 
 
     setTimeout(
@@ -2439,10 +2438,86 @@ function resetAboutSlide() {
     aboutTrack.style.transform =
         "translate3d(0,0,0)";
 
-    indicatorBubble.style.transform =
-        "translateX(0)";
+
+    /*
+       Blase exakt über Punkt 1 setzen
+    */
+
+    requestAnimationFrame(
+        () => {
+
+            const indicatorRect =
+                pageIndicator.getBoundingClientRect();
+
+            const dotRect =
+                indicatorDots[0].getBoundingClientRect();
+
+            const bubbleWidth =
+                indicatorBubble.offsetWidth;
+
+            const dotCenter =
+                dotRect.left +
+                (dotRect.width / 2);
+
+            const bubbleLeft =
+                dotCenter -
+                indicatorRect.left -
+                (bubbleWidth / 2);
+
+            indicatorBubble.style.transform =
+                `translateX(${bubbleLeft}px)`;
+
+        }
+    );
 
 }
+
+
+/* =====================================================
+   BLASE BEI GRÖSSENÄNDERUNG
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (currentPage !== 1) {
+
+            return;
+
+        }
+
+
+        requestAnimationFrame(
+            () => {
+
+                const indicatorRect =
+                    pageIndicator.getBoundingClientRect();
+
+                const dotRect =
+                    indicatorDots[currentAboutSlide]
+                    .getBoundingClientRect();
+
+                const bubbleWidth =
+                    indicatorBubble.offsetWidth;
+
+                const dotCenter =
+                    dotRect.left +
+                    (dotRect.width / 2);
+
+                const bubbleLeft =
+                    dotCenter -
+                    indicatorRect.left -
+                    (bubbleWidth / 2);
+
+                indicatorBubble.style.transform =
+                    `translateX(${bubbleLeft}px)`;
+
+            }
+        );
+
+    }
+);
 
 
 /* =====================================================
@@ -2744,14 +2819,10 @@ window.addEventListener(
 
 
             /*
-               WICHTIG:
-
                Finger nach OBEN
-               = nach UNTEN scrollen
                = nächste Seite
 
                Finger nach UNTEN
-               = nach OBEN scrollen
                = vorherige Seite
             */
 
