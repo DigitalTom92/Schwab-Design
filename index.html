@@ -62,7 +62,6 @@ body {
     --dark-text: #1d1d1f;
 
     --soft-gray: #666;
-
 }
 
 
@@ -623,16 +622,6 @@ nav .nav-links a:active {
 }
 
 
-.page.leaving .eyebrow .forma-o {
-
-    transform:
-        scale(1.20);
-
-    filter:
-        saturate(1.2);
-}
-
-
 .page.active .eyebrow .forma-o {
 
     transform:
@@ -1039,10 +1028,6 @@ nav .nav-links a:active {
 
     padding:
         0;
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
@@ -1077,10 +1062,6 @@ nav .nav-links a:active {
 
         0 10px 22px
         rgba(255,255,255,0.045);
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
@@ -1105,75 +1086,28 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   ROTES O UND ROTER PUNKT IM ABOUT-TEXT
+   ROTES O UND PUNKT IM ÜBER-UNS-TEXT
 ===================================================== */
 
-.about-text .forma-o {
+.about-text .forma-inline-o,
+.about-text .forma-inline-dot {
 
     color:
         var(--forma-red);
+}
+
+
+.forma-inline-o {
 
     font-weight:
         500;
 }
 
 
-.about-text .forma-dot {
+.forma-inline-dot {
 
-    display:
-        inline-block;
-
-    width:
-        5px;
-
-    height:
-        5px;
-
-    margin-left:
-        2px;
-
-    margin-bottom:
-        2px;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--forma-red);
-}
-
-
-/* =====================================================
-   ABOUT EXIT / ZOOM EFFEKT
-   GLEICHER STIL WIE STARTSEITE
-===================================================== */
-
-.about.leaving .about-content {
-
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
+    font-weight:
+        600;
 }
 
 
@@ -1281,7 +1215,7 @@ nav .nav-links a:active {
         5px;
 
     left:
-        9px;
+        0;
 
     width:
         24px;
@@ -1428,10 +1362,6 @@ nav .nav-links a:active {
 
     padding:
         0;
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
@@ -1466,10 +1396,6 @@ nav .nav-links a:active {
 
         0 10px 22px
         rgba(0,0,0,0.055);
-
-    will-change:
-        transform,
-        opacity;
 }
 
 
@@ -1490,40 +1416,6 @@ nav .nav-links a:active {
 
     color:
         #666;
-}
-
-
-/* =====================================================
-   KONTAKT EXIT / ZOOM EFFEKT
-   GLEICHER STIL WIE STARTSEITE
-===================================================== */
-
-.contact.leaving .contact-content {
-
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
 }
 
 
@@ -1594,6 +1486,68 @@ nav .nav-links a:active {
 
     opacity:
         1;
+}
+
+
+/* =====================================================
+   SEITEN-VERLASSEN
+   GLEICHER ZOOM-EFFEKT WIE STARTSEITE
+===================================================== */
+
+.page.leaving .page-content {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.page.leaving .page-title {
+
+    opacity:
+        0;
+
+    transform:
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
 }
 
 
@@ -1716,19 +1670,6 @@ nav .nav-links a:active {
 
 
     /* ---------------------------------------------
-       MOBILE EXIT ZOOM
-    --------------------------------------------- */
-
-    .about.leaving .about-content,
-    .contact.leaving .contact-content {
-
-        transform:
-            translate3d(0,-28px,0)
-            scale(1.12);
-    }
-
-
-    /* ---------------------------------------------
        MOBILE PFEIL
     --------------------------------------------- */
 
@@ -1841,6 +1782,21 @@ nav .nav-links a:active {
 
         transform:
             scale(1.15);
+    }
+
+
+    .page.leaving .page-content {
+
+        transform:
+            translate3d(0,-28px,0)
+            scale(1.12);
+    }
+
+
+    .page.leaving .page-title {
+
+        transform:
+            scale(1.12);
     }
 
 }
@@ -2066,12 +2022,8 @@ nav .nav-links a:active {
 
                     <p class="about-text">
 
-                        <span class="forma-logo">
-                            <span class="forma-letter" style="color:#aaa;">F</span><span class="forma-o">O</span><span class="forma-letter" style="color:#aaa;">RMA</span><span class="forma-dot"></span>
-                        </span>
-
-                        steht für
-                        minimalistisches, modernes
+                        <span>FORMA.</span> steht für
+                        minimal­istisches, modernes
                         und durchdachtes Design.
 
                         Wir reduzieren auf das Wesentliche
@@ -2194,7 +2146,6 @@ nav .nav-links a:active {
 
     <!-- =================================================
          PFEIL
-         BLEIBT VERTIKAL
     ================================================= -->
 
     <div
@@ -2261,7 +2212,6 @@ nav .nav-links a:active {
 
 <script>
 
-
 /* =====================================================
    HAUPTSEITEN
 ===================================================== */
@@ -2293,6 +2243,9 @@ let isAnimating = false;
 
 const aboutTrack =
     document.querySelector("#aboutTrack");
+
+const pageIndicator =
+    document.querySelector("#pageIndicator");
 
 const indicatorBubble =
     document.querySelector("#indicatorBubble");
@@ -2351,16 +2304,6 @@ function goToPage(index) {
         pages[currentPage];
 
 
-    /* ---------------------------------------------
-       EXIT-EFFEKT
-
-       Die aktuell sichtbare Seite bekommt
-       beim Verlassen den Zoom-Effekt.
-    --------------------------------------------- */
-
-    oldPage.classList.add("leaving");
-
-
     /*
        Wenn ABOUT verlassen wird:
        horizontale Unterseite immer auf
@@ -2372,6 +2315,16 @@ function goToPage(index) {
         resetAboutSlide();
 
     }
+
+
+    /*
+       Aktuelle Seite bekommt den
+       Zoom-Verlass-Effekt.
+    */
+
+    oldPage.classList.add(
+        "leaving"
+    );
 
 
     /*
@@ -2420,21 +2373,22 @@ function goToPage(index) {
 
 
     /*
-       Exit-Klasse erst nach der
-       eigentlichen Animation entfernen,
-       damit der Effekt sauber abläuft.
+       Startseite / aktuelle Seite
+       nach der Animation zurücksetzen.
     */
 
     setTimeout(
         () => {
 
-            pages.forEach(page => {
+            pages.forEach(
+                page => {
 
-                page.classList.remove(
-                    "leaving"
-                );
+                    page.classList.remove(
+                        "leaving"
+                    );
 
-            });
+                }
+            );
 
             isAnimating = false;
 
@@ -2483,52 +2437,30 @@ function goToAboutSlide(index) {
 
 
     /*
-       Liquid Glass Blase
+       -------------------------------------------------
+       WICHTIG:
+       Die Glasblase wird jetzt anhand der
+       tatsächlichen Position des Punktes berechnet.
 
-       EXAKTE MITTE ÜBER DEM JEWEILIGEN PUNKT.
-
-       Container:
-       left: 50%
-       padding links: 9px
-       Punktbreite: 10px
-       Abstand: 14px
-       Blase: 24px
-
-       Die Blase wird so positioniert,
-       dass ihr Mittelpunkt exakt dem
-       Mittelpunkt des jeweiligen Punktes
-       entspricht.
+       Dadurch ist sie IMMER exakt mittig über
+       dem jeweiligen Punkt – unabhängig von:
+       - Desktop
+       - Smartphone
+       - Gap
+       - Padding
+       - Bildschirmbreite
+       -------------------------------------------------
     */
 
-    const dotWidth = 10;
+    requestAnimationFrame(() => {
 
-    const gap = 14;
+        requestAnimationFrame(() => {
 
-    const bubbleWidth = 24;
+            positionIndicatorBubble();
 
-    const startOffset = 9;
+        });
 
-    const firstDotCenter =
-        startOffset +
-        (dotWidth / 2);
-
-    const distance =
-        dotWidth +
-        gap;
-
-
-    const bubbleCenter =
-        firstDotCenter +
-        (index * distance);
-
-
-    const bubbleLeft =
-        bubbleCenter -
-        (bubbleWidth / 2);
-
-
-    indicatorBubble.style.transform =
-        `translateX(${bubbleLeft - startOffset}px)`;
+    });
 
 
     setTimeout(
@@ -2536,9 +2468,75 @@ function goToAboutSlide(index) {
 
             isHorizontalAnimating = false;
 
+            positionIndicatorBubble();
+
         },
         700
     );
+
+}
+
+
+/* =====================================================
+   GLASBLASE EXAKT MITTIG POSITIONIEREN
+===================================================== */
+
+function positionIndicatorBubble() {
+
+    if (
+        !pageIndicator ||
+        !indicatorBubble ||
+        !indicatorDots[currentAboutSlide]
+    ) {
+
+        return;
+
+    }
+
+
+    const indicatorRect =
+        pageIndicator.getBoundingClientRect();
+
+
+    const dotRect =
+        indicatorDots[
+            currentAboutSlide
+        ].getBoundingClientRect();
+
+
+    /*
+       Mittelpunkt des aktiven Punktes
+       relativ zur Punktleiste.
+    */
+
+    const dotCenter =
+        (
+            dotRect.left +
+            dotRect.width / 2
+        ) -
+        indicatorRect.left;
+
+
+    /*
+       Mittelpunkt der Blase.
+    */
+
+    const bubbleCenter =
+        indicatorBubble.offsetWidth / 2;
+
+
+    /*
+       Blase exakt auf Mittelpunkt
+       des Punktes setzen.
+    */
+
+    const translateX =
+        dotCenter -
+        bubbleCenter;
+
+
+    indicatorBubble.style.transform =
+        `translateX(${translateX}px)`;
 
 }
 
@@ -2554,8 +2552,18 @@ function resetAboutSlide() {
     aboutTrack.style.transform =
         "translate3d(0,0,0)";
 
-    indicatorBubble.style.transform =
-        "translateX(0)";
+
+    /*
+       Nach dem Zurücksetzen warten wir
+       auf das Layout und setzen die Blase
+       wieder exakt auf Punkt 1.
+    */
+
+    requestAnimationFrame(() => {
+
+        positionIndicatorBubble();
+
+    });
 
 }
 
@@ -2598,7 +2606,6 @@ indicatorDots.forEach(
 
 /* =====================================================
    SCROLL-PFEILE
-   IMMER VERTIKAL
 ===================================================== */
 
 scrollHints.forEach(
@@ -2610,11 +2617,6 @@ scrollHints.forEach(
 
                 event.stopPropagation();
 
-
-                /*
-                   Pfeil bedeutet IMMER:
-                   nächste vertikale Hauptseite.
-                */
 
                 goToPage(
                     currentPage + 1
@@ -2676,12 +2678,6 @@ window.addEventListener(
         }
 
 
-        /*
-           Auf ABOUT:
-           Mausrad bleibt VERTIKAL.
-           Niemals horizontal.
-        */
-
         if (event.deltaY > 0) {
 
             goToPage(
@@ -2725,11 +2721,6 @@ window.addEventListener(
             touch.screenY;
 
 
-        /*
-           Prüfen, ob Touch auf Punktleiste
-           begonnen wurde.
-        */
-
         touchStartedOnIndicator =
             !!event.target.closest(
                 ".page-indicator"
@@ -2749,12 +2740,6 @@ window.addEventListener(
 window.addEventListener(
     "touchend",
     event => {
-
-        /*
-           Wenn direkt auf Punktleiste
-           gestartet wurde, nicht als
-           Seiten-Wisch interpretieren.
-        */
 
         if (touchStartedOnIndicator) {
 
@@ -2795,10 +2780,6 @@ window.addEventListener(
             Math.abs(differenceY);
 
 
-        /*
-           Zu kleiner Wisch
-        */
-
         if (
             Math.max(absX, absY) < 50
         ) {
@@ -2808,20 +2789,15 @@ window.addEventListener(
         }
 
 
-        /* =================================================
-           AUF DER ZWEITEN HAUPTSEITE:
+        /*
+           AUF ABOUT:
            HORIZONTAL = Unterseiten
-        ================================================= */
+        */
 
         if (
             currentPage === 1 &&
             absX > absY
         ) {
-
-            /*
-               Finger nach links:
-               nächste Unterseite
-            */
 
             if (differenceX > 0) {
 
@@ -2830,11 +2806,6 @@ window.addEventListener(
                 );
 
             }
-
-            /*
-               Finger nach rechts:
-               vorherige Unterseite
-            */
 
             else {
 
@@ -2850,23 +2821,11 @@ window.addEventListener(
         }
 
 
-        /* =================================================
-           VERTIKAL:
-           GILT FÜR ALLE HAUPTSEITEN
-        ================================================= */
+        /*
+           VERTIKAL = Hauptseiten
+        */
 
         if (absY >= absX) {
-
-
-            /*
-               Finger nach OBEN
-               = nach UNTEN scrollen
-               = nächste Seite
-
-               Finger nach UNTEN
-               = nach OBEN scrollen
-               = vorherige Seite
-            */
 
             if (differenceY > 0) {
 
@@ -2922,10 +2881,6 @@ window.addEventListener(
 
         }
 
-
-        /*
-           Horizontal nur auf ABOUT
-        */
 
         if (
             currentPage === 1 &&
@@ -3036,6 +2991,43 @@ window.addEventListener(
             goToPage(2);
 
         }
+
+
+        /*
+           Blase nach dem vollständigen
+           Laden exakt positionieren.
+        */
+
+        requestAnimationFrame(() => {
+
+            positionIndicatorBubble();
+
+        });
+
+    }
+);
+
+
+/* =====================================================
+   RESIZE
+   WICHTIG FÜR DESKTOP + MOBILE
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        /*
+           Nach einer Größenänderung werden
+           die tatsächlichen Punktpositionen
+           neu ausgelesen.
+        */
+
+        requestAnimationFrame(() => {
+
+            positionIndicatorBubble();
+
+        });
 
     }
 );
