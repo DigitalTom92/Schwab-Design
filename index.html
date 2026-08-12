@@ -61,7 +61,6 @@ body {
 
 /* =====================================================
    NAVIGATION
-   APPLE STYLE GLOSSY
 ===================================================== */
 
 nav {
@@ -981,7 +980,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   ROTES O UND PUNKT IM ÜBER-UNS-TEXT
+   ROTES O UND PUNKT
 ===================================================== */
 
 .about-text .red-o {
@@ -1033,6 +1032,9 @@ nav .nav-links a:active {
         flex;
 
     align-items:
+        center;
+
+    justify-content:
         center;
 
     gap:
@@ -1089,7 +1091,8 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   GLASS BLASE
+   GLAS-BLASE
+   EXAKT AUF MITTE DES JEWEILIGEN PUNKTES
 ===================================================== */
 
 .indicator-bubble {
@@ -1097,7 +1100,7 @@ nav .nav-links a:active {
         absolute;
 
     left:
-        9px;
+        50%;
 
     top:
         50%;
@@ -1142,15 +1145,21 @@ nav .nav-links a:active {
         blur(8px)
         saturate(190%);
 
+    /*
+       Die Position wird per JavaScript
+       anhand der echten Punkt-Mittelpunkte
+       berechnet.
+    */
+
     transform:
         translate3d(
-            0,
+            -50%,
             -50%,
             0
         );
 
     transition:
-        transform 0.65s
+        left 0.65s
         cubic-bezier(
             0.22,
             1,
@@ -1467,10 +1476,6 @@ nav .nav-links a:active {
     }
 
 
-    /* ---------------------------------------------
-       MOBILE PFEIL
-    --------------------------------------------- */
-
     .scroll-hint {
         bottom:
             calc(
@@ -1520,10 +1525,6 @@ nav .nav-links a:active {
             );
     }
 
-
-    /* ---------------------------------------------
-       MOBILE LIQUID GLASS PUNKTE
-    --------------------------------------------- */
 
     .page-indicator {
         bottom:
@@ -1770,10 +1771,6 @@ nav .nav-links a:active {
         >
 
 
-            <!-- -----------------------------------------
-                 UNTERSEITE 1
-            ------------------------------------------ -->
-
             <div class="about-slide">
 
                 <div class="about-content">
@@ -1804,10 +1801,6 @@ nav .nav-links a:active {
 
 
 
-            <!-- -----------------------------------------
-                 UNTERSEITE 2
-            ------------------------------------------ -->
-
             <div class="about-slide">
 
                 <div class="about-content">
@@ -1834,10 +1827,6 @@ nav .nav-links a:active {
             </div>
 
 
-
-            <!-- -----------------------------------------
-                 UNTERSEITE 3
-            ------------------------------------------ -->
 
             <div class="about-slide">
 
@@ -2009,6 +1998,10 @@ const aboutTrack =
     document.querySelector("#aboutTrack");
 
 
+const indicator =
+    document.querySelector("#pageIndicator");
+
+
 const indicatorBubble =
     document.querySelector("#indicatorBubble");
 
@@ -2035,6 +2028,111 @@ let touchEndX = 0;
 let touchEndY = 0;
 
 let touchStartedOnIndicator = false;
+
+
+/* =====================================================
+   PUNKT / BLASE EXAKT SYNCHRONISIEREN
+===================================================== */
+
+function positionIndicatorBubble(
+    animate = true
+) {
+
+    if (
+        !indicator ||
+        !indicatorBubble ||
+        !indicatorDots.length
+    ) {
+        return;
+    }
+
+
+    const activeDot =
+        indicatorDots[currentAboutSlide];
+
+
+    const indicatorRect =
+        indicator.getBoundingClientRect();
+
+
+    const dotRect =
+        activeDot.getBoundingClientRect();
+
+
+    const dotCenter =
+        dotRect.left +
+        dotRect.width / 2;
+
+
+    const relativeCenter =
+        dotCenter -
+        indicatorRect.left;
+
+
+    if (!animate) {
+
+        const oldTransition =
+            indicatorBubble.style.transition;
+
+
+        indicatorBubble.style.transition =
+            "none";
+
+
+        indicatorBubble.style.left =
+            `${relativeCenter}px`;
+
+
+        indicatorBubble.style.transform =
+            "translate3d(-50%, -50%, 0)";
+
+
+        requestAnimationFrame(
+            () => {
+
+                indicatorBubble.style.transition =
+                    oldTransition;
+
+            }
+        );
+
+    }
+
+    else {
+
+        indicatorBubble.style.left =
+            `${relativeCenter}px`;
+
+        indicatorBubble.style.transform =
+            "translate3d(-50%, -50%, 0)";
+
+    }
+
+}
+
+
+/* =====================================================
+   BLASE BEIM LADEN AUSRICHTEN
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        positionIndicatorBubble(false);
+
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        positionIndicatorBubble(false);
+
+    }
+);
 
 
 /* =====================================================
@@ -2069,9 +2167,11 @@ function goToPage(index) {
         currentPage === 0 &&
         index > 0
     ) {
+
         oldPage.classList.add(
             "leaving"
         );
+
     }
 
 
@@ -2125,6 +2225,19 @@ function goToPage(index) {
     }
 
 
+    if (index === 1) {
+
+        requestAnimationFrame(
+            () => {
+
+                positionIndicatorBubble(false);
+
+            }
+        );
+
+    }
+
+
     setTimeout(
         () => {
 
@@ -2163,16 +2276,19 @@ function goToAboutSlide(index) {
         `translate3d(-${index * 33.333333}%, 0, 0)`;
 
 
-    const dotWidth = 10;
+    /*
+       Nicht mit einem festen Pixel-Abstand arbeiten.
+       Stattdessen wird die tatsächliche Mitte
+       des jeweiligen Punktes verwendet.
+    */
 
-    const gap = 14;
+    requestAnimationFrame(
+        () => {
 
-    const step =
-        dotWidth + gap;
+            positionIndicatorBubble(true);
 
-
-    indicatorBubble.style.transform =
-        `translate3d(${index * step}px, -50%, 0)`;
+        }
+    );
 
 
     setTimeout(
@@ -2198,8 +2314,14 @@ function resetAboutSlide() {
     aboutTrack.style.transform =
         "translate3d(0,0,0)";
 
-    indicatorBubble.style.transform =
-        "translate3d(0,-50%,0)";
+
+    requestAnimationFrame(
+        () => {
+
+            positionIndicatorBubble(false);
+
+        }
+    );
 
 }
 
@@ -2285,12 +2407,77 @@ scrollHints.forEach(
 
 
 /* =====================================================
-   MAUSRAD
+   MAUSRAD / MAC TOUCHPAD
+   VERTIKAL = HAUPTSEITEN
+   HORIZONTAL = ÜBER-UNS-SEITEN
 ===================================================== */
 
 window.addEventListener(
     "wheel",
     event => {
+
+        /*
+           Auf der Über-uns-Seite erkennen wir
+           horizontale Trackpad-Bewegungen.
+
+           deltaX:
+           Mac-Touchpad nach links/rechts
+
+           deltaY:
+           normales Scrollen bzw. vertikale
+           Trackpad-Bewegung
+        */
+
+        if (
+            currentPage === 1 &&
+            Math.abs(event.deltaX) >
+            Math.abs(event.deltaY) &&
+            Math.abs(event.deltaX) > 5
+        ) {
+
+            event.preventDefault();
+
+
+            if (isHorizontalAnimating) {
+                return;
+            }
+
+
+            if (event.deltaX > 0) {
+
+                /*
+                   Nach rechts gewischt:
+                   nächste Über-uns-Seite
+                */
+
+                goToAboutSlide(
+                    currentAboutSlide + 1
+                );
+
+            }
+
+            else {
+
+                /*
+                   Nach links gewischt:
+                   vorherige Über-uns-Seite
+                */
+
+                goToAboutSlide(
+                    currentAboutSlide - 1
+                );
+
+            }
+
+
+            return;
+        }
+
+
+        /*
+           Normales vertikales Scrollen
+           bleibt für die Hauptseiten erhalten.
+        */
 
         if (isAnimating) {
             return;
@@ -2322,7 +2509,7 @@ window.addEventListener(
 
     },
     {
-        passive: true
+        passive: false
     }
 );
 
