@@ -131,11 +131,6 @@
     }
 
 
-
-    /* =====================================================
-       GLOSSY LICHTREFLEX
-    ===================================================== */
-
     nav::before {
 
         content: "";
@@ -239,11 +234,6 @@
     }
 
 
-
-    /* =====================================================
-       O ROT
-    ===================================================== */
-
     .forma-o {
 
         display: inline-block;
@@ -259,11 +249,6 @@
             center center;
     }
 
-
-
-    /* =====================================================
-       PUNKT ROT
-    ===================================================== */
 
     .forma-dot {
 
@@ -427,11 +412,6 @@
     }
 
 
-
-    /* =====================================================
-       AKTUELLE SEITE
-    ===================================================== */
-
     .page.active {
 
         opacity: 1;
@@ -445,11 +425,6 @@
     }
 
 
-
-    /* =====================================================
-       VORHERIGE SEITE
-    ===================================================== */
-
     .page.previous {
 
         opacity: 0;
@@ -460,11 +435,6 @@
         z-index: 1;
     }
 
-
-
-    /* =====================================================
-       NÄCHSTE SEITE
-    ===================================================== */
 
     .page.next {
 
@@ -511,7 +481,7 @@
 
 
     /* =====================================================
-       FORMA AUF STARTSEITE
+       FORMA
     ===================================================== */
 
     .eyebrow {
@@ -564,11 +534,6 @@
             scale(1);
     }
 
-
-
-    /* =====================================================
-       GROSSES FORMA
-    ===================================================== */
 
     .eyebrow .forma-logo {
 
@@ -629,11 +594,6 @@
     }
 
 
-
-    /* =====================================================
-       FORMA BEIM VERLASSEN
-    ===================================================== */
-
     .page.leaving .eyebrow {
 
         opacity:
@@ -680,11 +640,6 @@
     }
 
 
-
-    /* =====================================================
-       PUNKT
-    ===================================================== */
-
     .eyebrow .forma-dot {
 
         width:
@@ -706,8 +661,8 @@
 
 
     /* =====================================================
-       HERO TITLE
-       ERHABENER SCHATTENEFFEKT
+       HERO TITEL
+       LEICHT ERHABEN
     ===================================================== */
 
     .hero-title {
@@ -748,11 +703,6 @@
     }
 
 
-
-    /* =====================================================
-       HERO TEXT
-    ===================================================== */
-
     .hero-text {
 
         font-size:
@@ -782,11 +732,11 @@
 
 
     /* =====================================================
-       SCROLL INDICATOR
-       MINIMALISTISCH + RESPONSIVE
+       NEUER SCROLL-PFEIL
+       ROBUSTES SVG
     ===================================================== */
 
-    .scroll-indicator {
+    .scroll-hint {
 
         position:
             absolute;
@@ -795,40 +745,33 @@
             50%;
 
         bottom:
-            clamp(
-                24px,
-                4vh,
-                42px
+            calc(
+                24px +
+                env(
+                    safe-area-inset-bottom
+                )
             );
 
         transform:
             translateX(-50%);
 
         width:
-            clamp(
-                28px,
-                2.8vw,
-                38px
-            );
+            46px;
 
         height:
-            clamp(
-                42px,
-                5vh,
-                54px
-            );
+            54px;
 
         display:
             flex;
 
+        align-items:
+            center;
+
         justify-content:
             center;
 
-        align-items:
-            flex-start;
-
         z-index:
-            10;
+            50;
 
         cursor:
             pointer;
@@ -836,139 +779,114 @@
         opacity:
             0;
 
+        pointer-events:
+            none;
+
         transition:
-            opacity 0.8s ease 0.8s;
+
+            opacity 0.7s ease,
+
+            transform 0.5s ease;
     }
 
 
-    .page.active .scroll-indicator {
+    .page.active .scroll-hint {
 
         opacity:
             1;
+
+        pointer-events:
+            auto;
     }
 
 
-    /* ---------------------------------------------
-       PFEIL
-    --------------------------------------------- */
-
-    .scroll-arrow {
-
-        position:
-            relative;
+    .scroll-hint svg {
 
         width:
-            clamp(
-                10px,
-                1vw,
-                14px
-            );
+            26px;
 
         height:
-            clamp(
-                10px,
-                1vw,
-                14px
-            );
+            32px;
 
-        border-right:
-            2px solid
-            rgba(29,29,31,0.55);
-
-        border-bottom:
-            2px solid
-            rgba(29,29,31,0.55);
-
-        transform:
-            rotate(45deg);
+        overflow:
+            visible;
 
         animation:
-            scrollArrow 1.8s
-            cubic-bezier(
-                0.45,
-                0,
-                0.55,
-                1
-            )
+            arrowFloat 1.8s
+            ease-in-out
             infinite;
 
         filter:
             drop-shadow(
-                0 2px 2px
-                rgba(0,0,0,0.10)
+                0 2px 3px
+                rgba(0,0,0,0.12)
             );
     }
 
 
-    /* ---------------------------------------------
-       LEICHTE ANIMATION
-    --------------------------------------------- */
+    .scroll-hint path {
 
-    @keyframes scrollArrow {
+        fill:
+            none;
+
+        stroke:
+            rgba(29,29,31,0.58);
+
+        stroke-width:
+            2;
+
+        stroke-linecap:
+            round;
+
+        stroke-linejoin:
+            round;
+    }
+
+
+    @keyframes arrowFloat {
 
         0% {
 
             transform:
-                translateY(0)
-                rotate(45deg);
+                translateY(0);
 
             opacity:
-                0.35;
+                0.45;
         }
 
-
-        40% {
+        50% {
 
             transform:
-                translateY(7px)
-                rotate(45deg);
+                translateY(7px);
 
             opacity:
-                0.85;
+                0.95;
         }
-
-
-        70% {
-
-            transform:
-                translateY(7px)
-                rotate(45deg);
-
-            opacity:
-                0.85;
-        }
-
 
         100% {
 
             transform:
-                translateY(0)
-                rotate(45deg);
+                translateY(0);
 
             opacity:
-                0.35;
+                0.45;
         }
-
     }
 
 
+    /* Pfeil verschwindet beim Seitenwechsel */
 
-    /* =====================================================
-       SCROLL INDICATOR AUSBLENDEN BEIM VERLASSEN
-    ===================================================== */
-
-    .page.leaving .scroll-indicator {
+    .page.leaving .scroll-hint {
 
         opacity:
             0;
 
         transform:
             translateX(-50%)
-            translateY(12px);
+            translateY(15px);
 
-        transition:
-            opacity 0.35s ease,
-            transform 0.45s ease;
+        pointer-events:
+            none;
     }
 
 
@@ -1194,11 +1112,6 @@
     }
 
 
-
-    /* =====================================================
-       GROSSE ÜBERSCHRIFTEN
-    ===================================================== */
-
     .page-title {
 
         transform:
@@ -1300,17 +1213,6 @@
 
             letter-spacing:
                 -4px;
-
-            text-shadow:
-
-                0 2px 2px
-                rgba(0,0,0,0.10),
-
-                0 4px 8px
-                rgba(0,0,0,0.12),
-
-                0 8px 16px
-                rgba(0,0,0,0.05);
         }
 
 
@@ -1339,48 +1241,43 @@
 
 
         /* ---------------------------------------------
-           MOBILE SCROLL INDICATOR
+           MOBILE PFEIL
         --------------------------------------------- */
 
-        .scroll-indicator {
+        .scroll-hint {
 
             bottom:
-                max(
-                    22px,
+                calc(
+                    20px +
                     env(
                         safe-area-inset-bottom
                     )
                 );
 
             width:
-                32px;
+                48px;
 
             height:
-                46px;
+                52px;
         }
 
 
-        .scroll-arrow {
+        .scroll-hint svg {
 
             width:
-                11px;
+                24px;
 
             height:
-                11px;
-
-            border-right:
-                1.8px solid
-                rgba(29,29,31,0.55);
-
-            border-bottom:
-                1.8px solid
-                rgba(29,29,31,0.55);
+                30px;
         }
 
 
-        /* ---------------------------------------------
-           MOBILE SCROLL ANIMATION
-        --------------------------------------------- */
+        .scroll-hint path {
+
+            stroke-width:
+                2.2;
+        }
+
 
         .page.leaving .eyebrow {
 
@@ -1423,7 +1320,7 @@
         }
 
 
-        .scroll-arrow {
+        .scroll-hint svg {
 
             animation:
                 none;
@@ -1445,65 +1342,42 @@
 
 <nav>
 
-
     <a
         href="#"
         class="logo"
         id="homeButton"
     >
 
-        <span
-            class="forma-logo"
-        >
+        <span class="forma-logo">
 
-            <span
-                class="forma-letter"
-            >
+            <span class="forma-letter">
                 F
             </span>
 
-
-            <span
-                class="forma-o"
-            >
+            <span class="forma-o">
                 O
             </span>
 
-
-            <span
-                class="forma-letter"
-            >
+            <span class="forma-letter">
                 R
             </span>
 
-
-            <span
-                class="forma-letter"
-            >
+            <span class="forma-letter">
                 M
             </span>
 
-
-            <span
-                class="forma-letter"
-            >
+            <span class="forma-letter">
                 A
             </span>
 
-
-            <span
-                class="forma-dot"
-            ></span>
+            <span class="forma-dot"></span>
 
         </span>
 
     </a>
 
 
-
-    <div
-        class="nav-links"
-    >
+    <div class="nav-links">
 
         <a
             href="#about"
@@ -1530,9 +1404,7 @@
      SEITEN
 ===================================================== -->
 
-<main
-    class="page-container"
->
+<main class="page-container">
 
 
     <!-- =================================================
@@ -1544,70 +1416,41 @@
         data-index="0"
     >
 
-
-        <div
-            class="hero-content page-content"
-        >
+        <div class="hero-content page-content">
 
 
-            <div
-                class="eyebrow"
-            >
+            <div class="eyebrow">
 
+                <span class="forma-logo">
 
-                <span
-                    class="forma-logo"
-                >
-
-                    <span
-                        class="forma-letter"
-                    >
+                    <span class="forma-letter">
                         F
                     </span>
 
-
-                    <span
-                        class="forma-o"
-                    >
+                    <span class="forma-o">
                         O
                     </span>
 
-
-                    <span
-                        class="forma-letter"
-                    >
+                    <span class="forma-letter">
                         R
                     </span>
 
-
-                    <span
-                        class="forma-letter"
-                    >
+                    <span class="forma-letter">
                         M
                     </span>
 
-
-                    <span
-                        class="forma-letter"
-                    >
+                    <span class="forma-letter">
                         A
                     </span>
 
-
-                    <span
-                        class="forma-dot"
-                    ></span>
+                    <span class="forma-dot"></span>
 
                 </span>
-
 
             </div>
 
 
-
-            <h1
-                class="hero-title page-title"
-            >
+            <h1 class="hero-title page-title">
 
                 Einfach.<br>
 
@@ -1618,36 +1461,46 @@
             </h1>
 
 
-
-            <p
-                class="hero-text"
-            >
+            <p class="hero-text">
 
                 Klare Ideen. Starkes Design.
                 Anders gedacht. Besser gestaltet.
 
             </p>
 
-
         </div>
 
 
-        <!-- =============================================
-             SCROLL INDICATOR
-        ============================================== -->
+
+        <!-- =================================================
+             SCROLL-PFEIL
+        ================================================= -->
 
         <div
-            class="scroll-indicator"
-            id="scrollIndicator"
-            aria-label="Weiter scrollen"
+            class="scroll-hint"
+            id="scrollHint"
+            role="button"
+            aria-label="Weiter zur nächsten Seite"
+            tabindex="0"
         >
 
-            <span
-                class="scroll-arrow"
-            ></span>
+            <svg
+                viewBox="0 0 24 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+
+                <path
+                    d="M6 12 L12 18 L18 12"
+                />
+
+                <path
+                    d="M6 19 L12 25 L18 19"
+                />
+
+            </svg>
 
         </div>
-
 
     </section>
 
@@ -1662,15 +1515,9 @@
         data-index="1"
     >
 
+        <div class="about-content page-content">
 
-        <div
-            class="about-content page-content"
-        >
-
-
-            <h2
-                class="about-title page-title"
-            >
+            <h2 class="about-title page-title">
 
                 Weniger.<br>
 
@@ -1679,9 +1526,7 @@
             </h2>
 
 
-            <p
-                class="about-text"
-            >
+            <p class="about-text">
 
                 FORMA. steht für
                 minimalistisches, modernes
@@ -1692,9 +1537,7 @@
 
             </p>
 
-
         </div>
-
 
     </section>
 
@@ -1709,15 +1552,9 @@
         data-index="2"
     >
 
+        <div class="contact-content page-content">
 
-        <div
-            class="contact-content page-content"
-        >
-
-
-            <h2
-                class="contact-title page-title"
-            >
+            <h2 class="contact-title page-title">
 
                 Lass uns<br>
 
@@ -1726,18 +1563,14 @@
             </h2>
 
 
-            <p
-                class="contact-text"
-            >
+            <p class="contact-text">
 
                 Du hast eine Idee?
                 Wir machen daraus ein Design.
 
             </p>
 
-
         </div>
-
 
     </section>
 
@@ -1754,27 +1587,19 @@
 
 
     const pages =
-        document.querySelectorAll(
-            ".page"
-        );
+        document.querySelectorAll(".page");
 
 
     const homeButton =
-        document.querySelector(
-            "#homeButton"
-        );
+        document.querySelector("#homeButton");
 
 
     const navLinks =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+        document.querySelectorAll(".nav-links a");
 
 
-    const scrollIndicator =
-        document.querySelector(
-            "#scrollIndicator"
-        );
+    const scrollHint =
+        document.querySelector("#scrollHint");
 
 
     let currentPage = 0;
@@ -1807,6 +1632,7 @@
         ) {
 
             return;
+
         }
 
 
@@ -1817,14 +1643,16 @@
             pages[currentPage];
 
 
-
         /* ---------------------------------------------
            STARTSEITE VERLÄSST DEN BILDSCHIRM
         --------------------------------------------- */
 
         if (
+
             currentPage === 0 &&
+
             index > 0
+
         ) {
 
             oldPage.classList.add(
@@ -1834,14 +1662,12 @@
         }
 
 
-
         /* ---------------------------------------------
            SEITENKLASSEN
         --------------------------------------------- */
 
         pages.forEach(
             (page, i) => {
-
 
                 page.classList.remove(
                     "active",
@@ -1858,7 +1684,6 @@
 
                 }
 
-
                 else if (i < index) {
 
                     page.classList.add(
@@ -1866,7 +1691,6 @@
                     );
 
                 }
-
 
                 else {
 
@@ -1883,21 +1707,17 @@
         currentPage = index;
 
 
-
         /* ---------------------------------------------
            STARTSEITE ZURÜCKSETZEN
         --------------------------------------------- */
 
-        if (
-            index === 0
-        ) {
+        if (index === 0) {
 
             pages[0].classList.remove(
                 "leaving"
             );
 
         }
-
 
 
         /* ---------------------------------------------
@@ -1918,13 +1738,11 @@
 
 
     /* =================================================
-       SCROLL INDICATOR KLICK
+       PFEIL KLICK
     ================================================= */
 
-    scrollIndicator.addEventListener(
-
+    scrollHint.addEventListener(
         "click",
-
         () => {
 
             goToPage(
@@ -1932,7 +1750,34 @@
             );
 
         }
+    );
 
+
+    /* =================================================
+       PFEIL TASTATUR
+    ================================================= */
+
+    scrollHint.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+
+                event.key === "Enter" ||
+
+                event.key === " "
+
+            ) {
+
+                event.preventDefault();
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+        }
     );
 
 
@@ -1942,38 +1787,32 @@
     ================================================= */
 
     window.addEventListener(
-
         "wheel",
-
         event => {
-
 
             if (isAnimating) {
 
                 return;
+
             }
 
 
             if (
-                Math.abs(
-                    event.deltaY
-                ) < 25
+                Math.abs(event.deltaY) < 25
             ) {
 
                 return;
+
             }
 
 
-            if (
-                event.deltaY > 0
-            ) {
+            if (event.deltaY > 0) {
 
                 goToPage(
                     currentPage + 1
                 );
 
             }
-
 
             else {
 
@@ -1984,11 +1823,9 @@
             }
 
         },
-
         {
             passive: true
         }
-
     );
 
 
@@ -1998,36 +1835,25 @@
     ================================================= */
 
     window.addEventListener(
-
         "touchstart",
-
         event => {
 
             touchStartY =
-                event
-                    .changedTouches[0]
-                    .screenY;
+                event.changedTouches[0].screenY;
 
         },
-
         {
             passive: true
         }
-
     );
 
 
     window.addEventListener(
-
         "touchend",
-
         event => {
 
-
             touchEndY =
-                event
-                    .changedTouches[0]
-                    .screenY;
+                event.changedTouches[0].screenY;
 
 
             const difference =
@@ -2036,25 +1862,21 @@
 
 
             if (
-                Math.abs(
-                    difference
-                ) < 50
+                Math.abs(difference) < 50
             ) {
 
                 return;
+
             }
 
 
-            if (
-                difference > 0
-            ) {
+            if (difference > 0) {
 
                 goToPage(
                     currentPage + 1
                 );
 
             }
-
 
             else {
 
@@ -2065,11 +1887,9 @@
             }
 
         },
-
         {
             passive: true
         }
-
     );
 
 
@@ -2079,15 +1899,11 @@
     ================================================= */
 
     window.addEventListener(
-
         "keydown",
-
         event => {
 
-
             if (
-                event.key ===
-                "ArrowDown"
+                event.key === "ArrowDown"
             ) {
 
                 goToPage(
@@ -2098,8 +1914,7 @@
 
 
             if (
-                event.key ===
-                "ArrowUp"
+                event.key === "ArrowUp"
             ) {
 
                 goToPage(
@@ -2110,13 +1925,10 @@
 
 
             if (
-                event.key ===
-                " "
+                event.key === " "
             ) {
 
-
                 event.preventDefault();
-
 
                 goToPage(
                     currentPage + 1
@@ -2125,7 +1937,6 @@
             }
 
         }
-
     );
 
 
@@ -2135,16 +1946,11 @@
     ================================================= */
 
     navLinks.forEach(
-
         link => {
 
-
             link.addEventListener(
-
                 "click",
-
                 event => {
-
 
                     event.preventDefault();
 
@@ -2158,11 +1964,9 @@
                     goToPage(page);
 
                 }
-
             );
 
         }
-
     );
 
 
@@ -2172,19 +1976,14 @@
     ================================================= */
 
     homeButton.addEventListener(
-
         "click",
-
         event => {
 
-
             event.preventDefault();
-
 
             goToPage(0);
 
         }
-
     );
 
 
@@ -2194,15 +1993,11 @@
     ================================================= */
 
     window.addEventListener(
-
         "load",
-
         () => {
 
-
             if (
-                window.location.hash ===
-                "#about"
+                window.location.hash === "#about"
             ) {
 
                 goToPage(1);
@@ -2211,8 +2006,7 @@
 
 
             if (
-                window.location.hash ===
-                "#contact"
+                window.location.hash === "#contact"
             ) {
 
                 goToPage(2);
@@ -2220,7 +2014,6 @@
             }
 
         }
-
     );
 
 </script>
