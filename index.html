@@ -62,6 +62,7 @@ body {
     --dark-text: #1d1d1f;
 
     --soft-gray: #666;
+
 }
 
 
@@ -622,6 +623,16 @@ nav .nav-links a:active {
 }
 
 
+.page.leaving .eyebrow .forma-o {
+
+    transform:
+        scale(1.20);
+
+    filter:
+        saturate(1.2);
+}
+
+
 .page.active .eyebrow .forma-o {
 
     transform:
@@ -1028,8 +1039,16 @@ nav .nav-links a:active {
 
     padding:
         0;
+
+    will-change:
+        transform,
+        opacity;
 }
 
+
+/* =====================================================
+   ABOUT TITEL
+===================================================== */
 
 .about-title {
 
@@ -1086,28 +1105,95 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   ROTES O UND PUNKT IM ÜBER-UNS-TEXT
+   ROTES O UND PUNKT IM ABOUT-TEXT
 ===================================================== */
 
-.about-text .forma-inline-o,
-.about-text .forma-inline-dot {
+.about-text .forma-red {
 
     color:
         var(--forma-red);
 }
 
 
-.forma-inline-o {
+/* =====================================================
+   ZOOM-EFFEKT BEIM VERLASSEN
+   ÜBER UNS + KONTAKT
+===================================================== */
 
-    font-weight:
-        500;
+.about .about-content,
+.contact .contact-content {
+
+    transform:
+        translate3d(0,60px,0)
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+
+        transform 1s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.7s ease;
+
+    will-change:
+        transform,
+        opacity;
 }
 
 
-.forma-inline-dot {
+.about.active .about-content,
+.contact.active .contact-content {
 
-    font-weight:
-        600;
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    opacity:
+        1;
+}
+
+
+/*
+   BEIM VERLASSEN:
+   Schrift zoomt leicht heraus,
+   bewegt sich nach oben und
+   verschwindet gleichzeitig.
+*/
+
+.about.leaving .about-content,
+.contact.leaving .contact-content {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
 }
 
 
@@ -1215,7 +1301,7 @@ nav .nav-links a:active {
         5px;
 
     left:
-        0;
+        9px;
 
     width:
         24px;
@@ -1457,6 +1543,43 @@ nav .nav-links a:active {
 }
 
 
+/* =====================================================
+   GENERELLER ZOOM-EFFEKT BEIM VERLASSEN
+===================================================== */
+
+.page.leaving .page-content {
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+
+    transition:
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        ),
+
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* =====================================================
+   TITEL
+===================================================== */
+
 .page-title {
 
     transform:
@@ -1490,38 +1613,8 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   SEITEN-VERLASSEN
-   GLEICHER ZOOM-EFFEKT WIE STARTSEITE
+   TITEL BEIM VERLASSEN
 ===================================================== */
-
-.page.leaving .page-content {
-
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
 
 .page.leaving .page-title {
 
@@ -1785,7 +1878,20 @@ nav .nav-links a:active {
     }
 
 
+    /* ---------------------------------------------
+       MOBILE ZOOM BEIM VERLASSEN
+    --------------------------------------------- */
+
     .page.leaving .page-content {
+
+        transform:
+            translate3d(0,-28px,0)
+            scale(1.12);
+    }
+
+
+    .about.leaving .about-content,
+    .contact.leaving .contact-content {
 
         transform:
             translate3d(0,-28px,0)
@@ -2009,9 +2115,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content">
+                <div class="about-content page-content">
 
-                    <h2 class="about-title">
+                    <h2 class="about-title page-title">
 
                         Weniger.<br>
 
@@ -2022,8 +2128,9 @@ nav .nav-links a:active {
 
                     <p class="about-text">
 
-                        <span>FORMA.</span> steht für
-                        minimal­istisches, modernes
+                        <span class="forma-red">FORMA.</span>
+                        steht für
+                        minimalistisches, modernes
                         und durchdachtes Design.
 
                         Wir reduzieren auf das Wesentliche
@@ -2043,9 +2150,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content">
+                <div class="about-content page-content">
 
-                    <h2 class="about-title">
+                    <h2 class="about-title page-title">
 
                         Klar.<br>
 
@@ -2074,9 +2181,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content">
+                <div class="about-content page-content">
 
-                    <h2 class="about-title">
+                    <h2 class="about-title page-title">
 
                         Anders.<br>
 
@@ -2146,6 +2253,7 @@ nav .nav-links a:active {
 
     <!-- =================================================
          PFEIL
+         BLEIBT VERTIKAL
     ================================================= -->
 
     <div
@@ -2212,6 +2320,7 @@ nav .nav-links a:active {
 
 <script>
 
+
 /* =====================================================
    HAUPTSEITEN
 ===================================================== */
@@ -2243,9 +2352,6 @@ let isAnimating = false;
 
 const aboutTrack =
     document.querySelector("#aboutTrack");
-
-const pageIndicator =
-    document.querySelector("#pageIndicator");
 
 const indicatorBubble =
     document.querySelector("#indicatorBubble");
@@ -2304,11 +2410,10 @@ function goToPage(index) {
         pages[currentPage];
 
 
-    /*
-       Wenn ABOUT verlassen wird:
-       horizontale Unterseite immer auf
-       Position 1 zurücksetzen.
-    */
+    /* ---------------------------------------------
+       ABOUT VERLASSEN
+       horizontale Unterseite zurücksetzen
+    --------------------------------------------- */
 
     if (currentPage === 1) {
 
@@ -2317,19 +2422,19 @@ function goToPage(index) {
     }
 
 
-    /*
-       Aktuelle Seite bekommt den
-       Zoom-Verlass-Effekt.
-    */
+    /* ---------------------------------------------
+       JEDE AKTUELLE SEITE BEIM VERLASSEN
+       MIT ZOOM-EFFEKT ANIMIEREN
+    --------------------------------------------- */
 
     oldPage.classList.add(
         "leaving"
     );
 
 
-    /*
-       Seitenklassen
-    */
+    /* ---------------------------------------------
+       SEITENKLASSEN
+    --------------------------------------------- */
 
     pages.forEach(
         (page, i) => {
@@ -2372,23 +2477,28 @@ function goToPage(index) {
     currentPage = index;
 
 
-    /*
-       Startseite / aktuelle Seite
-       nach der Animation zurücksetzen.
-    */
+    /* ---------------------------------------------
+       ALTE SEITE NACH DER ANIMATION BEREINIGEN
+    --------------------------------------------- */
 
     setTimeout(
         () => {
 
-            pages.forEach(
-                page => {
-
-                    page.classList.remove(
-                        "leaving"
-                    );
-
-                }
+            oldPage.classList.remove(
+                "leaving"
             );
+
+        },
+        950
+    );
+
+
+    /* ---------------------------------------------
+       ANIMATION LOCK
+    --------------------------------------------- */
+
+    setTimeout(
+        () => {
 
             isAnimating = false;
 
@@ -2428,39 +2538,51 @@ function goToAboutSlide(index) {
     currentAboutSlide = index;
 
 
-    /*
+    /* ---------------------------------------------
        Horizontale Position
-    */
+    --------------------------------------------- */
 
     aboutTrack.style.transform =
         `translate3d(-${index * 33.333333}%, 0, 0)`;
 
 
-    /*
-       -------------------------------------------------
-       WICHTIG:
-       Die Glasblase wird jetzt anhand der
-       tatsächlichen Position des Punktes berechnet.
+    /* ---------------------------------------------
+       LIQUID GLASS BLASE
 
-       Dadurch ist sie IMMER exakt mittig über
-       dem jeweiligen Punkt – unabhängig von:
-       - Desktop
-       - Smartphone
-       - Gap
-       - Padding
-       - Bildschirmbreite
-       -------------------------------------------------
-    */
+       Exakt mittig über dem jeweiligen Punkt.
+    --------------------------------------------- */
 
-    requestAnimationFrame(() => {
+    const dotWidth = 10;
 
-        requestAnimationFrame(() => {
+    const gap = 14;
 
-            positionIndicatorBubble();
+    const bubbleWidth = 24;
 
-        });
+    const startOffset = 9;
 
-    });
+
+    const firstDotCenter =
+        startOffset +
+        (dotWidth / 2);
+
+
+    const distance =
+        dotWidth +
+        gap;
+
+
+    const bubbleCenter =
+        firstDotCenter +
+        (index * distance);
+
+
+    const bubbleLeft =
+        bubbleCenter -
+        (bubbleWidth / 2);
+
+
+    indicatorBubble.style.transform =
+        `translateX(${bubbleLeft - startOffset}px)`;
 
 
     setTimeout(
@@ -2468,75 +2590,9 @@ function goToAboutSlide(index) {
 
             isHorizontalAnimating = false;
 
-            positionIndicatorBubble();
-
         },
         700
     );
-
-}
-
-
-/* =====================================================
-   GLASBLASE EXAKT MITTIG POSITIONIEREN
-===================================================== */
-
-function positionIndicatorBubble() {
-
-    if (
-        !pageIndicator ||
-        !indicatorBubble ||
-        !indicatorDots[currentAboutSlide]
-    ) {
-
-        return;
-
-    }
-
-
-    const indicatorRect =
-        pageIndicator.getBoundingClientRect();
-
-
-    const dotRect =
-        indicatorDots[
-            currentAboutSlide
-        ].getBoundingClientRect();
-
-
-    /*
-       Mittelpunkt des aktiven Punktes
-       relativ zur Punktleiste.
-    */
-
-    const dotCenter =
-        (
-            dotRect.left +
-            dotRect.width / 2
-        ) -
-        indicatorRect.left;
-
-
-    /*
-       Mittelpunkt der Blase.
-    */
-
-    const bubbleCenter =
-        indicatorBubble.offsetWidth / 2;
-
-
-    /*
-       Blase exakt auf Mittelpunkt
-       des Punktes setzen.
-    */
-
-    const translateX =
-        dotCenter -
-        bubbleCenter;
-
-
-    indicatorBubble.style.transform =
-        `translateX(${translateX}px)`;
 
 }
 
@@ -2552,18 +2608,8 @@ function resetAboutSlide() {
     aboutTrack.style.transform =
         "translate3d(0,0,0)";
 
-
-    /*
-       Nach dem Zurücksetzen warten wir
-       auf das Layout und setzen die Blase
-       wieder exakt auf Punkt 1.
-    */
-
-    requestAnimationFrame(() => {
-
-        positionIndicatorBubble();
-
-    });
+    indicatorBubble.style.transform =
+        "translateX(0)";
 
 }
 
@@ -2606,6 +2652,7 @@ indicatorDots.forEach(
 
 /* =====================================================
    SCROLL-PFEILE
+   IMMER VERTIKAL
 ===================================================== */
 
 scrollHints.forEach(
@@ -2789,10 +2836,10 @@ window.addEventListener(
         }
 
 
-        /*
+        /* =================================================
            AUF ABOUT:
-           HORIZONTAL = Unterseiten
-        */
+           HORIZONTAL = UNTERSEITEN
+        ================================================= */
 
         if (
             currentPage === 1 &&
@@ -2821,9 +2868,10 @@ window.addEventListener(
         }
 
 
-        /*
-           VERTIKAL = Hauptseiten
-        */
+        /* =================================================
+           VERTIKAL:
+           HAUPTSEITEN
+        ================================================= */
 
         if (absY >= absX) {
 
@@ -2881,6 +2929,10 @@ window.addEventListener(
 
         }
 
+
+        /* ---------------------------------------------
+           Horizontal nur auf ABOUT
+        --------------------------------------------- */
 
         if (
             currentPage === 1 &&
@@ -2992,43 +3044,6 @@ window.addEventListener(
 
         }
 
-
-        /*
-           Blase nach dem vollständigen
-           Laden exakt positionieren.
-        */
-
-        requestAnimationFrame(() => {
-
-            positionIndicatorBubble();
-
-        });
-
-    }
-);
-
-
-/* =====================================================
-   RESIZE
-   WICHTIG FÜR DESKTOP + MOBILE
-===================================================== */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        /*
-           Nach einer Größenänderung werden
-           die tatsächlichen Punktpositionen
-           neu ausgelesen.
-        */
-
-        requestAnimationFrame(() => {
-
-            positionIndicatorBubble();
-
-        });
-
     }
 );
 
@@ -3038,6 +3053,7 @@ window.addEventListener(
 ===================================================== */
 
 resetAboutSlide();
+
 
 </script>
 
