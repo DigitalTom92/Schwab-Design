@@ -732,8 +732,8 @@
 
 
     /* =====================================================
-       NEUER SCROLL-PFEIL
-       ROBUSTES SVG
+       SCROLL-PFEIL
+       AUF STARTSEITE + ÜBER UNS
     ===================================================== */
 
     .scroll-hint {
@@ -873,8 +873,6 @@
         }
     }
 
-
-    /* Pfeil verschwindet beim Seitenwechsel */
 
     .page.leaving .scroll-hint {
 
@@ -1471,14 +1469,10 @@
         </div>
 
 
-
-        <!-- =================================================
-             SCROLL-PFEIL
-        ================================================= -->
+        <!-- SCROLL-PFEIL STARTSEITE -->
 
         <div
             class="scroll-hint"
-            id="scrollHint"
             role="button"
             aria-label="Weiter zur nächsten Seite"
             tabindex="0"
@@ -1536,6 +1530,34 @@
                 und schaffen Lösungen mit Charakter.
 
             </p>
+
+        </div>
+
+
+        <!-- SCROLL-PFEIL SEITE 2 -->
+
+        <div
+            class="scroll-hint"
+            role="button"
+            aria-label="Weiter zur Kontaktseite"
+            tabindex="0"
+        >
+
+            <svg
+                viewBox="0 0 24 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+
+                <path
+                    d="M6 12 L12 18 L18 12"
+                />
+
+                <path
+                    d="M6 19 L12 25 L18 19"
+                />
+
+            </svg>
 
         </div>
 
@@ -1598,8 +1620,8 @@
         document.querySelectorAll(".nav-links a");
 
 
-    const scrollHint =
-        document.querySelector("#scrollHint");
+    const scrollHints =
+        document.querySelectorAll(".scroll-hint");
 
 
     let currentPage = 0;
@@ -1643,9 +1665,7 @@
             pages[currentPage];
 
 
-        /* ---------------------------------------------
-           STARTSEITE VERLÄSST DEN BILDSCHIRM
-        --------------------------------------------- */
+        /* STARTSEITE VERLÄSST DEN BILDSCHIRM */
 
         if (
 
@@ -1662,9 +1682,7 @@
         }
 
 
-        /* ---------------------------------------------
-           SEITENKLASSEN
-        --------------------------------------------- */
+        /* SEITENKLASSEN */
 
         pages.forEach(
             (page, i) => {
@@ -1707,9 +1725,7 @@
         currentPage = index;
 
 
-        /* ---------------------------------------------
-           STARTSEITE ZURÜCKSETZEN
-        --------------------------------------------- */
+        /* STARTSEITE ZURÜCKSETZEN */
 
         if (index === 0) {
 
@@ -1720,9 +1736,7 @@
         }
 
 
-        /* ---------------------------------------------
-           ANIMATION LOCK
-        --------------------------------------------- */
+        /* ANIMATION LOCK */
 
         setTimeout(
             () => {
@@ -1738,44 +1752,46 @@
 
 
     /* =================================================
-       PFEIL KLICK
+       SCROLL-PFEILE
     ================================================= */
 
-    scrollHint.addEventListener(
-        "click",
-        () => {
+    scrollHints.forEach(
+        hint => {
 
-            goToPage(
-                currentPage + 1
+            hint.addEventListener(
+                "click",
+                () => {
+
+                    goToPage(
+                        currentPage + 1
+                    );
+
+                }
             );
 
-        }
-    );
 
+            hint.addEventListener(
+                "keydown",
+                event => {
 
-    /* =================================================
-       PFEIL TASTATUR
-    ================================================= */
+                    if (
 
-    scrollHint.addEventListener(
-        "keydown",
-        event => {
+                        event.key === "Enter" ||
 
-            if (
+                        event.key === " "
 
-                event.key === "Enter" ||
+                    ) {
 
-                event.key === " "
+                        event.preventDefault();
 
-            ) {
+                        goToPage(
+                            currentPage + 1
+                        );
 
-                event.preventDefault();
+                    }
 
-                goToPage(
-                    currentPage + 1
-                );
-
-            }
+                }
+            );
 
         }
     );
