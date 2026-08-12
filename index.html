@@ -65,7 +65,7 @@
 
         --soft-gray: #666;
 
-        --blob-gray: #3a3a3c;
+        --splash-dark: #353537;
     }
 
 
@@ -133,11 +133,6 @@
     }
 
 
-
-    /* =====================================================
-       GLOSSY LICHTREFLEX
-    ===================================================== */
-
     nav::before {
 
         content: "";
@@ -168,7 +163,7 @@
 
 
     /* =====================================================
-       FORMA LOGO NAVIGATION
+       LOGO
     ===================================================== */
 
     .logo {
@@ -278,7 +273,7 @@
 
 
     /* =====================================================
-       NAVIGATION LINKS
+       NAV LINKS
     ===================================================== */
 
     nav .nav-links {
@@ -325,8 +320,7 @@
 
     nav .nav-links a:hover {
 
-        color:
-            #000;
+        color: #000;
 
         background:
             rgba(255,255,255,0.55);
@@ -350,7 +344,7 @@
 
 
     /* =====================================================
-       FULL PAGE CONTAINER
+       PAGE CONTAINER
     ===================================================== */
 
     .page-container {
@@ -369,7 +363,7 @@
 
 
     /* =====================================================
-       EINZELNE SEITE
+       SEITEN
     ===================================================== */
 
     .page {
@@ -419,10 +413,6 @@
     }
 
 
-    /* =====================================================
-       AKTUELLE SEITE
-    ===================================================== */
-
     .page.active {
 
         opacity: 1;
@@ -436,10 +426,6 @@
     }
 
 
-    /* =====================================================
-       VORHERIGE SEITE
-    ===================================================== */
-
     .page.previous {
 
         opacity: 0;
@@ -450,10 +436,6 @@
         z-index: 1;
     }
 
-
-    /* =====================================================
-       NÄCHSTE SEITE
-    ===================================================== */
 
     .page.next {
 
@@ -473,33 +455,26 @@
 
     .hero {
 
-        background:
-            #fff;
+        background: #fff;
 
-        text-align:
-            center;
+        text-align: center;
 
         padding:
             80px 6% 50px;
 
-        isolation:
-            isolate;
+        isolation: isolate;
     }
 
 
     .hero-content {
 
-        width:
-            100%;
+        width: 100%;
 
-        max-width:
-            1200px;
+        max-width: 1200px;
 
-        position:
-            relative;
+        position: relative;
 
-        z-index:
-            2;
+        z-index: 5;
 
         will-change:
             transform,
@@ -509,29 +484,27 @@
 
 
     /* =====================================================
-       ABSTRAKTER DUNKELGRAUER FARBKLECKS
-       HINTER DEM STARTSEITEN-INHALT
+       GROSSER DARK-GRAY COLOR SPLASH
     ===================================================== */
 
     .hero::before {
 
         content: "";
 
-        position:
-            absolute;
+        position: absolute;
+
+        z-index: 1;
 
         width:
-            clamp(
-                420px,
-                48vw,
-                720px
+            min(
+                1000px,
+                78vw
             );
 
         height:
-            clamp(
-                340px,
-                43vw,
-                620px
+            min(
+                700px,
+                70vh
             );
 
         left:
@@ -545,37 +518,36 @@
                 -50%,
                 -50%
             )
-            rotate(-8deg);
+            rotate(-8deg)
+            scale(0.92);
 
         background:
 
             radial-gradient(
-                ellipse at 48% 45%,
-                rgba(58,58,60,0.19) 0%,
-                rgba(58,58,60,0.14) 35%,
-                rgba(58,58,60,0.08) 58%,
-                rgba(58,58,60,0.025) 76%,
-                rgba(58,58,60,0) 100%
+                ellipse at 45% 42%,
+                rgba(42,42,44,0.82) 0%,
+                rgba(52,52,54,0.72) 27%,
+                rgba(58,58,60,0.58) 48%,
+                rgba(65,65,67,0.35) 67%,
+                rgba(70,70,72,0.10) 82%,
+                rgba(70,70,72,0) 100%
             );
 
         border-radius:
-            47%
-            53%
             58%
             42%
-            /
             48%
-            44%
-            56%
-            52%;
+            52%
+            /
+            43%
+            58%
+            42%
+            57%;
 
         filter:
-            blur(18px);
+            blur(9px);
 
         opacity:
-            0;
-
-        z-index:
             0;
 
         pointer-events:
@@ -583,9 +555,9 @@
 
         transition:
 
-            opacity 1.4s ease 0.25s,
+            opacity 1.2s ease 0.15s,
 
-            transform 1.6s
+            transform 1.5s
             cubic-bezier(
                 0.22,
                 1,
@@ -596,13 +568,95 @@
 
 
     /* =====================================================
-       FARBKLECKS ERSCHEINT
+       ZWEITER ORGANISCHER SPLASH-BEREICH
+    ===================================================== */
+
+    .hero::after {
+
+        content: "";
+
+        position: absolute;
+
+        z-index: 2;
+
+        width:
+            min(
+                620px,
+                52vw
+            );
+
+        height:
+            min(
+                430px,
+                45vh
+            );
+
+        left:
+            58%;
+
+        top:
+            43%;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            rotate(18deg)
+            scale(0.85);
+
+        background:
+
+            radial-gradient(
+                ellipse at center,
+                rgba(25,25,27,0.30) 0%,
+                rgba(35,35,37,0.20) 40%,
+                rgba(45,45,47,0.08) 70%,
+                rgba(45,45,47,0) 100%
+            );
+
+        border-radius:
+            45%
+            55%
+            62%
+            38%
+            /
+            55%
+            43%
+            57%
+            45%;
+
+        filter:
+            blur(20px);
+
+        opacity:
+            0;
+
+        pointer-events:
+            none;
+
+        transition:
+
+            opacity 1.5s ease 0.35s,
+
+            transform 1.7s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            );
+    }
+
+
+    /* =====================================================
+       SPLASH AKTIV
     ===================================================== */
 
     .hero.active::before {
 
         opacity:
-            1;
+            0.82;
 
         transform:
             translate(
@@ -614,92 +668,50 @@
     }
 
 
-    /* =====================================================
-       LEICHTE BEWEGUNG DES FARBKLECKS
-    ===================================================== */
-
     .hero.active::after {
 
-        content: "";
-
-        position:
-            absolute;
-
-        width:
-            clamp(
-                260px,
-                30vw,
-                460px
-            );
-
-        height:
-            clamp(
-                180px,
-                22vw,
-                340px
-            );
-
-        left:
-            50%;
-
-        top:
-            48%;
+        opacity:
+            0.75;
 
         transform:
             translate(
                 -50%,
                 -50%
-            );
+            )
+            rotate(12deg)
+            scale(1);
+    }
 
-        background:
 
-            radial-gradient(
-                ellipse,
-                rgba(30,30,32,0.045) 0%,
-                rgba(30,30,32,0) 72%
-            );
 
-        filter:
-            blur(20px);
+    /* =====================================================
+       LEICHTE SPLASH-BEWEGUNG
+    ===================================================== */
 
-        border-radius:
-            50%;
-
-        z-index:
-            0;
-
-        pointer-events:
-            none;
+    .hero.active .hero-content {
 
         animation:
-            blobFloat 8s
+            heroContentFloat
+            8s
             ease-in-out
             infinite;
     }
 
 
-    @keyframes blobFloat {
+    @keyframes heroContentFloat {
 
         0%,
         100% {
 
             transform:
-                translate(
-                    -50%,
-                    -50%
-                )
-                scale(1);
+                translateY(0);
 
         }
 
         50% {
 
             transform:
-                translate(
-                    -50%,
-                    -53%
-                )
-                scale(1.06);
+                translateY(-3px);
 
         }
 
@@ -708,25 +720,20 @@
 
 
     /* =====================================================
-       FORMA AUF STARTSEITE
+       FORMA
     ===================================================== */
 
     .eyebrow {
 
-        display:
-            flex;
+        display: flex;
 
-        justify-content:
-            center;
+        justify-content: center;
 
-        align-items:
-            center;
+        align-items: center;
 
-        margin-bottom:
-            38px;
+        margin-bottom: 38px;
 
-        opacity:
-            0;
+        opacity: 0;
 
         transform:
             translate3d(0,35px,0)
@@ -753,19 +760,13 @@
 
     .page.active .eyebrow {
 
-        opacity:
-            1;
+        opacity: 1;
 
         transform:
             translate3d(0,0,0)
             scale(1);
     }
 
-
-
-    /* =====================================================
-       GROSSES FORMA
-    ===================================================== */
 
     .eyebrow .forma-logo {
 
@@ -776,8 +777,7 @@
                 72px
             );
 
-        font-weight:
-            300;
+        font-weight: 300;
 
         letter-spacing:
             clamp(
@@ -786,29 +786,32 @@
                 13px
             );
 
-        line-height:
-            1;
+        line-height: 1;
+
+        /*
+           Heller, subtiler Schatten,
+           damit das FORMA. vor dem Splash
+           sauber abgesetzt bleibt.
+        */
+
+        text-shadow:
+
+            0 2px 5px
+            rgba(0,0,0,0.22);
     }
 
 
     .eyebrow .forma-letter {
 
-        font-weight:
-            300;
+        font-weight: 300;
     }
 
 
-    /* =====================================================
-       ROTES O
-    ===================================================== */
-
     .eyebrow .forma-o {
 
-        font-size:
-            1.08em;
+        font-size: 1.08em;
 
-        font-weight:
-            300;
+        font-weight: 300;
 
         color:
             var(--forma-red);
@@ -837,8 +840,7 @@
 
     .page.leaving .eyebrow {
 
-        opacity:
-            0;
+        opacity: 0;
 
         transform:
             translate3d(0,-42px,0)
@@ -888,17 +890,13 @@
 
     .eyebrow .forma-dot {
 
-        width:
-            5px;
+        width: 5px;
 
-        height:
-            5px;
+        height: 5px;
 
-        margin-left:
-            4px;
+        margin-left: 4px;
 
-        margin-bottom:
-            3px;
+        margin-bottom: 3px;
 
         background:
             var(--forma-red);
@@ -908,7 +906,7 @@
 
     /* =====================================================
        HERO TITLE
-       LEICHT ERHABEN
+       ERHABEN / SCHATTEN
     ===================================================== */
 
     .hero-title {
@@ -932,16 +930,27 @@
         margin-bottom:
             38px;
 
+        color:
+            #f8f8f8;
+
+        /*
+           Deutlich erhabener,
+           aber nicht kitschiger 3D-Effekt.
+        */
+
         text-shadow:
 
+            0 1px 0
+            rgba(255,255,255,0.28),
+
             0 2px 2px
-            rgba(0,0,0,0.10),
+            rgba(0,0,0,0.38),
 
-            0 5px 10px
-            rgba(0,0,0,0.12),
+            0 5px 8px
+            rgba(0,0,0,0.30),
 
-            0 10px 22px
-            rgba(0,0,0,0.055);
+            0 12px 25px
+            rgba(0,0,0,0.18);
 
         will-change:
             transform,
@@ -964,7 +973,7 @@
             );
 
         color:
-            #666;
+            rgba(255,255,255,0.78);
 
         max-width:
             700px;
@@ -974,6 +983,10 @@
 
         line-height:
             1.4;
+
+        text-shadow:
+            0 2px 6px
+            rgba(0,0,0,0.32);
 
         will-change:
             transform,
@@ -1068,19 +1081,18 @@
 
         filter:
             drop-shadow(
-                0 2px 3px
-                rgba(0,0,0,0.12)
+                0 2px 5px
+                rgba(0,0,0,0.25)
             );
     }
 
 
     .scroll-hint path {
 
-        fill:
-            none;
+        fill: none;
 
         stroke:
-            rgba(29,29,31,0.58);
+            rgba(255,255,255,0.78);
 
         stroke-width:
             2;
@@ -1092,43 +1104,6 @@
             round;
     }
 
-
-
-    /* =====================================================
-       PFEIL AUF SCHWARZER SEITE
-    ===================================================== */
-
-    .about .scroll-hint svg {
-
-        filter:
-            drop-shadow(
-                0 0 4px
-                rgba(255,255,255,0.20)
-            );
-    }
-
-
-    .about .scroll-hint path {
-
-        stroke:
-            rgba(255,255,255,0.78);
-
-        stroke-width:
-            2.1;
-    }
-
-
-    .about .scroll-hint:hover path {
-
-        stroke:
-            rgba(255,255,255,1);
-    }
-
-
-
-    /* =====================================================
-       PFEIL ANIMATION
-    ===================================================== */
 
     @keyframes arrowFloat {
 
@@ -1163,8 +1138,7 @@
 
     .page.leaving .scroll-hint {
 
-        opacity:
-            0;
+        opacity: 0;
 
         transform:
             translateX(-50%)
@@ -1268,6 +1242,13 @@
     }
 
 
+    .about .scroll-hint path {
+
+        stroke:
+            rgba(255,255,255,0.82);
+    }
+
+
 
     /* =====================================================
        KONTAKT
@@ -1358,6 +1339,13 @@
     }
 
 
+    .contact .scroll-hint path {
+
+        stroke:
+            rgba(29,29,31,0.58);
+    }
+
+
 
     /* =====================================================
        SEITEN-INHALT
@@ -1369,8 +1357,7 @@
             translate3d(0,60px,0)
             scale(0.92);
 
-        opacity:
-            0;
+        opacity: 0;
 
         transition:
 
@@ -1392,8 +1379,7 @@
             translate3d(0,0,0)
             scale(1);
 
-        opacity:
-            1;
+        opacity: 1;
     }
 
 
@@ -1402,8 +1388,7 @@
         transform:
             scale(0.92);
 
-        opacity:
-            0;
+        opacity: 0;
 
         transition:
 
@@ -1424,8 +1409,7 @@
         transform:
             scale(1);
 
-        opacity:
-            1;
+        opacity: 1;
     }
 
 
@@ -1494,30 +1478,36 @@
         }
 
 
-        /* ---------------------------------------------
-           FARBKLECKS MOBILE
-        --------------------------------------------- */
+
+        /* =============================================
+           SPLASH MOBILE
+        ============================================= */
 
         .hero::before {
 
             width:
-                105vw;
+                125vw;
 
             height:
-                58vh;
+                70vh;
 
-            top:
+            left:
                 50%;
 
-            filter:
-                blur(18px);
+            top:
+                49%;
 
             transform:
                 translate(
                     -50%,
                     -50%
                 )
-                rotate(-7deg);
+                rotate(-9deg)
+                scale(0.90);
+
+            filter:
+                blur(10px);
+
         }
 
 
@@ -1528,7 +1518,7 @@
                     -50%,
                     -50%
                 )
-                rotate(-4deg)
+                rotate(-5deg)
                 scale(1);
         }
 
@@ -1536,23 +1526,85 @@
         .hero::after {
 
             width:
-                75vw;
+                90vw;
 
             height:
-                34vh;
+                45vh;
+
+            left:
+                58%;
 
             top:
-                48%;
+                43%;
 
             filter:
-                blur(20px);
+                blur(18px);
         }
 
 
+        .hero.active::after {
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                )
+                rotate(12deg)
+                scale(1);
+        }
+
+
+
+        /* =============================================
+           MOBILE HERO
+        ============================================= */
+
         .hero-title {
+
+            font-size:
+                clamp(
+                    58px,
+                    17vw,
+                    95px
+                );
 
             letter-spacing:
                 -4px;
+
+            color:
+                #f8f8f8;
+
+            text-shadow:
+
+                0 1px 0
+                rgba(255,255,255,0.25),
+
+                0 2px 3px
+                rgba(0,0,0,0.42),
+
+                0 6px 10px
+                rgba(0,0,0,0.32),
+
+                0 12px 22px
+                rgba(0,0,0,0.18);
+        }
+
+
+        .hero-text {
+
+            font-size:
+                clamp(
+                    17px,
+                    5vw,
+                    21px
+                );
+
+            color:
+                rgba(255,255,255,0.78);
+
+            text-shadow:
+                0 2px 6px
+                rgba(0,0,0,0.35);
         }
 
 
@@ -1579,10 +1631,6 @@
                 100%;
         }
 
-
-        /* ---------------------------------------------
-           MOBILE PFEIL
-        --------------------------------------------- */
 
         .scroll-hint {
 
@@ -1622,20 +1670,10 @@
         .about .scroll-hint path {
 
             stroke:
-                rgba(255,255,255,0.82);
+                rgba(255,255,255,0.84);
 
             stroke-width:
                 2.2;
-        }
-
-
-        .about .scroll-hint svg {
-
-            filter:
-                drop-shadow(
-                    0 0 4px
-                    rgba(255,255,255,0.22)
-                );
         }
 
 
@@ -1680,8 +1718,14 @@
         }
 
 
-        .scroll-hint svg,
-        .hero.active::after {
+        .hero.active .hero-content {
+
+            animation:
+                none;
+        }
+
+
+        .scroll-hint svg {
 
             animation:
                 none;
@@ -1777,6 +1821,7 @@
         data-index="0"
     >
 
+
         <div class="hero-content page-content">
 
 
@@ -1829,6 +1874,7 @@
 
             </p>
 
+
         </div>
 
 
@@ -1875,7 +1921,9 @@
         data-index="1"
     >
 
+
         <div class="about-content page-content">
+
 
             <h2 class="about-title page-title">
 
@@ -1897,13 +1945,9 @@
 
             </p>
 
+
         </div>
 
-
-
-        <!-- =================================================
-             SCROLL-PFEIL ÜBER UNS
-        ================================================= -->
 
         <div
             class="scroll-hint"
@@ -1943,7 +1987,9 @@
         data-index="2"
     >
 
+
         <div class="contact-content page-content">
+
 
             <h2 class="contact-title page-title">
 
@@ -1960,6 +2006,7 @@
                 Wir machen daraus ein Design.
 
             </p>
+
 
         </div>
 
@@ -2023,7 +2070,6 @@
         ) {
 
             return;
-
         }
 
 
@@ -2033,10 +2079,6 @@
         const oldPage =
             pages[currentPage];
 
-
-        /* ---------------------------------------------
-           STARTSEITE VERLÄSST DEN BILDSCHIRM
-        --------------------------------------------- */
 
         if (
 
@@ -2052,10 +2094,6 @@
 
         }
 
-
-        /* ---------------------------------------------
-           SEITENKLASSEN
-        --------------------------------------------- */
 
         pages.forEach(
             (page, i) => {
@@ -2098,10 +2136,6 @@
         currentPage = index;
 
 
-        /* ---------------------------------------------
-           STARTSEITE ZURÜCKSETZEN
-        --------------------------------------------- */
-
         if (index === 0) {
 
             pages[0].classList.remove(
@@ -2110,10 +2144,6 @@
 
         }
 
-
-        /* ---------------------------------------------
-           ANIMATION LOCK
-        --------------------------------------------- */
 
         setTimeout(
             () => {
@@ -2129,7 +2159,7 @@
 
 
     /* =================================================
-       SCROLL-PFEILE
+       PFEILE
     ================================================= */
 
     scrollHints.forEach(
@@ -2259,7 +2289,6 @@
             ) {
 
                 return;
-
             }
 
 
