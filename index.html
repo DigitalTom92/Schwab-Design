@@ -943,7 +943,7 @@ nav .nav-links a:active {
         flex-start;
 
     padding:
-        10vw 8%;
+        0;
 }
 
 
@@ -1018,6 +1018,10 @@ nav .nav-links a:active {
     justify-content:
         flex-start;
 
+    /*
+       EXAKT WIE KONTAKT:
+       8% Abstand links/rechts.
+    */
     padding:
         10vw 8%;
 
@@ -1033,6 +1037,16 @@ nav .nav-links a:active {
 
     max-width:
         1300px;
+
+    /*
+       Gleiche Positionierung wie
+       .contact-content
+    */
+    margin:
+        0;
+
+    padding:
+        0;
 }
 
 
@@ -1114,10 +1128,10 @@ nav .nav-links a:active {
         translateX(-50%);
 
     height:
-        42px;
+        34px;
 
     padding:
-        8px 14px;
+        5px 9px;
 
     display:
         flex;
@@ -1126,43 +1140,36 @@ nav .nav-links a:active {
         center;
 
     gap:
-        24px;
+        14px;
 
     border-radius:
         999px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.14),
-            rgba(255,255,255,0.055)
-        );
+        rgba(255,255,255,0.09);
 
     border:
         1px solid
-        rgba(255,255,255,0.18);
+        rgba(255,255,255,0.15);
 
     box-shadow:
 
         inset 0 1px 1px
-        rgba(255,255,255,0.28),
+        rgba(255,255,255,0.22),
 
-        inset 0 -1px 2px
-        rgba(0,0,0,0.28),
+        inset 0 -1px 1px
+        rgba(0,0,0,0.22),
 
-        0 10px 35px
-        rgba(0,0,0,0.35),
-
-        0 2px 8px
-        rgba(255,255,255,0.04);
+        0 8px 25px
+        rgba(0,0,0,0.25);
 
     backdrop-filter:
-        blur(24px)
-        saturate(190%);
+        blur(18px)
+        saturate(180%);
 
     -webkit-backdrop-filter:
-        blur(24px)
-        saturate(190%);
+        blur(18px)
+        saturate(180%);
 
     z-index:
         60;
@@ -1175,9 +1182,6 @@ nav .nav-links a:active {
 
     transition:
         opacity 0.5s ease;
-
-    overflow:
-        visible;
 }
 
 
@@ -1192,7 +1196,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   LIQUID GLASS BLASE
+   GLASS BLASE
 ===================================================== */
 
 .indicator-bubble {
@@ -1201,10 +1205,10 @@ nav .nav-links a:active {
         absolute;
 
     top:
-        8px;
+        5px;
 
     left:
-        0;
+        9px;
 
     width:
         24px;
@@ -1216,45 +1220,39 @@ nav .nav-links a:active {
         50%;
 
     background:
-
         radial-gradient(
-            circle at 30% 24%,
-            rgba(255,255,255,0.95) 0%,
-            rgba(255,255,255,0.58) 12%,
-            rgba(255,255,255,0.26) 30%,
-            rgba(255,255,255,0.13) 55%,
-            rgba(255,255,255,0.08) 75%,
-            rgba(255,255,255,0.04) 100%
+            circle at 32% 25%,
+            rgba(255,255,255,0.72) 0%,
+            rgba(255,255,255,0.30) 25%,
+            rgba(255,255,255,0.14) 58%,
+            rgba(255,255,255,0.07) 100%
         );
 
     border:
         1px solid
-        rgba(255,255,255,0.48);
+        rgba(255,255,255,0.42);
 
     box-shadow:
 
-        inset 1px 1px 2px
-        rgba(255,255,255,0.72),
+        inset 0 1px 2px
+        rgba(255,255,255,0.55),
 
-        inset -1px -2px 4px
-        rgba(0,0,0,0.18),
+        inset 0 -2px 4px
+        rgba(0,0,0,0.15),
 
-        0 2px 7px
-        rgba(255,255,255,0.18),
-
-        0 2px 12px
-        rgba(0,0,0,0.18);
+        0 2px 8px
+        rgba(255,255,255,0.16);
 
     backdrop-filter:
-        blur(12px)
-        saturate(220%);
+        blur(8px)
+        saturate(190%);
 
     -webkit-backdrop-filter:
-        blur(12px)
-        saturate(220%);
+        blur(8px)
+        saturate(190%);
 
     transition:
-        transform 0.75s
+        transform 0.65s
         cubic-bezier(
             0.22,
             1,
@@ -1263,81 +1261,7 @@ nav .nav-links a:active {
         );
 
     z-index:
-        1;
-
-    pointer-events:
-        none;
-
-    will-change:
-        transform;
-}
-
-
-/* =====================================================
-   GLANZPUNKT IN DER BLASE
-===================================================== */
-
-.indicator-bubble::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    top:
-        4px;
-
-    left:
-        5px;
-
-    width:
-        7px;
-
-    height:
-        4px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,0.78);
-
-    filter:
-        blur(1px);
-
-    transform:
-        rotate(-25deg);
-}
-
-
-/* =====================================================
-   GLASREFLEX
-===================================================== */
-
-.indicator-bubble::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        2px;
-
-    border-radius:
-        50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.22),
-            transparent 45%
-        );
-
-    opacity:
-        0.8;
+        0;
 
     pointer-events:
         none;
@@ -1366,14 +1290,7 @@ nav .nav-links a:active {
         50%;
 
     background:
-
-        radial-gradient(
-            circle at 32% 28%,
-            rgba(255,255,255,0.58),
-            rgba(255,255,255,0.27) 38%,
-            rgba(255,255,255,0.14) 70%,
-            rgba(255,255,255,0.09) 100%
-        );
+        rgba(255,255,255,0.38);
 
     border:
         1px solid
@@ -1382,43 +1299,29 @@ nav .nav-links a:active {
     box-shadow:
 
         inset 0 1px 2px
-        rgba(255,255,255,0.34),
+        rgba(255,255,255,0.35),
 
-        inset 0 -1px 2px
-        rgba(0,0,0,0.20),
-
-        0 1px 5px
-        rgba(0,0,0,0.28);
+        0 1px 4px
+        rgba(0,0,0,0.25);
 
     cursor:
         default;
-
-    z-index:
-        2;
 
     transition:
 
         transform 0.3s ease,
 
-        background 0.3s ease,
-
-        opacity 0.3s ease;
+        background 0.3s ease;
 }
 
 
 .indicator-dot:hover {
 
     transform:
-        scale(1.18);
+        scale(1.15);
 
     background:
-
-        radial-gradient(
-            circle at 30% 25%,
-            rgba(255,255,255,0.72),
-            rgba(255,255,255,0.34) 40%,
-            rgba(255,255,255,0.15) 100%
-        );
+        rgba(255,255,255,0.58);
 }
 
 
@@ -1446,6 +1349,12 @@ nav .nav-links a:active {
 
     max-width:
         1300px;
+
+    margin:
+        0;
+
+    padding:
+        0;
 }
 
 
@@ -1643,6 +1552,11 @@ nav .nav-links a:active {
     }
 
 
+    /*
+       Über Uns und Kontakt verwenden
+       denselben linken Abstand.
+    */
+
     .about,
     .contact {
 
@@ -1655,6 +1569,23 @@ nav .nav-links a:active {
 
         padding:
             80px 25px;
+    }
+
+
+    .about-content,
+    .contact-content {
+
+        width:
+            100%;
+
+        max-width:
+            100%;
+
+        margin:
+            0;
+
+        padding:
+            0;
     }
 
 
@@ -1734,7 +1665,7 @@ nav .nav-links a:active {
 
 
     /* ---------------------------------------------
-       MOBILE LIQUID GLASS
+       MOBILE LIQUID GLASS PUNKTE
     --------------------------------------------- */
 
     .page-indicator {
@@ -1747,14 +1678,11 @@ nav .nav-links a:active {
                 )
             );
 
-        height:
-            42px;
-
-        padding:
-            8px 14px;
-
         gap:
-            25px;
+            15px;
+
+        height:
+            34px;
     }
 
 
@@ -1765,9 +1693,6 @@ nav .nav-links a:active {
 
         height:
             24px;
-
-        top:
-            8px;
     }
 
 
@@ -2209,6 +2134,7 @@ nav .nav-links a:active {
 
 <script>
 
+
 /* =====================================================
    HAUPTSEITEN
 ===================================================== */
@@ -2241,14 +2167,8 @@ let isAnimating = false;
 const aboutTrack =
     document.querySelector("#aboutTrack");
 
-
-const indicator =
-    document.querySelector("#pageIndicator");
-
-
 const indicatorBubble =
     document.querySelector("#indicatorBubble");
-
 
 const indicatorDots =
     document.querySelectorAll(".indicator-dot");
@@ -2411,104 +2331,6 @@ function goToPage(index) {
 
 
 /* =====================================================
-   GLASBLASE EXAKT AUF PUNKT POSITIONIEREN
-===================================================== */
-
-function updateIndicatorBubble(
-    animate = true
-) {
-
-    if (
-        !indicator ||
-        !indicatorBubble ||
-        !indicatorDots.length
-    ) {
-
-        return;
-
-    }
-
-
-    const activeDot =
-        indicatorDots[currentAboutSlide];
-
-
-    if (!activeDot) {
-
-        return;
-
-    }
-
-
-    /*
-       Wir verwenden die tatsächliche
-       Bildschirmposition des Punktes.
-
-       Dadurch bleibt die Blase auch bei:
-
-       - Desktop
-       - Smartphone
-       - unterschiedlichen gaps
-       - unterschiedlichen Breiten
-
-       exakt mittig.
-    */
-
-    const indicatorRect =
-        indicator.getBoundingClientRect();
-
-
-    const dotRect =
-        activeDot.getBoundingClientRect();
-
-
-    const dotCenter =
-        dotRect.left +
-        (dotRect.width / 2);
-
-
-    const bubbleWidth =
-        indicatorBubble.offsetWidth;
-
-
-    const bubbleLeft =
-        dotCenter -
-        indicatorRect.left -
-        (bubbleWidth / 2);
-
-
-    if (!animate) {
-
-        const previousTransition =
-            indicatorBubble.style.transition;
-
-        indicatorBubble.style.transition =
-            "none";
-
-
-        indicatorBubble.style.transform =
-            `translate3d(${bubbleLeft}px,0,0)`;
-
-
-        indicatorBubble.offsetHeight;
-
-
-        indicatorBubble.style.transition =
-            previousTransition;
-
-    }
-
-    else {
-
-        indicatorBubble.style.transform =
-            `translate3d(${bubbleLeft}px,0,0)`;
-
-    }
-
-}
-
-
-/* =====================================================
    ABOUT SLIDE
 ===================================================== */
 
@@ -2542,14 +2364,45 @@ function goToAboutSlide(index) {
     */
 
     aboutTrack.style.transform =
-        `translate3d(-${index * 33.333333}%,0,0)`;
+        `translate3d(-${index * 33.333333}%, 0, 0)`;
 
 
     /*
        Liquid Glass Blase
+
+       Die Berechnung berücksichtigt
+       exakt die Abstände der Punkte.
     */
 
-    updateIndicatorBubble(true);
+    const dotWidth = 10;
+
+    const gap = 14;
+
+    const bubbleWidth = 24;
+
+    const startOffset = 9;
+
+    const firstDotCenter =
+        startOffset +
+        (dotWidth / 2);
+
+    const distance =
+        dotWidth +
+        gap;
+
+
+    const bubbleCenter =
+        firstDotCenter +
+        (index * distance);
+
+
+    const bubbleLeft =
+        bubbleCenter -
+        (bubbleWidth / 2);
+
+
+    indicatorBubble.style.transform =
+        `translateX(${bubbleLeft - startOffset}px)`;
 
 
     setTimeout(
@@ -2572,22 +2425,11 @@ function resetAboutSlide() {
 
     currentAboutSlide = 0;
 
-
     aboutTrack.style.transform =
         "translate3d(0,0,0)";
 
-
-    /*
-       Blase exakt auf ersten Punkt
-    */
-
-    requestAnimationFrame(
-        () => {
-
-            updateIndicatorBubble(false);
-
-        }
-    );
+    indicatorBubble.style.transform =
+        "translateX(0)";
 
 }
 
@@ -2620,26 +2462,6 @@ indicatorDots.forEach(
 
 
                 goToAboutSlide(slide);
-
-            }
-        );
-
-    }
-);
-
-
-/* =====================================================
-   BLASE / PUNKTLEISTE BEI RESIZE
-===================================================== */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        requestAnimationFrame(
-            () => {
-
-                updateIndicatorBubble(false);
 
             }
         );
@@ -2729,7 +2551,9 @@ window.addEventListener(
 
 
         /*
-           Mausrad bleibt immer vertikal.
+           Auf ABOUT:
+           Mausrad bleibt VERTIKAL.
+           Niemals horizontal.
         */
 
         if (event.deltaY > 0) {
@@ -2909,6 +2733,8 @@ window.addEventListener(
 
 
             /*
+               WICHTIG:
+
                Finger nach OBEN
                = nach UNTEN scrollen
                = nächste Seite
@@ -3086,20 +2912,6 @@ window.addEventListener(
             goToPage(2);
 
         }
-
-
-        /*
-           Nach dem Laden die Blase
-           exakt positionieren.
-        */
-
-        requestAnimationFrame(
-            () => {
-
-                updateIndicatorBubble(false);
-
-            }
-        );
 
     }
 );
