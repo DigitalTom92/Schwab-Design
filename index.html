@@ -31,7 +31,6 @@ html {
 }
 
 body {
-
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -43,26 +42,20 @@ body {
         sans-serif;
 
     color: #1d1d1f;
-
     background: #fff;
 
     overflow: hidden;
 
     -webkit-font-smoothing: antialiased;
-
     text-rendering: geometricPrecision;
 
     touch-action: none;
 }
 
 :root {
-
     --forma-red: #D72638;
-
     --dark-text: #1d1d1f;
-
     --soft-gray: #666;
-
 }
 
 
@@ -72,13 +65,10 @@ body {
 ===================================================== */
 
 nav {
-
     height: 60px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     padding: 0 6%;
@@ -86,13 +76,10 @@ nav {
     position: fixed;
 
     top: 0;
-
     left: 0;
-
     right: 0;
 
     background:
-
         linear-gradient(
             180deg,
             rgba(255,255,255,0.94) 0%,
@@ -113,7 +100,6 @@ nav {
         rgba(0,0,0,0.08);
 
     box-shadow:
-
         0 8px 30px
         rgba(0,0,0,0.06),
 
@@ -134,21 +120,17 @@ nav {
 ===================================================== */
 
 nav::before {
-
     content: "";
 
     position: absolute;
 
     top: 0;
-
     left: 0;
-
     right: 0;
 
     height: 42%;
 
     background:
-
         linear-gradient(
             180deg,
             rgba(255,255,255,0.72),
@@ -166,17 +148,13 @@ nav::before {
 ===================================================== */
 
 .logo {
-
     position: relative;
-
     z-index: 2;
 
     display: flex;
-
     align-items: center;
 
     text-decoration: none;
-
     cursor: pointer;
 
     transition:
@@ -185,18 +163,14 @@ nav::before {
 }
 
 .logo:hover {
-
     opacity: 0.72;
 
     transform:
         translateY(-1px);
 }
 
-
 .forma-logo {
-
     display: inline-flex;
-
     align-items: baseline;
 
     color:
@@ -219,9 +193,7 @@ nav::before {
     white-space: nowrap;
 }
 
-
 .forma-letter {
-
     display: inline-block;
 
     color:
@@ -230,9 +202,7 @@ nav::before {
     font-weight: 500;
 }
 
-
 .forma-o {
-
     display: inline-block;
 
     color:
@@ -246,17 +216,13 @@ nav::before {
         center center;
 }
 
-
 .forma-dot {
-
     display: inline-block;
 
     width: 3px;
-
     height: 3px;
 
     margin-left: 2px;
-
     margin-bottom: 1px;
 
     border-radius: 50%;
@@ -271,26 +237,21 @@ nav::before {
 ===================================================== */
 
 nav .nav-links {
-
     position: relative;
 
     z-index: 2;
 
     display: flex;
-
     align-items: center;
 }
 
-
 nav .nav-links a {
-
     color:
         rgba(29,29,31,0.82);
 
     text-decoration: none;
 
     font-size: 14px;
-
     font-weight: 500;
 
     margin-left: 30px;
@@ -303,17 +264,12 @@ nav .nav-links a {
     cursor: pointer;
 
     transition:
-
         color 0.25s ease,
-
         background 0.25s ease,
-
         transform 0.2s ease;
 }
 
-
 nav .nav-links a:hover {
-
     color:
         #000;
 
@@ -321,7 +277,6 @@ nav .nav-links a:hover {
         rgba(255,255,255,0.55);
 
     box-shadow:
-
         inset 0 1px 0
         rgba(255,255,255,0.8);
 
@@ -329,9 +284,7 @@ nav .nav-links a:hover {
         translateY(-1px);
 }
 
-
 nav .nav-links a:active {
-
     transform:
         scale(0.96);
 }
@@ -342,11 +295,9 @@ nav .nav-links a:active {
 ===================================================== */
 
 .page-container {
-
     width: 100vw;
 
     height: 100vh;
-
     height: 100dvh;
 
     overflow: hidden;
@@ -360,40 +311,33 @@ nav .nav-links a:active {
 ===================================================== */
 
 .page {
-
     width: 100vw;
 
     height: 100vh;
-
     height: 100dvh;
 
     min-height: 100vh;
-
     min-height: 100dvh;
 
     position: absolute;
 
     top: 0;
-
     left: 0;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     overflow: hidden;
 
     opacity: 0;
-
     pointer-events: none;
 
     transform:
         translate3d(0,100%,0);
 
     transition:
-
         transform 0.9s
         cubic-bezier(
             0.77,
@@ -405,9 +349,7 @@ nav .nav-links a:active {
         opacity 0.6s ease;
 }
 
-
 .page.active {
-
     opacity: 1;
 
     pointer-events: auto;
@@ -418,9 +360,7 @@ nav .nav-links a:active {
     z-index: 2;
 }
 
-
 .page.previous {
-
     opacity: 0;
 
     transform:
@@ -429,9 +369,7 @@ nav .nav-links a:active {
     z-index: 1;
 }
 
-
 .page.next {
-
     opacity: 0;
 
     transform:
@@ -446,7 +384,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .hero {
-
     background:
         #fff;
 
@@ -457,9 +394,7 @@ nav .nav-links a:active {
         80px 6% 50px;
 }
 
-
 .hero-content {
-
     width:
         100%;
 
@@ -477,7 +412,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .eyebrow {
-
     display:
         flex;
 
@@ -498,7 +432,6 @@ nav .nav-links a:active {
         scale(0.94);
 
     transition:
-
         opacity 0.85s ease 0.25s,
 
         transform 1.05s
@@ -515,9 +448,7 @@ nav .nav-links a:active {
         opacity;
 }
 
-
 .page.active .eyebrow {
-
     opacity:
         1;
 
@@ -532,7 +463,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .eyebrow .forma-logo {
-
     font-size:
         clamp(
             42px,
@@ -554,9 +484,7 @@ nav .nav-links a:active {
         1;
 }
 
-
 .eyebrow .forma-letter {
-
     font-weight:
         300;
 }
@@ -567,7 +495,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .eyebrow .forma-o {
-
     font-size:
         1.08em;
 
@@ -581,7 +508,6 @@ nav .nav-links a:active {
         center center;
 
     transition:
-
         transform 0.8s
         cubic-bezier(
             0.22,
@@ -593,9 +519,7 @@ nav .nav-links a:active {
         filter 0.8s ease;
 }
 
-
 .page.leaving .eyebrow {
-
     opacity:
         0;
 
@@ -604,7 +528,6 @@ nav .nav-links a:active {
         scale(1.16);
 
     transition:
-
         opacity 0.46s
         cubic-bezier(
             0.4,
@@ -622,9 +545,7 @@ nav .nav-links a:active {
         );
 }
 
-
 .page.leaving .eyebrow .forma-o {
-
     transform:
         scale(1.20);
 
@@ -632,9 +553,7 @@ nav .nav-links a:active {
         saturate(1.2);
 }
 
-
 .page.active .eyebrow .forma-o {
-
     transform:
         scale(1);
 }
@@ -645,7 +564,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .eyebrow .forma-dot {
-
     width:
         5px;
 
@@ -668,7 +586,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .hero-title {
-
     font-size:
         clamp(
             70px,
@@ -689,7 +606,6 @@ nav .nav-links a:active {
         38px;
 
     text-shadow:
-
         0 2px 2px
         rgba(0,0,0,0.10),
 
@@ -704,9 +620,7 @@ nav .nav-links a:active {
         opacity;
 }
 
-
 .hero-text {
-
     font-size:
         clamp(
             19px,
@@ -737,7 +651,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .scroll-hint {
-
     position:
         absolute;
 
@@ -783,15 +696,12 @@ nav .nav-links a:active {
         none;
 
     transition:
-
         opacity 0.7s ease,
 
         transform 0.5s ease;
 }
 
-
 .page.active .scroll-hint {
-
     opacity:
         1;
 
@@ -799,9 +709,7 @@ nav .nav-links a:active {
         auto;
 }
 
-
 .scroll-hint svg {
-
     width:
         26px;
 
@@ -823,9 +731,7 @@ nav .nav-links a:active {
         );
 }
 
-
 .scroll-hint path {
-
     fill:
         none;
 
@@ -848,7 +754,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .about .scroll-hint svg {
-
     filter:
         drop-shadow(
             0 0 4px
@@ -856,9 +761,7 @@ nav .nav-links a:active {
         );
 }
 
-
 .about .scroll-hint path {
-
     stroke:
         rgba(255,255,255,0.78);
 
@@ -866,9 +769,7 @@ nav .nav-links a:active {
         2.1;
 }
 
-
 .about .scroll-hint:hover path {
-
     stroke:
         rgba(255,255,255,1);
 }
@@ -881,7 +782,6 @@ nav .nav-links a:active {
 @keyframes arrowFloat {
 
     0% {
-
         transform:
             translateY(0);
 
@@ -890,7 +790,6 @@ nav .nav-links a:active {
     }
 
     50% {
-
         transform:
             translateY(7px);
 
@@ -899,7 +798,6 @@ nav .nav-links a:active {
     }
 
     100% {
-
         transform:
             translateY(0);
 
@@ -914,7 +812,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .page.leaving .scroll-hint {
-
     opacity:
         0;
 
@@ -932,7 +829,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .about {
-
     background:
         #000;
 
@@ -948,11 +844,145 @@ nav .nav-links a:active {
 
 
 /* =====================================================
+   FORMA AUF ÜBER UNS
+   NUR O UND PUNKT ROT
+===================================================== */
+
+.about-eyebrow {
+    position:
+        absolute;
+
+    top:
+        88px;
+
+    left:
+        8%;
+
+    z-index:
+        20;
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,30px,0)
+        scale(0.94);
+
+    transition:
+        opacity 0.85s ease 0.25s,
+
+        transform 1.05s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        )
+        0.25s;
+}
+
+.about.active .about-eyebrow {
+    opacity:
+        1;
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+}
+
+.about-eyebrow .forma-logo {
+    color:
+        #fff;
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            72px
+        );
+
+    font-weight:
+        300;
+
+    letter-spacing:
+        clamp(
+            5px,
+            0.9vw,
+            13px
+        );
+
+    line-height:
+        1;
+}
+
+.about-eyebrow .forma-letter {
+    color:
+        #fff;
+
+    font-weight:
+        300;
+}
+
+.about-eyebrow .forma-o {
+    color:
+        var(--forma-red);
+
+    font-weight:
+        300;
+
+    font-size:
+        1.08em;
+
+    transform-origin:
+        center center;
+
+    transition:
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+.about-eyebrow .forma-dot {
+    background:
+        var(--forma-red);
+
+    width:
+        5px;
+
+    height:
+        5px;
+
+    margin-left:
+        4px;
+
+    margin-bottom:
+        3px;
+}
+
+.about.leaving .about-eyebrow {
+    opacity:
+        0;
+
+    transform:
+        translate3d(0,-42px,0)
+        scale(1.16);
+}
+
+.about.leaving .about-eyebrow .forma-o {
+    transform:
+        scale(1.20);
+}
+
+
+/* =====================================================
    HORIZONTALES INNEN-KARUSSELL
 ===================================================== */
 
 .about-slider {
-
     width:
         100%;
 
@@ -969,9 +999,7 @@ nav .nav-links a:active {
         hidden;
 }
 
-
 .about-track {
-
     height:
         100%;
 
@@ -997,9 +1025,7 @@ nav .nav-links a:active {
         transform;
 }
 
-
 .about-slide {
-
     width:
         33.333333%;
 
@@ -1025,9 +1051,7 @@ nav .nav-links a:active {
         hidden;
 }
 
-
 .about-content {
-
     width:
         100%;
 
@@ -1039,19 +1063,9 @@ nav .nav-links a:active {
 
     padding:
         0;
-
-    will-change:
-        transform,
-        opacity;
 }
 
-
-/* =====================================================
-   ABOUT TITEL
-===================================================== */
-
 .about-title {
-
     font-size:
         clamp(
             65px,
@@ -1072,7 +1086,6 @@ nav .nav-links a:active {
         45px;
 
     text-shadow:
-
         0 2px 2px
         rgba(255,255,255,0.12),
 
@@ -1083,9 +1096,7 @@ nav .nav-links a:active {
         rgba(255,255,255,0.045);
 }
 
-
 .about-text {
-
     max-width:
         700px;
 
@@ -1105,95 +1116,23 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   ROTES O UND PUNKT IM ABOUT-TEXT
+   ROTES O UND PUNKT IM ÜBER-UNS-TEXT
 ===================================================== */
 
-.about-text .forma-red {
-
+.about-text .red-o {
     color:
         var(--forma-red);
+
+    font-weight:
+        inherit;
 }
 
+.about-text .red-dot {
+    color:
+        var(--forma-red);
 
-/* =====================================================
-   ZOOM-EFFEKT BEIM VERLASSEN
-   ÜBER UNS + KONTAKT
-===================================================== */
-
-.about .about-content,
-.contact .contact-content {
-
-    transform:
-        translate3d(0,60px,0)
-        scale(0.92);
-
-    opacity:
-        0;
-
-    transition:
-
-        transform 1s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        ),
-
-        opacity 0.7s ease;
-
-    will-change:
-        transform,
-        opacity;
-}
-
-
-.about.active .about-content,
-.contact.active .contact-content {
-
-    transform:
-        translate3d(0,0,0)
-        scale(1);
-
-    opacity:
-        1;
-}
-
-
-/*
-   BEIM VERLASSEN:
-   Schrift zoomt leicht heraus,
-   bewegt sich nach oben und
-   verschwindet gleichzeitig.
-*/
-
-.about.leaving .about-content,
-.contact.leaving .contact-content {
-
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
+    font-weight:
+        inherit;
 }
 
 
@@ -1202,7 +1141,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .page-indicator {
-
     position:
         absolute;
 
@@ -1246,7 +1184,6 @@ nav .nav-links a:active {
         rgba(255,255,255,0.15);
 
     box-shadow:
-
         inset 0 1px 1px
         rgba(255,255,255,0.22),
 
@@ -1277,9 +1214,7 @@ nav .nav-links a:active {
         opacity 0.5s ease;
 }
 
-
 .page.active .page-indicator {
-
     opacity:
         1;
 
@@ -1290,18 +1225,18 @@ nav .nav-links a:active {
 
 /* =====================================================
    GLASS BLASE
+   EXAKT ÜBER DEM JEWEILIGEN PUNKT
 ===================================================== */
 
 .indicator-bubble {
-
     position:
         absolute;
 
-    top:
-        5px;
-
     left:
         9px;
+
+    top:
+        50%;
 
     width:
         24px;
@@ -1326,7 +1261,6 @@ nav .nav-links a:active {
         rgba(255,255,255,0.42);
 
     box-shadow:
-
         inset 0 1px 2px
         rgba(255,255,255,0.55),
 
@@ -1343,6 +1277,13 @@ nav .nav-links a:active {
     -webkit-backdrop-filter:
         blur(8px)
         saturate(190%);
+
+    transform:
+        translate3d(
+            0,
+            -50%,
+            0
+        );
 
     transition:
         transform 0.65s
@@ -1366,7 +1307,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .indicator-dot {
-
     position:
         relative;
 
@@ -1390,7 +1330,6 @@ nav .nav-links a:active {
         rgba(255,255,255,0.28);
 
     box-shadow:
-
         inset 0 1px 2px
         rgba(255,255,255,0.35),
 
@@ -1401,15 +1340,15 @@ nav .nav-links a:active {
         default;
 
     transition:
-
         transform 0.3s ease,
 
         background 0.3s ease;
+
+    z-index:
+        1;
 }
 
-
 .indicator-dot:hover {
-
     transform:
         scale(1.15);
 
@@ -1423,7 +1362,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .contact {
-
     background:
         #fff;
 
@@ -1434,9 +1372,7 @@ nav .nav-links a:active {
         10vw 8%;
 }
 
-
 .contact-content {
-
     width:
         100%;
 
@@ -1450,9 +1386,7 @@ nav .nav-links a:active {
         0;
 }
 
-
 .contact-title {
-
     font-size:
         clamp(
             65px,
@@ -1473,7 +1407,6 @@ nav .nav-links a:active {
         45px;
 
     text-shadow:
-
         0 2px 2px
         rgba(0,0,0,0.10),
 
@@ -1484,9 +1417,7 @@ nav .nav-links a:active {
         rgba(0,0,0,0.055);
 }
 
-
 .contact-text {
-
     max-width:
         700px;
 
@@ -1510,7 +1441,6 @@ nav .nav-links a:active {
 ===================================================== */
 
 .page-content {
-
     transform:
         translate3d(0,60px,0)
         scale(0.92);
@@ -1519,7 +1449,6 @@ nav .nav-links a:active {
         0;
 
     transition:
-
         transform 1s
         cubic-bezier(
             0.22,
@@ -1531,9 +1460,7 @@ nav .nav-links a:active {
         opacity 0.7s ease;
 }
 
-
 .page.active .page-content {
-
     transform:
         translate3d(0,0,0)
         scale(1);
@@ -1542,46 +1469,7 @@ nav .nav-links a:active {
         1;
 }
 
-
-/* =====================================================
-   GENERELLER ZOOM-EFFEKT BEIM VERLASSEN
-===================================================== */
-
-.page.leaving .page-content {
-
-    opacity:
-        0;
-
-    transform:
-        translate3d(0,-42px,0)
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
-
-/* =====================================================
-   TITEL
-===================================================== */
-
 .page-title {
-
     transform:
         scale(0.92);
 
@@ -1589,7 +1477,6 @@ nav .nav-links a:active {
         0;
 
     transition:
-
         transform 1.2s
         cubic-bezier(
             0.22,
@@ -1601,46 +1488,12 @@ nav .nav-links a:active {
         opacity 0.8s ease;
 }
 
-
 .page.active .page-title {
-
     transform:
         scale(1);
 
     opacity:
         1;
-}
-
-
-/* =====================================================
-   TITEL BEIM VERLASSEN
-===================================================== */
-
-.page.leaving .page-title {
-
-    opacity:
-        0;
-
-    transform:
-        scale(1.16);
-
-    transition:
-
-        opacity 0.46s
-        cubic-bezier(
-            0.4,
-            0,
-            1,
-            1
-        ),
-
-        transform 0.8s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
 }
 
 
@@ -1651,7 +1504,6 @@ nav .nav-links a:active {
 @media (max-width: 700px) {
 
     .forma-logo {
-
         font-size:
             19px;
 
@@ -1661,14 +1513,12 @@ nav .nav-links a:active {
 
 
     .eyebrow {
-
         margin-bottom:
             28px;
     }
 
 
     .eyebrow .forma-logo {
-
         font-size:
             34px;
 
@@ -1678,7 +1528,6 @@ nav .nav-links a:active {
 
 
     .eyebrow .forma-o {
-
         font-size:
             1.08em;
 
@@ -1687,8 +1536,33 @@ nav .nav-links a:active {
     }
 
 
-    nav .nav-links a {
+    /* ---------------------------------------------
+       FORMA AUF ÜBER UNS – MOBILE
+    --------------------------------------------- */
 
+    .about-eyebrow {
+        top:
+            82px;
+
+        left:
+            25px;
+    }
+
+    .about-eyebrow .forma-logo {
+        font-size:
+            34px;
+
+        letter-spacing:
+            5px;
+    }
+
+    .about-eyebrow .forma-o {
+        font-size:
+            1.08em;
+    }
+
+
+    nav .nav-links a {
         margin-left:
             15px;
 
@@ -1701,14 +1575,12 @@ nav .nav-links a:active {
 
 
     .hero {
-
         padding:
             70px 25px 40px;
     }
 
 
     .hero-title {
-
         letter-spacing:
             -4px;
     }
@@ -1716,14 +1588,12 @@ nav .nav-links a:active {
 
     .about,
     .contact {
-
         padding:
             80px 25px;
     }
 
 
     .about-slide {
-
         padding:
             80px 25px;
     }
@@ -1731,7 +1601,6 @@ nav .nav-links a:active {
 
     .about-content,
     .contact-content {
-
         width:
             100%;
 
@@ -1748,7 +1617,6 @@ nav .nav-links a:active {
 
     .about-title,
     .contact-title {
-
         letter-spacing:
             -4px;
     }
@@ -1756,7 +1624,6 @@ nav .nav-links a:active {
 
     .about-text,
     .contact-text {
-
         max-width:
             100%;
     }
@@ -1767,7 +1634,6 @@ nav .nav-links a:active {
     --------------------------------------------- */
 
     .scroll-hint {
-
         bottom:
             calc(
                 20px +
@@ -1785,7 +1651,6 @@ nav .nav-links a:active {
 
 
     .scroll-hint svg {
-
         width:
             24px;
 
@@ -1795,14 +1660,12 @@ nav .nav-links a:active {
 
 
     .scroll-hint path {
-
         stroke-width:
             2.2;
     }
 
 
     .about .scroll-hint path {
-
         stroke:
             rgba(255,255,255,0.82);
 
@@ -1812,7 +1675,6 @@ nav .nav-links a:active {
 
 
     .about .scroll-hint svg {
-
         filter:
             drop-shadow(
                 0 0 4px
@@ -1826,7 +1688,6 @@ nav .nav-links a:active {
     --------------------------------------------- */
 
     .page-indicator {
-
         bottom:
             calc(
                 82px +
@@ -1844,7 +1705,6 @@ nav .nav-links a:active {
 
 
     .indicator-bubble {
-
         width:
             24px;
 
@@ -1854,7 +1714,6 @@ nav .nav-links a:active {
 
 
     .indicator-dot {
-
         width:
             10px;
 
@@ -1864,7 +1723,6 @@ nav .nav-links a:active {
 
 
     .page.leaving .eyebrow {
-
         transform:
             translate3d(0,-28px,0)
             scale(1.12);
@@ -1872,37 +1730,8 @@ nav .nav-links a:active {
 
 
     .page.leaving .eyebrow .forma-o {
-
         transform:
             scale(1.15);
-    }
-
-
-    /* ---------------------------------------------
-       MOBILE ZOOM BEIM VERLASSEN
-    --------------------------------------------- */
-
-    .page.leaving .page-content {
-
-        transform:
-            translate3d(0,-28px,0)
-            scale(1.12);
-    }
-
-
-    .about.leaving .about-content,
-    .contact.leaving .contact-content {
-
-        transform:
-            translate3d(0,-28px,0)
-            scale(1.12);
-    }
-
-
-    .page.leaving .page-title {
-
-        transform:
-            scale(1.12);
     }
 
 }
@@ -1915,7 +1744,6 @@ nav .nav-links a:active {
 @media (prefers-reduced-motion: reduce) {
 
     .page {
-
         transition:
             none;
     }
@@ -1925,16 +1753,16 @@ nav .nav-links a:active {
     .page-title,
     .eyebrow,
     .eyebrow .forma-o,
+    .about-eyebrow,
+    .about-eyebrow .forma-o,
     .about-track,
     .indicator-bubble {
-
         transition:
             none;
     }
 
 
     .scroll-hint svg {
-
         animation:
             none;
     }
@@ -2101,6 +1929,31 @@ nav .nav-links a:active {
 >
 
 
+    <!-- =================================================
+         FORMA SCHRIFTZUG AUF ÜBER UNS
+    ================================================= -->
+
+    <div class="about-eyebrow">
+
+        <span class="forma-logo">
+
+            <span class="forma-letter">F</span>
+
+            <span class="forma-o">O</span>
+
+            <span class="forma-letter">R</span>
+
+            <span class="forma-letter">M</span>
+
+            <span class="forma-letter">A</span>
+
+            <span class="forma-dot"></span>
+
+        </span>
+
+    </div>
+
+
     <div class="about-slider">
 
         <div
@@ -2115,9 +1968,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content page-content">
+                <div class="about-content">
 
-                    <h2 class="about-title page-title">
+                    <h2 class="about-title">
 
                         Weniger.<br>
 
@@ -2128,8 +1981,7 @@ nav .nav-links a:active {
 
                     <p class="about-text">
 
-                        <span class="forma-red">FORMA.</span>
-                        steht für
+                        F<span class="red-o">O</span>RMA<span class="red-dot">.</span> steht für
                         minimalistisches, modernes
                         und durchdachtes Design.
 
@@ -2150,9 +2002,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content page-content">
+                <div class="about-content">
 
-                    <h2 class="about-title page-title">
+                    <h2 class="about-title">
 
                         Klar.<br>
 
@@ -2181,9 +2033,9 @@ nav .nav-links a:active {
 
             <div class="about-slide">
 
-                <div class="about-content page-content">
+                <div class="about-content">
 
-                    <h2 class="about-title page-title">
+                    <h2 class="about-title">
 
                         Anders.<br>
 
@@ -2353,8 +2205,10 @@ let isAnimating = false;
 const aboutTrack =
     document.querySelector("#aboutTrack");
 
+
 const indicatorBubble =
     document.querySelector("#indicatorBubble");
+
 
 const indicatorDots =
     document.querySelectorAll(".indicator-dot");
@@ -2387,19 +2241,12 @@ let touchStartedOnIndicator = false;
 function goToPage(index) {
 
     if (
-
         index < 0 ||
-
         index >= pages.length ||
-
         index === currentPage ||
-
         isAnimating
-
     ) {
-
         return;
-
     }
 
 
@@ -2410,31 +2257,34 @@ function goToPage(index) {
         pages[currentPage];
 
 
-    /* ---------------------------------------------
-       ABOUT VERLASSEN
-       horizontale Unterseite zurücksetzen
-    --------------------------------------------- */
+    /*
+       Wenn ABOUT verlassen wird:
+       horizontale Unterseite immer auf
+       Position 1 zurücksetzen.
+    */
 
     if (currentPage === 1) {
-
         resetAboutSlide();
-
     }
 
 
-    /* ---------------------------------------------
-       JEDE AKTUELLE SEITE BEIM VERLASSEN
-       MIT ZOOM-EFFEKT ANIMIEREN
-    --------------------------------------------- */
+    /*
+       Startseite verlässt Bildschirm
+    */
 
-    oldPage.classList.add(
-        "leaving"
-    );
+    if (
+        currentPage === 0 &&
+        index > 0
+    ) {
+        oldPage.classList.add(
+            "leaving"
+        );
+    }
 
 
-    /* ---------------------------------------------
-       SEITENKLASSEN
-    --------------------------------------------- */
+    /*
+       Seitenklassen
+    */
 
     pages.forEach(
         (page, i) => {
@@ -2477,25 +2327,22 @@ function goToPage(index) {
     currentPage = index;
 
 
-    /* ---------------------------------------------
-       ALTE SEITE NACH DER ANIMATION BEREINIGEN
-    --------------------------------------------- */
+    /*
+       Startseite zurücksetzen
+    */
 
-    setTimeout(
-        () => {
+    if (index === 0) {
 
-            oldPage.classList.remove(
-                "leaving"
-            );
+        pages[0].classList.remove(
+            "leaving"
+        );
 
-        },
-        950
-    );
+    }
 
 
-    /* ---------------------------------------------
-       ANIMATION LOCK
-    --------------------------------------------- */
+    /*
+       Animation Lock
+    */
 
     setTimeout(
         () => {
@@ -2516,19 +2363,12 @@ function goToPage(index) {
 function goToAboutSlide(index) {
 
     if (
-
         index < 0 ||
-
         index > 2 ||
-
         index === currentAboutSlide ||
-
         isHorizontalAnimating
-
     ) {
-
         return;
-
     }
 
 
@@ -2538,51 +2378,40 @@ function goToAboutSlide(index) {
     currentAboutSlide = index;
 
 
-    /* ---------------------------------------------
+    /*
        Horizontale Position
-    --------------------------------------------- */
+    */
 
     aboutTrack.style.transform =
         `translate3d(-${index * 33.333333}%, 0, 0)`;
 
 
-    /* ---------------------------------------------
-       LIQUID GLASS BLASE
+    /*
+       Liquid Glass Blase
 
-       Exakt mittig über dem jeweiligen Punkt.
-    --------------------------------------------- */
+       Die Blase wird exakt anhand
+       des tatsächlichen Punkt-Abstands
+       positioniert.
+
+       Punktbreite = 10px
+       Abstand = 14px
+       Gesamtweg = 24px
+
+       Dadurch bleibt das Zentrum der
+       Blase exakt über dem Zentrum
+       des jeweiligen Punktes.
+    */
 
     const dotWidth = 10;
 
     const gap = 14;
 
-    const bubbleWidth = 24;
-
-    const startOffset = 9;
-
-
-    const firstDotCenter =
-        startOffset +
-        (dotWidth / 2);
-
-
-    const distance =
-        dotWidth +
-        gap;
-
-
-    const bubbleCenter =
-        firstDotCenter +
-        (index * distance);
-
-
-    const bubbleLeft =
-        bubbleCenter -
-        (bubbleWidth / 2);
+    const step =
+        dotWidth + gap;
 
 
     indicatorBubble.style.transform =
-        `translateX(${bubbleLeft - startOffset}px)`;
+        `translate3d(${index * step}px, -50%, 0)`;
 
 
     setTimeout(
@@ -2609,7 +2438,7 @@ function resetAboutSlide() {
         "translate3d(0,0,0)";
 
     indicatorBubble.style.transform =
-        "translateX(0)";
+        "translate3d(0,-50%,0)";
 
 }
 
@@ -2635,9 +2464,7 @@ indicatorDots.forEach(
 
 
                 if (currentPage !== 1) {
-
                     return;
-
                 }
 
 
@@ -2665,6 +2492,11 @@ scrollHints.forEach(
                 event.stopPropagation();
 
 
+                /*
+                   Pfeil bedeutet IMMER:
+                   nächste vertikale Hauptseite.
+                */
+
                 goToPage(
                     currentPage + 1
                 );
@@ -2678,11 +2510,8 @@ scrollHints.forEach(
             event => {
 
                 if (
-
                     event.key === "Enter" ||
-
                     event.key === " "
-
                 ) {
 
                     event.preventDefault();
@@ -2710,20 +2539,22 @@ window.addEventListener(
     event => {
 
         if (isAnimating) {
-
             return;
-
         }
 
 
         if (
             Math.abs(event.deltaY) < 25
         ) {
-
             return;
-
         }
 
+
+        /*
+           Auf ABOUT:
+           Mausrad bleibt VERTIKAL.
+           Niemals horizontal.
+        */
 
         if (event.deltaY > 0) {
 
@@ -2768,6 +2599,11 @@ window.addEventListener(
             touch.screenY;
 
 
+        /*
+           Prüfen, ob Touch auf Punktleiste
+           begonnen wurde.
+        */
+
         touchStartedOnIndicator =
             !!event.target.closest(
                 ".page-indicator"
@@ -2787,6 +2623,12 @@ window.addEventListener(
 window.addEventListener(
     "touchend",
     event => {
+
+        /*
+           Wenn direkt auf Punktleiste
+           gestartet wurde, nicht als
+           Seiten-Wisch interpretieren.
+        */
 
         if (touchStartedOnIndicator) {
 
@@ -2827,24 +2669,31 @@ window.addEventListener(
             Math.abs(differenceY);
 
 
+        /*
+           Zu kleiner Wisch
+        */
+
         if (
             Math.max(absX, absY) < 50
         ) {
-
             return;
-
         }
 
 
         /* =================================================
-           AUF ABOUT:
-           HORIZONTAL = UNTERSEITEN
+           AUF DER ZWEITEN HAUPTSEITE:
+           HORIZONTAL = Unterseiten
         ================================================= */
 
         if (
             currentPage === 1 &&
             absX > absY
         ) {
+
+            /*
+               Finger nach links:
+               nächste Unterseite
+            */
 
             if (differenceX > 0) {
 
@@ -2853,6 +2702,12 @@ window.addEventListener(
                 );
 
             }
+
+
+            /*
+               Finger nach rechts:
+               vorherige Unterseite
+            */
 
             else {
 
@@ -2870,10 +2725,23 @@ window.addEventListener(
 
         /* =================================================
            VERTIKAL:
-           HAUPTSEITEN
+           GILT FÜR ALLE HAUPTSEITEN
         ================================================= */
 
         if (absY >= absX) {
+
+
+            /*
+               WICHTIG:
+
+               Finger nach OBEN
+               = nach UNTEN scrollen
+               = nächste Seite
+
+               Finger nach UNTEN
+               = nach OBEN scrollen
+               = vorherige Seite
+            */
 
             if (differenceY > 0) {
 
@@ -2930,9 +2798,9 @@ window.addEventListener(
         }
 
 
-        /* ---------------------------------------------
+        /*
            Horizontal nur auf ABOUT
-        --------------------------------------------- */
+        */
 
         if (
             currentPage === 1 &&
