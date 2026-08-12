@@ -25,10 +25,12 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: auto;
     overflow: hidden;
 }
+
 
 body {
 
@@ -51,6 +53,8 @@ body {
     -webkit-font-smoothing: antialiased;
 
     text-rendering: geometricPrecision;
+
+    user-select: none;
 }
 
 
@@ -67,6 +71,7 @@ body {
 
 /* =====================================================
    NAVIGATION
+   APPLE STYLE GLOSSY
 ===================================================== */
 
 nav {
@@ -156,7 +161,7 @@ nav::before {
 
 
 /* =====================================================
-   LOGO
+   FORMA LOGO
 ===================================================== */
 
 .logo {
@@ -174,7 +179,9 @@ nav::before {
     cursor: pointer;
 
     transition:
+
         opacity 0.2s ease,
+
         transform 0.2s ease;
 }
 
@@ -352,7 +359,7 @@ nav .nav-links a:active {
 
 
 /* =====================================================
-   VERTIKALE SEITEN
+   SEITEN
 ===================================================== */
 
 .page {
@@ -467,6 +474,10 @@ nav .nav-links a:active {
         opacity;
 }
 
+
+/* =====================================================
+   FORMA
+===================================================== */
 
 .eyebrow {
 
@@ -908,75 +919,6 @@ nav .nav-links a:active {
 }
 
 
-/* =====================================================
-   HORIZONTALE SEITEN
-===================================================== */
-
-.about-horizontal {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    width:
-        300vw;
-
-    height:
-        100%;
-
-    display:
-        flex;
-
-    transform:
-        translate3d(0,0,0);
-
-    transition:
-        transform 0.85s
-        cubic-bezier(
-            0.77,
-            0,
-            0.175,
-            1
-        );
-
-    will-change:
-        transform;
-
-    z-index:
-        1;
-}
-
-
-.about-slide {
-
-    width:
-        100vw;
-
-    height:
-        100%;
-
-    flex:
-        0 0 100vw;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        flex-start;
-
-    padding:
-        10vw 8%;
-
-    overflow:
-        hidden;
-}
-
-
 .about-content {
 
     width:
@@ -1038,272 +980,6 @@ nav .nav-links a:active {
 
     color:
         #aaa;
-}
-
-
-/* =====================================================
-   LIQUID GLASS PUNKTE
-===================================================== */
-
-.page-dots {
-
-    position:
-        absolute;
-
-    left:
-        50%;
-
-    bottom:
-        calc(
-            92px +
-            env(
-                safe-area-inset-bottom
-            )
-        );
-
-    transform:
-        translateX(-50%);
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        17px;
-
-    height:
-        34px;
-
-    padding:
-        7px 12px;
-
-    border-radius:
-        20px;
-
-    background:
-        rgba(255,255,255,0.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.10);
-
-    box-shadow:
-
-        inset 0 1px 1px
-        rgba(255,255,255,0.10),
-
-        0 4px 16px
-        rgba(0,0,0,0.18);
-
-    backdrop-filter:
-        blur(18px)
-        saturate(160%);
-
-    -webkit-backdrop-filter:
-        blur(18px)
-        saturate(160%);
-
-    z-index:
-        80;
-
-    cursor:
-        default;
-
-    user-select:
-        none;
-}
-
-
-/* =====================================================
-   EINZELNE PUNKTE
-===================================================== */
-
-.dot {
-
-    position:
-        relative;
-
-    width:
-        7px;
-
-    height:
-        7px;
-
-    flex:
-        0 0 7px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,0.34);
-
-    box-shadow:
-
-        inset 0 1px 1px
-        rgba(255,255,255,0.50),
-
-        0 1px 4px
-        rgba(0,0,0,0.25);
-
-    transition:
-        transform 0.35s ease,
-        background 0.35s ease;
-}
-
-
-.dot.active {
-
-    background:
-        rgba(255,255,255,0.78);
-
-    transform:
-        scale(1.08);
-
-    box-shadow:
-
-        inset 0 1px 1px
-        rgba(255,255,255,0.85),
-
-        0 1px 5px
-        rgba(255,255,255,0.18);
-}
-
-
-/* =====================================================
-   LIQUID GLASS BUBBLE
-===================================================== */
-
-.dot-bubble {
-
-    position:
-        absolute;
-
-    top:
-        50%;
-
-    left:
-        0;
-
-    width:
-        20px;
-
-    height:
-        20px;
-
-    border-radius:
-        50%;
-
-    transform:
-        translate3d(0,-50%,0);
-
-    background:
-
-        radial-gradient(
-            circle at 32% 28%,
-            rgba(255,255,255,0.82) 0%,
-            rgba(255,255,255,0.34) 18%,
-            rgba(255,255,255,0.12) 45%,
-            rgba(255,255,255,0.055) 70%,
-            rgba(255,255,255,0.025) 100%
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,0.34);
-
-    box-shadow:
-
-        inset 0 1px 1px
-        rgba(255,255,255,0.75),
-
-        inset 0 -2px 5px
-        rgba(255,255,255,0.06),
-
-        0 3px 9px
-        rgba(0,0,0,0.28),
-
-        0 0 5px
-        rgba(255,255,255,0.08);
-
-    backdrop-filter:
-        blur(8px)
-        saturate(180%);
-
-    -webkit-backdrop-filter:
-        blur(8px)
-        saturate(180%);
-
-    pointer-events:
-        none;
-
-    z-index:
-        5;
-
-    transition:
-        transform 0.65s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
-
-.dot-bubble::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    top:
-        3px;
-
-    left:
-        4px;
-
-    width:
-        6px;
-
-    height:
-        4px;
-
-    border-radius:
-        50%;
-
-    background:
-        rgba(255,255,255,0.62);
-
-    filter:
-        blur(1px);
-}
-
-
-.dot-bubble::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        2px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.10);
 }
 
 
@@ -1426,6 +1102,38 @@ nav .nav-links a:active {
 }
 
 
+.page-title {
+
+    transform:
+        scale(0.92);
+
+    opacity:
+        0;
+
+    transition:
+
+        transform 1.2s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.8s ease;
+}
+
+
+.page.active .page-title {
+
+    transform:
+        scale(1);
+
+    opacity:
+        1;
+}
+
+
 /* =====================================================
    MOBILE
 ===================================================== */
@@ -1498,13 +1206,6 @@ nav .nav-links a:active {
 
     .about,
     .contact {
-
-        padding:
-            80px 25px;
-    }
-
-
-    .about-slide {
 
         padding:
             80px 25px;
@@ -1596,24 +1297,6 @@ nav .nav-links a:active {
             scale(1.15);
     }
 
-
-    .page-dots {
-
-        bottom:
-            calc(
-                82px +
-                env(
-                    safe-area-inset-bottom
-                )
-            );
-
-        gap:
-            18px;
-
-        padding:
-            7px 13px;
-    }
-
 }
 
 
@@ -1623,9 +1306,7 @@ nav .nav-links a:active {
 
 @media (prefers-reduced-motion: reduce) {
 
-    .page,
-    .about-horizontal,
-    .dot-bubble {
+    .page {
 
         transition:
             none;
@@ -1633,6 +1314,7 @@ nav .nav-links a:active {
 
 
     .page-content,
+    .page-title,
     .eyebrow,
     .eyebrow .forma-o {
 
@@ -1710,7 +1392,6 @@ nav .nav-links a:active {
 </nav>
 
 
-
 <!-- =====================================================
      SEITEN
 ===================================================== -->
@@ -1718,302 +1399,179 @@ nav .nav-links a:active {
 <main class="page-container">
 
 
-<!-- =====================================================
-     STARTSEITE
-===================================================== -->
+    <!-- =================================================
+         STARTSEITE
+    ================================================= -->
 
-<section
-    class="page hero active"
-    data-index="0"
->
+    <section
+        class="page hero active"
+        data-index="0"
+    >
 
-    <div class="hero-content page-content">
+        <div class="hero-content page-content">
 
-        <div class="eyebrow">
 
-            <span class="forma-logo">
+            <div class="eyebrow">
 
-                <span class="forma-letter">F</span>
+                <span class="forma-logo">
 
-                <span class="forma-o">O</span>
+                    <span class="forma-letter">F</span>
 
-                <span class="forma-letter">R</span>
+                    <span class="forma-o">O</span>
 
-                <span class="forma-letter">M</span>
+                    <span class="forma-letter">R</span>
 
-                <span class="forma-letter">A</span>
+                    <span class="forma-letter">M</span>
 
-                <span class="forma-dot"></span>
+                    <span class="forma-letter">A</span>
 
-            </span>
+                    <span class="forma-dot"></span>
+
+                </span>
+
+            </div>
+
+
+            <h1 class="hero-title page-title">
+
+                Einfach.<br>
+
+                Stark.<br>
+
+                Anders.
+
+            </h1>
+
+
+            <p class="hero-text">
+
+                Klare Ideen. Starkes Design.
+                Anders gedacht. Besser gestaltet.
+
+            </p>
 
         </div>
 
 
-        <h1 class="hero-title page-title">
-
-            Einfach.<br>
-
-            Stark.<br>
-
-            Anders.
-
-        </h1>
-
-
-        <p class="hero-text">
-
-            Klare Ideen. Starkes Design.
-            Anders gedacht. Besser gestaltet.
-
-        </p>
-
-    </div>
-
-
-    <div
-        class="scroll-hint"
-        role="button"
-        aria-label="Weiter zur nächsten Seite"
-        tabindex="0"
-    >
-
-        <svg
-            viewBox="0 0 24 32"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
+        <div
+            class="scroll-hint"
+            role="button"
+            aria-label="Weiter zur nächsten Seite"
+            tabindex="0"
         >
 
-            <path d="M6 12 L12 18 L18 12"/>
+            <svg
+                viewBox="0 0 24 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
 
-            <path d="M6 19 L12 25 L18 19"/>
+                <path d="M6 12 L12 18 L18 12" />
 
-        </svg>
+                <path d="M6 19 L12 25 L18 19" />
 
-    </div>
+            </svg>
 
-</section>
+        </div>
 
-
-
-<!-- =====================================================
-     ÜBER UNS
-===================================================== -->
-
-<section
-    class="page about"
-    data-index="1"
->
+    </section>
 
 
-    <div
-        class="about-horizontal"
-        id="aboutHorizontal"
+    <!-- =================================================
+         ÜBER UNS
+    ================================================= -->
+
+    <section
+        class="page about"
+        data-index="1"
     >
 
+        <div class="about-content page-content">
 
-        <!-- =============================================
-             HORIZONTALE SEITE 1
-        ============================================== -->
+            <h2 class="about-title page-title">
 
-        <div class="about-slide">
+                Weniger.<br>
 
-            <div class="about-content page-content">
+                Aber besser.
 
-                <h2 class="about-title page-title">
-
-                    Weniger.<br>
-
-                    Aber besser.
-
-                </h2>
+            </h2>
 
 
-                <p class="about-text">
+            <p class="about-text">
 
-                    FORMA. steht für
-                    minimalistisches, modernes
-                    und durchdachtes Design.
+                FORMA. steht für
+                minimalistisches, modernes
+                und durchdachtes Design.
 
-                    Wir reduzieren auf das Wesentliche
-                    und schaffen Lösungen mit Charakter.
+                Wir reduzieren auf das Wesentliche
+                und schaffen Lösungen mit Charakter.
 
-                </p>
-
-            </div>
+            </p>
 
         </div>
 
 
-
-        <!-- =============================================
-             HORIZONTALE SEITE 2
-        ============================================== -->
-
-        <div class="about-slide">
-
-            <div class="about-content page-content">
-
-                <h2 class="about-title page-title">
-
-                    Klar.<br>
-
-                    Präzise.
-
-                </h2>
-
-
-                <p class="about-text">
-
-                    Gutes Design muss nicht laut sein.
-                    Es überzeugt durch Klarheit,
-                    Struktur und eine Idee,
-                    die im Mittelpunkt steht.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =============================================
-             HORIZONTALE SEITE 3
-        ============================================== -->
-
-        <div class="about-slide">
-
-            <div class="about-content page-content">
-
-                <h2 class="about-title page-title">
-
-                    Design.<br>
-
-                    Mit Charakter.
-
-                </h2>
-
-
-                <p class="about-text">
-
-                    Wir verbinden Ästhetik,
-                    Funktion und Persönlichkeit
-                    zu digitalen Erlebnissen,
-                    die im Gedächtnis bleiben.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =============================================
-         LIQUID GLASS PUNKTE
-    ============================================== -->
-
-    <div
-        class="page-dots"
-        id="aboutDots"
-        aria-label="Unterseiten"
-    >
-
         <div
-            class="dot-bubble"
-            id="dotBubble"
-        ></div>
-
-        <div
-            class="dot active"
-            data-slide="0"
-        ></div>
-
-        <div
-            class="dot"
-            data-slide="1"
-        ></div>
-
-        <div
-            class="dot"
-            data-slide="2"
-        ></div>
-
-    </div>
-
-
-
-    <!-- =============================================
-         PFEIL NACH UNTEN
-         NUR ZUR NÄCHSTEN VERTIKALEN SEITE
-    ============================================== -->
-
-    <div
-        class="scroll-hint"
-        id="aboutNext"
-        role="button"
-        aria-label="Weiter zur Kontaktseite"
-        tabindex="0"
-    >
-
-        <svg
-            viewBox="0 0 24 32"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
+            class="scroll-hint"
+            role="button"
+            aria-label="Weiter zur Kontaktseite"
+            tabindex="0"
         >
 
-            <path d="M6 12 L12 18 L18 12"/>
+            <svg
+                viewBox="0 0 24 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
 
-            <path d="M6 19 L12 25 L18 19"/>
+                <path d="M6 12 L12 18 L18 12" />
 
-        </svg>
+                <path d="M6 19 L12 25 L18 19" />
 
-    </div>
+            </svg>
 
-</section>
+        </div>
 
-
-
-<!-- =====================================================
-     KONTAKT
-===================================================== -->
-
-<section
-    class="page contact"
-    data-index="2"
->
-
-    <div class="contact-content page-content">
-
-        <h2 class="contact-title page-title">
-
-            Lass uns<br>
-
-            etwas gestalten.
-
-        </h2>
+    </section>
 
 
-        <p class="contact-text">
+    <!-- =================================================
+         KONTAKT
+    ================================================= -->
 
-            Du hast eine Idee?
-            Wir machen daraus ein Design.
+    <section
+        class="page contact"
+        data-index="2"
+    >
 
-        </p>
+        <div class="contact-content page-content">
 
-    </div>
+            <h2 class="contact-title page-title">
 
-</section>
+                Lass uns<br>
+
+                etwas gestalten.
+
+            </h2>
+
+
+            <p class="contact-text">
+
+                Du hast eine Idee?
+                Wir machen daraus ein Design.
+
+            </p>
+
+        </div>
+
+    </section>
 
 
 </main>
 
 
-
 <script>
+
 
 /* =====================================================
    ELEMENTE
@@ -2030,15 +1588,6 @@ const navLinks =
 
 const scrollHints =
     document.querySelectorAll(".scroll-hint");
-
-const aboutHorizontal =
-    document.querySelector("#aboutHorizontal");
-
-const dots =
-    document.querySelectorAll("#aboutDots .dot");
-
-const dotBubble =
-    document.querySelector("#dotBubble");
 
 
 /* =====================================================
@@ -2058,39 +1607,19 @@ let touchEndX = 0;
 let touchEndY = 0;
 
 
-/*
-   WICHTIG:
-
-   Die horizontale Unterseite wird beim Verlassen
-   von "Über uns" IMMER auf 0 zurückgesetzt.
-
-   Dadurch beginnt "Über uns" bei jedem neuen Besuch
-   wieder mit der ersten Unterseite.
-*/
-
-let aboutSlide = 0;
-
-
 /* =====================================================
-   VERTIKALE SEITE WECHSELN
+   SEITE WECHSELN
 ===================================================== */
 
 function goToPage(index) {
 
     if (
-
         index < 0 ||
-
         index >= pages.length ||
-
         index === currentPage ||
-
         isAnimating
-
     ) {
-
         return;
-
     }
 
 
@@ -2102,27 +1631,12 @@ function goToPage(index) {
 
 
     /*
-       Wenn die zweite Seite verlassen wird,
-       horizontale Position sofort zurücksetzen.
-    */
-
-    if (currentPage === 1) {
-
-        resetAboutSlide();
-
-    }
-
-
-    /*
-       Startseite verlässt den Bildschirm
+       STARTSEITE VERLÄSST DEN BILDSCHIRM
     */
 
     if (
-
         currentPage === 0 &&
-
         index > 0
-
     ) {
 
         oldPage.classList.add(
@@ -2133,7 +1647,7 @@ function goToPage(index) {
 
 
     /*
-       Seitenklassen
+       SEITENKLASSEN
     */
 
     pages.forEach(
@@ -2178,19 +1692,7 @@ function goToPage(index) {
 
 
     /*
-       Beim Zurückkehren auf Über uns
-       IMMER wieder bei Unterseite 1 starten.
-    */
-
-    if (index === 1) {
-
-        resetAboutSlide();
-
-    }
-
-
-    /*
-       Startseite zurücksetzen
+       STARTSEITE ZURÜCKSETZEN
     */
 
     if (index === 0) {
@@ -2201,6 +1703,10 @@ function goToPage(index) {
 
     }
 
+
+    /*
+       ANIMATION LOCK
+    */
 
     setTimeout(
         () => {
@@ -2215,159 +1721,8 @@ function goToPage(index) {
 
 
 /* =====================================================
-   HORIZONTALE SEITE SETZEN
-===================================================== */
-
-function setAboutSlide(index) {
-
-    if (
-        index < 0 ||
-        index > 2
-    ) {
-
-        return;
-
-    }
-
-
-    aboutSlide = index;
-
-
-    aboutHorizontal.style.transform =
-        `translate3d(-${index * 100}vw, 0, 0)`;
-
-
-    dots.forEach(
-        (dot, i) => {
-
-            dot.classList.toggle(
-                "active",
-                i === index
-            );
-
-        }
-    );
-
-
-    /*
-       Liquid-Glass-Blase exakt auf den
-       jeweils aktiven Punkt bewegen.
-    */
-
-    const activeDot =
-        dots[index];
-
-    const bubbleLeft =
-        activeDot.offsetLeft
-        +
-        (activeDot.offsetWidth / 2)
-        -
-        10;
-
-
-    dotBubble.style.transform =
-        `translate3d(${bubbleLeft}px, -50%, 0)`;
-}
-
-
-/* =====================================================
-   ZWEITE SEITE ZURÜCKSETZEN
-===================================================== */
-
-function resetAboutSlide() {
-
-    aboutSlide = 0;
-
-    aboutHorizontal.style.transform =
-        "translate3d(0, 0, 0)";
-
-
-    dots.forEach(
-        (dot, i) => {
-
-            dot.classList.toggle(
-                "active",
-                i === 0
-            );
-
-        }
-    );
-
-
-    requestAnimationFrame(
-        () => {
-
-            const firstDot =
-                dots[0];
-
-            if (!firstDot) {
-
-                return;
-
-            }
-
-
-            const bubbleLeft =
-                firstDot.offsetLeft
-                +
-                (firstDot.offsetWidth / 2)
-                -
-                10;
-
-
-            dotBubble.style.transform =
-                `translate3d(${bubbleLeft}px, -50%, 0)`;
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   PUNKTE
-===================================================== */
-
-dots.forEach(
-    dot => {
-
-        dot.addEventListener(
-            "click",
-            () => {
-
-                /*
-                   Die Punkte wechseln ausschließlich
-                   horizontale Unterseiten.
-
-                   Keine vertikale Navigation.
-                */
-
-                if (
-                    currentPage !== 1
-                ) {
-
-                    return;
-
-                }
-
-
-                const index =
-                    Number(
-                        dot.dataset.slide
-                    );
-
-
-                setAboutSlide(index);
-
-            }
-        );
-
-    }
-);
-
-
-/* =====================================================
-   SCROLL-PFEILE
+   PFEIL
+   IMMER NUR NACH UNTEN
 ===================================================== */
 
 scrollHints.forEach(
@@ -2378,11 +1733,8 @@ scrollHints.forEach(
             () => {
 
                 /*
-                   Pfeil bedeutet IMMER:
-                   vertikal zur nächsten Hauptseite.
-
-                   Auf Über uns also direkt
-                   zur Kontaktseite.
+                   Der Pfeil bewegt sich
+                   ausschließlich vertikal.
                 */
 
                 goToPage(
@@ -2398,11 +1750,8 @@ scrollHints.forEach(
             event => {
 
                 if (
-
                     event.key === "Enter" ||
-
                     event.key === " "
-
                 ) {
 
                     event.preventDefault();
@@ -2429,46 +1778,33 @@ window.addEventListener(
     event => {
 
         if (isAnimating) {
-
             return;
-
         }
 
 
         if (
             Math.abs(event.deltaY) < 25
         ) {
-
             return;
-
         }
 
 
         /*
-           Auf Über uns:
+           WICHTIG:
 
-           Mausrad nach unten:
-           IMMER Kontakt.
+           Seite 0:
+           ↓ = Seite 1
 
-           Mausrad nach oben:
-           KEINE Rückkehr zur Startseite.
+           Seite 1:
+           ↑ = Seite 0
+           ↓ = Seite 2
 
-           Links/rechts erfolgt ausschließlich
-           über horizontale Gesten.
+           Seite 2:
+           ↑ = Seite 1
+
+           Keine horizontale Navigation
+           über das Mausrad.
         */
-
-        if (currentPage === 1) {
-
-            if (event.deltaY > 0) {
-
-                goToPage(2);
-
-            }
-
-            return;
-
-        }
-
 
         if (event.deltaY > 0) {
 
@@ -2494,18 +1830,21 @@ window.addEventListener(
 
 
 /* =====================================================
-   TOUCH START
+   TOUCH / WISCHEN
 ===================================================== */
 
 window.addEventListener(
     "touchstart",
     event => {
 
+        const touch =
+            event.changedTouches[0];
+
         touchStartX =
-            event.changedTouches[0].screenX;
+            touch.screenX;
 
         touchStartY =
-            event.changedTouches[0].screenY;
+            touch.screenY;
 
     },
     {
@@ -2514,19 +1853,18 @@ window.addEventListener(
 );
 
 
-/* =====================================================
-   TOUCH END
-===================================================== */
-
 window.addEventListener(
     "touchend",
     event => {
 
+        const touch =
+            event.changedTouches[0];
+
         touchEndX =
-            event.changedTouches[0].screenX;
+            touch.screenX;
 
         touchEndY =
-            event.changedTouches[0].screenY;
+            touch.screenY;
 
 
         const differenceX =
@@ -2540,106 +1878,14 @@ window.addEventListener(
 
 
         /*
-           Über uns:
-
-           Horizontal = Unterseiten
-
-           Vertikal nach unten = Kontakt
-
-           Vertikal nach oben = IGNORIEREN
-        */
-
-        if (currentPage === 1) {
-
-
-            /*
-               Deutlich horizontaler Swipe
-            */
-
-            if (
-                Math.abs(differenceX) >
-                Math.abs(differenceY)
-                &&
-                Math.abs(differenceX) >= 50
-            ) {
-
-
-                if (differenceX > 0) {
-
-                    /*
-                       Swipe nach links
-                    */
-
-                    if (
-                        aboutSlide < 2
-                    ) {
-
-                        setAboutSlide(
-                            aboutSlide + 1
-                        );
-
-                    }
-
-                }
-
-                else {
-
-                    /*
-                       Swipe nach rechts
-                    */
-
-                    if (
-                        aboutSlide > 0
-                    ) {
-
-                        setAboutSlide(
-                            aboutSlide - 1
-                        );
-
-                    }
-
-                }
-
-
-                return;
-
-            }
-
-
-            /*
-               Vertikal nach unten
-               = nächste Hauptseite
-            */
-
-            if (
-                differenceY > 50
-            ) {
-
-                goToPage(2);
-
-                return;
-
-            }
-
-
-            /*
-               Vertikal nach oben
-               = NICHTS
-            */
-
-            return;
-
-        }
-
-
-        /*
-           Startseite / Kontakt:
-
-           Normale vertikale Navigation
+           MINDESTDISTANZ
         */
 
         if (
-            Math.abs(differenceY) < 50
+            Math.max(
+                Math.abs(differenceX),
+                Math.abs(differenceY)
+            ) < 50
         ) {
 
             return;
@@ -2647,21 +1893,64 @@ window.addEventListener(
         }
 
 
-        if (differenceY > 0) {
+        /*
+           VERTIKALER WISCH
+           
+           ↑ = vorherige Seite
+           ↓ = nächste Seite
+        */
 
-            goToPage(
-                currentPage + 1
-            );
+        if (
+            Math.abs(differenceY) >
+            Math.abs(differenceX)
+        ) {
+
+            if (differenceY > 0) {
+
+                /*
+                   Nach oben:
+                   immer eine Seite zurück.
+
+                   Seite 1 → Startseite
+                   Seite 2 → Seite 1
+                */
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+            else {
+
+                /*
+                   Nach unten:
+                   immer eine Seite weiter.
+                */
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+            return;
 
         }
 
-        else {
 
-            goToPage(
-                currentPage - 1
-            );
+        /*
+           HORIZONTALE WISCHES
+           
+           Hier wird bewusst NICHTS
+           mehr ausgeführt.
 
-        }
+           Dadurch kann man auf der
+           zweiten Seite nicht versehentlich
+           durch horizontales Wischen
+           die vertikale Seitenstruktur
+           beeinflussen.
+        */
 
     },
     {
@@ -2677,116 +1966,6 @@ window.addEventListener(
 window.addEventListener(
     "keydown",
     event => {
-
-
-        /*
-           Über uns:
-           Links/rechts = horizontale Unterseiten
-        */
-
-        if (currentPage === 1) {
-
-
-            if (
-                event.key === "ArrowRight"
-            ) {
-
-                event.preventDefault();
-
-                if (
-                    aboutSlide < 2
-                ) {
-
-                    setAboutSlide(
-                        aboutSlide + 1
-                    );
-
-                }
-
-                return;
-
-            }
-
-
-            if (
-                event.key === "ArrowLeft"
-            ) {
-
-                event.preventDefault();
-
-                if (
-                    aboutSlide > 0
-                ) {
-
-                    setAboutSlide(
-                        aboutSlide - 1
-                    );
-
-                }
-
-                return;
-
-            }
-
-
-            /*
-               ArrowUp wird auf Über uns
-               bewusst ignoriert.
-            */
-
-            if (
-                event.key === "ArrowUp"
-            ) {
-
-                event.preventDefault();
-
-                return;
-
-            }
-
-
-            /*
-               ArrowDown = Kontakt
-            */
-
-            if (
-                event.key === "ArrowDown"
-            ) {
-
-                event.preventDefault();
-
-                goToPage(2);
-
-                return;
-
-            }
-
-
-            /*
-               Leertaste = Kontakt
-            */
-
-            if (
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                goToPage(2);
-
-                return;
-
-            }
-
-
-            return;
-
-        }
-
-
-        /*
-           Normale vertikale Navigation
-        */
 
         if (
             event.key === "ArrowDown"
@@ -2846,19 +2025,6 @@ navLinks.forEach(
                     );
 
 
-                /*
-                   Beim direkten Aufrufen von
-                   Über uns ebenfalls immer
-                   Unterseite 1.
-                */
-
-                if (page === 1) {
-
-                    resetAboutSlide();
-
-                }
-
-
                 goToPage(page);
 
             }
@@ -2892,9 +2058,6 @@ window.addEventListener(
     "load",
     () => {
 
-        resetAboutSlide();
-
-
         if (
             window.location.hash === "#about"
         ) {
@@ -2915,35 +2078,9 @@ window.addEventListener(
     }
 );
 
-
-/* =====================================================
-   RESIZE
-===================================================== */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        /*
-           Position der Liquid-Glass-Blase
-           nach Größenänderung neu berechnen.
-        */
-
-        if (
-            currentPage === 1
-        ) {
-
-            setAboutSlide(
-                aboutSlide
-            );
-
-        }
-
-    }
-);
-
 </script>
 
 
 </body>
+
 </html>
