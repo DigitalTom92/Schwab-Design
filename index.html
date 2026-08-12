@@ -1353,9 +1353,11 @@ nav .nav-links a:active {
 
 /* =====================================================
    SEITEN-INHALT
+   GLEICHER ZOOM-EFFEKT FÜR ALLE HAUPTSEITEN
 ===================================================== */
 
-.page-content {
+.page-content,
+.about-content {
     transform:
         translate3d(0,60px,0)
         scale(0.92);
@@ -1373,15 +1375,53 @@ nav .nav-links a:active {
         ),
 
         opacity 0.7s ease;
+
+    will-change:
+        transform,
+        opacity;
 }
 
-.page.active .page-content {
+.page.active .page-content,
+.page.active .about-content {
     transform:
         translate3d(0,0,0)
         scale(1);
 
     opacity:
         1;
+}
+
+
+/* =====================================================
+   ZOOM-/FADE-EFFEKT BEIM VERLASSEN
+   GILT JETZT FÜR START, ÜBER UNS UND KONTAKT
+===================================================== */
+
+.page.leaving .page-content,
+.page.leaving .about-content {
+    transform:
+        translate3d(0,-45px,0)
+        scale(1.06);
+
+    opacity:
+        0;
+
+    transition:
+        transform 0.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        opacity 0.46s
+        cubic-bezier(
+            0.4,
+            0,
+            1,
+            1
+        );
 }
 
 .page-title {
@@ -1631,6 +1671,7 @@ nav .nav-links a:active {
 
 
     .page-content,
+    .about-content,
     .page-title,
     .eyebrow,
     .eyebrow .forma-o,
@@ -2205,16 +2246,14 @@ function goToPage(index) {
     }
 
 
-    if (
-        currentPage === 0 &&
-        index > 0
-    ) {
+    /*
+       Jeder vertikale Seitenwechsel bekommt
+       denselben Leaving-Effekt.
+    */
 
-        oldPage.classList.add(
-            "leaving"
-        );
-
-    }
+    oldPage.classList.add(
+        "leaving"
+    );
 
 
     pages.forEach(
@@ -2258,15 +2297,6 @@ function goToPage(index) {
     currentPage = index;
 
 
-    if (index === 0) {
-
-        pages[0].classList.remove(
-            "leaving"
-        );
-
-    }
-
-
     if (index === 1) {
 
         requestAnimationFrame(
@@ -2282,6 +2312,15 @@ function goToPage(index) {
 
     setTimeout(
         () => {
+
+            /*
+               Leaving-Zustand nach der Animation
+               sauber entfernen.
+            */
+
+            oldPage.classList.remove(
+                "leaving"
+            );
 
             isAnimating = false;
 
@@ -2448,7 +2487,6 @@ scrollHints.forEach(
 
 /* =====================================================
    MAC TOUCHPAD / WHEEL
-   =====================================================
 
    WICHTIG:
 
